@@ -1,0 +1,15 @@
+div {
+    border: dimgray solid thin;
+    text-align: center;
+    float: left;
+    width: 350px;
+    height: 350px;
+    margin: 10px;
+    background-color: darkorange;
+}
+
+div span {
+    font-weight: 600;
+    font-size: 2em;
+    color: white;
+}
