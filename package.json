@@ -5,14 +5,15 @@
   "description": "Example project from an angular.io guide.",
   "scripts": {
     "test:once": "karma start karma.conf.js --single-run",
-    "build": "tsc -p client/src",
+    "build": "tsc -p client/src --outDir build",
     "serve": "lite-server -c=bs-config.json",
     "prestart": "npm run build",
-    "start": "concurrently \"npm run build:watch\" \"npm run serve\"",
+    "start": "concurrently \"npm run build:watch\" \"npm run copy-build-files:watch\" \"npm run serve\"",
     "pretest": "npm run build",
     "test": "concurrently \"npm run build:watch\" \"karma start karma.conf.js\"",
     "pretest:once": "npm run build",
-    "build:watch": "tsc -p client/src -w",
+    "copy-build-files:watch": "cpx client/src/*.{html,js} build --watch",
+    "build:watch": "tsc -p client/src -w --outDir build",
     "build:upgrade": "tsc",
     "serve:upgrade": "http-server",
     "build:aot": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js",
@@ -20,7 +21,8 @@
     "build:babel": "babel client/src -d client/src --extensions \".es6\" --source-maps",
     "copy-dist-files": "node ./copy-dist-files.js",
     "i18n": "ng-xi18n",
-    "lint": "tslint ./client/**/*.ts -t verbose"
+    "lint": "tslint ./client/**/*.ts -t verbose",
+    "clean": "rimraf build"
   },
   "keywords": [],
   "author": "",
@@ -78,7 +80,9 @@
     "rollup-plugin-uglify": "^1.0.1",
     "source-map-explorer": "^1.3.2",
     "tslint": "^3.15.1",
-    "typescript": "~2.2.0"
+    "typescript": "~2.2.0",
+    "rimraf": "2.6.1",
+    "cpx": "1.5.0"
   },
   "repository": {}
 }
