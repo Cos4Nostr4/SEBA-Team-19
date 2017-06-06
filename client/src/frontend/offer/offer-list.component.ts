@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OfferService} from "./offer.service";
 import {Offer} from "./offer";
 
@@ -9,10 +9,15 @@ import {Offer} from "./offer";
     templateUrl: './offer-list.component.html',
     providers: [OfferService]
 })
-export class OfferListComponent {
+export class OfferListComponent implements OnInit{
+    offerService: OfferService;
     offerList: Offer[];
 
     constructor(offerService: OfferService){
-        this.offerList = offerService.getAllOffers();
+        this.offerService = offerService;
+    }
+
+    ngOnInit(): void {
+        this.offerService.getAllOffers().then(offers => this.offerList = offers);
     }
 }
