@@ -12,7 +12,7 @@
     "pretest": "npm run build",
     "test": "concurrently \"npm run build:watch\" \"karma start karma.conf.js\"",
     "pretest:once": "npm run build",
-    "copy-build-files:watch": "cpx client/src/**/*.{html,js,css} build --watch",
+    "copy-build-files:watch": "cpx \"client/src/**/*.{html,js,css}\" build --watch",
     "build:watch": "tsc -p client/src -w --outDir build",
     "build:upgrade": "tsc",
     "serve:upgrade": "http-server",
