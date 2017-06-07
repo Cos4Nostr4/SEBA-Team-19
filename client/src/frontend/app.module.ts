@@ -2,10 +2,11 @@ import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent}  from './app.component';
 import {AppHeaderModule} from './app-header/app-header.module'
-import {OfferListModule} from './offer/offer-list.module'
-import {OfferListComponent} from './offer/offer-list.component'
+import {OfferListModule} from './offer-list-view/offer-list.module'
+import {OfferListComponent} from './offer-list-view/offer-list.component'
 import { RouterModule }   from '@angular/router';
 import {DashBoardComponent} from './dashboard/dashboard.component';
+import {OfferDetailComponent} from './offer-detail-view/offer-detail.component'
 
 @NgModule({
     imports: [
@@ -14,12 +15,16 @@ import {DashBoardComponent} from './dashboard/dashboard.component';
         OfferListModule,
         RouterModule.forRoot([
             {
-                path: 'heroes',
+                path: 'offers',
                 component: OfferListComponent
             },
             {
                 path: 'dashboard',
                 component: DashBoardComponent
+            },
+            {
+                path: 'offer-detail/:id',
+                component: OfferDetailComponent
             },
             {
                 path: '',
@@ -30,7 +35,8 @@ import {DashBoardComponent} from './dashboard/dashboard.component';
     ],
     declarations: [
         AppComponent,
-        DashBoardComponent
+        DashBoardComponent,
+        OfferDetailComponent
     ],
     bootstrap: [AppComponent]
 })
