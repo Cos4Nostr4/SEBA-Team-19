@@ -17,7 +17,8 @@ export class OfferRouter{
         router.route('/offer')
             .get(function (req, res) {
                 let offer: Offer[] = offerRepository.getAllOffer();
-                res.json(JSON.stringify(offer));
+                let transferObject = {data:offer};
+                res.json(transferObject);
             });
 
         router.route('/offer/:id')

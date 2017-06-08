@@ -7,12 +7,15 @@ import {OfferListComponent} from './offer-list-view/offer-list.component'
 import { RouterModule }   from '@angular/router';
 import {DashBoardComponent} from './dashboard/dashboard.component';
 import {OfferDetailComponent} from './offer-detail-view/offer-detail.component'
+import {HttpModule, JsonpModule} from "@angular/http";
 
 @NgModule({
     imports: [
         BrowserModule,
         AppHeaderModule,
         OfferListModule,
+        HttpModule,
+        JsonpModule,
         RouterModule.forRoot([
             {
                 path: 'offers',

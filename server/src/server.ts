@@ -6,14 +6,14 @@ import * as debug from 'debug';
 
 debug('ts-express:server');
 
-const port = normalizePort(process.env.PORT || Config.port);
+const port = normalizePort(process.env.PORT || Config.backend_port);
 let app = App.bootstrap();
 const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-console.log("Server is listening on port %s", Config.port);
+console.log("Server is listening on port %s", Config.backend_port);
 
 
 

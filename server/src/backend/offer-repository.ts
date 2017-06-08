@@ -11,6 +11,7 @@ export class OfferRepository{
             {'id': 1, 'title':"arnolf"},
             {'id': 2, 'title':"bertram"},
             {'id': 3, 'title':"caspar"},
+            {'id': 3, 'title':"detlef"},
         ];
 
         return offer;
