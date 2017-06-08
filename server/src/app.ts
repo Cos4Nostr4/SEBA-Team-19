@@ -1,6 +1,6 @@
 import {OfferRepository} from './backend/offer-repository'
 import {OfferRouter} from './backend/OfferRouter'
-import {Config} from '../../config/config';
+import {Config} from '../../client/src/frontend/config/config';
 import * as express from "express"
 import * as bodyParser from "body-parser";
 

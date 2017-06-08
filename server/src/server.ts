@@ -1,4 +1,4 @@
-import {Config} from '../../config/config'
+import {Config} from '../../client/src/frontend/config/config'
 import {App} from './app';
 import * as http from 'http';
 import * as debug from 'debug';

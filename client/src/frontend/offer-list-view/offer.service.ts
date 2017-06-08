@@ -4,7 +4,7 @@ import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import {Config} from "../../../../config/config";
+import {Config} from "../config/config";
 
 @Injectable()
 export class OfferService {
