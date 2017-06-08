@@ -1,5 +1,5 @@
 import {Config} from '../../config/config'
-import {App} from './backend';
+import {App} from './app';
 import * as http from 'http';
 import * as debug from 'debug';
 

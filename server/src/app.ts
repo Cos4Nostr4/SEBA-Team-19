@@ -1,20 +1,26 @@
+import {OfferRepository} from './backend/offer-repository'
+import {OfferRouter} from './backend/OfferRouter'
+import {Config} from '../../config/config';
 import * as express from "express"
 import * as bodyParser from "body-parser";
 
-
 export class App{
-    public application: express.Application;
+    private application: express.Application;
+    private offerRepository: OfferRepository;
+    private baseUrl: string;
 
     public static bootstrap(): express.Application {
-        return new App().application;
+        let app = new App();
+        app.configure();
+        app.registerRoutes();
+        return app.application;
     }
 
 
     constructor() {
         this.application = express();
-
-        this.configure();
-        this.registerRoutes();
+        this.offerRepository = new OfferRepository();
+        this.baseUrl = Config.backend_base_url;
     }
 
     private configure() {
@@ -31,10 +37,14 @@ export class App{
     private registerRoutes() {
         let router: express.Router = express.Router();
 
+        //TODO: maybe remove this one or redirect
         router.route('/')
             .get(function (req, res) {
                 res.end("Success!");
             });
+
+        let offerRouter: OfferRouter = new OfferRouter();
+        offerRouter.configureRoutes(this.baseUrl, this.application);
 
         this.application.use(router);
     }
