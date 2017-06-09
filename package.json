@@ -23,7 +23,8 @@
     "copy-dist-files": "node ./copy-dist-files.js",
     "i18n": "ng-xi18n",
     "lint": "tslint ./client/**/*.ts -t verbose",
-    "clean": "rimraf build"
+    "clean": "rimraf build",
+    "reset-db":"node server/src/database/database-reset.js"
   },
   "keywords": [],
   "author": "",
@@ -47,6 +48,7 @@
     "express": "^4.15.3",
     "mongodb": "^2.2.28",
     "mongoose": "^4.10.5",
+    "q": "^1.5.0",
     "rxjs": "5.0.1",
     "systemjs": "0.19.39",
     "zone.js": "^0.8.4"
