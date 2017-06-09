@@ -1,12 +1,15 @@
-import {OfferRepository} from './backend/offer/offer-repository_old'
-import {OfferRouter} from './backend/OfferRouter'
+import {OfferRouter} from './backend/offer/OfferRouter'
 import {Config} from '../../client/src/frontend/config/config';
 import * as express from "express"
 import * as bodyParser from "body-parser";
+import {IOfferRepository} from "./backend/offer/offer-repository";
+import {Database} from "./backend/database";
+import {Model} from "mongoose";
 
 export class App{
     private application: express.Application;
-    private offerRepository: OfferRepository;
+    private database: Database;
+    private offerRepository: Model<IOfferRepository>;
     private baseUrl: string;
 
     public static bootstrap(): express.Application {
@@ -19,7 +22,6 @@ export class App{
 
     constructor() {
         this.application = express();
-        this.offerRepository = new OfferRepository();
         this.baseUrl = Config.backend_base_url;
     }
 
