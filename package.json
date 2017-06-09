@@ -8,7 +8,7 @@
     "start": "concurrently \"npm run build:watch\" \"npm run copy-build-files:watch\" \"npm run serve\"",
     "build": "tsc -p client/src/tsconfig.json --rootDir ./ --outDir build/",
     "build:watch": "tsc -p client/src/tsconfig.json --rootDir ./ -w --outDir build/",
-    "build:server": "nodemon --exec ./node_modules/.bin/ts-node -- ./server/src/server.ts",
+    "build:server": "nodemon --exec \"node_modules/.bin/ts-node\" -- \"server/src/server.ts\"",
     "build:upgrade": "tsc",
     "build:aot": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js",
     "build:babel": "babel client/src -d build --extensions \".es6\" --source-maps",
