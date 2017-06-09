@@ -2,7 +2,7 @@ import {OfferRepository} from "./offer-repository";
 import * as express from "express";
 import {Database} from "../database/database";
 import {TransferObject} from "../transferobject/transfer-object";
-import {Offer} from "../../../../client/src/frontend/offer-list-view/offer";
+import {Offer} from "../../../../client/src/frontend/data-objects/offer";
 
 export class OfferRouter {
     private database: Database;

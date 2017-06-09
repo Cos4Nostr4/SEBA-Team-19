@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Offer} from "./offer";
+import {Offer} from "../../data-objects/offer";
 
 @Component({
     selector: 'offer-list-element',

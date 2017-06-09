@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core'
 import {ActivatedRoute, Params}   from '@angular/router';
 import {Location}                 from '@angular/common';
-import {OfferService} from "../offer-list-view/offer.service";
-import {Offer} from "../offer-list-view/offer";
+import {OfferService} from "../services/offer.service";
+import {Offer} from "../data-objects/offer";
 import 'rxjs/add/operator/switchMap';
 
 @Component({

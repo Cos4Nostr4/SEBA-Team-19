@@ -1,6 +1,6 @@
 import {DBOffer} from "./db-offer";
 import {Document, Model, Schema} from "mongoose";
-import {Offer} from "../../../../client/src/frontend/offer-list-view/offer";
+import {Offer} from "../../../../client/src/frontend/data-objects/offer";
 import {OfferMapper} from "./offer-mapper";
 import * as mongoose from "mongoose";
 

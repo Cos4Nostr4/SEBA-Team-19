@@ -1,5 +1,6 @@
 import {DBOffer} from "./db-offer";
-import {Offer} from "../../../../client/src/frontend/offer-list-view/offer";
+import {Offer} from "../../../../client/src/frontend/data-objects/offer";
+
 
 export class OfferMapper {
 

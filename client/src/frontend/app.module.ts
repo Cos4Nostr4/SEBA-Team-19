@@ -8,12 +8,14 @@ import { RouterModule }   from '@angular/router';
 import {DashBoardComponent} from './dashboard/dashboard.component';
 import {OfferDetailComponent} from './offer-detail-view/offer-detail.component'
 import {HttpModule, JsonpModule} from "@angular/http";
+import {OfferListElementModule} from "./offer-list-view/offer-list-element/offer-list-element.module";
 
 @NgModule({
     imports: [
         BrowserModule,
         AppHeaderModule,
         OfferListModule,
+        OfferListElementModule,
         HttpModule,
         JsonpModule,
         RouterModule.forRoot([
