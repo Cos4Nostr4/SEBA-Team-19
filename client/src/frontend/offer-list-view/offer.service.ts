@@ -16,14 +16,14 @@ export class OfferService {
         this.url = Config.backend_address+":"+Config.backend_port+Config.backend_base_url+'offer';
     }
 
-    getAllOffers(): Observable<Offer[]> {
+    public getAllOffers(): Observable<Offer[]> {
         let offerList: Observable<Offer[]> = this.http.get(this.url)
             .map(this.extractData)
             .catch(this.handleError);
         return offerList;
     }
 
-    getOfferWithId(id: number): Observable<Offer> {
+    public getOfferWithId(id: string): Observable<Offer> {
         return this.getAllOffers().map(
             offers => offers.find(offer => offer.id == id));
     }

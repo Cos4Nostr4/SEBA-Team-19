@@ -16,13 +16,13 @@ export class OfferDetailComponent implements OnInit{
     private offer:Offer;
 
     constructor(private offerService: OfferService, private route: ActivatedRoute, private location: Location) {
-        this.offer = {id:1, title:'fuck you'};
+        this.offer = {id:"1", title:'fuck you'};
     }
 
 
     ngOnInit(): void {
         this.route.params
-            .switchMap((params: Params) => this.offerService.getOfferWithId(+params.id))
+            .switchMap((params: Params) => this.offerService.getOfferWithId(+params.id+""))
             .subscribe(offer => this.offer = offer);
     }
 }
