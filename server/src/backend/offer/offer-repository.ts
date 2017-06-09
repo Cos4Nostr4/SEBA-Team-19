@@ -33,12 +33,3 @@ export class OfferRepository {
         });
     }
 }
-
-/*
- offerRepository.find(function (err: any, offerList: DBOffer[]) {
- let offers = OfferMapper.mapAll(offerList);
- let transferObject = TransferObject.aTransferObjectFor(offers);
-
- res.json(transferObject);
- })
- */

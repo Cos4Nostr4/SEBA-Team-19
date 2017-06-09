@@ -1,15 +1,10 @@
-import {OfferRouter} from './backend/offer/OfferRouter'
-import {Config} from '../../client/src/frontend/config/config';
-import * as express from "express"
+import {OfferRouter} from "./backend/offer/offer-router";
+import {Config} from "../../client/src/frontend/config/config";
+import * as express from "express";
 import * as bodyParser from "body-parser";
-import {IOfferRepository} from "./backend/offer/offer-repository";
-import {Database} from "./backend/database";
-import {Model} from "mongoose";
 
-export class App{
+export class App {
     private application: express.Application;
-    private database: Database;
-    private offerRepository: Model<IOfferRepository>;
     private baseUrl: string;
 
     public static bootstrap(): express.Application {
@@ -28,13 +23,13 @@ export class App{
     private configure() {
         this.application.use(bodyParser.json());
         this.application.use(bodyParser.urlencoded({
-            extended:true
+            extended: true
         }));
-        this.application.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
+        this.application.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
             err.status = 404;
             next(err);
         });
-        this.application.use(function(req,res, next){
+        this.application.use(function (req, res, next) {
             res.header('Access-Control-Allow-Origin', '*');
             res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
             res.header('Access-Control-Allow-Headers', 'Content-Type');
