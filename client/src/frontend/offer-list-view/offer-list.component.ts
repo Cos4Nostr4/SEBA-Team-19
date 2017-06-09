@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {OfferService} from "../services/offer.service";
 import {Offer} from "../data-objects/offer";
-import {error} from "selenium-webdriver";
 
 
 @Component({
