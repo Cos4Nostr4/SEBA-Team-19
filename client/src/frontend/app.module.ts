@@ -1,15 +1,16 @@
-import {NgModule}      from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppComponent}  from './app.component';
-import {AppHeaderModule} from './app-header/app-header.module'
-import {OfferListModule} from './offer-list-view/offer-list.module'
-import {OfferListComponent} from './offer-list-view/offer-list.component'
-import { RouterModule }   from '@angular/router';
-import {DashBoardComponent} from './dashboard/dashboard.component';
-import {OfferDetailComponent} from './offer-detail-view/offer-detail.component'
+import {NgModule} from "@angular/core";
+import {BrowserModule} from "@angular/platform-browser";
+import {AppComponent} from "./app.component";
+import {AppHeaderModule} from "./app-header/app-header.module";
+import {OfferListModule} from "./offer-list-view/offer-list.module";
+import {OfferListComponent} from "./offer-list-view/offer-list.component";
+import {RouterModule} from "@angular/router";
+import {DashBoardComponent} from "./dashboard/dashboard.component";
+import {OfferDetailComponent} from "./offer-detail-view/offer-detail.component";
 import {HttpModule, JsonpModule} from "@angular/http";
 import {OfferListElementModule} from "./offer-list-view/offer-list-element/offer-list-element.module";
 import {OfferDetailModule} from "./offer-detail-view/offer-detail.module";
+import {DashBoardModule} from "./dashboard/dashboard.module";
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import {OfferDetailModule} from "./offer-detail-view/offer-detail.module";
         OfferListModule,
         OfferListElementModule,
         OfferDetailModule,
+        DashBoardModule,
         HttpModule,
         JsonpModule,
         RouterModule.forRoot([
@@ -41,10 +43,11 @@ import {OfferDetailModule} from "./offer-detail-view/offer-detail.module";
         ])
     ],
     declarations: [
-        AppComponent,
-        DashBoardComponent,
+        AppComponent
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule {
 }
