@@ -13,7 +13,7 @@ export class OfferService {
 
     constructor(http: Http) {
         this.http = http;
-        this.url = Config.backend_address+":"+Config.backend_port+Config.backend_base_url+'offer';
+        this.url = Config.backend_address+":"+Config.backend_port+Config.backend_base_url+'offers';
     }
 
     public getAllOffers(): Observable<Offer[]> {
