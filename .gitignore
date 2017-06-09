@@ -25,3 +25,6 @@ node_modules
 # package-lock.json locks dependencies to a specific version
 # we allow only patch updates that should not break anything and we also do not include dependency binaries
 package-lock.json
+
+#database files
+database/
