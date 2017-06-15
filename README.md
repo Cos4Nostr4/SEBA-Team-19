@@ -1,6 +1,7 @@
 ## Prerequites
 node + npm -> google
 typescript: npm install typescript -g
+npm install
 
 ## To start the client
 npm install   (only at first start)
