@@ -24,7 +24,7 @@
     "i18n": "ng-xi18n",
     "lint": "tslint ./client/**/*.ts -t verbose",
     "clean": "rimraf build",
-    "reset-db":"node server/src/database/database-reset.js"
+    "reset-db": "node server/src/database/database-reset.js"
   },
   "keywords": [],
   "author": "",
@@ -54,6 +54,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
+    "@angular/cli": "^1.1.1",
     "@types/angular": "^1.5.16",
     "@types/angular-animate": "^1.5.5",
     "@types/angular-cookies": "^1.4.2",
