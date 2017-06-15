@@ -11,6 +11,8 @@ import {HttpModule, JsonpModule} from "@angular/http";
 import {OfferListElementModule} from "./offer-list-view/offer-list-element/offer-list-element.module";
 import {OfferDetailModule} from "./offer-detail-view/offer-detail.module";
 import {DashBoardModule} from "./dashboard/dashboard.module";
+import {SamplePageModule} from "./sample-page/sample-page.module";
+import {SampleObjectComponent} from "./sample-page/sample-page.component";
 
 @NgModule({
     imports: [
@@ -19,6 +21,7 @@ import {DashBoardModule} from "./dashboard/dashboard.module";
         OfferListModule,
         OfferListElementModule,
         OfferDetailModule,
+        SamplePageModule,
         DashBoardModule,
         HttpModule,
         JsonpModule,
@@ -34,6 +37,11 @@ import {DashBoardModule} from "./dashboard/dashboard.module";
             {
                 path: 'offer-detail/:id',
                 component: OfferDetailComponent
+            },
+
+            {
+                path: 'sample-page',
+                component: SampleObjectComponent
             },
             {
                 path: '',
