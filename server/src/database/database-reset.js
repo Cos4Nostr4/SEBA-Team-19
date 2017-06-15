@@ -1,18 +1,29 @@
 let mongoose = require('mongoose');
 let Q = require("q");
+let sampleOffers = require('./sample_offers.json');
+
+
 mongoose.connect('mongodb://localhost:27017/beetoobee');
 
-let sampleOffers = [
-    {id: "1", title: "Bibi's Beauty Brom"},
-    {id: "2", title: "Wood's super duper Shop"},
-    {id: "3", title: "Flint's mega nega sore"},
-    {id: "4", title: "Just a bag"},
-    {id: "5", title: "Cooler bag"},
-    {id: "6", title: "Even cooler bag"},
-];
+
+let Offer = mongoose.model('Offer',
+    {
+        id: String,
+        title: String,
+        description: String,
+        image: String,
+        company: String,
+        amount: Number,
+        requiredNumberOfFollowers: Number,
+        enforcedHashTags: [String],
+        startDate: Date,
+        endDate: Date,
+        requests: [String],
+        stillRunning: Boolean,
+    }
+);
 
 
-let Offer = mongoose.model('Offer', {id: String, title: String});
 Offer.remove({}, function (err) {
     if (err) {
         console.log(err);
