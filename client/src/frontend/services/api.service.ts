@@ -8,4 +8,5 @@ export class ApiService {
    public getApiObject(): ApiObject {
         return new ApiObject(1, "Very important component");
     }
+
 }

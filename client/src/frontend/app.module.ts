@@ -14,7 +14,7 @@ import {DashBoardModule} from "./dashboard/dashboard.module";
 import {SamplePageModule} from "./sample-page/sample-page.module";
 import {SampleObjectComponent} from "./sample-page/sample-page.component";
 import {ApiModule} from "./api-test-area/api-test-area.module";
-import {ApiObjectComponent} from "./api-test-area/api-test-area.component";
+import {InstagramAuthenticationCallbackComponent} from "./api-test-area/api-test-area.component";
 
 @NgModule({
     imports: [
@@ -48,7 +48,7 @@ import {ApiObjectComponent} from "./api-test-area/api-test-area.component";
             },
             {
                 path:'api-test-area',
-                component: ApiObjectComponent
+                component: InstagramAuthenticationCallbackComponent
             },
             {
                 path: '',
