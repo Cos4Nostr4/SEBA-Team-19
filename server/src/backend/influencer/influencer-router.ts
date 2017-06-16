@@ -1,6 +1,5 @@
 import {Database} from "../database/database";
 import {InfluencerRepository} from "./influencer-repository";
-import {Offer} from "../../../../client/src/frontend/data-objects/offer";
 import {TransferObject} from "../transferobject/transfer-object";
 import * as express from "express";
 import {Influencer} from "../../../../client/src/frontend/data-objects/influencer";

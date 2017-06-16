@@ -1,9 +1,10 @@
 import {DBOffer} from "../offer/db-offer";
+import {DBInfluencer} from "../influencer/db-influencer";
 export class DBRequest{
     uuid:string;
     offer:DBOffer;
-    influencer: string;
-    status: string;
+    influencer: DBInfluencer;
+    status: RequestState;
     postponed: boolean;
 
 }

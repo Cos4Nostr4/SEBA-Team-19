@@ -2,22 +2,22 @@
   {
     "id":1,
     "offer":"Bibi's Beauty Brom",
-    "influencer": "Detlef",
-    "status": "accepted",
+    "influencer": 1,
+    "status": "ACCEPTED",
     "postponed": false
   },
   {
     "id":2,
     "offer":"Bibi's Beauty Brom",
-    "influencer": "Frank",
-    "status": "rejected",
+    "influencer": 2,
+    "status": "REJECTED",
     "postponed": false
   },
   {
     "id":3,
     "offer":"Woods super duper shop",
-    "influencer": "Detlef",
-    "status": "pending",
+    "influencer": 1,
+    "status": "PENDING",
     "postponed": false
   }
 ]

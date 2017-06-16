@@ -23,10 +23,10 @@ export class RequestRepository {
 
     public getAllRequests(func: Function) {
         this.model.find()
-            .populate("offer")
+            .populate("offer", '-_id -__v')
+            .populate("influencer", '-_id -__v')
             .exec(function (err: any, offerList: DBRequest[]) {
                 let requests = RequestMapper.mapAll(offerList);
-                console.log("getAllRequests" + JSON.stringify(requests))
                 func(requests);
             });
     }

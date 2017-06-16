@@ -17,7 +17,7 @@ export class InfluencerRepository {
     }
 
     public static createNewInstance(connection: mongoose.Connection): InfluencerRepository {
-        let model: Model<IInfluencerRepository> = connection.model<IInfluencerRepository>("influencer", influencerSchema);
+        let model: Model<IInfluencerRepository> = connection.model<IInfluencerRepository>("Influencer", influencerSchema);
         return new InfluencerRepository(model);
     }
 
