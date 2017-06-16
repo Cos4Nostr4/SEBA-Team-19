@@ -1,23 +1,9 @@
 import {DBOffer} from "./db-offer";
 import * as mongoose from "mongoose";
-import {Document, Model, Schema} from "mongoose";
+import {Document, Model} from "mongoose";
 import {Offer} from "../../../../client/src/frontend/data-objects/offer";
 import {OfferMapper} from "./offer-mapper";
-
-let OFFER_SCHEMA: Schema = new Schema({
-    id: String,
-    title: String,
-    description: String,
-    image: String,
-    company: String,
-    amount: Number,
-    requiredNumberOfFollowers: Number,
-    enforcedHashTags: [String],
-    startDate: Date,
-    endDate: Date,
-    requests: [String],
-    stillRunning: Boolean
-});
+import {offerSchema} from "./offer-schema";
 
 export interface IOfferRepository extends DBOffer, Document {
 
@@ -32,7 +18,7 @@ export class OfferRepository {
     }
 
     public static createNewInstance(connection: mongoose.Connection): OfferRepository {
-        let model: Model<IOfferRepository> = connection.model<IOfferRepository>("Offer", OFFER_SCHEMA);
+        let model: Model<IOfferRepository> = connection.model<IOfferRepository>("Offer", offerSchema);
         return new OfferRepository(model);
     }
 
