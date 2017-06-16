@@ -4,6 +4,7 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import {RequestRouter} from "./backend/request/request-router";
 import {InfluencerRouter} from "./backend/influencer/influencer-router";
+import {CompanyRouter} from "./backend/company/company-router";
 
 export class App {
     private application: express.Application;
@@ -57,6 +58,9 @@ export class App {
 
         let influencerRouter: InfluencerRouter = new InfluencerRouter();
         influencerRouter.configureRoutes(this.baseUrl, this.application);
+
+        let companyRouter: CompanyRouter = new CompanyRouter();
+        companyRouter.configureRoutes(this.baseUrl, this.application);
 
         this.application.use(router);
     }

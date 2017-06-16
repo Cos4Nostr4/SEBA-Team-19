@@ -1,6 +1,4 @@
 
-import {Request} from "./request";
-
 export class Offer {
     //TODO: make private
     public uuid: string;

@@ -1,0 +1,38 @@
+[
+  {
+    "uuid": 1,
+    "name": "Prada",
+    "username": "Prada",
+    "password": "super secret",
+    "profilPicture": "somePicture",
+    "contact": "call me ;)",
+    "address": "prada hoam",
+    "paymentInformation": "12345 geld",
+    "taxInformation": "12344321",
+    "verified": true
+  },
+  {
+    "uuid": 2,
+    "name": "Nvidia",
+    "username": "Nvidia",
+    "password": "super secret",
+    "profilPicture": "somePicture",
+    "contact": "call me ;)",
+    "address": "Nvidia hoam",
+    "paymentInformation": "12345 geld",
+    "taxInformation": "12344321",
+    "verified": true
+  },
+  {
+    "uuid": 3,
+    "name": "russian mafia",
+    "username": "russian mafia",
+    "password": "super secret",
+    "profilPicture": "somePicture",
+    "contact": "call me ;)",
+    "address": "russian mafia hoam",
+    "paymentInformation": "12345 geld",
+    "taxInformation": "12344321",
+    "verified": false
+  }
+]

@@ -4,14 +4,17 @@ import {offerSchema} from "../backend/offer/offer-schema";
 import {requestSchema} from "../backend/request/request-schema";
 import {NameToIdStorage} from "./name-to-id-storage";
 import {influencerSchema} from "../backend/influencer/influencer-schema";
+import {companySchema} from "../backend/company/company-schema";
 const sampleOffers = require('./sample_offers.json');
 const sampleRequests = require('./sample-requests.json');
-const sampleInfluencers = require('./sample-influencers.json');
+const sampleCOmpanies = require('./sample-influencers.json');
+const sampleCompanies = require('./sample-companies.json');
 
 let connection: mongoose.Connection = mongoose.createConnection(DatabaseConnection.defaultConnection());
 let Offer: any = connection.model("Offer", offerSchema);
 let Request: any = connection.model("Request", requestSchema);
 let Influencer: any = connection.model("Influencer", influencerSchema);
+let Company: any = connection.model("Company", companySchema);
 
 async function doit() {
     const offerDeletePromise = new Promise(resolve => Offer.remove(function (err: any) {
@@ -22,7 +25,6 @@ async function doit() {
             resolve(true);
         }
     }));
-
     await offerDeletePromise;
 
     const requestDeletePromise = new Promise(resolve => Request.remove(function (err: any) {
@@ -33,19 +35,28 @@ async function doit() {
             resolve(true);
         }
     }));
-
     await requestDeletePromise;
 
     const influencerDeletePromise = new Promise(resolve => Influencer.remove(function (err: any) {
         if (err) {
             console.log(err);
         } else {
-            console.log("Cleared Request database");
+            console.log("Cleared Influencer database");
             resolve(true);
         }
     }));
-
     await influencerDeletePromise;
+
+    const companyDeletePromise = new Promise(resolve => Company.remove(function (err: any) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Cleared Company database");
+            resolve(true);
+        }
+    }));
+    await companyDeletePromise;
+
     console.log("Loading sample offer in 'Offer' collection.");
 
 
@@ -73,7 +84,7 @@ async function doit() {
     i = 0;
     let influencerIds: NameToIdStorage[] = [];
     const influencerPromise = new Promise(resolve => {
-        for (let sampleData of sampleInfluencers) {
+        for (let sampleData of sampleCOmpanies) {
             let influencer = new Influencer(sampleData);
             influencer.save(function (err: any) {
                 if (err) {
@@ -83,7 +94,7 @@ async function doit() {
                     influencerIds.push({name: influencer.uuid, id: influencer._id});
                 }
 
-                if(++i == sampleInfluencers.length){
+                if(++i == sampleCOmpanies.length){
                     resolve(true);
                 }
             })
@@ -126,6 +137,27 @@ async function doit() {
         }
     });
     await requestPromise;
+
+    i = 0;
+    let companyIds: NameToIdStorage[] = [];
+    const companyPromise = new Promise(resolve => {
+        for (let sampleData of sampleCompanies) {
+            let company = new Company(sampleData);
+            company.save(function (err: any) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("Stored Company: " + JSON.stringify(company));
+                    companyIds.push({name: company.username, id: company._id});
+                }
+
+                if(++i == sampleCompanies.length){
+                    resolve(true);
+                }
+            })
+        }
+    });
+    await  companyPromise;
 
     process.exit(0);
 }
