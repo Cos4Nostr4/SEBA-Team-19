@@ -29,14 +29,18 @@ export class OfferRepository {
     }
 
     public getAllOffers(func: Function) {
-        this.offerModel.find(function (err: any, offerList: DBOffer[]) {
+        this.offerModel.find()
+            .populate("company", "-_id -__v")
+            .exec(function (err: any, offerList: DBOffer[]) {
             let offers: Offer[] = OfferMapper.mapAll(offerList);
             func(offers);
         });
     }
 
     public getOfferWithId(offerUuid:string, func: Function) {
-        this.offerModel.findOne({'uuid':offerUuid},function (err: any, dbOffer: DBOffer) {
+        this.offerModel.findOne({'uuid':offerUuid})
+            .populate("company", "-_id -__v")
+            .exec(function (err: any, dbOffer: DBOffer) {
             let offer: Offer = OfferMapper.map(dbOffer);
             func(offer);
         });

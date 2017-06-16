@@ -5,7 +5,7 @@ export const offerSchema: Schema = new Schema({
     title: String,
     description: String,
     image: String,
-    company: String,
+    company: {type: Schema.Types.ObjectId, ref: "Company"},
     amount: Number,
     requiredNumberOfFollowers: Number,
     enforcedHashTags: [String],

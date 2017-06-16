@@ -61,10 +61,49 @@ async function doit() {
 
 
     let i = 0;
+    let companyIds: NameToIdStorage[] = [];
+    const companyPromise = new Promise(resolve => {
+        for (let sampleData of sampleCompanies) {
+            let company = new Company(sampleData);
+            company.save(function (err: any) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("Stored Company: " + JSON.stringify(company));
+                    companyIds.push({name: company.username, id: company._id});
+                }
+
+                if (++i == sampleCompanies.length) {
+                    resolve(true);
+                }
+            })
+        }
+    });
+    await  companyPromise;
+
+    i = 0;
     let offerIds: NameToIdStorage[] = [];
     const offerPromise = new Promise(resolve => {
         for (let offerData of sampleOffers) {
-            let offer = new Offer(offerData);
+            let matchingCompany = companyIds.find(company => company.name == offerData.company);
+            if (!matchingCompany) {
+                throw new Error("Cannot find the id for company with name '" + offerData.company + "'. Check if you have written it correctly.");
+            }
+            let companyId = matchingCompany.id;
+
+            let offer = new Offer({
+                uuid: offerData.uuid,
+                title: offerData.title,
+                description: offerData.desciption,
+                image: offerData.image,
+                company: companyId,
+                amount: offerData.amount,
+                requiredNumberOfFollowers: offerData.requiredNumberOfFollowers,
+                enforcedHashTags: offerData.enforcedHashTags,
+                startDate: offerData.startDate,
+                endDate: offerData.endDate,
+                stillRunning: offerData.stillRunning
+            });
             offer.save(function (err: any) {
                 if (err) {
                     console.log(err);
@@ -94,7 +133,7 @@ async function doit() {
                     influencerIds.push({name: influencer.uuid, id: influencer._id});
                 }
 
-                if(++i == sampleCOmpanies.length){
+                if (++i == sampleCOmpanies.length) {
                     resolve(true);
                 }
             })
@@ -130,34 +169,13 @@ async function doit() {
                 } else {
                     console.log("Stored Request: " + JSON.stringify(request));
                 }
-                if(++i == sampleRequests.length){
+                if (++i == sampleRequests.length) {
                     resolve(true);
                 }
             });
         }
     });
     await requestPromise;
-
-    i = 0;
-    let companyIds: NameToIdStorage[] = [];
-    const companyPromise = new Promise(resolve => {
-        for (let sampleData of sampleCompanies) {
-            let company = new Company(sampleData);
-            company.save(function (err: any) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log("Stored Company: " + JSON.stringify(company));
-                    companyIds.push({name: company.username, id: company._id});
-                }
-
-                if(++i == sampleCompanies.length){
-                    resolve(true);
-                }
-            })
-        }
-    });
-    await  companyPromise;
 
     process.exit(0);
 }

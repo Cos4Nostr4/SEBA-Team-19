@@ -4,7 +4,7 @@ export interface DBOffer {
     title: string;
     description: string
     image: string
-    company: string,
+    company: DBCompany,
     amount: number
     requiredNumberOfFollowers: number
     enforcedHashTags: Array<string>
