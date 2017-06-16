@@ -1,6 +1,20 @@
-[{
-  "id":1,
-  "offer":1,
-  "influencer": "Detlef",
-  "posponed": false
-}]
+[
+  {
+    "id":1,
+    "offer":"Bibi's Beauty Brom",
+    "influencer": "Detlef",
+    "posponed": false
+  },
+  {
+    "id":2,
+    "offer":"Bibi's Beauty Brom",
+    "influencer": "Frank",
+    "posponed": false
+  },
+  {
+    "id":3,
+    "offer":"Woods super duper shop",
+    "influencer": "Detlef",
+    "posponed": false
+  }
+]

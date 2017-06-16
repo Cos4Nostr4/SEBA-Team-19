@@ -1,13 +1,27 @@
 [
   {
     "uuid": "1",
-    "title": "Bibi's Beauty Brom v3",
+    "title": "Bibi's Beauty Brom",
     "description": "Bibis first Brom",
     "image": "someUrl",
     "company": "Bibis Company",
     "amount": 1,
     "requiredNumberOfFollowers": "2000",
     "enforcedHashTags": ["bibi", "brom"],
+    "startDate": "1.2.2017",
+    "endDate": "1.5.2017",
+    "requests": ["First Request"],
+    "stillRunning": true
+  },
+  {
+    "uuid": "2",
+    "title": "Woods super duper shop",
+    "description": "Good shop",
+    "image": "someUrl",
+    "company": "Woods Company",
+    "amount": 1,
+    "requiredNumberOfFollowers": "2000",
+    "enforcedHashTags": ["wood", "shop", "super", "duper"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
