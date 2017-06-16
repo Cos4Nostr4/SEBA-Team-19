@@ -16,6 +16,6 @@ export class RequestMapper {
 
     public static map(dbRequest: DBRequest): Request {
         console.log("DBRequest: "+JSON.stringify(dbRequest));
-        return new Request(dbRequest.uuid, dbRequest.offer);
+        return new Request(dbRequest.uuid, dbRequest.offer, dbRequest.influencer, dbRequest.status, dbRequest.postponed);
     }
 }

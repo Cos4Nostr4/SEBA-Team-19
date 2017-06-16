@@ -3,7 +3,7 @@ export class DBRequest{
     uuid:string;
     offer:DBOffer;
     influencer: string;
-    status: RequestState;
+    status: string;
     postponed: boolean;
 
 }

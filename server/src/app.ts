@@ -3,6 +3,7 @@ import {Config} from "../../client/src/frontend/config/config";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import {RequestRouter} from "./backend/request/request-router";
+import {InfluencerRouter} from "./backend/influencer/influencer-router";
 
 export class App {
     private application: express.Application;
@@ -53,6 +54,9 @@ export class App {
 
         let requestRouter: RequestRouter = new RequestRouter();
         requestRouter.configureRoutes(this.baseUrl, this.application);
+
+        let influencerRouter: InfluencerRouter = new InfluencerRouter();
+        influencerRouter.configureRoutes(this.baseUrl, this.application);
 
         this.application.use(router);
     }
