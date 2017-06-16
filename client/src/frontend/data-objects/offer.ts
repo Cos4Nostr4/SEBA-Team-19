@@ -1,3 +1,6 @@
+
+import {Request} from "./request";
+
 export class Offer {
     //TODO: make private
     public uuid: string;
@@ -11,13 +14,12 @@ export class Offer {
     public enforcedHashTags: Array<string>;
     public startDate: Date;
     public endDate: Date;
-    public requests: Array<string>;
     public stillRunning: boolean;
 
 
     constructor(uuid: string, title: string, description: string, image: string, company: string, amount: number,
                 requiredNumberOfFollowers: number, enforcedHashTags: Array<string>, startDate: Date, endDate: Date,
-                requests: Array<string>, stillRunning: boolean) {
+                stillRunning: boolean) {
         this.uuid = uuid;
         this.title = title;
         this.description = description;
@@ -28,7 +30,6 @@ export class Offer {
         this.enforcedHashTags = enforcedHashTags;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.requests = requests;
         this.stillRunning = stillRunning;
     }
 }

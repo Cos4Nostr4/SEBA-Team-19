@@ -1,7 +1,7 @@
 
 import {Schema} from "mongoose";
 export const offerSchema: Schema = new Schema({
-    id: String,
+    uuid: String,
     title: String,
     description: String,
     image: String,

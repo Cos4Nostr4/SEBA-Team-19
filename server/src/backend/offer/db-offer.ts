@@ -1,4 +1,3 @@
-import {DBRequest} from "../request/db-request";
 import {DBCompany} from "../company/db-company";
 export interface DBOffer {
     uuid: string;
@@ -11,6 +10,5 @@ export interface DBOffer {
     enforcedHashTags: Array<string>
     startDate: Date
     endDate: Date
-    requests: Array<string>
     stillRunning: boolean
 }

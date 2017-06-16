@@ -3,6 +3,7 @@ import {Document, Model} from "mongoose";
 import {DBInfluencer} from "./db-influencer";
 import {InfluencerMapper} from "./influencer-mapper";
 import {influencerSchema} from "./influencer-schema";
+import {Influencer} from "../../../../client/src/frontend/data-objects/influencer";
 
 export interface IInfluencerRepository extends DBInfluencer, Document {
 
@@ -23,7 +24,14 @@ export class InfluencerRepository {
 
     public getAllInfluencers(func: Function) {
         this.model.find(function (err: any, influencerList: DBInfluencer[]) {
-            let influencer = InfluencerMapper.mapAll(influencerList);
+            let influencer: Influencer[] = InfluencerMapper.mapAll(influencerList);
+            func(influencer);
+        });
+    }
+
+    public getInfluencerWithId(influencerUuid:string, func: Function) {
+        this.model.findOne({'uuid':influencerUuid}, function (err: any, dbInfluencer: DBInfluencer) {
+            let influencer: Influencer = InfluencerMapper.map(dbInfluencer);
             func(influencer);
         });
     }

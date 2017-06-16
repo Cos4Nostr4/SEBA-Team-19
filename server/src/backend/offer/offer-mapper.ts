@@ -15,6 +15,6 @@ export class OfferMapper {
     public static map(dbOffer: DBOffer): Offer {
         return new Offer(dbOffer.uuid, dbOffer.title, dbOffer.description, dbOffer.image, dbOffer.company,
             dbOffer.amount, dbOffer.requiredNumberOfFollowers, dbOffer.enforcedHashTags, dbOffer.startDate,
-            dbOffer.endDate, dbOffer.requests, dbOffer.stillRunning);
+            dbOffer.endDate, dbOffer.stillRunning);
     }
 }

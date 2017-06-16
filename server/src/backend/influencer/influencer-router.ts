@@ -25,6 +25,16 @@ export class InfluencerRouter {
                     res.json(transferObject);
                 });
             });
+
+        router.route('/influencers/:id')
+            .get(function (req, res) {
+                let influencerUuid = req.params.id;
+                influencerRepository.getInfluencerWithId(influencerUuid, function (influencer: Influencer[]) {
+                    let transferObject = TransferObject.aTransferObjectFor(influencer);
+                    res.json(transferObject);
+                });
+            });
+
         application.use(baseUrl, router);
     }
 }

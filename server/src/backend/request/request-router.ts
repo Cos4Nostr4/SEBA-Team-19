@@ -24,6 +24,16 @@ export class RequestRouter {
                     res.json(transferObject);
                 });
             });
+
+        router.route('/requests/:id')
+            .get(function (req:any, res:any) {
+                let requestUuid = req.params.id;
+                requestRepository.getRequestWithId(requestUuid, function (request: Request) {
+                    let transferObject = TransferObject.aTransferObjectFor(request);
+                    res.json(transferObject);
+                });
+            });
+
         application.use(baseUrl, router);
     }
 }
