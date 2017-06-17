@@ -6,6 +6,7 @@ import {Offer} from "../data-objects/offer";
 @Component({
     selector: 'offer-list',
     templateUrl: './offer-list.component.html',
+    styleUrls:['./offer-list.component.css'],
     providers: [OfferService]
 })
 export class OfferListComponent implements OnInit {

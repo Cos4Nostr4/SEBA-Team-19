@@ -1,5 +1,5 @@
 export class DBCompany{
-    uuid:number;
+    uuid:string;
     name:string;
     username:string;
     password:string;

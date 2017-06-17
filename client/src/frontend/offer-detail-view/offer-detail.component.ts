@@ -4,6 +4,7 @@ import {Location}                 from '@angular/common';
 import {OfferService} from "../services/offer.service";
 import {Offer} from "../data-objects/offer";
 import 'rxjs/add/operator/switchMap';
+import {Company} from "../data-objects/company";
 
 @Component({
     selector: 'offer-detail',
@@ -16,7 +17,8 @@ export class OfferDetailComponent implements OnInit{
     private offer:Offer;
 
     constructor(private offerService: OfferService, private route: ActivatedRoute, private location: Location) {
-        this.offer = new Offer("1", "Bibis Brom", "","","", 1, 1, [], new Date(), new Date(), true);
+        let company = new Company("1", "PRada", "prada", "123", "...", "...", "...", "...", "...", true);
+        this.offer = new Offer("1", "Bibis Brom", "","",company, 1, 1, [], new Date(), new Date(), true);
     }
 
 

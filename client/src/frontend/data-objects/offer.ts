@@ -1,4 +1,5 @@
 
+import {Company} from "./company";
 export class Offer {
     //TODO: make private
     public uuid: string;
@@ -6,7 +7,7 @@ export class Offer {
 
     public description: string;
     public image: string;
-    public company: string;
+    public company: Company;
     public amount: number;
     public requiredNumberOfFollowers: number;
     public enforcedHashTags: Array<string>;
@@ -15,7 +16,7 @@ export class Offer {
     public stillRunning: boolean;
 
 
-    constructor(uuid: string, title: string, description: string, image: string, company: string, amount: number,
+    constructor(uuid: string, title: string, description: string, image: string, company: Company, amount: number,
                 requiredNumberOfFollowers: number, enforcedHashTags: Array<string>, startDate: Date, endDate: Date,
                 stillRunning: boolean) {
         this.uuid = uuid;

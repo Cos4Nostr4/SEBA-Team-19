@@ -50,6 +50,9 @@ export class App {
                 res.end("Success!");
             });
 
+        this.application.use('/media/images/', express.static(__dirname +'/media'));
+        this.application.use(router);
+
         let offerRouter: OfferRouter = new OfferRouter();
         offerRouter.configureRoutes(this.baseUrl, this.application);
 
@@ -62,6 +65,5 @@ export class App {
         let companyRouter: CompanyRouter = new CompanyRouter();
         companyRouter.configureRoutes(this.baseUrl, this.application);
 
-        this.application.use(router);
     }
 }
