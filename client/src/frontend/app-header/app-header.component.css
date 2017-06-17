@@ -1,5 +1,33 @@
-nav {
-    display: block;
-    background-color: darkorange;
-    padding: 10px;
+
+.navbar {
+    border: none;
+
 }
+
+.navbar-inverse {
+    background: linear-gradient(-90deg, #0065C1,#00C3CD);
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+@media (min-width: 400px) {
+    .navbar-fixed-top,
+    .navbar-fixed-bottom {
+        border-radius: 0;
+    }
+}
+
+
+.btn {
+    float: right;
+    margin-right: 4em;
+}
+
+.btn-danger {
+    background-color: #005D9B ;
+    border-color: white;
+}
+
+
