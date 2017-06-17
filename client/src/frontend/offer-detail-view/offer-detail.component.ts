@@ -16,7 +16,7 @@ export class OfferDetailComponent implements OnInit{
     private offer:Offer;
 
     constructor(private offerService: OfferService, private route: ActivatedRoute, private location: Location) {
-        this.offer = {id:"1", title:'fuck you'};
+        this.offer = new Offer("1", "Bibis Brom", "","","", 1, 1, [], new Date(), new Date(), true);
     }
 
 

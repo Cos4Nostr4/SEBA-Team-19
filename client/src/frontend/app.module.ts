@@ -15,6 +15,8 @@ import {SamplePageModule} from "./sample-page/sample-page.module";
 import {SampleObjectComponent} from "./sample-page/sample-page.component";
 import {ApiModule} from "./api-test-area/api-test-area.module";
 import {ApiObjectComponent} from "./api-test-area/api-test-area.component";
+import {CategoriesComponent} from "./categories/categories.component";
+import {CategoriesModule} from "./categories/categories.module";
 
 @NgModule({
     imports: [
@@ -26,6 +28,7 @@ import {ApiObjectComponent} from "./api-test-area/api-test-area.component";
         SamplePageModule,
         ApiModule,
         DashBoardModule,
+        CategoriesModule,
         HttpModule,
         JsonpModule,
         RouterModule.forRoot([
@@ -49,6 +52,10 @@ import {ApiObjectComponent} from "./api-test-area/api-test-area.component";
             {
                 path:'api-test-area',
                 component: ApiObjectComponent
+            },
+            {
+                path:'categories',
+                component: CategoriesComponent
             },
             {
                 path: '',
