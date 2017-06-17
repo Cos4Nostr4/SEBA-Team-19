@@ -1,4 +1,6 @@
 import {Component} from '@angular/core'
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
     selector: 'menu-slider',
@@ -8,26 +10,22 @@ import {Component} from '@angular/core'
 
 export class MenuSliderComponent {
 
-    // Instantiate the Bootstrap carousel
-    $('.multi-item-carousel').carousel({
-                                           interval: false
-                                       });
+    ngOnInit(): void {
+        "use strict";
 
-// for every slide in carousel, copy the next slide's item in the slide.
-// Do the same for the next, next item.
-    $('.multi-item-carousel .item').each(function(){
-    var next = $(this).next();
-    if (!next.length) {
-        next = $(this).siblings(':first');
+
+        // manual carousel controls
+        $('.carousel').carousel({
+            interval: false
+        });
+        $('.next').click(function () {
+            $('.carousel').carousel('next');
+            return false;
+        });
+        $('.prev').click(function () {
+            $('.carousel').carousel('prev');
+            return false;
+        });
     }
-    next.children(':first-child').clone().appendTo($(this));
-
-    if (next.next().length>0) {
-        next.next().children(':first-child').clone().appendTo($(this));
-    } else {
-        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-    }
-});
-
 
 }

@@ -1,21 +1,18 @@
 import {NgModule} from "@angular/core";
-import {MenuSliderComponent} from './menu-slider.component'
+import {CategoriesComponent} from "./categories.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-
 
 @NgModule({
     imports: [
         NgbModule
     ],
     declarations: [
-        MenuSliderComponent
+        CategoriesComponent
     ],
     exports: [
-        MenuSliderComponent
+        CategoriesComponent
     ]
 })
 
-export class MenuSliderModule {
-
-    
+export class CategoriesModule {
 }

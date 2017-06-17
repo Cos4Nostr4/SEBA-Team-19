@@ -2,6 +2,9 @@ import {OfferRouter} from "./backend/offer/offer-router";
 import {Config} from "../../client/src/frontend/config/config";
 import * as express from "express";
 import * as bodyParser from "body-parser";
+import {RequestRouter} from "./backend/request/request-router";
+import {InfluencerRouter} from "./backend/influencer/influencer-router";
+import {CompanyRouter} from "./backend/company/company-router";
 
 export class App {
     private application: express.Application;
@@ -49,6 +52,15 @@ export class App {
 
         let offerRouter: OfferRouter = new OfferRouter();
         offerRouter.configureRoutes(this.baseUrl, this.application);
+
+        let requestRouter: RequestRouter = new RequestRouter();
+        requestRouter.configureRoutes(this.baseUrl, this.application);
+
+        let influencerRouter: InfluencerRouter = new InfluencerRouter();
+        influencerRouter.configureRoutes(this.baseUrl, this.application);
+
+        let companyRouter: CompanyRouter = new CompanyRouter();
+        companyRouter.configureRoutes(this.baseUrl, this.application);
 
         this.application.use(router);
     }

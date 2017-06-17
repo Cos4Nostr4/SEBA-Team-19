@@ -13,6 +13,8 @@ export class OfferMapper {
     }
 
     public static map(dbOffer: DBOffer): Offer {
-        return new Offer("2", dbOffer.title);
+        return new Offer(dbOffer.uuid, dbOffer.title, dbOffer.description, dbOffer.image, dbOffer.company,
+            dbOffer.amount, dbOffer.requiredNumberOfFollowers, dbOffer.enforcedHashTags, dbOffer.startDate,
+            dbOffer.endDate, dbOffer.stillRunning);
     }
 }

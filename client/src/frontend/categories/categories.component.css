@@ -1,24 +1,22 @@
-btn btn-secondary-outline prev{
-    background: black;
-}
+
 
 @media (min-width:34em) {
     .card-deck > .card
     {
-        width: 10%;
+        width: 29%;
         flex-wrap: wrap;
         flex: initial;
     }
 }
 
 
-
+/* control image height */
 .card-img-top-250 {
-    max-height: 150px;
+    max-height: 250px;
     overflow:hidden;
 }
 
-
+/* smoother transitions */
 .carousel-inner>.carousel-item.next.left,
 .carousel-inner>.carousel-item.prev.right
 {

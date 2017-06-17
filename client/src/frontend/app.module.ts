@@ -15,8 +15,10 @@ import {SamplePageModule} from "./sample-page/sample-page.module";
 import {SampleObjectComponent} from "./sample-page/sample-page.component";
 import {ApiModule} from "./api-test-area/api-test-area.module";
 import {ApiObjectComponent} from "./api-test-area/api-test-area.component";
+import {CategoriesComponent} from "./categories/categories.component";
+import {CategoriesModule} from "./categories/categories.module";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MenuSliderModule} from "./menu-slider/menu-slider.module";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -31,9 +33,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
         MenuSliderModule,
         ApiModule,
         DashBoardModule,
-        NgbModule.forRoot(),
+        CategoriesModule,
         HttpModule,
         JsonpModule,
+        NgbModule.forRoot(),
         RouterModule.forRoot([
             {
                 path: 'offers',
@@ -59,6 +62,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
             {
                 path: 'menu-slider-page',
                 component: SampleObjectComponent
+            },
+            {
+                path:'categories',
+                component: CategoriesComponent
             },
             {
                 path: '',
