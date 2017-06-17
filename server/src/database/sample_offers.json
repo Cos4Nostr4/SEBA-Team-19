@@ -11,6 +11,7 @@
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
+    "categories": ["NEW", "JEWELRY", "FITNESS", "MAKE_UP", "ACCESSORY", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -25,6 +26,7 @@
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
+    "categories": ["NEW", "FITNESS", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -39,6 +41,7 @@
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
+    "categories": ["AREA", "FITNESS", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -53,6 +56,7 @@
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
+    "categories": ["AREA", "FITNESS", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -67,20 +71,22 @@
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
+    "categories": ["AREA", "FITNESS", "OTHERS"],
     "stillRunning": true
   },
   {
     "uuid": "6",
-    "title": "Woods super duper shop6",
-    "description": "Good shop",
+    "title": "Best Watch",
+    "description": "Very good watch",
     "image": "watch.jpg",
     "company": "Nvidia",
     "amount": 1,
     "requiredNumberOfFollowers": "2000",
-    "enforcedHashTags": ["wood", "shop", "super", "duper"],
+    "enforcedHashTags": ["tyroc", "watch"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
+    "categories": ["AREA", "FITNESS", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -95,6 +101,7 @@
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
+    "categories": ["AREA", "FITNESS", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -109,6 +116,7 @@
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
+    "categories": ["AREA", "FITNESS", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -123,6 +131,7 @@
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
+    "categories": ["AREA", "FITNESS", "OTHERS"],
     "stillRunning": true
   }
 ]

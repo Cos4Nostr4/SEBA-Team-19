@@ -102,6 +102,7 @@ async function doit() {
                 enforcedHashTags: offerData.enforcedHashTags,
                 startDate: offerData.startDate,
                 endDate: offerData.endDate,
+                categories:offerData.categories,
                 stillRunning: offerData.stillRunning
             });
             offer.save(function (err: any) {

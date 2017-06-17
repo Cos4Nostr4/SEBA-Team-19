@@ -1,4 +1,3 @@
-
 import {Schema} from "mongoose";
 export const offerSchema: Schema = new Schema({
     uuid: String,
@@ -12,5 +11,9 @@ export const offerSchema: Schema = new Schema({
     startDate: Date,
     endDate: Date,
     requests: [String],
+    categories: [{
+        type: String,
+        enum: ["HEARTS", "NEW", "AREA", "JEWELRY", "FITNESS", "MAKE_UP", "CLOTHES", "ACCESSORY", "OTHERS"]
+    }],
     stillRunning: Boolean,
 });
