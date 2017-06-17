@@ -1,17 +1,24 @@
-import {Component} from '@angular/core'
-import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit} from '@angular/core'
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
     selector: 'categories',
     templateUrl: './categories.component.html',
-    providers: [NgbCarouselConfig]
+    styleUrls: ['./categories.component.css']
 })
 
-export class CategoriesComponent {
-    constructor(config: NgbCarouselConfig) {
-        // customize default values of carousels used by this component tree
-        config.interval = 10000;
-        config.wrap = false;
-        config.keyboard = false;
+export class CategoriesComponent implements OnInit {
+
+
+    ngOnInit(): void {
+            "use strict";
+
+            // manual carousel controls
+        $('.next').click(function(){ $('.carousel').carousel('next');return false; });
+        $('.prev').click(function(){ $('.carousel').carousel('prev');return false; });
+        $('#nextButton').click(function(){ $('.carousel').carousel('next');return false; });
+        $('#lastButton').click(function(){ $('.carousel').carousel('prev');return false; });
+
     }
 }
