@@ -18,6 +18,9 @@ import {ApiObjectComponent} from "./api-test-area/api-test-area.component";
 import {CategoriesComponent} from "./categories/categories.component";
 import {CategoriesModule} from "./categories/categories.module";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MenuSliderModule} from "./menu-slider/menu-slider.module";
+
+
 
 @NgModule({
     imports: [
@@ -27,6 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         OfferListElementModule,
         OfferDetailModule,
         SamplePageModule,
+        MenuSliderModule,
         ApiModule,
         DashBoardModule,
         CategoriesModule,
@@ -54,6 +58,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
             {
                 path:'api-test-area',
                 component: ApiObjectComponent
+            },
+            {
+                path: 'menu-slider-page',
+                component: SampleObjectComponent
             },
             {
                 path:'categories',
