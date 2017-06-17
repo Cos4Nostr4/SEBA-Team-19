@@ -1,14 +1,14 @@
 [
   {
     "id":1,
-    "offer":"Bibi's Beauty Brom",
+    "offer":"Bibi's Beauty Broom",
     "influencer": 1,
     "status": "ACCEPTED",
     "postponed": false
   },
   {
     "id":2,
-    "offer":"Bibi's Beauty Brom",
+    "offer":"Bibi's Beauty Broom",
     "influencer": 2,
     "status": "REJECTED",
     "postponed": false

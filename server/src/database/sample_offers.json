@@ -1,13 +1,13 @@
 [
   {
     "uuid": "1",
-    "title": "Bibi's Beauty Brom",
-    "description": "Bibis first Brom",
-    "image": "whey.jpg",
+    "title": "Bibi's Beauty Broom",
+    "description": "Bibis first Broom",
+    "image": "broom.jpg",
     "company": "Prada",
     "amount": 1,
     "requiredNumberOfFollowers": "2000",
-    "enforcedHashTags": ["bibi", "brom"],
+    "enforcedHashTags": ["bibi", "broom"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
     "requests": ["First Request"],
