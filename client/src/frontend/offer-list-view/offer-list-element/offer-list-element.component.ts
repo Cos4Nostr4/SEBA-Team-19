@@ -16,6 +16,7 @@ export class OfferListElementComponent implements OnInit{
 
     constructor(imageService: ImageService) {
         this.imageService = imageService;
+
     }
 
     ngOnInit(): void {

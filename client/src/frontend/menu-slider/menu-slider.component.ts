@@ -13,18 +13,17 @@ export class MenuSliderComponent {
     ngOnInit(): void {
         "use strict";
 
+        let numberOfEelements = $('.col').length;
+        let indexOfLastElement = numberOfEelements -1;
 
-        // manual carousel controls
-        $('.carousel').carousel({
-            interval: false
+        $('#next').click(function(){
+            let firstElement = $('.col').eq(0).detach();
+            $('#slider').append(firstElement);
         });
-        $('.next').click(function () {
-            $('.carousel').carousel('next');
-            return false;
-        });
-        $('.prev').click(function () {
-            $('.carousel').carousel('prev');
-            return false;
+
+        $('#last').click(function(){
+            let firstElement = $('.col').eq(indexOfLastElement).detach();
+            $('#slider').prepend(firstElement);
         });
     }
 
