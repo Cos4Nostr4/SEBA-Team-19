@@ -14,6 +14,8 @@ mongod --port 27017 --dbpath "C:\data\db") (--dbpath can point to any folder, ju
 npm run build:server 
 (for WINDOWS cd to SEBA-Team-19 and use this command: "node_modules/.bin/ts-node" "server/src/server.ts")
 
+# Update Datebase on Windows
+"ts-node server/src/database/database-reset.ts"
 
 ## Adding new dependencies
 delete package-lock.json
