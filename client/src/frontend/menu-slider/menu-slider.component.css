@@ -4,8 +4,9 @@
     left: 0;
     z-index: 1030;
     widht:100%;
-    margin-top:55px;
+    margin-top:50px;
     background-color: white;
+    box-shadow: 0 0 5px 0 #ededed;
 }
 
 .contentwrapper{
@@ -23,7 +24,7 @@
 
 .slider-control-picture {
     margin: auto;
-    height: 50px;
+    height: 55px;
     width: 50px
 }
 
@@ -47,7 +48,7 @@
 
 
 .menu-item-container {
-    height: 50px;
+    height: 55px;
     width: 100px;
     margin: 0 auto;
 }

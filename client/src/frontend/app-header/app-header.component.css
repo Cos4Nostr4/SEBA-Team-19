@@ -21,6 +21,8 @@
     float: left;
     width: 40px;
     height: 40px;
+    margin-top: 4px;
+    margin-left: 45px;
 }
 
 #main-logo {
@@ -48,5 +50,23 @@
     margin: 0 auto;
 }
 
+.user-picture{
+    border-radius: 20px;
+    float:left;
+    padding-top: 5px;
+    padding-right:20px;
+}
+.user-picture img{
 
+    height: 40px;
+    width: 40px;
+    border: solid white thin;
+    border-radius: 20px;
+}
 
+.fa-envelope-o{
+    float:left;
+    color:white;
+    font-size: 40px;
+    padding-top: 3px;
+}
