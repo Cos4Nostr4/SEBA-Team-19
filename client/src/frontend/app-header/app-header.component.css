@@ -1,23 +1,26 @@
+#navbar{
+
+    background: linear-gradient(-90deg, #0065C1,#00C3CD);
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    widht:100%;
+    height:50px;
+}
 
 .navbar {
     border: none;
-
+    margin: 0;
+    width: 100%;
 }
 
 .navbar-inverse {
     background: linear-gradient(-90deg, #0065C1,#00C3CD);
-    margin-bottom: 60px;
 }
 
 .navbar-default .navbar-nav>li>a {
     color: white;
-}
-
-@media (min-width: 400px) {
-    .navbar-fixed-top,
-    .navbar-fixed-bottom {
-        border-radius: 0;
-    }
 }
 
 

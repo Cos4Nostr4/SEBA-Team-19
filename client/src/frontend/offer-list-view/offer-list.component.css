@@ -1,5 +1,9 @@
+#offer-list-container{
+    padding-top: 100px;
+}
+
 .offer-grid {
-    background-color: #e4e4e4;
+    background-color: #f8f8f8;
     padding-left: 5%;
     padding-right: 5%;
 }
