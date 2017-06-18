@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from "@angular/core";
-import {AuthenticationService} from "../services/api.service";
+import {AuthenticationService} from "../services/authentication.service";
 import {DOCUMENT} from "@angular/platform-browser";
 
 @Component({
