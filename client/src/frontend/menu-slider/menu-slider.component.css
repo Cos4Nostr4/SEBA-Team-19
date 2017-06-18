@@ -4,8 +4,12 @@
     left: 0;
     z-index: 1030;
     widht:100%;
-    margin-top:50px;
+    margin-top:55px;
     background-color: white;
+}
+
+.contentwrapper{
+
 }
 
 .slider-control {
@@ -36,9 +40,11 @@
 }
 
 .menu-item-picture {
-    height: 30px;
-    width: 30px
+
 }
+
+
+
 
 .menu-item-container {
     height: 50px;
@@ -49,9 +55,10 @@
 .menu-item-container span{
     font-family: Helvetica, "Open Sans";
     font-weight: 100;
+    font-size: 0.6em;
 }
 
 .active-menu {
-    border-radius: 5px;
-    background-color: grey;
+    border-radius: 8px;
+    background-color: #EDEDED;
 }

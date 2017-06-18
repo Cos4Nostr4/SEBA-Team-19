@@ -26,14 +26,14 @@ export class MenuSliderComponent {
 
             $('.active-menu').removeClass('active-menu');
             slideLeft();
-            $('.menu-item').eq(0).addClass('active-menu');
+            $('.contentwrapper').eq(0).addClass('active-menu');
         });
 
         $('#last').click(function () {
             console.log("Direction right.Remaining: " + $('.menu-item').length + "; Waiting: " + waitingElements.length);
             $('.active-menu').removeClass('active-menu');
             slideRight();
-            $('.menu-item').eq(0).addClass('active-menu');
+            $('.contentwrapper').eq(0).addClass('active-menu');
         });
 
         $(window).bind('resize', function (e: any) {
