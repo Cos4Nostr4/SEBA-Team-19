@@ -70,7 +70,7 @@ async function doit() {
                     console.log(err);
                 } else {
                     console.log("Stored Company: " + JSON.stringify(company));
-                    companyIds.push({name: company.username, id: company._id});
+                    companyIds.push({name: company.name, id: company._id});
                 }
 
                 if (++i == sampleCompanies.length) {
