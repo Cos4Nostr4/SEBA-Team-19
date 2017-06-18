@@ -13,12 +13,6 @@
     color: white;
 }
 
-@media (min-width: 400px) {
-    .navbar-fixed-top,
-    .navbar-fixed-bottom {
-        border-radius: 0;
-    }
-}
 
 
 .btn {

@@ -1,20 +1,18 @@
-.no-padding {
-    padding: 0 !important;
-    margin: 0 !important;
-}
+
 .offer-list-item{
     padding-right:5px;
     padding-left:5px;
     padding-top:5px;
     padding-bottom:5px;
     position: relative;
+    width:
 }
 .product-picture-container{
 }
 
 .product-picture {
-    width: 400px;
-    height:400px;
+    width: 20em;
+    height:20em;
 }
 
 .heart-container{
