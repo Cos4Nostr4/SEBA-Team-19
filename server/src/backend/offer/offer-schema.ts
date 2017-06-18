@@ -10,7 +10,6 @@ export const offerSchema: Schema = new Schema({
     enforcedHashTags: [String],
     startDate: Date,
     endDate: Date,
-    requests: [String],
     categories: [{
         type: String,
         enum: ["HEARTS", "NEW", "AREA", "JEWELRY", "FITNESS", "MAKE_UP", "CLOTHES", "ACCESSORY", "OTHERS"]
