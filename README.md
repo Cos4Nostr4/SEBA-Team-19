@@ -1,6 +1,7 @@
 ## Prerequites
 node + npm -> google
 typescript: npm install typescript -g
+npm install -g @angular/cli
 
 ## To start the client
 npm install   (only at first start)

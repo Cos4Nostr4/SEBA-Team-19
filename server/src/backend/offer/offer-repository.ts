@@ -1,35 +1,49 @@
 import {DBOffer} from "./db-offer";
-import {Document, Model, Schema} from "mongoose";
+import * as mongoose from "mongoose";
+import {Document, Model} from "mongoose";
 import {Offer} from "../../../../client/src/frontend/data-objects/offer";
 import {OfferMapper} from "./offer-mapper";
-import * as mongoose from "mongoose";
-
-let OFFER_SCHEMA: Schema = new Schema({
-    id: String,
-    title: String
-});
+import {offerSchema} from "./offer-schema";
+import {requestSchema} from "../request/request-schema";
+import {IRequestRepository} from "../request/request-repository";
+import {Request} from "../../../../client/src/frontend/data-objects/request";
 
 export interface IOfferRepository extends DBOffer, Document {
 
 }
 
 export class OfferRepository {
-    private model: Model<IOfferRepository>;
+    private offerModel: Model<IOfferRepository>;
+    private requestModel: Model<IRequestRepository>;
 
 
-    private constructor(model: Model<IOfferRepository>) {
-        this.model = model;
+    private constructor(offerModel: Model<IOfferRepository>, requestModel: Model<IRequestRepository>) {
+        this.offerModel = offerModel;
+        this.requestModel = requestModel;
     }
 
-    public static createNewInstance(connection: mongoose.Connection):OfferRepository{
-        let model:Model<IOfferRepository> = connection.model<IOfferRepository>("Offer", OFFER_SCHEMA);
-        return new OfferRepository(model);
+    public static createNewInstance(connection: mongoose.Connection): OfferRepository {
+        let offerModel: Model<IOfferRepository> = connection.model<IOfferRepository>("Offer", offerSchema);
+        let requestModel: Model<IRequestRepository> = connection.model<IRequestRepository>("Request", requestSchema);
+        return new OfferRepository(offerModel, requestModel);
     }
 
-    public getAllOffers(func:Function) {
-        this.model.find(function (err: any, offerList: DBOffer[]) {
-            let offers = OfferMapper.mapAll(offerList);
+    public getAllOffers(func: Function) {
+        this.offerModel.find()
+            .populate("company", "-_id -__v")
+            .exec(function (err: any, offerList: DBOffer[]) {
+            let offers: Offer[] = OfferMapper.mapAll(offerList);
             func(offers);
         });
     }
+
+    public getOfferWithId(offerUuid:string, func: Function) {
+        this.offerModel.findOne({'uuid':offerUuid})
+            .populate("company", "-_id -__v")
+            .exec(function (err: any, dbOffer: DBOffer) {
+            let offer: Offer = OfferMapper.map(dbOffer);
+            func(offer);
+        });
+    }
+
 }

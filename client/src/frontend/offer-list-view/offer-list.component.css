@@ -1,4 +1,5 @@
-div {
-    border: black solid thin;
-    display: block;
+.offer-grid {
+    background-color: #e4e4e4;
+    padding-left: 5%;
+    padding-right: 5%;
 }

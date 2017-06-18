@@ -25,7 +25,7 @@ export class OfferService {
 
     public getOfferWithId(id: string): Observable<Offer> {
         return this.getAllOffers().map(
-            offers => offers.find(offer => offer.id == id));
+            offers => offers.find(offer => offer.uuid == id));
     }
 
     private extractData(res: Response) {

@@ -24,12 +24,13 @@
     "i18n": "ng-xi18n",
     "lint": "tslint ./client/**/*.ts -t verbose",
     "clean": "rimraf build",
-    "reset-db": "node server/src/database/database-reset.js"
+    "reset-db": "ts-node server/src/database/database-reset.ts"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@angular/cli": "^1.1.1",
     "@angular/common": "~4.0.0",
     "@angular/compiler": "^4.0.3",
     "@angular/compiler-cli": "^4.0.3",
@@ -42,8 +43,10 @@
     "@angular/router": "~4.0.0",
     "@angular/tsc-wrapped": "~4.0.0",
     "@angular/upgrade": "~4.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.26",
     "angular-in-memory-web-api": "~0.3.1",
     "body-parser": "^1.17.2",
+    "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "express": "^4.15.3",
     "mongodb": "^2.2.28",

@@ -8,7 +8,7 @@
             // paths serve as alias
             'npm:': 'node_modules/'
         },
-        // map tells the System loader where to look for things
+        // mapWithOutRequests tells the System loader where to look for things
         map: {
             // our frontend is within the frontend folder
             'app': 'frontend',
