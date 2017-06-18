@@ -1,0 +1,34 @@
+.slider-control {
+
+}
+
+.slider-control-picture {
+    height: 50px;
+    width: 50px
+}
+
+.menu-item {
+    text-align: center;
+    width: 170px;
+}
+
+.menu-item-picture-container {
+    margin: auto;
+    height: 50px;
+    width: 50px;
+    display: block;
+}
+
+.menu-item-picture {
+}
+
+.menu-item-container{
+    height: 80px;
+    width: 100px;
+    margin: 0 auto;
+}
+
+.active-menu{
+    border-radius: 5px;
+    background-color: grey;
+}
