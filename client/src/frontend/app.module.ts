@@ -4,7 +4,7 @@ import {AppComponent} from "./app.component";
 import {AppHeaderModule} from "./app-header/app-header.module";
 import {OfferListModule} from "./offer-list-view/offer-list.module";
 import {OfferListComponent} from "./offer-list-view/offer-list.component";
-import {RouterModule} from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 import {DashBoardComponent} from "./dashboard/dashboard.component";
 import {OfferDetailComponent} from "./offer-detail-view/offer-detail.component";
 import {HttpModule, JsonpModule} from "@angular/http";
