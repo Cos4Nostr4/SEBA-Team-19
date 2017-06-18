@@ -22,7 +22,6 @@ export class MenuSliderComponent {
         removeNotShownElements(numberOfEelements - numberOfElementsShownInitially);
 
         $('#next').click(function () {
-            console.log("Direction left.Remaining: " + $('.menu-item').length + "; Waiting: " + waitingElements.length);
 
             $('.active-menu').removeClass('active-menu');
             slideLeft();
@@ -30,7 +29,6 @@ export class MenuSliderComponent {
         });
 
         $('#last').click(function () {
-            console.log("Direction right.Remaining: " + $('.menu-item').length + "; Waiting: " + waitingElements.length);
             $('.active-menu').removeClass('active-menu');
             slideRight();
             $('.contentwrapper').eq(0).addClass('active-menu');
@@ -38,7 +36,6 @@ export class MenuSliderComponent {
 
         $(window).bind('resize', function (e: any) {
             let menuSliderWidth = $('#menu-slider-container').width();
-            console.log("Div resized to width of :" + menuSliderWidth);
 
             let numberOfElementsToShow = Math.floor(menuSliderWidth / minimumWidhtOfElementsInPixel);
 
@@ -58,7 +55,6 @@ export class MenuSliderComponent {
                 let waitingElement = $('.menu-item').last();
                 waitingElement.detach();
                 waitingElements.push(waitingElement);
-                console.log("Removed element. Remaining: " + $('.menu-item').length + "; Waiting: " + waitingElements.length);
             }
         }
 

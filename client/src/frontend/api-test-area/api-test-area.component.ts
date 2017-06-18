@@ -1,17 +1,23 @@
-import {Component} from "@angular/core";
-import {ApiObject} from "../data-objects/api-object";
-import {ApiService} from "../services/api.service";
+import {Component, Inject, OnInit} from "@angular/core";
+import {AuthenticationService} from "../services/api.service";
+import {DOCUMENT} from "@angular/platform-browser";
 
 @Component({
     selector: 'api-test-area',
     templateUrl: './api-test-area.component.html',
     styleUrls: ['./api-test-area.component.css'],
-    providers: [ApiService]
+    providers: [AuthenticationService]
 })
-export class ApiObjectComponent {
-    private apiObject: ApiObject;
+export class AuthenticationComponent implements OnInit {
+    private apiService: AuthenticationService;
+    private document: any;
 
-    constructor() {
-        this.apiObject = new ApiObject(1, "Very important content");
+    constructor(@Inject(DOCUMENT) document: any, apiService: AuthenticationService) {
+        this.document = document;
+        this.apiService = apiService;
+    }
+
+    ngOnInit(): void {
+        this.apiService.ensureLoggedIn(this.document);
     }
 }

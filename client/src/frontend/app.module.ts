@@ -13,8 +13,8 @@ import {OfferDetailModule} from "./offer-detail-view/offer-detail.module";
 import {DashBoardModule} from "./dashboard/dashboard.module";
 import {SamplePageModule} from "./sample-page/sample-page.module";
 import {SampleObjectComponent} from "./sample-page/sample-page.component";
-import {ApiModule} from "./api-test-area/api-test-area.module";
-import {ApiObjectComponent} from "./api-test-area/api-test-area.component";
+import {AuthenticationModule} from "./api-test-area/api-test-area.module";
+import {AuthenticationComponent} from "./api-test-area/api-test-area.component";
 import {CategoriesComponent} from "./categories/categories.component";
 import {CategoriesModule} from "./categories/categories.module";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -31,7 +31,7 @@ import {MenuSliderModule} from "./menu-slider/menu-slider.module";
         OfferDetailModule,
         SamplePageModule,
         MenuSliderModule,
-        ApiModule,
+        AuthenticationModule,
         DashBoardModule,
         CategoriesModule,
         HttpModule,
@@ -57,7 +57,7 @@ import {MenuSliderModule} from "./menu-slider/menu-slider.module";
             },
             {
                 path:'api-test-area',
-                component: ApiObjectComponent
+                component: AuthenticationComponent
             },
             {
                 path: 'menu-slider-page',

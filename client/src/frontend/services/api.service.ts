@@ -1,11 +1,26 @@
 import {Injectable} from "@angular/core";
-import {ApiObject} from "../data-objects/api-object";
 
 @Injectable()
-export class ApiService {
+export class AuthenticationService {
 
+    getAccessToken(document: any): void {
+        let url = document.location.href;
+        console.log("URL" + url);
 
-   public getApiObject(): ApiObject {
-        return new ApiObject(1, "Very important component");
+        if(url.includes('access_token')) {
+
+            let token = new URL(url).hash.split('&').filter(function (el) {
+                if (el.match('access_token') !== null) return true;
+            })[0].split('=')[1];
+            console.log("Token: " + token);
+        }else {
+            console.log("no token found");
+        }
+    }
+
+    public ensureLoggedIn(document: any) {
+        console.log("Start ensure logged in");
+        this.getAccessToken(document);
+
     }
 }

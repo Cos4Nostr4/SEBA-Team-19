@@ -1,12 +1,12 @@
 import {NgModule} from "@angular/core";
-import {ApiObjectComponent} from "./api-test-area.component";
+import {AuthenticationComponent} from "./api-test-area.component";
 @NgModule({
     declarations: [
-        ApiObjectComponent
+        AuthenticationComponent
     ],
     exports: [
-        ApiObjectComponent
+        AuthenticationComponent
     ]
 })
-export class ApiModule {
+export class AuthenticationModule {
 }
