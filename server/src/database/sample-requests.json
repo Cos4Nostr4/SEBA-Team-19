@@ -1,21 +1,21 @@
 [
   {
     "id":1,
-    "offer":"Bibi's Beauty Broom",
+    "offer":"Clearasil",
     "influencer": 1,
     "status": "ACCEPTED",
     "postponed": false
   },
   {
     "id":2,
-    "offer":"Bibi's Beauty Broom",
+    "offer":"Chanel",
     "influencer": 2,
     "status": "REJECTED",
     "postponed": false
   },
   {
     "id":3,
-    "offer":"Woods super duper shop",
+    "offer":"Joop",
     "influencer": 1,
     "status": "PENDING",
     "postponed": false
