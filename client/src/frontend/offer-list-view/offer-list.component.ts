@@ -26,19 +26,21 @@ export class OfferListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params
-            .switchMap((params: Params) => this.offerService.getOffersForCategory(+params.categoryId))
-            .subscribe(offer => this.offerList = offer);
-
-        /*this.offerService.getAllOffers().subscribe(
-            offers => {
-                this.offerList = offers
-            },
-            error => {
-                this.errorMessage = error;
-                throw new Error(error)
-            }
-        );*/
+        if (document.location.href.includes("categories")) {
+            this.route.params
+                .switchMap((params: Params) => this.offerService.getOffersForCategory(+params.categoryId))
+                .subscribe(offer => this.offerList = offer);
+        } else {
+            this.offerService.getAllOffers().subscribe(
+                offers => {
+                    this.offerList = offers
+                },
+                error => {
+                    this.errorMessage = error;
+                    throw new Error(error)
+                }
+            );
+        }
 
         if (this.authenticationService.isLoggedIn()) {
             console.log("Logged in");

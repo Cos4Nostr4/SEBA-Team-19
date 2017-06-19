@@ -64,15 +64,13 @@ export class MenuSliderComponent implements OnInit {
 
     private registerOnLickHandlerForSliderButtons() {
         $('#next').click(() => {
-            $('.active-menu').removeClass('active-menu');
-            this.slideLeft();
-            $('.contentwrapper').eq(0).addClass('active-menu');
+            $('.menu-item').eq(1).trigger("click");
         });
 
         $('#last').click(() => {
             $('.active-menu').removeClass('active-menu');
             this.slideRight();
-            $('.contentwrapper').eq(0).addClass('active-menu');
+            $('.menu-item').eq(0).trigger('click');
         });
     }
 

@@ -15,8 +15,6 @@ import {SamplePageModule} from "./sample-page/sample-page.module";
 import {SampleObjectComponent} from "./sample-page/sample-page.component";
 import {AuthenticationModule} from "./api-test-area/api-test-area.module";
 import {AuthenticationComponent} from "./api-test-area/api-test-area.component";
-import {CategoriesComponent} from "./categories/categories.component";
-import {CategoriesModule} from "./categories/categories.module";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MenuSliderModule} from "./menu-slider/menu-slider.module";
 
@@ -33,7 +31,6 @@ import {MenuSliderModule} from "./menu-slider/menu-slider.module";
         MenuSliderModule,
         AuthenticationModule,
         DashBoardModule,
-        CategoriesModule,
         HttpModule,
         JsonpModule,
         NgbModule.forRoot(),
@@ -66,10 +63,6 @@ import {MenuSliderModule} from "./menu-slider/menu-slider.module";
             {
                 path: 'menu-slider-page',
                 component: SampleObjectComponent
-            },
-            {
-                path:'categories',
-                component: CategoriesComponent
             },
             {
                 path: '',
