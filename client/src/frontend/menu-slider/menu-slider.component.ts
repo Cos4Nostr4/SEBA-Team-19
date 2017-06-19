@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthenticationService} from "../services/authentication.service";
+import {Router} from "@angular/router";
 declare var jquery: any;
 declare var $: any;
 
@@ -16,14 +17,20 @@ const MINIMUM_WIDHT_OF_ELEMENTS: number = 200;
 export class MenuSliderComponent implements OnInit {
     private authenticationService: AuthenticationService;
     private waitingElements: any[];
+    private router: Router;
 
-    constructor(authenticationService: AuthenticationService) {
+    constructor(authenticationService: AuthenticationService, router: Router) {
         this.authenticationService = authenticationService;
         this.waitingElements = [];
+        this.router = router;
     }
 
     ngOnInit(): void {
         "use strict";
+
+        if (this.authenticationService.isLoggedIn()) {
+            this.registerOnClickHandlerForMenuItems();
+        }
 
 
         let numberOfElements = $('.menu-item').length;
@@ -93,6 +100,12 @@ export class MenuSliderComponent implements OnInit {
         $('#slider').prepend(elementToAddInFront);
     }
 
+    private slideLeftTimes(times: number) {
+        for (let i = 0; i < times; i++) {
+            this.slideLeft();
+        }
+    }
+
     private slideLeft() {
         let firstElement = $('.menu-item').eq(0)
         firstElement.detach();
@@ -100,5 +113,19 @@ export class MenuSliderComponent implements OnInit {
 
         let elementToAddBehind = this.waitingElements.pop();
         $('#slider').append(elementToAddBehind);
+    }
+
+    private registerOnClickHandlerForMenuItems() {
+        for (let i = 0; i < $('.menu-item').length; i++) {
+            let clickedElement = $('.menu-item').eq(i);
+            clickedElement.click(() => {
+                let index = $('.menu-item').index(clickedElement);
+                $('.active-menu').removeClass('active-menu');
+                this.slideLeftTimes(index);
+                $('.contentwrapper').eq(0).addClass('active-menu');
+
+                this.router.navigateByUrl("categories/" + i);
+            });
+        }
     }
 }
