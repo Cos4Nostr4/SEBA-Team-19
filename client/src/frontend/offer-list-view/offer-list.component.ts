@@ -42,7 +42,7 @@ export class OfferListComponent implements OnInit {
             console.log("Logged in");
         }else{
             console.log("not logged in");
-            let parent = $('#offer-list-container').parent();
+            /*let parent = $('#offer-list-container').parent();
             let windowHeight = $(window).height();
             let windowWidth = $(window).width();
             let style = "'width:"+windowWidth+"px; height:"+windowHeight+"px; background-color: rgba(216, 216,216, 0.7); position:absolute; top:0;left:0'";
@@ -52,8 +52,8 @@ export class OfferListComponent implements OnInit {
             $("<div style='font-family: \"Cookie\";font-size:30px; font-weight:600; padding: 25px 0 0 97px'>Get Stuff For Free On BeeTooBee</div>").appendTo(whiteBox);
 
             $("<button style='background-color: #534d4d; color:white; border:1px'><i class='fa fa-instagram' aria-hidden='true'></i>Login with Instagram</button>").appendTo(whiteBox);
-
-            //this.authenticationService.ensureLoggedIn(document);
+            */
+            this.authenticationService.ensureLoggedIn(document);
         }
     }
 }
