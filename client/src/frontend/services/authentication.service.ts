@@ -34,6 +34,6 @@ export class AuthenticationService {
         console.log("Call is logged in");
         let cookie = document.cookie;
         console.log("Cookie: "+cookie);
-        return (cookie && /^\s*$/.test(cookie));
+        return (cookie && cookie.includes("token="));
     }
 }
