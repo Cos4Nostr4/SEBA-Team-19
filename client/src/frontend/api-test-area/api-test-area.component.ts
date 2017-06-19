@@ -18,6 +18,6 @@ export class AuthenticationComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.apiService.ensureLoggedIn(this.document);
+        this.apiService.ensureLoggedIn();
     }
 }
