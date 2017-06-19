@@ -33,6 +33,11 @@
     width: 170px;
 }
 
+.slide-left {
+    transition: 1s;
+    transform: translate3d(-50%,0px,0px)
+}
+
 .menu-item-picture-container {
     margin: auto;
     height: 30px;

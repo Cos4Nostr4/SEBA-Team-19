@@ -110,7 +110,6 @@ export class MenuSliderComponent implements OnInit {
         let firstElement = $('.menu-item').eq(0)
         firstElement.detach();
         this.waitingElements.unshift(firstElement);
-
         let elementToAddBehind = this.waitingElements.pop();
         $('#slider').append(elementToAddBehind);
     }
