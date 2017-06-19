@@ -3,7 +3,7 @@ import {Database} from "../database/database";
 import {TransferObject} from "../transferobject/transfer-object";
 import {Offer} from "../../../../client/src/frontend/data-objects/offer";
 import {CategoryRepository} from "./category-repository";
-import {Category} from "./db-category";
+import {DBCategory} from "./db-category";
 
 export class CategoryRouter {
     private database: Database;
@@ -23,7 +23,7 @@ export class CategoryRouter {
             .get(function (req, res) {
 
                 let categoryAsString: string = req.params.category;
-                let category: Category = Category[categoryAsString.toUpperCase()];
+                let category: DBCategory = DBCategory[categoryAsString.toUpperCase()];
                 categoryRepository.getAllOffersForCategory(category, function (offers: Offer[]) {
                     let transferObject = TransferObject.aTransferObjectFor(offers);
                     res.json(transferObject);

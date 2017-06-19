@@ -3,7 +3,7 @@ import * as mongoose from "mongoose";
 import {Model} from "mongoose";
 import {IOfferRepository} from "../offer/offer-repository";
 import {offerSchema} from "../offer/offer-schema";
-import {Category} from "./db-category";
+import {DBCategory} from "./db-category";
 import {DBOffer} from "../offer/db-offer";
 import {Offer} from "../../../../client/src/frontend/data-objects/offer";
 import {OfferMapper} from "../offer/offer-mapper";
@@ -21,8 +21,8 @@ export class CategoryRepository {
         return new CategoryRepository(offerModel);
     }
 
-    public getAllOffersForCategory(category: Category, func: Function) {
-        let categoryAsString: string = Category[category];
+    public getAllOffersForCategory(category: DBCategory, func: Function) {
+        let categoryAsString: string = DBCategory[category];
         this.offerModel.find({categories: categoryAsString})
             .populate("company", "-_id -__v")
             .exec(function (err: any, offerList: DBOffer[]) {

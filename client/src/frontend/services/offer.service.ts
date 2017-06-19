@@ -5,27 +5,40 @@ import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {Config} from "../config/config";
+import {Categories, CategoryMapper} from "../data-objects/categories";
+
+const URL_ALL_OFFERS = Config.backend_address+":"+Config.backend_port+Config.backend_base_url+'offers';
+const URL_BASE_CATEGORY = Config.backend_address+":"+Config.backend_port+Config.backend_base_url+'categories/';
 
 @Injectable()
 export class OfferService {
     private http: Http;
-    private url: string;
 
     constructor(http: Http) {
         this.http = http;
-        this.url = Config.backend_address+":"+Config.backend_port+Config.backend_base_url+'offers';
     }
 
     public getAllOffers(): Observable<Offer[]> {
-        let offerList: Observable<Offer[]> = this.http.get(this.url)
+        let offers: Observable<Offer[]> = this.http.get(URL_ALL_OFFERS)
             .map(this.extractData)
             .catch(this.handleError);
-        return offerList;
+        return offers;
     }
 
     public getOfferWithId(id: string): Observable<Offer> {
         return this.getAllOffers().map(
             offers => offers.find(offer => offer.uuid == id));
+    }
+
+    public getOffersForCategory(categoryId: number): Observable<Offer[]>{
+        let category: string = CategoryMapper.forId(categoryId);
+
+        console.log("Get Category:"+category);
+        let offers: Observable<Offer[]> = this.http.get(URL_BASE_CATEGORY+category)
+            .map(this.extractData)
+            .catch(this.handleError);
+
+        return offers;
     }
 
     private extractData(res: Response) {

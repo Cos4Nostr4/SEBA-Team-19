@@ -42,15 +42,15 @@ export class MenuSliderComponent implements OnInit {
     private adaptNumberOfElementsShownToWindowSize() {
         let menuSliderWidth = $('#menu-slider-container').width();
         let numberOfElementsToShow = Math.floor(menuSliderWidth / MINIMUM_WIDHT_OF_ELEMENTS);
-        let numbeOfItems = $('.menu-item').length;
+        let numberOfItems = $('.menu-item').length;
 
-        if (numberOfElementsToShow < numbeOfItems) {
-            let numberOfElementsToRemove = numbeOfItems - numberOfElementsToShow;
+        if (numberOfElementsToShow < numberOfItems) {
+            let numberOfElementsToRemove = numberOfItems - numberOfElementsToShow;
             this.removeNotShownElements(numberOfElementsToRemove);
         }
 
-        if (numberOfElementsToShow > numbeOfItems) {
-            let numberOfElementsToAdd = numberOfElementsToShow - numbeOfItems;
+        if (numberOfElementsToShow > numberOfItems) {
+            let numberOfElementsToAdd = numberOfElementsToShow - numberOfItems;
             this.addElementsToShow(numberOfElementsToAdd);
         }
     }

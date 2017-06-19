@@ -39,12 +39,16 @@ import {MenuSliderModule} from "./menu-slider/menu-slider.module";
         NgbModule.forRoot(),
         RouterModule.forRoot([
             {
+                path: 'dashboard',
+                component: DashBoardComponent
+            },
+            {
                 path: 'offers',
                 component: OfferListComponent
             },
             {
-                path: 'dashboard',
-                component: DashBoardComponent
+                path: 'categories/:categoryId',
+                component: OfferListComponent
             },
             {
                 path: 'offer-detail/:id',

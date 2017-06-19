@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {OfferService} from "../services/offer.service";
 import {Offer} from "../data-objects/offer";
 import {AuthenticationService} from "../services/authentication.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 declare var jquery: any;
 declare var $: any;
@@ -19,13 +20,17 @@ export class OfferListComponent implements OnInit {
     private errorMessage: string;
     private authenticationService: AuthenticationService;
 
-    constructor(offerService: OfferService, authenticationService: AuthenticationService) {
+    constructor(offerService: OfferService, authenticationService: AuthenticationService, private route: ActivatedRoute) {
         this.offerService = offerService;
         this.authenticationService = authenticationService;
     }
 
     ngOnInit(): void {
-        this.offerService.getAllOffers().subscribe(
+        this.route.params
+            .switchMap((params: Params) => this.offerService.getOffersForCategory(+params.categoryId))
+            .subscribe(offer => this.offerList = offer);
+
+        /*this.offerService.getAllOffers().subscribe(
             offers => {
                 this.offerList = offers
             },
@@ -33,7 +38,7 @@ export class OfferListComponent implements OnInit {
                 this.errorMessage = error;
                 throw new Error(error)
             }
-        );
+        );*/
 
         if (this.authenticationService.isLoggedIn()) {
             console.log("Logged in");

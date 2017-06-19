@@ -1,5 +1,5 @@
 import {DBCompany} from "../company/db-company";
-import {Category} from "../categories/db-category";
+import {DBCategory} from "../categories/db-category";
 export interface DBOffer {
     uuid: string;
     title: string;
@@ -11,6 +11,6 @@ export interface DBOffer {
     enforcedHashTags: Array<string>
     startDate: Date
     endDate: Date
-    categories:[Category]
+    categories:[DBCategory]
     stillRunning: boolean
 }
