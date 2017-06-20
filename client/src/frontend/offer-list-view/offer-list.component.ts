@@ -64,10 +64,10 @@ export class OfferListComponent implements OnInit {
         let styleTitleTop = "font-family: \"Lobster Two\", cursive;font-size:32px; font-weight:600; padding: 20px 0 0 70px";
         $("<div style='" + styleTitleTop + "'><i>Get Stuff For Free On BeeTooBee</i></div>").appendTo(whiteBox);
 
-        let styleButtonDiv = "background-color: #534d4d; color:white; border:1px; border-radius: 5px; margin: 45px auto 0; width: 290px; height:38px; cursor: pointer";
+        let styleButtonDiv = "background-color: #534d4d; color:white; border:1px; border-radius: 5px; margin: 45px auto 0; width: 315px; height:38px; cursor: pointer";
         let buttonDiv = $("<div style='" + styleButtonDiv + "'></div>").appendTo(whiteBox);
 
-        let styleInstagramLogo = "font-size: 35px; margin: 2px 8px 0 3px; float:left";
+        let styleInstagramLogo = "font-size: 35px; margin: 1px 8px 0 3px; float:left";
         $("<i class='fa fa-instagram' aria-hidden='true' style='" + styleInstagramLogo + "'></i>").appendTo(buttonDiv);
 
         let styleButtonText = "display:block;  font-size:22px; font-weight: 600";

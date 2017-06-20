@@ -1,13 +1,13 @@
 export enum Categories{
-    HEARTS, NEW, AREA, JEWELRY, FITNESS, MAKE_UP, CLOTHES, ACCESSORY, OTHERS
+    NEW, HEARTS, AREA, JEWELRY, FITNESS, MAKE_UP, CLOTHES, ACCESSORY, OTHERS
 }
 
 export class CategoryMapper{
 
     public static forId(id:number): string{
         switch (id){
-            case 0: return Categories[Categories.HEARTS];
-            case 1: return Categories[Categories.NEW];
+            case 0: return Categories[Categories.NEW];
+            case 1: return Categories[Categories.HEARTS];
             case 2: return Categories[Categories.AREA];
             case 3: return Categories[Categories.JEWELRY];
             case 4: return Categories[Categories.FITNESS];

@@ -10,21 +10,21 @@
     "enforcedHashTags": ["Clearasil", "Clean"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
-    "categories": ["NEW", "JEWELRY", "FITNESS", "MAKE_UP", "ACCESSORY", "OTHERS"],
+    "categories": ["NEW", "MAKE_UP", "OTHERS"],
     "stillRunning": true
   },
   {
     "uuid": "2",
-    "title": "Chanel",
-    "description": "Chanel",
-    "image": "chanel.jpg",
-    "company": "Chanel",
+    "title": "Earring Blue",
+    "description": "Earring Blue",
+    "image": "earring_blue.jpg",
+    "company": "Juvena",
     "amount": 1,
     "requiredNumberOfFollowers": "2000",
     "enforcedHashTags": ["wood", "shop", "super", "duper"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
-    "categories": ["NEW", "FITNESS", "OTHERS"],
+    "categories": ["AREA", "NEW", "JEWELRY"],
     "stillRunning": true
   },
   {
@@ -38,7 +38,7 @@
     "enforcedHashTags": ["wood", "shop", "super", "duper"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
-    "categories": ["AREA", "FITNESS", "OTHERS"],
+    "categories": ["AREA", "MAKE_UP", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -52,7 +52,7 @@
     "enforcedHashTags": ["wood", "shop", "super", "duper"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
-    "categories": ["AREA", "FITNESS", "OTHERS"],
+    "categories": ["AREA", "MAKE_UP", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -66,7 +66,7 @@
     "enforcedHashTags": ["wood", "shop", "super", "duper"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
-    "categories": ["AREA", "FITNESS", "OTHERS"],
+    "categories": ["AREA", "MAKE_UP", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -80,7 +80,7 @@
     "enforcedHashTags": ["tyroc", "watch"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
-    "categories": ["AREA", "FITNESS", "OTHERS"],
+    "categories": ["AREA", "MAKE_UP", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -94,7 +94,7 @@
     "enforcedHashTags": ["wood", "shop", "super", "duper"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
-    "categories": ["AREA", "FITNESS", "OTHERS"],
+    "categories": ["AREA", "MAKE_UP", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -108,7 +108,7 @@
     "enforcedHashTags": ["wood", "shop", "super", "duper"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
-    "categories": ["AREA", "FITNESS", "OTHERS"],
+    "categories": ["AREA", "MAKE_UP", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -122,7 +122,91 @@
     "enforcedHashTags": ["wood", "shop", "super", "duper"],
     "startDate": "1.2.2017",
     "endDate": "1.5.2017",
+    "categories": ["NEW", "MAKE_UP", "OTHERS"],
+    "stillRunning": true
+  },
+  {
+    "uuid": "10",
+    "title": "Whey",
+    "description": "Whey",
+    "image": "whey.jpg",
+    "company": "Juvena",
+    "amount": 1,
+    "requiredNumberOfFollowers": "2000",
+    "enforcedHashTags": ["wood", "shop", "super", "duper"],
+    "startDate": "1.2.2017",
+    "endDate": "1.5.2017",
+    "categories": ["NEW", "FITNESS", "OTHERS"],
+    "stillRunning": true
+  },
+  {
+    "uuid": "11",
+    "title": "Creatin",
+    "description": "Creatin",
+    "image": "creatin.jpg",
+    "company": "Juvena",
+    "amount": 1,
+    "requiredNumberOfFollowers": "2000",
+    "enforcedHashTags": ["wood", "shop", "super", "duper"],
+    "startDate": "1.2.2017",
+    "endDate": "1.5.2017",
     "categories": ["AREA", "FITNESS", "OTHERS"],
+    "stillRunning": true
+  },
+  {
+    "uuid": "12",
+    "title": "Earring Copper",
+    "description": "Earring Copper",
+    "image": "earring_copper.jpg",
+    "company": "Juvena",
+    "amount": 1,
+    "requiredNumberOfFollowers": "2000",
+    "enforcedHashTags": ["wood", "shop", "super", "duper"],
+    "startDate": "1.2.2017",
+    "endDate": "1.5.2017",
+    "categories": ["NEW", "JEWELRY"],
+    "stillRunning": true
+  },
+  {
+    "uuid": "12",
+    "title": "Diamond Ring",
+    "description": "Diamond Ring",
+    "image": "diamond_ring.jpg",
+    "company": "Juvena",
+    "amount": 1,
+    "requiredNumberOfFollowers": "2000",
+    "enforcedHashTags": ["wood", "shop", "super", "duper"],
+    "startDate": "1.2.2017",
+    "endDate": "1.5.2017",
+    "categories": ["AREA", "NEW", "JEWELRY"],
+    "stillRunning": true
+  },
+  {
+    "uuid": "13",
+    "title": "Chanel",
+    "description": "Chanel",
+    "image": "chanel.jpg",
+    "company": "Chanel",
+    "amount": 1,
+    "requiredNumberOfFollowers": "2000",
+    "enforcedHashTags": ["wood", "shop", "super", "duper"],
+    "startDate": "1.2.2017",
+    "endDate": "1.5.2017",
+    "categories": ["NEW", "MAKE_UP", "OTHERS"],
+    "stillRunning": true
+  },
+  {
+    "uuid": "14",
+    "title": "Css is awesome t-shirt",
+    "description": "Css is awesome t-shirt",
+    "image": "css_t-shirt.jpg",
+    "company": "Juvena",
+    "amount": 1,
+    "requiredNumberOfFollowers": "2000",
+    "enforcedHashTags": ["wood", "shop", "super", "duper"],
+    "startDate": "1.2.2017",
+    "endDate": "1.5.2017",
+    "categories": ["NEW", "CLOTHES"],
     "stillRunning": true
   }
 ]
