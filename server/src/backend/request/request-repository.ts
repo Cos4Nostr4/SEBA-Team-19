@@ -4,8 +4,8 @@ import {Document, Model} from "mongoose";
 import {requestSchema} from "./request-schema";
 import {RequestMapper} from "./request-mapper";
 import {Request} from "../../../../client/src/frontend/data-objects/request";
-import {offerSchema} from "../offer/offer-schema";
-import {IOfferRepository} from "../offer/offer-repository";
+import {campaignSchema} from "../campaign/campaign-schema";
+import {ICampaignRepository} from "../campaign/campaign-repository";
 
 export interface IRequestRepository extends DBRequest, Document {
 
@@ -13,23 +13,23 @@ export interface IRequestRepository extends DBRequest, Document {
 
 export class RequestRepository {
     private requestModel: Model<IRequestRepository>;
-    private offerModel: Model<IOfferRepository>;
+    private campaignRepository: Model<ICampaignRepository>;
 
 
-    private constructor(model: Model<IRequestRepository>, offerModel: Model<IOfferRepository>) {
-        this.requestModel = model;
-        this.offerModel = offerModel;
+    private constructor(requestModel: Model<IRequestRepository>, campaignModel: Model<ICampaignRepository>) {
+        this.requestModel = requestModel;
+        this.campaignRepository = campaignModel;
     }
 
     public static createNewInstance(connection: mongoose.Connection): RequestRepository {
         let requestModel: Model<IRequestRepository> = connection.model<IRequestRepository>("Request", requestSchema);
-        let offerModel: Model<IOfferRepository> = connection.model<IOfferRepository>("Offer", offerSchema);
-        return new RequestRepository(requestModel, offerModel);
+        let campaignModel: Model<ICampaignRepository> = connection.model<ICampaignRepository>("Campaign", campaignSchema);
+        return new RequestRepository(requestModel, campaignModel);
     }
 
     public getAllRequests(func: Function) {
         this.requestModel.find()
-            .populate("offer", '-_id -__v')
+            .populate("campaign", '-_id -__v')
             .populate("influencer", '-_id -__v')
             .exec(function (err: any, dbRequests: DBRequest[]) {
                 let requests: Request[] = RequestMapper.mapAll(dbRequests);
@@ -39,7 +39,7 @@ export class RequestRepository {
 
     public getRequestWithId(requestUuid: string, func: Function) {
         this.requestModel.findOne({'uuid':requestUuid})
-            .populate("offer", '-_id -__v')
+            .populate("campaign", '-_id -__v')
             .populate("influencer", '-_id -__v')
             .exec(function (err: any, dbRequest: DBRequest) {
                 let request: Request = RequestMapper.map(dbRequest);
@@ -47,11 +47,10 @@ export class RequestRepository {
             });
     }
 
-    public getAllRequestsForOffer(offerUuid: string, func: Function) {
-        let model = this.requestModel;
-        this.offerModel.findOne({'uuid': offerUuid}, function (err: any, offer: any) {
-            model.find({'offer': offer._id})
-                .populate("offer", '-_id -__v')
+    public getAllRequestsForCampaign(campaignUuid: string, func: Function) {
+        this.campaignRepository.findOne({'uuid': campaignUuid}, (err: any, campaign: any) => {
+            this.requestModel.find({'campaign': campaign._id})
+                .populate("campaign", '-_id -__v')
                 .populate("influencer", '-_id -__v')
                 .exec(function (err: any, requestList: DBRequest[]) {
                     let requests: Request[] = RequestMapper.mapAll(requestList);

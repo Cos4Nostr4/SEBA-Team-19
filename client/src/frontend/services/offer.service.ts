@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Offer} from "../data-objects/offer";
+import {Campaign} from "../data-objects/campaign";
 import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/catch';
@@ -18,23 +18,23 @@ export class OfferService {
         this.http = http;
     }
 
-    public getAllOffers(): Observable<Offer[]> {
-        let offers: Observable<Offer[]> = this.http.get(URL_ALL_OFFERS)
+    public getAllOffers(): Observable<Campaign[]> {
+        let offers: Observable<Campaign[]> = this.http.get(URL_ALL_OFFERS)
             .map(this.extractData)
             .catch(this.handleError);
         return offers;
     }
 
-    public getOfferWithId(id: string): Observable<Offer> {
+    public getOfferWithId(id: string): Observable<Campaign> {
         return this.getAllOffers().map(
             offers => offers.find(offer => offer.uuid == id));
     }
 
-    public getOffersForCategory(categoryId: number): Observable<Offer[]>{
+    public getOffersForCategory(categoryId: number): Observable<Campaign[]>{
         let category: string = CategoryMapper.forId(categoryId);
 
         console.log("Get Category:"+category);
-        let offers: Observable<Offer[]> = this.http.get(URL_BASE_CATEGORY+category)
+        let offers: Observable<Campaign[]> = this.http.get(URL_BASE_CATEGORY+category)
             .map(this.extractData)
             .catch(this.handleError);
 

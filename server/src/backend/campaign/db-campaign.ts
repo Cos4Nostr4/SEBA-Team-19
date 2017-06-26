@@ -1,6 +1,6 @@
 import {DBCompany} from "../company/db-company";
 import {DBCategory} from "../categories/db-category";
-export interface DBOffer {
+export interface DBCampaign {
     uuid: string;
     title: string;
     description: string

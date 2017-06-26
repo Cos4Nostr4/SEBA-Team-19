@@ -1,4 +1,4 @@
-import {OfferRouter} from "./backend/offer/offer-router";
+import {CampaignRouter} from "./backend/campaign/campaign-router";
 import {Config} from "../../client/src/frontend/config/config";
 import * as express from "express";
 import * as bodyParser from "body-parser";
@@ -54,8 +54,8 @@ export class App {
         this.application.use('/media/images/', express.static(__dirname +'/media'));
         this.application.use(router);
 
-        let offerRouter: OfferRouter = new OfferRouter();
-        offerRouter.configureRoutes(this.baseUrl, this.application);
+        let campaignRouter: CampaignRouter = new CampaignRouter();
+        campaignRouter.configureRoutes(this.baseUrl, this.application);
 
         let requestRouter: RequestRouter = new RequestRouter();
         requestRouter.configureRoutes(this.baseUrl, this.application);

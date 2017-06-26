@@ -1,6 +1,6 @@
 import {DBRequest, RequestState} from "./db-request";
 import {Request} from "../../../../client/src/frontend/data-objects/request";
-import {OfferMapper} from "../offer/offer-mapper";
+import {CampaignMapper} from "../campaign/campaign-mapper";
 
 export class RequestMapper {
 
@@ -14,7 +14,7 @@ export class RequestMapper {
     }
 
     public static map(dbRequest: DBRequest): Request {
-        let offer = OfferMapper.map(dbRequest.offer);
-        return new Request(dbRequest.uuid, offer, dbRequest.influencer, RequestState[dbRequest.status], dbRequest.postponed);
+        let campaign = CampaignMapper.map(dbRequest.campaign);
+        return new Request(dbRequest.uuid, campaign, dbRequest.influencer, RequestState[dbRequest.status], dbRequest.postponed);
     }
 }

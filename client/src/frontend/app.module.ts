@@ -70,7 +70,7 @@ import {StatusPageModule} from './parent/status-page/status-page.module';
                 component: OfferListComponent
             },
             {
-                path: 'offer-detail/:id',
+                path: 'campaign-detail/:id',
                 component: OfferDetailComponent
             },
 
