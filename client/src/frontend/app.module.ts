@@ -17,6 +17,17 @@ import {AuthenticationModule} from "./api-test-area/api-test-area.module";
 import {AuthenticationComponent} from "./api-test-area/api-test-area.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MenuSliderModule} from "./menu-slider/menu-slider.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CampanyDetailPageModule} from './parent/campany-detail-page/campany-detail-page.module';
+import {CampanyPageModule} from './parent/campany-page/campany-page.module';
+import {CampusDetailPageModule} from './parent/campus-detail-page/campus-detail-page.module';
+import {CampusPageModule} from './parent/campus-page/campus-page.module';
+import {CompanyLoginPageModule} from './parent/company-login-page/company-login-page.module';
+import {CompanyRegisterPageModule} from './parent/company-register-page/company-register-page.module';
+import {DefaultPageModule} from './parent/default-page/default-page.module';
+import {InstaLoginPageModule} from './parent/insta-login-page/insta-login-page.module';
+import {ProfileViewDropdownModule} from './parent/profile-view-dropdown/profile-view-dropdown.module';
+import {StatusPageModule} from './parent/status-page/status-page.module';
 
 
 
@@ -33,6 +44,17 @@ import {MenuSliderModule} from "./menu-slider/menu-slider.module";
         DashBoardModule,
         HttpModule,
         JsonpModule,
+        BrowserAnimationsModule,
+        CampanyDetailPageModule,
+        CampanyPageModule,
+        CampusDetailPageModule,
+        CampusPageModule,
+        CompanyLoginPageModule,
+        CompanyRegisterPageModule,
+        DefaultPageModule,
+        InstaLoginPageModule,
+        ProfileViewDropdownModule,
+        StatusPageModule,
         NgbModule.forRoot(),
         RouterModule.forRoot([
             {
@@ -72,7 +94,7 @@ import {MenuSliderModule} from "./menu-slider/menu-slider.module";
         ])
     ],
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     bootstrap: [
         AppComponent
