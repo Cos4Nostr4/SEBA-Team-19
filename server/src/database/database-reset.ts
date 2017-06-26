@@ -5,9 +5,9 @@ import {requestSchema} from "../backend/request/request-schema";
 import {NameToIdStorage} from "./name-to-id-storage";
 import {influencerSchema} from "../backend/influencer/influencer-schema";
 import {companySchema} from "../backend/company/company-schema";
-const sampleOffers = require('./sample_offers.json');
+const sampleCampaigns = require('./sample_campaigns.json');
 const sampleRequests = require('./sample-requests.json');
-const sampleCOmpanies = require('./sample-influencers.json');
+const sampleInfluencers = require('./sample-influencers.json');
 const sampleCompanies = require('./sample-companies.json');
 
 let connection: mongoose.Connection = mongoose.createConnection(DatabaseConnection.defaultConnection());
@@ -17,7 +17,7 @@ let Influencer: any = connection.model("Influencer", influencerSchema);
 let Company: any = connection.model("Company", companySchema);
 
 async function doit() {
-    const offerDeletePromise = new Promise(resolve => Campaign.remove(function (err: any) {
+    const campaignDeletePromise = new Promise(resolve => Campaign.remove(function (err: any) {
         if (err) {
             console.log(err);
         } else {
@@ -25,7 +25,7 @@ async function doit() {
             resolve(true);
         }
     }));
-    await offerDeletePromise;
+    await campaignDeletePromise;
 
     const requestDeletePromise = new Promise(resolve => Request.remove(function (err: any) {
         if (err) {
@@ -69,11 +69,11 @@ async function doit() {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("Stored Company: " + JSON.stringify(company));
                     companyIds.push({name: company.name, id: company._id});
                 }
 
                 if (++i == sampleCompanies.length) {
+                    console.log("Stored "+i + " companies");
                     resolve(true);
                 }
             })
@@ -82,59 +82,59 @@ async function doit() {
     await  companyPromise;
 
     i = 0;
-    let offerIds: NameToIdStorage[] = [];
-    const offerPromise = new Promise(resolve => {
-        for (let offerData of sampleOffers) {
-            let matchingCompany = companyIds.find(company => company.name == offerData.company);
+    let campaignIds: NameToIdStorage[] = [];
+    const campaignPromise = new Promise(resolve => {
+        for (let campaignData of sampleCampaigns) {
+            let matchingCompany = companyIds.find(company => company.name == campaignData.company);
             if (!matchingCompany) {
-                throw new Error("Cannot find the id for company with name '" + offerData.company + "'. Check if you have written it correctly.");
+                throw new Error("Cannot find the id for company with name '" + campaignData.company + "'. Check if you have written it correctly.");
             }
             let companyId = matchingCompany.id;
 
-            let offer = new Campaign({
-                uuid: offerData.uuid,
-                title: offerData.title,
-                description: offerData.desciption,
-                image: offerData.image,
+            let campaign = new Campaign({
+                uuid: campaignData.uuid,
+                title: campaignData.title,
+                description: campaignData.desciption,
+                image: campaignData.image,
                 company: companyId,
-                amount: offerData.amount,
-                requiredNumberOfFollowers: offerData.requiredNumberOfFollowers,
-                enforcedHashTags: offerData.enforcedHashTags,
-                startDate: offerData.startDate,
-                endDate: offerData.endDate,
-                categories:offerData.categories,
-                stillRunning: offerData.stillRunning
+                amount: campaignData.amount,
+                requiredNumberOfFollowers: campaignData.requiredNumberOfFollowers,
+                enforcedHashTags: campaignData.enforcedHashTags,
+                startDate: campaignData.startDate,
+                endDate: campaignData.endDate,
+                categories:campaignData.categories,
+                stillRunning: campaignData.stillRunning
             });
-            offer.save(function (err: any) {
+            campaign.save(function (err: any) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("Stored Campaign: " + JSON.stringify(offer));
-                    offerIds.push({name: offer.title, id: offer._id});
+                    campaignIds.push({name: campaign.title, id: campaign._id});
                 }
                 i++;
-                if (i == sampleOffers.length) {
+                if (i == sampleCampaigns.length) {
+                    console.log("Stored "+i + " campaigns");
                     resolve(true);
                 }
             })
         }
     });
-    await offerPromise;
+    await campaignPromise;
 
     i = 0;
     let influencerIds: NameToIdStorage[] = [];
     const influencerPromise = new Promise(resolve => {
-        for (let sampleData of sampleCOmpanies) {
+        for (let sampleData of sampleInfluencers) {
             let influencer = new Influencer(sampleData);
             influencer.save(function (err: any) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("Stored Influencer: " + JSON.stringify(influencer));
                     influencerIds.push({name: influencer.uuid, id: influencer._id});
                 }
 
-                if (++i == sampleCOmpanies.length) {
+                if (++i == sampleInfluencers.length) {
+                    console.log("Stored "+i + " influencer");
                     resolve(true);
                 }
             })
@@ -145,11 +145,11 @@ async function doit() {
     i = 0;
     const requestPromise = new Promise(resolve => {
         for (let sampleData of sampleRequests) {
-            let matchingOffer = offerIds.find(offer => offer.name == sampleData.campaign);
-            if (!matchingOffer) {
+            let matchingCampaign = campaignIds.find(campaign => campaign.name == sampleData.campaign);
+            if (!matchingCampaign) {
                 throw new Error("Cannot find the id for campaign '" + sampleData.campaign + "'. Check if you have written it correctly.");
             }
-            let offerId = matchingOffer.id;
+            let campaignId = matchingCampaign.id;
 
             let matchingInfluencer = influencerIds.find(influencer => influencer.name == sampleData.influencer);
             if (!matchingInfluencer) {
@@ -159,7 +159,7 @@ async function doit() {
 
             let request = new Request({
                 uuid: sampleData.id,
-                offer: offerId,
+                campaign: campaignId,
                 influencer: influencerId,
                 status: sampleData.status,
                 postponed: sampleData.postponed
@@ -167,10 +167,9 @@ async function doit() {
             request.save(function (err: any) {
                 if (err) {
                     console.log(err);
-                } else {
-                    console.log("Stored Request: " + JSON.stringify(request));
                 }
                 if (++i == sampleRequests.length) {
+                    console.log("Stored "+i + " requests");
                     resolve(true);
                 }
             });
