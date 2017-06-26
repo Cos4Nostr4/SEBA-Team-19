@@ -1,8 +1,8 @@
-import {DBOffer} from "../offer/db-offer";
+import {DBCampaign} from "../campaign/db-campaign";
 import {DBInfluencer} from "../influencer/db-influencer";
 export class DBRequest{
     uuid:string;
-    offer:DBOffer;
+    campaign:DBCampaign;
     influencer: DBInfluencer;
     status: RequestState;
     postponed: boolean;

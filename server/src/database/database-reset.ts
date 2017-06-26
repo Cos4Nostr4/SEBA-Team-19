@@ -1,6 +1,6 @@
 import * as mongoose from "mongoose";
 import {DatabaseConnection} from "../backend/database/database-connection";
-import {offerSchema} from "../backend/offer/offer-schema";
+import {campaignSchema} from "../backend/campaign/campaign-schema";
 import {requestSchema} from "../backend/request/request-schema";
 import {NameToIdStorage} from "./name-to-id-storage";
 import {influencerSchema} from "../backend/influencer/influencer-schema";
@@ -11,17 +11,17 @@ const sampleCOmpanies = require('./sample-influencers.json');
 const sampleCompanies = require('./sample-companies.json');
 
 let connection: mongoose.Connection = mongoose.createConnection(DatabaseConnection.defaultConnection());
-let Offer: any = connection.model("Offer", offerSchema);
+let Campaign: any = connection.model("Campaign", campaignSchema);
 let Request: any = connection.model("Request", requestSchema);
 let Influencer: any = connection.model("Influencer", influencerSchema);
 let Company: any = connection.model("Company", companySchema);
 
 async function doit() {
-    const offerDeletePromise = new Promise(resolve => Offer.remove(function (err: any) {
+    const offerDeletePromise = new Promise(resolve => Campaign.remove(function (err: any) {
         if (err) {
             console.log(err);
         } else {
-            console.log("Cleared Offer database");
+            console.log("Cleared Campaign database");
             resolve(true);
         }
     }));
@@ -57,7 +57,7 @@ async function doit() {
     }));
     await companyDeletePromise;
 
-    console.log("Loading sample offer in 'Offer' collection.");
+    console.log("Loading sample campaign in 'Campaign' collection.");
 
 
     let i = 0;
@@ -91,7 +91,7 @@ async function doit() {
             }
             let companyId = matchingCompany.id;
 
-            let offer = new Offer({
+            let offer = new Campaign({
                 uuid: offerData.uuid,
                 title: offerData.title,
                 description: offerData.desciption,
@@ -109,7 +109,7 @@ async function doit() {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("Stored Offer: " + JSON.stringify(offer));
+                    console.log("Stored Campaign: " + JSON.stringify(offer));
                     offerIds.push({name: offer.title, id: offer._id});
                 }
                 i++;
@@ -145,9 +145,9 @@ async function doit() {
     i = 0;
     const requestPromise = new Promise(resolve => {
         for (let sampleData of sampleRequests) {
-            let matchingOffer = offerIds.find(offer => offer.name == sampleData.offer);
+            let matchingOffer = offerIds.find(offer => offer.name == sampleData.campaign);
             if (!matchingOffer) {
-                throw new Error("Cannot find the id for offer '" + sampleData.offer + "'. Check if you have written it correctly.");
+                throw new Error("Cannot find the id for campaign '" + sampleData.campaign + "'. Check if you have written it correctly.");
             }
             let offerId = matchingOffer.id;
 

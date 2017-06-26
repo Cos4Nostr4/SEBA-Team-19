@@ -51,7 +51,7 @@ export class OfferListComponent implements OnInit {
     }
 
     private disableComponent() {
-        let parent = $('#offer-list-container').parent();
+        let parent = $('#campaign-list-container').parent();
         let windowHeight = $(window).height();
         let windowWidth = $(window).width();
 

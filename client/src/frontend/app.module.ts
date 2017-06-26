@@ -48,7 +48,7 @@ import {MenuSliderModule} from "./menu-slider/menu-slider.module";
                 component: OfferListComponent
             },
             {
-                path: 'offer-detail/:id',
+                path: 'campaign-detail/:id',
                 component: OfferDetailComponent
             },
 

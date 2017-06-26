@@ -1,5 +1,5 @@
 import {Schema} from "mongoose";
-export const offerSchema: Schema = new Schema({
+export const campaignSchema: Schema = new Schema({
     uuid: String,
     title: String,
     description: String,

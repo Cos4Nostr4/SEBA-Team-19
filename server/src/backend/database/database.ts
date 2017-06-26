@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-import {OfferRepository} from "../offer/offer-repository";
+import {CampaignRepository} from "../campaign/campaign-repository";
 import {DatabaseConnection} from "./database-connection";
 import {RequestRepository} from "../request/request-repository";
 import {InfluencerRepository} from "../influencer/influencer-repository";
@@ -8,7 +8,7 @@ import {CategoryRepository} from "../categories/category-repository";
 
 export class Database {
     private static instance: Database;
-    private offerRepository: OfferRepository;
+    private campaignRepository: CampaignRepository;
     private requestRepository: RequestRepository;
     private inluencerRepository: InfluencerRepository;
     private companyRepository: CompanyRepository;
@@ -16,7 +16,7 @@ export class Database {
 
     private constructor() {
         let connection: mongoose.Connection = mongoose.createConnection(DatabaseConnection.defaultConnection());
-        this.offerRepository = OfferRepository.createNewInstance(connection);
+        this.campaignRepository = CampaignRepository.createNewInstance(connection);
         this.requestRepository = RequestRepository.createNewInstance(connection);
         this.companyRepository = CompanyRepository.createNewInstance(connection);
         this.inluencerRepository = InfluencerRepository.createNewInstance(connection);
@@ -30,8 +30,8 @@ export class Database {
         return Database.instance;
     }
 
-    public accessOfferRepository() {
-        return this.offerRepository;
+    public accessCampaignRepository() {
+        return this.campaignRepository;
     }
 
     public accessRequestRepository(): RequestRepository {

@@ -24,7 +24,7 @@ export class CategoryRouter {
 
                 let categoryAsString: string = req.params.category;
                 let category: DBCategory = DBCategory[categoryAsString.toUpperCase()];
-                categoryRepository.getAllOffersForCategory(category, function (offers: Offer[]) {
+                categoryRepository.getAllCampaignsForCategory(category, function (offers: Offer[]) {
                     let transferObject = TransferObject.aTransferObjectFor(offers);
                     res.json(transferObject);
                 });
