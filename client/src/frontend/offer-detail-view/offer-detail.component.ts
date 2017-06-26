@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core'
 import {ActivatedRoute, Params}   from '@angular/router';
 import {Location}                 from '@angular/common';
 import {OfferService} from "../services/offer.service";
-import {Offer} from "../data-objects/offer";
+import {Campaign} from "../data-objects/campaign";
 import 'rxjs/add/operator/switchMap';
 import {Company} from "../data-objects/company";
 
@@ -14,11 +14,11 @@ import {Company} from "../data-objects/company";
 })
 
 export class OfferDetailComponent implements OnInit{
-    private offer:Offer;
+    private offer:Campaign;
 
     constructor(private offerService: OfferService, private route: ActivatedRoute, private location: Location) {
         let company = new Company("1", "PRada", "prada", "123", "...", "...", "...", "...", "...", true);
-        this.offer = new Offer("1", "Bibis Brom", "","",company, 1, 1, [], new Date(), new Date(), true);
+        this.offer = new Campaign("1", "Bibis Brom", "","",company, 1, 1, [], new Date(), new Date(), true);
     }
 
 

@@ -2,7 +2,7 @@ import {CampaignRepository} from "./campaign-repository";
 import * as express from "express";
 import {Database} from "../database/database";
 import {TransferObject} from "../transferobject/transfer-object";
-import {Campaign} from "../../../../client/src/frontend/data-objects/offer";
+import {Campaign} from "../../../../client/src/frontend/data-objects/campaign";
 import {RequestRepository} from "../request/request-repository";
 import {Request} from "../../../../client/src/frontend/data-objects/request";
 
@@ -22,8 +22,8 @@ export class CampaignRouter {
         let router: express.Router = express.Router();
         router.route('/offers')
             .get((req, res) =>{
-                this.campaignRepository.getAllCampaigns(function (offers: Campaign[]) {
-                    let transferObject = TransferObject.aTransferObjectFor(offers);
+                this.campaignRepository.getAllCampaigns(function (campaigns: Campaign[]) {
+                    let transferObject = TransferObject.aTransferObjectFor(campaigns);
                     res.json(transferObject);
                 });
             });
@@ -31,8 +31,8 @@ export class CampaignRouter {
         router.route('/offers/:id')
             .get((req, res) =>{
                 let campaignUuid = req.params.id;
-                this.campaignRepository.getCampaignWithId(campaignUuid, function (offer: Campaign) {
-                    let transferObject = TransferObject.aTransferObjectFor(offer);
+                this.campaignRepository.getCampaignWithId(campaignUuid, function (campaign: Campaign) {
+                    let transferObject = TransferObject.aTransferObjectFor(campaign);
                     res.json(transferObject);
                 });
             });

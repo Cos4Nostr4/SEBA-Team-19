@@ -5,15 +5,15 @@ import {ICampaignRepository} from "../campaign/campaign-repository";
 import {campaignSchema} from "../campaign/campaign-schema";
 import {DBCategory} from "./db-category";
 import {DBCampaign} from "../campaign/db-campaign";
-import {Offer} from "../../../../client/src/frontend/data-objects/offer";
+import {Campaign} from "../../../../client/src/frontend/data-objects/campaign";
 import {CampaignMapper} from "../campaign/campaign-mapper";
 
 export class CategoryRepository {
     private campaignRepository: Model<ICampaignRepository>;
 
 
-    private constructor(offerModel: Model<ICampaignRepository>) {
-        this.campaignRepository = offerModel;
+    private constructor(campaignModel: Model<ICampaignRepository>) {
+        this.campaignRepository = campaignModel;
     }
 
     public static createNewInstance(connection: mongoose.Connection): CategoryRepository {
@@ -26,8 +26,8 @@ export class CategoryRepository {
         this.campaignRepository.find({categories: categoryAsString})
             .populate("company", "-_id -__v")
             .exec(function (err: any, dbCampaigns: DBCampaign[]) {
-                let offers: Offer[] = CampaignMapper.mapAll(dbCampaigns);
-                func(offers);
+                let campaigns: Campaign[] = CampaignMapper.mapAll(dbCampaigns);
+                func(campaigns);
             });
     }
 }

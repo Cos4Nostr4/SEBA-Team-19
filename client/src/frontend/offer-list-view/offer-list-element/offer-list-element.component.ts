@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {Offer} from "../../data-objects/offer";
+import {Campaign} from "../../data-objects/campaign";
 import {ImageService} from "../../services/image.service";
 
 @Component({
@@ -10,7 +10,7 @@ import {ImageService} from "../../services/image.service";
 })
 
 export class OfferListElementComponent implements OnInit{
-    @Input() offer: Offer;
+    @Input() offer: Campaign;
     private imageSrc: string;
     private imageService: ImageService;
 

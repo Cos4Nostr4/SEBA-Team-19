@@ -54,8 +54,8 @@ export class App {
         this.application.use('/media/images/', express.static(__dirname +'/media'));
         this.application.use(router);
 
-        let offerRouter: CampaignRouter = new CampaignRouter();
-        offerRouter.configureRoutes(this.baseUrl, this.application);
+        let campaignRouter: CampaignRouter = new CampaignRouter();
+        campaignRouter.configureRoutes(this.baseUrl, this.application);
 
         let requestRouter: RequestRouter = new RequestRouter();
         requestRouter.configureRoutes(this.baseUrl, this.application);

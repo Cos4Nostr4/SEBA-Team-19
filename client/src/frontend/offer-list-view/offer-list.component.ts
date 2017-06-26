@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {OfferService} from "../services/offer.service";
-import {Offer} from "../data-objects/offer";
+import {Campaign} from "../data-objects/campaign";
 import {AuthenticationService} from "../services/authentication.service";
 import {ActivatedRoute, Params} from "@angular/router";
 
@@ -16,7 +16,7 @@ declare var $: any;
 })
 export class OfferListComponent implements OnInit {
     offerService: OfferService;
-    offerList: Offer[];
+    offerList: Campaign[];
     private errorMessage: string;
     private authenticationService: AuthenticationService;
 

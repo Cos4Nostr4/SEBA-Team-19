@@ -16,15 +16,15 @@ export class RequestRepository {
     private campaignRepository: Model<ICampaignRepository>;
 
 
-    private constructor(model: Model<IRequestRepository>, offerModel: Model<ICampaignRepository>) {
-        this.requestModel = model;
-        this.campaignRepository = offerModel;
+    private constructor(requestModel: Model<IRequestRepository>, campaignModel: Model<ICampaignRepository>) {
+        this.requestModel = requestModel;
+        this.campaignRepository = campaignModel;
     }
 
     public static createNewInstance(connection: mongoose.Connection): RequestRepository {
         let requestModel: Model<IRequestRepository> = connection.model<IRequestRepository>("Request", requestSchema);
-        let offerModel: Model<ICampaignRepository> = connection.model<ICampaignRepository>("Campaign", campaignSchema);
-        return new RequestRepository(requestModel, offerModel);
+        let campaignModel: Model<ICampaignRepository> = connection.model<ICampaignRepository>("Campaign", campaignSchema);
+        return new RequestRepository(requestModel, campaignModel);
     }
 
     public getAllRequests(func: Function) {

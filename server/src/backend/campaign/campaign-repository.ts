@@ -1,7 +1,7 @@
 import {DBCampaign} from "./db-campaign";
 import * as mongoose from "mongoose";
 import {Document, Model} from "mongoose";
-import {Campaign} from "../../../../client/src/frontend/data-objects/offer";
+import {Campaign} from "../../../../client/src/frontend/data-objects/campaign";
 import {CampaignMapper} from "./campaign-mapper";
 import {campaignSchema} from "./campaign-schema";
 import {requestSchema} from "../request/request-schema";
@@ -17,23 +17,23 @@ export class CampaignRepository {
     private requestModel: Model<IRequestRepository>;
 
 
-    private constructor(offerModel: Model<ICampaignRepository>, requestModel: Model<IRequestRepository>) {
-        this.campaignModel = offerModel;
+    private constructor(campaignModel: Model<ICampaignRepository>, requestModel: Model<IRequestRepository>) {
+        this.campaignModel = campaignModel;
         this.requestModel = requestModel;
     }
 
     public static createNewInstance(connection: mongoose.Connection): CampaignRepository {
-        let offerModel: Model<ICampaignRepository> = connection.model<ICampaignRepository>("Campaign", campaignSchema);
+        let campaignRepository: Model<ICampaignRepository> = connection.model<ICampaignRepository>("Campaign", campaignSchema);
         let requestModel: Model<IRequestRepository> = connection.model<IRequestRepository>("Request", requestSchema);
-        return new CampaignRepository(offerModel, requestModel);
+        return new CampaignRepository(campaignRepository, requestModel);
     }
 
     public getAllCampaigns(func: Function) {
         this.campaignModel.find()
             .populate("company", "-_id -__v")
             .exec(function (err: any, dbCampaigns: DBCampaign[]) {
-            let offers: Campaign[] = CampaignMapper.mapAll(dbCampaigns);
-            func(offers);
+            let campaigns: Campaign[] = CampaignMapper.mapAll(dbCampaigns);
+            func(campaigns);
         });
     }
 
@@ -41,8 +41,8 @@ export class CampaignRepository {
         this.campaignModel.findOne({'uuid':campaignUuid})
             .populate("company", "-_id -__v")
             .exec(function (err: any, dbCampaign: DBCampaign) {
-            let offer: Campaign = CampaignMapper.map(dbCampaign);
-            func(offer);
+            let campaign: Campaign = CampaignMapper.map(dbCampaign);
+            func(campaign);
         });
     }
 
