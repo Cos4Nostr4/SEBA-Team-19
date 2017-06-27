@@ -31,8 +31,13 @@ export class InfluencerRepository {
 
     public getInfluencerWithId(influencerUuid:string, func: Function) {
         this.model.findOne({'uuid':influencerUuid}, function (err: any, dbInfluencer: DBInfluencer) {
-            let influencer: Influencer = InfluencerMapper.map(dbInfluencer);
-            func(influencer);
+            if(dbInfluencer) {
+                let influencer: Influencer = InfluencerMapper.map(dbInfluencer);
+                func(influencer, null);
+            }else{
+                let errorMessage = "Cannot find Influencer for id '"+influencerUuid+"'";
+                func(null, errorMessage);
+            }
         });
     }
 }

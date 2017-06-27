@@ -1,5 +1,5 @@
 
 export interface NameToIdStorage{
-    name:string|number;
+    name:string;
     id:string;
 }

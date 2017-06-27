@@ -29,9 +29,15 @@ export class InfluencerRouter {
         router.route('/influencers/:id')
             .get(function (req, res) {
                 let influencerUuid = req.params.id;
-                influencerRepository.getInfluencerWithId(influencerUuid, function (influencer: Influencer[]) {
-                    let transferObject = TransferObject.aTransferObjectFor(influencer);
-                    res.json(transferObject);
+                influencerRepository.getInfluencerWithId(influencerUuid, function (influencer: Influencer[], error: String) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(influencer);
+                        res.json(transferObject);
+                    }
                 });
             });
 

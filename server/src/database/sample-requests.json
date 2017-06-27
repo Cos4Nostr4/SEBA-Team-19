@@ -1,22 +1,22 @@
 [
   {
-    "id":1,
+    "id": "1",
     "campaign":"Clearasil",
-    "influencer": 1,
+    "influencer": "1",
     "status": "ACCEPTED",
     "postponed": false
   },
   {
-    "id":2,
+    "id":"2",
     "campaign":"Chanel",
-    "influencer": 2,
+    "influencer": "2",
     "status": "REJECTED",
     "postponed": false
   },
   {
-    "id":3,
+    "id": "3",
     "campaign":"Joop",
-    "influencer": 1,
+    "influencer": "1",
     "status": "PENDING",
     "postponed": false
   }

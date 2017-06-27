@@ -1,6 +1,6 @@
 [
   {
-    "uuid": 1,
+    "uuid": "1",
     "name": "Clearasil",
     "username": "Clearasil",
     "password": "super secret",
@@ -12,7 +12,7 @@
     "verified": true
   },
   {
-    "uuid": 2,
+    "uuid": "2",
     "name": "Douglas",
     "username": "Nvidia",
     "password": "super secret",
@@ -24,7 +24,7 @@
     "verified": true
   },
   {
-    "uuid": 3,
+    "uuid": "3",
     "name": "Burberry",
     "username": "russian mafia",
     "password": "super secret",
@@ -36,19 +36,7 @@
     "verified": false
   },
   {
-    "uuid": 3,
-    "name": "Burberry",
-    "username": "russian mafia",
-    "password": "super secret",
-    "profilPicture": "somePicture",
-    "contact": "call me ;)",
-    "address": "russian mafia hoam",
-    "paymentInformation": "12345 geld",
-    "taxInformation": "12344321",
-    "verified": false
-  },
-  {
-    "uuid": 4,
+    "uuid": "4",
     "name": "Chanel",
     "username": "Chanel",
     "password": "super secret",
@@ -60,7 +48,7 @@
     "verified": false
   },
   {
-    "uuid": 5,
+    "uuid": "5",
     "name": "Joop",
     "username": "russian mafia",
     "password": "super secret",
@@ -72,7 +60,7 @@
     "verified": false
   },
   {
-    "uuid": 6,
+    "uuid": "6",
     "name": "Juvena",
     "username": "russian mafia",
     "password": "super secret",
@@ -84,7 +72,7 @@
     "verified": false
   },
   {
-    "uuid": 7,
+    "uuid": "7",
     "name": "Ilia",
     "username": "russian mafia",
     "password": "super secret",
@@ -96,7 +84,7 @@
     "verified": false
   },
   {
-    "uuid": 8,
+    "uuid": "8",
     "name": "Schwarzkopf",
     "username": "russian mafia",
     "password": "super secret",
@@ -108,7 +96,7 @@
     "verified": false
   },
   {
-    "uuid": 9,
+    "uuid": "9",
     "name": "Dior Homme",
     "username": "russian mafia",
     "password": "super secret",

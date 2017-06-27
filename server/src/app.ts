@@ -8,32 +8,32 @@ import {CompanyRouter} from "./backend/company/company-router";
 import {CategoryRouter} from "./backend/categories/category-router";
 
 export class App {
-    private application: express.Application;
+    private _application: express.Application;
     private baseUrl: string;
 
     public static bootstrap(): express.Application {
         let app = new App();
         app.configure();
         app.registerRoutes();
-        return app.application;
+        return app._application;
     }
 
 
     constructor() {
-        this.application = express();
+        this._application = express();
         this.baseUrl = Config.backend_base_url;
     }
 
     private configure() {
-        this.application.use(bodyParser.json());
-        this.application.use(bodyParser.urlencoded({
+        this._application.use(bodyParser.json());
+        this._application.use(bodyParser.urlencoded({
             extended: true
         }));
-        this.application.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
+        this._application.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
             err.status = 404;
             next(err);
         });
-        this.application.use(function (req, res, next) {
+        this._application.use(function (req, res, next) {
             res.header('Access-Control-Allow-Origin', '*');
             res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
             res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -51,22 +51,27 @@ export class App {
                 res.end("Success!");
             });
 
-        this.application.use('/media/images/', express.static(__dirname +'/media'));
-        this.application.use(router);
+        this._application.use('/media/images/', express.static(__dirname +'/media'));
+        this._application.use(router);
 
         let campaignRouter: CampaignRouter = new CampaignRouter();
-        campaignRouter.configureRoutes(this.baseUrl, this.application);
+        campaignRouter.configureRoutes(this.baseUrl, this._application);
 
         let requestRouter: RequestRouter = new RequestRouter();
-        requestRouter.configureRoutes(this.baseUrl, this.application);
+        requestRouter.configureRoutes(this.baseUrl, this._application);
 
         let influencerRouter: InfluencerRouter = new InfluencerRouter();
-        influencerRouter.configureRoutes(this.baseUrl, this.application);
+        influencerRouter.configureRoutes(this.baseUrl, this._application);
 
         let companyRouter: CompanyRouter = new CompanyRouter();
-        companyRouter.configureRoutes(this.baseUrl, this.application);
+        companyRouter.configureRoutes(this.baseUrl, this._application);
 
         let categoryRouter = new CategoryRouter();
-        categoryRouter.configureRoutes(this.baseUrl, this.application);
+        categoryRouter.configureRoutes(this.baseUrl, this._application);
+    }
+
+
+    public get application(): express.Application {
+        return this._application;
     }
 }

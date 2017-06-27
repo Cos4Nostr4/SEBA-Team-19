@@ -1,16 +1,16 @@
 [
   {
-    "uuid": 1,
+    "uuid": "1",
     "address": "Detlefs dahoam",
     "token": "12344321"
   },
   {
-    "uuid": 2,
+    "uuid": "2",
     "address": "Franks dahoam",
     "token": "12344321"
   },
   {
-    "uuid": 3,
+    "uuid": "3",
     "address": "Hans dahoam",
     "token": "12344321"
   }
