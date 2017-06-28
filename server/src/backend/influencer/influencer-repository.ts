@@ -25,7 +25,7 @@ export class InfluencerRepository {
     public getAllInfluencers(func: Function) {
         this.model.find(function (err: any, influencerList: DBInfluencer[]) {
             let influencer: Influencer[] = InfluencerMapper.mapAll(influencerList);
-            func(influencer);
+            func(influencer, null);
         });
     }
 

@@ -5,7 +5,7 @@ import {requestSchema} from "../backend/request/request-schema";
 import {NameToIdStorage} from "./name-to-id-storage";
 import {influencerSchema} from "../backend/influencer/influencer-schema";
 import {companySchema} from "../backend/company/company-schema";
-const sampleCampaigns = require('./sample_campaigns.json');
+const sampleCampaigns = require('./sample-campaigns.json');
 const sampleRequests = require('./sample-requests.json');
 const sampleInfluencers = require('./sample-influencers.json');
 const sampleCompanies = require('./sample-companies.json');
@@ -91,17 +91,21 @@ async function doit() {
             }
             let companyId = matchingCompany.id;
 
+            let startDate = new Date(campaignData.startDate);
+            startDate.setHours(1,0,0);
+            let endDate = new Date(campaignData.endDate);
+            endDate.setHours(1,0,0);
             let campaign = new Campaign({
                 uuid: campaignData.uuid,
                 title: campaignData.title,
-                description: campaignData.desciption,
+                description: campaignData.description,
                 image: campaignData.image,
                 company: companyId,
                 amount: campaignData.amount,
                 requiredNumberOfFollowers: campaignData.requiredNumberOfFollowers,
                 enforcedHashTags: campaignData.enforcedHashTags,
-                startDate: campaignData.startDate,
-                endDate: campaignData.endDate,
+                startDate: startDate,
+                endDate: endDate,
                 categories:campaignData.categories,
                 stillRunning: campaignData.stillRunning
             });
@@ -158,7 +162,7 @@ async function doit() {
             let influencerId = matchingInfluencer.id;
 
             let request = new Request({
-                uuid: sampleData.id,
+                uuid: sampleData.uuid,
                 campaign: campaignId,
                 influencer: influencerId,
                 status: sampleData.status,

@@ -20,16 +20,22 @@ export class InfluencerRouter {
         let router: express.Router = express.Router();
         router.route('/influencers')
             .get(function (req, res) {
-                influencerRepository.getAllInfluencers(function (influencer: Influencer[]) {
-                    let transferObject = TransferObject.aTransferObjectFor(influencer);
-                    res.json(transferObject);
+                influencerRepository.getAllInfluencers(function (influencers: Influencer[], error: String) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(influencers);
+                        res.json(transferObject);
+                    }
                 });
             });
 
         router.route('/influencers/:id')
             .get(function (req, res) {
                 let influencerUuid = req.params.id;
-                influencerRepository.getInfluencerWithId(influencerUuid, function (influencer: Influencer[], error: String) {
+                influencerRepository.getInfluencerWithId(influencerUuid, function (influencer: Influencer, error: String) {
                     if (error) {
                         res.status(400);
                         let transferObject = TransferObject.aTransferObjectForError(error);

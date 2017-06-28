@@ -17,18 +17,30 @@ export class RequestRouter {
         let router: express.Router = express.Router();
         router.route('/requests')
             .get((req: any, res: any) => {
-                this.requestRepository.getAllRequests(function (request: Request[]) {
-                    let transferObject = TransferObject.aTransferObjectFor(request);
-                    res.json(transferObject);
+                this.requestRepository.getAllRequests(function (requests: Request[], error: String) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(requests);
+                        res.json(transferObject);
+                    }
                 });
             });
 
         router.route('/requests/:id')
             .get((req: any, res: any) => {
                 let requestUuid = req.params.id;
-                this.requestRepository.getRequestWithId(requestUuid, function (request: Request) {
-                    let transferObject = TransferObject.aTransferObjectFor(request);
-                    res.json(transferObject);
+                this.requestRepository.getRequestWithId(requestUuid, function (request: Request, error: String) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(request);
+                        res.json(transferObject);
+                    }
                 });
             });
 

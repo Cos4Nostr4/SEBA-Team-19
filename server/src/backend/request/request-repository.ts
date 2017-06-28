@@ -29,33 +29,57 @@ export class RequestRepository {
 
     public getAllRequests(func: Function) {
         this.requestModel.find()
-            .populate("campaign", '-_id -__v')
+            .populate({
+                path: 'campaign',
+                select: '-_id -__v',
+                populate: {
+                    path: 'company',
+                    select: '-_id -__v'
+                }
+            })
             .populate("influencer", '-_id -__v')
             .exec(function (err: any, dbRequests: DBRequest[]) {
                 let requests: Request[] = RequestMapper.mapAll(dbRequests);
-                func(requests);
+                func(requests, null);
             });
     }
 
     public getRequestWithId(requestUuid: string, func: Function) {
-        this.requestModel.findOne({'uuid':requestUuid})
-            .populate("campaign", '-_id -__v')
+        this.requestModel.findOne({'uuid': requestUuid})
+            .populate({
+                path: 'campaign',
+                select: '-_id -__v',
+                populate: {
+                    path: 'company',
+                    select: '-_id -__v'
+                }
+            })
             .populate("influencer", '-_id -__v')
             .exec(function (err: any, dbRequest: DBRequest) {
-                let request: Request = RequestMapper.map(dbRequest);
-                func(request);
+                if (dbRequest) {
+                    let request: Request = RequestMapper.map(dbRequest);
+                    func(request, null);
+                } else {
+                    let errorMessage = "Cannot find Request for id '" + requestUuid + "'";
+                    func(null, errorMessage);
+                }
             });
     }
 
     public getAllRequestsForCampaign(campaignUuid: string, func: Function) {
         this.campaignRepository.findOne({'uuid': campaignUuid}, (err: any, campaign: any) => {
-            this.requestModel.find({'campaign': campaign._id})
-                .populate("campaign", '-_id -__v')
-                .populate("influencer", '-_id -__v')
-                .exec(function (err: any, requestList: DBRequest[]) {
-                    let requests: Request[] = RequestMapper.mapAll(requestList);
-                    func(requests);
-                });
+            if (!err && campaign) {
+                this.requestModel.find({'campaign': campaign._id})
+                    .populate("campaign", '-_id -__v')
+                    .populate("influencer", '-_id -__v')
+                    .exec(function (err: any, requestList: DBRequest[]) {
+                        let requests: Request[] = RequestMapper.mapAll(requestList);
+                        func(requests);
+                    });
+            } else {
+                let errorMessage = "Cannot find Request for campaign with id '" + campaignUuid + "'";
+                func(null, errorMessage);
+            }
         });
     }
 }

@@ -1,10 +1,11 @@
 var request = require("request");
 
-const baseUrl = "http://localhost:3010/api/";
-const influencerUrl = "influencers";
-const sampleInfluencers = require('../../src/database/sample-influencers.json');
-
 describe("Test Influencer backend: ", function () {
+    const baseUrl = "http://localhost:3010/api/";
+    const influencerUrl = "influencers";
+    const sampleInfluencers = require('../../src/database/sample-influencers.json');
+
+
     describe("GET " + baseUrl + influencerUrl, function () {
         it("returns 200", function (done) {
             request.get(baseUrl + influencerUrl, function (error, response, body) {
@@ -14,8 +15,8 @@ describe("Test Influencer backend: ", function () {
         });
         it("returns all influencers", function (done) {
             request.get(baseUrl + influencerUrl, function (error, response, body) {
-                let data = JSON.parse(body).data;
-                let influencers = data;
+                let influencers = JSON.parse(body).data;
+                influencers.sort((i1, i2) => i1.uuid.localeCompare(i2.uuid));
                 let expectedInfluencers = sampleInfluencers;
                 expect(influencers).toEqual(expectedInfluencers);
                 done();
@@ -33,8 +34,7 @@ describe("Test Influencer backend: ", function () {
         });
         it("returns influencer for existing id " + influencerId, function (done) {
             request.get(baseUrl + influencerUrl + "/" + influencerId, function (error, response, body) {
-                let data = JSON.parse(body).data;
-                let influencer = data
+                let influencer = JSON.parse(body).data;
                 let expectedInfluencer = sampleInfluencers.find((influencer) => influencer.uuid == influencerId);
                 expect(influencer).toEqual(expectedInfluencer);
                 done();
@@ -52,7 +52,7 @@ describe("Test Influencer backend: ", function () {
             request.get(baseUrl + influencerUrl + "/" + notExisitingInfluencerId, function (error, response, body) {
                 expect(response.statusCode).toBe(400);
                 let errorMessage = JSON.parse(body).error;
-                expect(errorMessage).toBe("Cannot find Influencer for id '"+notExisitingInfluencerId+"'");
+                expect(errorMessage).toBe("Cannot find Influencer for id '" + notExisitingInfluencerId + "'");
                 done();
             });
         });
@@ -64,5 +64,4 @@ describe("Test Influencer backend: ", function () {
             });
         });
     });
-
 });
