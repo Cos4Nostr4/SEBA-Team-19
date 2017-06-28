@@ -20,24 +20,36 @@ export class CampaignRouter {
 
     public configureRoutes(baseUrl: string, application: express.Application) {
         let router: express.Router = express.Router();
-        router.route('/offers')
+        router.route('/campaigns')
             .get((req, res) =>{
-                this.campaignRepository.getAllCampaigns(function (campaigns: Campaign[]) {
-                    let transferObject = TransferObject.aTransferObjectFor(campaigns);
-                    res.json(transferObject);
+                this.campaignRepository.getAllCampaigns(function (campaigns: Campaign[], error: any) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(campaigns);
+                        res.json(transferObject);
+                    }
                 });
             });
 
-        router.route('/offers/:id')
+        router.route('/campaigns/:id')
             .get((req, res) =>{
                 let campaignUuid = req.params.id;
-                this.campaignRepository.getCampaignWithId(campaignUuid, function (campaign: Campaign) {
-                    let transferObject = TransferObject.aTransferObjectFor(campaign);
-                    res.json(transferObject);
+                this.campaignRepository.getCampaignWithId(campaignUuid, function (campaign: Campaign, error: any) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(campaign);
+                        res.json(transferObject);
+                    }
                 });
             });
 
-        router.route('/offers/:id/requests')
+        router.route('/campaigns/:id/requests')
             .get((req, res) =>{
                 let campaignUuid = req.params.id;
                 this.requestRepository.getAllRequestsForCampaign(campaignUuid,function (requests: Request[]) {

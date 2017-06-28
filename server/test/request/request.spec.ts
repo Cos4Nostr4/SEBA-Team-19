@@ -87,7 +87,6 @@ describe("Test Request backend: ", function () {
             let influencerId = request.influencer;
             let influencer = sampleInfluencers.find((influencer) => influencer.uuid == influencerId);
             request.influencer = influencer;
-            return request;
         });
         requests.forEach((request) => {
             let campaignTitle = request.campaign;
@@ -95,9 +94,7 @@ describe("Test Request backend: ", function () {
             request.campaign = campaign;
             let companyName = request.campaign.company;
             let company = sampleCompanies.find((company) => company.name == companyName);
-            console.log(">>>"+request.uuid+"->"+campaignTitle+"|"+JSON.stringify(company));
             request.campaign.company = company;
-            return request;
         });
 
         return requests;

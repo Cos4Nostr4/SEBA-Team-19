@@ -33,7 +33,7 @@ export class CampaignRepository {
             .populate("company", "-_id -__v")
             .exec(function (err: any, dbCampaigns: DBCampaign[]) {
             let campaigns: Campaign[] = CampaignMapper.mapAll(dbCampaigns);
-            func(campaigns);
+            func(campaigns, null);
         });
     }
 
@@ -41,8 +41,13 @@ export class CampaignRepository {
         this.campaignModel.findOne({'uuid':campaignUuid})
             .populate("company", "-_id -__v")
             .exec(function (err: any, dbCampaign: DBCampaign) {
-            let campaign: Campaign = CampaignMapper.map(dbCampaign);
-            func(campaign);
+                if(dbCampaign) {
+                    let campaign: Campaign = CampaignMapper.map(dbCampaign);
+                    func(campaign, null);
+                }else{
+                    let errorMessage = "Cannot find Campaign for id '"+campaignUuid+"'";
+                    func(null, errorMessage);
+                }
         });
     }
 

@@ -15,7 +15,7 @@ describe("Test Company backend: ", function () {
         it("returns all companies", function (done) {
             request.get(baseUrl + companiesUrl, function (error, response, body) {
                 let companies = JSON.parse(body).data;
-                companies.sort((c1, c2) => c1.uuid.localeCompare(c2.uuid));
+                companies.sort((c1, c2) => (+c1.uuid) - (+c2.uuid));
                 let expectedCompanies = sampleCompanies;
                 expect(companies).toEqual(expectedCompanies);
                 done();
@@ -23,16 +23,16 @@ describe("Test Company backend: ", function () {
         });
     });
 
-    describe("GET " + baseUrl + companiesUrl+"/:id", function () {
+    describe("GET " + baseUrl + companiesUrl + "/:id", function () {
         const companyUuid = 2;
         it("returns 200", function (done) {
-            request.get(baseUrl + companiesUrl+"/"+companyUuid, function (error, response, body) {
+            request.get(baseUrl + companiesUrl + "/" + companyUuid, function (error, response, body) {
                 expect(response.statusCode).toEqual(200);
                 done();
             });
         });
-        it("returns company with id "+companyUuid, function (done) {
-            request.get(baseUrl + companiesUrl+"/"+companyUuid, function (error, response, body) {
+        it("returns company with id " + companyUuid, function (done) {
+            request.get(baseUrl + companiesUrl + "/" + companyUuid, function (error, response, body) {
                 let company = JSON.parse(body).data;
                 let expectedCompany = sampleCompanies.find((company) => company.uuid == companyUuid);
                 expect(company).toEqual(expectedCompany);
