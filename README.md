@@ -7,15 +7,19 @@ npm install -g @angular/cli
 npm install   (only at first start)
 npm start
 
-## To start server
+## To start database
 mongod --dbpath database (once) 
 (for WINDOWS cd to C:\Program Files\MongoDB\Server\3.4\bin> and run this command: 
 mongod --port 27017 --dbpath "C:\data\db") (--dbpath can point to any folder, just make sure it exists)
-npm run build:server 
-(for WINDOWS cd to SEBA-Team-19 and use this command: "node_modules/.bin/ts-node" "server/src/server.ts")
 
 # Update Datebase on Windows
 "ts-node server/src/database/database-reset.ts"
+
+## To start server
+npm run build:server 
+(for WINDOWS cd to SEBA-Team-19 and use this command: "node_modules/.bin/ts-node" "server/src/server.ts")
+
+
 
 ## Adding new dependencies
 delete package-lock.json

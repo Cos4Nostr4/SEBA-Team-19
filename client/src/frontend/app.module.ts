@@ -19,15 +19,25 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MenuSliderModule} from "./menu-slider/menu-slider.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CampanyDetailPageModule} from './parent/campany-detail-page/campany-detail-page.module';
+import {CampanyDetailPageComponent} from "./parent/campany-detail-page/campany-detail-page.component";
 import {CampanyPageModule} from './parent/campany-page/campany-page.module';
+import {CampanyPageComponent} from './parent/campany-page/campany-page.component';
 import {CampusDetailPageModule} from './parent/campus-detail-page/campus-detail-page.module';
+import {CampusDetailPageComponent} from './parent/campus-detail-page/campus-detail-page.component';
 import {CampusPageModule} from './parent/campus-page/campus-page.module';
+import {CampusPageComponent} from './parent/campus-page/campus-page.component';
 import {CompanyLoginPageModule} from './parent/company-login-page/company-login-page.module';
+import {CompanyLoginPageComponent} from './parent/company-login-page/company-login-page.component';
 import {CompanyRegisterPageModule} from './parent/company-register-page/company-register-page.module';
+import {CompanyRegisterPageComponent} from './parent/company-register-page/company-register-page.component';
 import {DefaultPageModule} from './parent/default-page/default-page.module';
+import {DefaultPageComponent} from './parent/default-page/default-page.component';
 import {InstaLoginPageModule} from './parent/insta-login-page/insta-login-page.module';
+import {InstaLoginPageComponent} from './parent/insta-login-page/insta-login-page.component';
 import {ProfileViewDropdownModule} from './parent/profile-view-dropdown/profile-view-dropdown.module';
+import {ProfileViewDropdownComponent} from './parent/profile-view-dropdown/profile-view-dropdown.component';
 import {StatusPageModule} from './parent/status-page/status-page.module';
+import {StatusPageComponent} from './parent/status-page/status-page.component';
 
 
 
@@ -87,8 +97,48 @@ import {StatusPageModule} from './parent/status-page/status-page.module';
                 component: SampleObjectComponent
             },
             {
+                path: 'app-campany-detail-page',
+                component: CampanyDetailPageComponent
+            },
+            {
+                path: 'app-campany-page',
+                component: CampanyPageComponent
+            },
+            {
+                path: 'app-campus-detail-page',
+                component: CampusDetailPageComponent
+            },
+            {
+                path: 'app-campus-page',
+                component: CampusPageComponent
+            },
+            {
+                path: 'app-company-login-page',
+                component: CompanyLoginPageComponent
+            },
+            {
+                path: 'app-company-register-page',
+                component: CompanyRegisterPageComponent
+            },
+            {
+                path: 'app-default-page',
+                component: DefaultPageComponent
+            },
+            {
+                path: 'app-insta-login-page',
+                component: InstaLoginPageComponent
+            },
+            {
+                path: 'app-profile-view-dropdrown',
+                component: ProfileViewDropdownComponent
+            },
+            {
+                path: 'app-status-page',
+                component: StatusPageComponent
+            },
+            {
                 path: '',
-                redirectTo: '/dashboard',
+                redirectTo: '/app-default-page',
                 pathMatch: 'full'
             },
         ])
