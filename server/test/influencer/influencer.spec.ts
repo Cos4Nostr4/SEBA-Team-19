@@ -50,7 +50,6 @@ describe("Test Influencer backend: ", function () {
         });
         it("returns error message for not existing influencer id", function (done) {
             request.get(baseUrl + influencerUrl + "/" + notExisitingInfluencerId, function (error, response, body) {
-                expect(response.statusCode).toBe(400);
                 let errorMessage = JSON.parse(body).error;
                 expect(errorMessage).toBe("Cannot find Influencer for id '" + notExisitingInfluencerId + "'");
                 done();

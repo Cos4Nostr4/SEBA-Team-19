@@ -20,18 +20,30 @@ export class CompanyRouter {
         let router: express.Router = express.Router();
         router.route('/companies')
             .get(function (req, res) {
-                companyRepository.getAllCompanies(function (companies: Company[]) {
-                    let transferObject = TransferObject.aTransferObjectFor(companies);
-                    res.json(transferObject);
+                companyRepository.getAllCompanies(function (companies: Company[], error: any) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(companies);
+                        res.json(transferObject);
+                    }
                 });
             });
 
         router.route('/companies/:id')
             .get(function (req, res) {
                 let companyUuid = req.params.id;
-                companyRepository.getCompanyWithId(companyUuid, function (company: Company) {
-                    let transferObject = TransferObject.aTransferObjectFor(company);
-                    res.json(transferObject);
+                companyRepository.getCompanyWithId(companyUuid, function (company: Company, error: any) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(company);
+                        res.json(transferObject);
+                    }
                 });
             });
 

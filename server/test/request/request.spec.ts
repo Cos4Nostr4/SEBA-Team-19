@@ -22,13 +22,12 @@ describe("Test Request backend: ", function () {
             request.get(baseUrl + requestUrl, function (error, response, body) {
                 let requests = JSON.parse(body).data;
                 requests.forEach((request) => {
-                    request.status = RequestState[request.status]
+                    request.status = RequestState[request.status];
                     let startDate: Date = new Date(request.campaign.startDate);
                     let endDate: Date = new Date(request.campaign.endDate);
                     request.campaign.startDate = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + (startDate.getDate());
                     request.campaign.endDate = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + (endDate.getDate());
                 });
-
 
                 expect(requests).toEqual(expectedRequests);
                 done();
@@ -59,23 +58,22 @@ describe("Test Request backend: ", function () {
             });
         });
 
-        const notExisitingRequestId = 123456789;
-        it("returns 400 for not existing influencer id", function (done) {
-            request.get(baseUrl + requestUrl + "/" + notExisitingRequestId, function (error, response, body) {
+        const notExistingRequestId = 123456789;
+        it("returns 400 for not existing request id", function (done) {
+            request.get(baseUrl + requestUrl + "/" + notExistingRequestId, function (error, response, body) {
                 expect(response.statusCode).toBe(400);
                 done();
             });
         });
-        it("returns error message for not existing influencer id", function (done) {
-            request.get(baseUrl + requestUrl + "/" + notExisitingRequestId, function (error, response, body) {
-                expect(response.statusCode).toBe(400);
+        it("returns error message for not existing request id", function (done) {
+            request.get(baseUrl + requestUrl + "/" + notExistingRequestId, function (error, response, body) {
                 let errorMessage = JSON.parse(body).error;
-                expect(errorMessage).toBe("Cannot find Request for id '" + notExisitingRequestId + "'");
+                expect(errorMessage).toBe("Cannot find Request for id '" + notExistingRequestId + "'");
                 done();
             });
         });
-        it("returns empty data for not existing influencer id", function (done) {
-            request.get(baseUrl + requestUrl + "/" + notExisitingRequestId, function (error, response, body) {
+        it("returns empty data for not existing request id", function (done) {
+            request.get(baseUrl + requestUrl + "/" + notExistingRequestId, function (error, response, body) {
                 let data = JSON.parse(body).data;
                 expect(data).toBeNull();
                 done();
@@ -97,6 +95,7 @@ describe("Test Request backend: ", function () {
             request.campaign = campaign;
             let companyName = request.campaign.company;
             let company = sampleCompanies.find((company) => company.name == companyName);
+            console.log(">>>"+request.uuid+"->"+campaignTitle+"|"+JSON.stringify(company));
             request.campaign.company = company;
             return request;
         });

@@ -25,14 +25,19 @@ export class CompanyRepository {
     public getAllCompanies(func: Function) {
         this.model.find(function (err: any, dbCompanies: DBCompany[]) {
             let companies: Company[] = CompanyMapper.mapAll(dbCompanies);
-            func(companies);
+            func(companies, null);
         });
     }
 
     public getCompanyWithId(companyUuid:string, func: Function) {
         this.model.findOne({'uuid':companyUuid}, function (err: any, dbCompany: DBCompany) {
-            let company: Company = CompanyMapper.map(dbCompany);
-            func(company);
+            if(dbCompany) {
+                let company: Company = CompanyMapper.map(dbCompany);
+                func(company);
+            }else{
+                let errorMessage = "Cannot find Company for id '"+companyUuid+"'";
+                func(null, errorMessage);
+            }
         });
     }
 }
