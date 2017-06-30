@@ -19,5 +19,12 @@
     "influencer": "1",
     "status": "PENDING",
     "postponed": false
+  },
+  {
+    "uuid": "4",
+    "campaign":"Clearasil",
+    "influencer": "2",
+    "status": "ACCEPTED",
+    "postponed": false
   }
 ]

@@ -1,4 +1,5 @@
 var request = require("request");
+import {prepareRequestData} from "../samples/sample-data";
 
 describe("Test Campaign backend: ", function () {
     const baseUrl = "http://localhost:3010/api/";
@@ -73,6 +74,53 @@ describe("Test Campaign backend: ", function () {
                 done();
             });
         });
+    });
+
+    describe("GET " + baseUrl + campaignsUrl + "/:id/requests", function () {
+        const campaignId = 1;
+        it("returns 200 ", function (done) {
+            request.get(baseUrl + campaignsUrl + "/" + campaignId+"/requests", function (error, response, body) {
+                expect(response.statusCode).toEqual(200);
+                done();
+            });
+        });
+        it("returns requests for campaign  with id " + campaignId, function (done) {
+            request.get(baseUrl + campaignsUrl + "/" + campaignId+"/requests", function (error, response, body) {
+                let requests = JSON.parse(body).data;
+                /*let campaignTitle = sampleCampaigns.find((campaign)=>campaign.uuid == campaignId).title;
+                let expectedRequests = sampleRequests.filter((request) => {
+                   return request.campaign == campaignTitle;
+                });
+                let startDate: Date = new Date(requests.startDate);
+                let endDate: Date = new Date(requests.endDate);
+                requests.startDate = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + (startDate.getDate());
+                requests.endDate = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + (endDate.getDate());
+                expect(requests).toEqual(expectedRequests);*/
+                done();
+            });
+        });
+
+        /*const notExistingCampaignId = 123456789;
+        it("returns 400 for not existing influencer id", function (done) {
+            request.get(baseUrl + campaignsUrl + "/" + notExistingCampaignId+"/requests", function (error, response, body) {
+                expect(response.statusCode).toBe(400);
+                done();
+            });
+        });
+        it("returns error message for not existing influencer id", function (done) {
+            request.get(baseUrl + campaignsUrl + "/" + notExistingCampaignId+"/requests", function (error, response, body) {
+                let errorMessage = JSON.parse(body).error;
+                expect(errorMessage).toEqual("Cannot find Campaign for id '" + notExistingCampaignId + "'");
+                done();
+            });
+        });
+        it("returns empty data for not existing influencer id", function (done) {
+            request.get(baseUrl + campaignsUrl + "/" + notExistingCampaignId+"/requests", function (error, response, body) {
+                let data = JSON.parse(body).data;
+                expect(data).toBeNull();
+                done();
+            });
+        });*/
     });
 
     function fillInReferences(campaigns: any, sampleCompanies: any) {

@@ -1,5 +1,6 @@
 import {RequestState} from "../../src/backend/request/db-request";
 var request = require("request");
+import {prepareRequestData} from "../samples/sample-data";
 
 describe("Test Request backend: ", function () {
     const baseUrl = "http://localhost:3010/api/";
@@ -8,8 +9,9 @@ describe("Test Request backend: ", function () {
     const sampleRequests = require('../../src/database/sample-requests.json');
     const sampleCampaigns = require('../../src/database/sample-campaigns.json');
     const sampleCompanies = require('../../src/database/sample-companies.json');
-    let filledExpectedRequests = fillInReferences(sampleRequests, sampleInfluencers, sampleCampaigns, sampleCompanies);
-    let expectedRequests = removeCategoriesTag(filledExpectedRequests);
+    //let filledExpectedRequests = fillInReferences(sampleRequests, sampleInfluencers, sampleCampaigns, sampleCompanies);
+    //let expectedRequests = removeCategoriesTag(filledExpectedRequests);
+    let expectedRequests = prepareRequestData();
 
     describe("GET " + baseUrl + requestUrl, function () {
         it("returns 200", function (done) {
