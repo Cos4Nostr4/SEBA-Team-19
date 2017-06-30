@@ -70,14 +70,21 @@ export class RequestRepository {
         this.campaignRepository.findOne({'uuid': campaignUuid}, (err: any, campaign: any) => {
             if (!err && campaign) {
                 this.requestModel.find({'campaign': campaign._id})
-                    .populate("campaign", '-_id -__v')
+                    .populate({
+                        path: 'campaign',
+                        select: '-_id -__v',
+                        populate: {
+                            path: 'company',
+                            select: '-_id -__v'
+                        }
+                    })
                     .populate("influencer", '-_id -__v')
                     .exec(function (err: any, requestList: DBRequest[]) {
                         let requests: Request[] = RequestMapper.mapAll(requestList);
-                        func(requests);
+                        func(requests, null);
                     });
             } else {
-                let errorMessage = "Cannot find Request for campaign with id '" + campaignUuid + "'";
+                let errorMessage = "Cannot find Requests for Campaign with id '" + campaignUuid + "'";
                 func(null, errorMessage);
             }
         });

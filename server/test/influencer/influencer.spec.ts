@@ -1,9 +1,11 @@
 var request = require("request");
+import {getSampleInfluencers} from "../samples/sample-data";
 
 describe("Test Influencer backend: ", function () {
     const baseUrl = "http://localhost:3010/api/";
     const influencerUrl = "influencers";
-    const sampleInfluencers = require('../../src/database/sample-influencers.json');
+    const sampleInfluencers = getSampleInfluencers();
+
 
 
     describe("GET " + baseUrl + influencerUrl, function () {
@@ -35,7 +37,7 @@ describe("Test Influencer backend: ", function () {
         it("returns influencer for existing id " + influencerId, function (done) {
             request.get(baseUrl + influencerUrl + "/" + influencerId, function (error, response, body) {
                 let influencer = JSON.parse(body).data;
-                let expectedInfluencer = sampleInfluencers.find((influencer) => influencer.uuid == influencerId);
+                let expectedInfluencer = sampleInfluencers.find((influencer) => +influencer.uuid == influencerId);
                 expect(influencer).toEqual(expectedInfluencer);
                 done();
             });

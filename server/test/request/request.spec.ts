@@ -1,17 +1,11 @@
 import {RequestState} from "../../src/backend/request/db-request";
 var request = require("request");
-import {prepareRequestData} from "../samples/sample-data";
+import {getSampleRequests} from "../samples/sample-data";
 
 describe("Test Request backend: ", function () {
     const baseUrl = "http://localhost:3010/api/";
     const requestUrl = "requests";
-    const sampleInfluencers = require('../../src/database/sample-influencers.json');
-    const sampleRequests = require('../../src/database/sample-requests.json');
-    const sampleCampaigns = require('../../src/database/sample-campaigns.json');
-    const sampleCompanies = require('../../src/database/sample-companies.json');
-    //let filledExpectedRequests = fillInReferences(sampleRequests, sampleInfluencers, sampleCampaigns, sampleCompanies);
-    //let expectedRequests = removeCategoriesTag(filledExpectedRequests);
-    let expectedRequests = prepareRequestData();
+    let expectedRequests = getSampleRequests();
 
     describe("GET " + baseUrl + requestUrl, function () {
         it("returns 200", function (done) {
@@ -54,7 +48,7 @@ describe("Test Request backend: ", function () {
                 request.campaign.startDate = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + (startDate.getDate());
                 request.campaign.endDate = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + (endDate.getDate());
 
-                let expectedRequest = expectedRequests.find((request) => request.uuid == requestId);
+                let expectedRequest = expectedRequests.find((request) => +request.uuid == requestId);
                 expect(request).toEqual(expectedRequest);
                 done();
             });
@@ -82,28 +76,4 @@ describe("Test Request backend: ", function () {
             });
         });
     });
-
-
-    function fillInReferences(requests: any, sampleInfluencers: any, sampleCampaigns: any, sampleCompanies: any) {
-        requests.forEach((request) => {
-            let influencerId = request.influencer;
-            let influencer = sampleInfluencers.find((influencer) => influencer.uuid == influencerId);
-            request.influencer = influencer;
-        });
-        requests.forEach((request) => {
-            let campaignTitle = request.campaign;
-            let campaign = sampleCampaigns.find((campaigns) => campaigns.title == campaignTitle);
-            request.campaign = campaign;
-            let companyName = request.campaign.company;
-            let company = sampleCompanies.find((company) => company.name == companyName);
-            request.campaign.company = company;
-        });
-
-        return requests;
-    }
-
-    function removeCategoriesTag(requests: any) {
-        requests.forEach((request) => delete request.campaign.categories);
-        return requests;
-    }
 });

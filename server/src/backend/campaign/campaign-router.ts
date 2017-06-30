@@ -52,9 +52,15 @@ export class CampaignRouter {
         router.route('/campaigns/:id/requests')
             .get((req, res) =>{
                 let campaignUuid = req.params.id;
-                this.requestRepository.getAllRequestsForCampaign(campaignUuid,function (requests: Request[]) {
-                    let transferObject = TransferObject.aTransferObjectFor(requests);
-                    res.json(transferObject);
+                this.requestRepository.getAllRequestsForCampaign(campaignUuid,function (requests: Request[], error: any) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(requests);
+                        res.json(transferObject);
+                    }
                 });
             });
         application.use(baseUrl, router);

@@ -1,9 +1,10 @@
 var request = require("request");
+import {getSampleCompanies} from "../samples/sample-data";
 
 describe("Test Company backend: ", function () {
     const baseUrl = "http://localhost:3010/api/";
     const companiesUrl = "companies";
-    const sampleCompanies = require('../../src/database/sample-companies.json');
+    const sampleCompanies = getSampleCompanies();
 
     describe("GET " + baseUrl + companiesUrl, function () {
         it("returns 200", function (done) {
@@ -34,7 +35,7 @@ describe("Test Company backend: ", function () {
         it("returns company with id " + companyUuid, function (done) {
             request.get(baseUrl + companiesUrl + "/" + companyUuid, function (error, response, body) {
                 let company = JSON.parse(body).data;
-                let expectedCompany = sampleCompanies.find((company) => company.uuid == companyUuid);
+                let expectedCompany = sampleCompanies.find((company) => +company.uuid == companyUuid);
                 expect(company).toEqual(expectedCompany);
                 done();
             });
