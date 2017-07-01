@@ -3,10 +3,10 @@ import {Request} from "../../../client/src/frontend/data-objects/request";
 import {Campaign} from "../../../client/src/frontend/data-objects/campaign";
 import {Company} from "../../../client/src/frontend/data-objects/company";
 
-const sampleInfluencers = require('../../src/database/sample-influencers.json');
-const sampleRequests = require('../../src/database/sample-requests.json');
-const sampleCampaigns = require('../../src/database/sample-campaigns.json');
-const sampleCompanies = require('../../src/database/sample-companies.json');
+const sampleInfluencers = require('../../src/database/influencer/sample-influencers.json');
+const sampleRequests = require('../../src/database/request/sample-requests.json');
+const sampleCampaigns = require('../../src/database/campaign/sample-campaigns.json');
+const sampleCompanies = require('../../src/database/company/sample-companies.json');
 
 let requestData, influencerData, companyData, campaignData;
 
