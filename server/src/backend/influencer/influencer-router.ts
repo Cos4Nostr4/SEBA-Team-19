@@ -30,6 +30,19 @@ export class InfluencerRouter {
                         res.json(transferObject);
                     }
                 });
+            })
+            .post(function (req, res) {
+                let influencer:Influencer = req.body.data;
+                influencerRepository.addInfluencer(influencer, function(influencer:Influencer, error:any){
+                    if(error){
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    }else{
+                        let transferObject = TransferObject.aTransferObjectFor(influencer.uuid);
+                        res.json(transferObject);
+                    }
+                });
             });
 
         router.route('/influencers/:id')

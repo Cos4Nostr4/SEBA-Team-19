@@ -40,4 +40,24 @@ export class InfluencerRepository {
             }
         });
     }
+
+    public addInfluencer(influencer: Influencer, func: Function){
+        let influencerId = influencer.uuid;
+        this.model.findOne({'uuid':influencerId}, (err: any, dbInfluencer: DBInfluencer)=> {
+            if(dbInfluencer) {
+                let errorMessage = "Influencer for id '"+influencerId+"' already exists.";
+                func(null, errorMessage);
+            }else{
+                let dbInfluencer:DBInfluencer = InfluencerMapper.mapToDbObject(influencer);
+                let influencerModel = new this.model(dbInfluencer);
+                influencerModel.save((err: any) =>{
+                    if(err) {
+                        func(null, err);
+                    }else{
+                        func(influencerModel, null);
+                    }
+                })
+            }
+        });
+    }
 }

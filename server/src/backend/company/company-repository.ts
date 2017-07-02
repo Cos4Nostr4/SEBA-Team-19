@@ -45,11 +45,9 @@ export class CompanyRepository {
         let companyId = company.uuid;
         this.model.findOne({'uuid':companyId}, (err: any, dbCompany: DBCompany)=> {
             if(dbCompany) {
-                console.log("Error");
                 let errorMessage = "Company for id '"+companyId+"' already exists.";
                 func(null, errorMessage);
             }else{
-                console.log("Good");
                 let dbCompany:DBCompany = CompanyMapper.mapToDbObject(company);
                 let companyModel = new this.model(dbCompany);
                 companyModel.save((err: any) =>{
@@ -61,6 +59,5 @@ export class CompanyRepository {
                 })
             }
         });
-
     }
 }

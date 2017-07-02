@@ -13,4 +13,8 @@ export class InfluencerMapper {
     public static map(dbInfluencer: DBInfluencer): Influencer {
         return new Influencer(dbInfluencer.uuid, dbInfluencer.address, dbInfluencer.token);
     }
+
+    public static mapToDbObject(influencer: Influencer) {
+        return new DBInfluencer(influencer.uuid, influencer.address, influencer.token);
+    }
 }

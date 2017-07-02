@@ -5,7 +5,6 @@ import {Database} from "../../src/backend/database/database";
 var request = require("request");
 
 describe("Test Company backend: ", function () {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
     const baseUrl = "http://localhost:3010/api/";
     const companiesUrl = "companies";
     const companyRepository = Database.connect().accessCompanyRepository();
@@ -16,7 +15,7 @@ describe("Test Company backend: ", function () {
     });
 
     afterAll(async function (done) {
-        await resetDatabase({log: true});
+        await resetDatabase();
         done();
     });
 
@@ -46,7 +45,7 @@ describe("Test Company backend: ", function () {
             });
         });
 
-        it("fails for inserting object twice", async function (done) {
+        it("fails for inserting company twice", async function (done) {
             request.post(params, function (error, response, body) {
                 expect(response.statusCode).toEqual(400);
                 let errorMessage = JSON.parse(body).error;
@@ -56,5 +55,4 @@ describe("Test Company backend: ", function () {
             });
         });
     });
-
 });
