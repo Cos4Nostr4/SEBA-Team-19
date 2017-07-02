@@ -4,17 +4,16 @@ import {resetInfluencerData} from "./influencer/influencer-reset";
 import {resetCampaignData} from "./campaign/campaign-reset";
 import {resetRequestData} from "./request/request-reset";
 
-(async function () {
+export async function resetDatabase(printLog?: any) {
     let companyIds: NameToIdStorage[] = [];
-    await resetCompanyData(companyIds, {log: true});
+    await resetCompanyData(companyIds, printLog);
 
     let campaignIds: NameToIdStorage[] = [];
-    await resetCampaignData(campaignIds, companyIds, {log: true});
+    await resetCampaignData(campaignIds, companyIds, printLog);
 
     let influencerIds: NameToIdStorage[] = [];
-    await resetInfluencerData(influencerIds, {log: true});
+    await resetInfluencerData(influencerIds, printLog);
 
-    await resetRequestData(campaignIds, influencerIds, {log: true});
-    process.exit(0);
-}());
+    await resetRequestData(campaignIds, influencerIds, printLog);
+}
 

@@ -25,7 +25,7 @@
     "i18n": "ng-xi18n",
     "lint": "tslint ./client/**/*.ts -t verbose",
     "clean": "rimraf build",
-    "reset-db": "ts-node server/src/database/database-reset.ts"
+    "reset-db": "ts-node server/src/database/reset-all.ts"
   },
   "keywords": [],
   "author": "",

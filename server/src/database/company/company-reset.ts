@@ -22,6 +22,7 @@ export async function deleteCompanyData(printLog?: any) {
     await companyDeletePromise;
 }
 
+
 export async function resetCompanyData(companyIds: NameToIdStorage[], printLog?: any) {
     await deleteCompanyData(printLog);
 

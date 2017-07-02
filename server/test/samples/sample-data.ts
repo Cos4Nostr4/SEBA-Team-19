@@ -50,35 +50,41 @@ function populateCompanyData() {
 function populateCampaignData() {
     let companies = getSampleCompanies();
 
-    sampleCampaigns.forEach((campaign) => {
+    let mappedCampaigns = sampleCampaigns.map((campaign) => {
         let companyName = campaign.company;
         let company = companies.find((company) => company.name == companyName);
-        campaign.company = company;
+        let copiedCampaign = Object.assign({}, campaign);
+        copiedCampaign.company = company;
+        delete copiedCampaign.categories
+        return copiedCampaign;
     });
-    sampleCampaigns.forEach((campaign) => delete campaign.categories);
 
-    return sampleCampaigns;
+    return mappedCampaigns;
 }
 
 function populateRequestData() {
     let campaigns: Campaign[] = getSampleCampaigns();
     let influencers = getSampleInfluencers();
-    sampleRequests.forEach((request) => {
+    let mappedRequests = sampleRequests.map((request) => {
+        let copiedRequest = Object.assign({}, request);
+
         let influencerId = request.influencer;
         let influencer = influencers.find((influencer) => influencer.uuid == influencerId);
         if (!influencer) {
             throw new Error("Could not fill sample request (ID:" + request.uuid + ") with influencer (ID:" + influencerId + ")")
         }
-        request.influencer = influencer;
+        copiedRequest.influencer = influencer;
 
         let campaignTitle = request.campaign;
         let campaign = campaigns.find((campaigns) => campaigns.title == campaignTitle);
         if (!campaign) {
             throw new Error("Could not fill sample request (ID:" + request.uuid + ") with campaign (Title:" + campaignTitle + ")")
         }
-        request.campaign = campaign;
+        copiedRequest.campaign = campaign;
+
+        delete copiedRequest.campaign.categories;
+        return copiedRequest;
     });
-    sampleRequests.forEach((request) => delete request.campaign.categories);
-    return sampleRequests;
+    return mappedRequests;
 }
 
