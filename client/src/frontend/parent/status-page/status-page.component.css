@@ -1,0 +1,14 @@
+.status-page-influencer-profile-img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.status-page-feed-img {
+    width: 200px;
+    height: 160px;
+}
+
+.main-styling {
+    padding: 10% 25% 0 25%;
+}
