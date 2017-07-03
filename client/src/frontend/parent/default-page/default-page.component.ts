@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {OfferService} from "../../services/offer.service";
+import {CampaignService} from "../../services/offer.service";
 import {Campaign} from "../../data-objects/campaign";
 import {AuthenticationService} from "../../services/authentication.service";
 import {ActivatedRoute, Params} from "@angular/router";
@@ -12,15 +12,15 @@ declare var $: any;
     selector: "app-default-page",
     templateUrl: "./default-page.component.html",
     styleUrls: ["./default-page.component.css"],
-    providers: [OfferService, AuthenticationService]
+    providers: [CampaignService, AuthenticationService]
 })
 export class DefaultPageComponent implements OnInit {
-    offerService: OfferService;
+    offerService: CampaignService;
     offerList: Campaign[];
     private errorMessage: string;
     private authenticationService: AuthenticationService;
 
-    constructor(offerService: OfferService, authenticationService: AuthenticationService, private route: ActivatedRoute) {
+    constructor(offerService: CampaignService, authenticationService: AuthenticationService, private route: ActivatedRoute) {
         this.offerService = offerService;
         this.authenticationService = authenticationService;
     }
@@ -28,10 +28,10 @@ export class DefaultPageComponent implements OnInit {
     ngOnInit(): void {
         if (document.location.href.includes("categories")) {
             this.route.params
-                .switchMap((params: Params) => this.offerService.getOffersForCategory(+params.categoryId))
+                .switchMap((params: Params) => this.offerService.getCampaignForCategory(+params.categoryId))
                 .subscribe(offer => this.offerList = offer);
         } else {
-            this.offerService.getAllOffers().subscribe(
+            this.offerService.getAllCampaigns().subscribe(
                 offers => {
                     this.offerList = offers
                 },
