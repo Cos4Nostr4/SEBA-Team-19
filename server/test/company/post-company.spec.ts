@@ -1,7 +1,7 @@
-import {Company} from "../../../client/src/frontend/data-objects/company";
 import {deleteCompanyData} from "../../src/database/company/company-reset";
 import {resetDatabase} from "../../src/database/database-reset";
 import {Database} from "../../src/backend/database/database";
+import {Company} from "../../../client/src/frontend/data-objects/company";
 var request = require("request");
 
 describe("Test Company backend: ", function () {

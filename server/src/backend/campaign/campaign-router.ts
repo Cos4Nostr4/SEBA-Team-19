@@ -32,6 +32,19 @@ export class CampaignRouter {
                         res.json(transferObject);
                     }
                 });
+            })
+            .post((req, res) =>{
+                let campaign:Campaign = req.body.data;
+                this.campaignRepository.addCampaign(campaign, function(campaign:Campaign, error:any){
+                    if(error){
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    }else{
+                        let transferObject = TransferObject.aTransferObjectFor(campaign.uuid);
+                        res.json(transferObject);
+                    }
+                });
             });
 
         router.route('/campaigns/:id')

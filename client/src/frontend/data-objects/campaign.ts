@@ -31,4 +31,5 @@ export class Campaign {
         this.endDate = endDate;
         this.stillRunning = stillRunning;
     }
+
 }
