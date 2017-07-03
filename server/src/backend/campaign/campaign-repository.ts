@@ -65,27 +65,35 @@ export class CampaignRepository {
             } else {
                 let dbCampaign: DBCampaign = CampaignMapper.mapToDbObject(campaign);
                 this.companyModel.findOne({'uuid': dbCampaign.company.uuid}, (err: any, dbCompany: any) => {
-                    let campaignModel = new this.campaignModel({
-                        uuid: dbCampaign.uuid,
-                    title: dbCampaign.title,
-                    description: dbCampaign.description,
-                    image: dbCampaign.image,
-                    company: dbCompany._id,
-                    amount: dbCampaign.amount,
-                    requiredNumberOfFollowers: dbCampaign.requiredNumberOfFollowers,
-                    enforcedHashTags: dbCampaign.enforcedHashTags,
-                    startDate: dbCampaign.startDate,
-                    endDate: dbCampaign.endDate,
-                    categories: dbCampaign.categories,
-                    stillRunning: dbCampaign.stillRunning
-                    });
-                    campaignModel.save((err: any) => {
-                        if (err) {
-                            func(null, err);
-                        } else {
-                            func(campaignModel, null);
-                        }
-                    })
+                    if (err) {
+                        func(null, err);
+                    } else if (dbCompany) {
+                        let campaignModel = new this.campaignModel({
+                            uuid: dbCampaign.uuid,
+                            title: dbCampaign.title,
+                            description: dbCampaign.description,
+                            image: dbCampaign.image,
+                            company: dbCompany._id,
+                            amount: dbCampaign.amount,
+                            requiredNumberOfFollowers: dbCampaign.requiredNumberOfFollowers,
+                            enforcedHashTags: dbCampaign.enforcedHashTags,
+                            startDate: dbCampaign.startDate,
+                            endDate: dbCampaign.endDate,
+                            categories: dbCampaign.categories,
+                            stillRunning: dbCampaign.stillRunning
+                        });
+                        campaignModel.save((err: any) => {
+                            if (err) {
+                                func(null, err);
+                            } else {
+                                func(campaignModel, null);
+                            }
+                        })
+                    } else {
+                        let errorMessage = "Cannot create campaign, because referenced company with id '"
+                            + dbCampaign.company.uuid + "' does not exists.";
+                        func(null, errorMessage);
+                    }
                 });
 
             }

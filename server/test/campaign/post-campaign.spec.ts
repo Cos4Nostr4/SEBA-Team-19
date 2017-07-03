@@ -48,6 +48,41 @@ describe("Test Campaign backend: ", function () {
                 });
             });
         });
+
+        it("fails for adding campaign twice", async function (done) {
+            request.post(params, function (error, response, body) {
+                expect(response.statusCode).toEqual(400);
+                let errorMessage = JSON.parse(body).error;
+                expect(errorMessage).toEqual("Campaign for id '" + insertedCampaign.uuid + "' already exists.");
+
+                let data = JSON.parse(body).data;
+                expect(data).toBeNull();
+                done();
+            });
+        });
+
+        let notExistingCompany = new Company("1234567", "not existing", "not existing", "secret", "...", "contact", "secret",
+        "taxes", "taxes", false);
+        let incompleteCampaign = new Campaign("123456789", "Aftershave", "some aftershave", "imageUrl", notExistingCompany, 1, 2000,
+            ["after", "shave"], dateFor("2017-8-2"), dateFor("2018-1-1"), true);
+        let invalidParams = {
+            url: baseUrl + campaignsUrl,
+            form: {
+                data: incompleteCampaign
+            }
+        };
+        it("fails if linked company does not exist", async function (done) {
+            request.post(invalidParams, function (error, response, body) {
+                expect(response.statusCode).toEqual(400);
+                let errorMessage = JSON.parse(body).error;
+                expect(errorMessage).toEqual("Cannot create campaign, because referenced company with id '"
+                    + notExistingCompany.uuid + "' does not exists.");
+
+                let data = JSON.parse(body).data;
+                expect(data).toBeNull();
+                done();
+            });
+        });
     });
 });
 
