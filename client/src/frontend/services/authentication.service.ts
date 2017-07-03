@@ -30,8 +30,13 @@ export class AuthenticationService {
         this.checkForAccessToken();
 
         if (!this.isLoggedIn()) {
+            //Go back to same page (DEACTIVATED)
             let url = document.location.href;
-            document.location.href = "https://api.instagram.com/oauth/authorize/?client_id=" + CLIENT_ID + "&redirect_uri=" + url + "&response_type=token";
+
+            //Go to CampssPage (ACTIVATED)
+            let url_CampusPage = "http://localhost:4200/app-campus-page"
+
+            document.location.href = "https://api.instagram.com/oauth/authorize/?client_id=" + CLIENT_ID + "&redirect_uri=" + url_CampusPage + "&response_type=token";
         }
     }
 

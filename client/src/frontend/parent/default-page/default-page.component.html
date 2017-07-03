@@ -1,0 +1,10 @@
+<div id="campaign-list-container" class="container-fluid offer-grid">
+<a class="btn" href="http://localhost:4200/app-company-login-page">Go To: CompanyLoginPage </a>
+<a class="btn" href="http://localhost:4200/app-company-register-page">Go To: CompanyRegisterPage </a>
+    <div class="row no-gutters" style="padding: 0">
+        <div *ngFor="let offer of offerList">
+            <offer-list-element [offer]="offer"></offer-list-element>
+        </div>
+    </div>
+</div>
+    <p *ngIf="errorMessage">Error:{{errorMessage}}</p>
