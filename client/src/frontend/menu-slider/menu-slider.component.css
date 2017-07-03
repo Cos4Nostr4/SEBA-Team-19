@@ -49,7 +49,9 @@
 
 }
 
-
+#agreement {
+    padding-top: 15px;
+}
 
 
 .menu-item-container {
@@ -59,7 +61,7 @@
 }
 
 .menu-item-container span{
-    font-family: Helvetica, "Open Sans";
+    font-family: "Roboto", "Open Sans";
     font-weight: 100;
     font-size: 0.6em;
 }
@@ -67,4 +69,23 @@
 .active-menu {
     border-radius: 8px;
     background-color: #EDEDED;
+}
+.row {
+    font-family: "Roboto";
+    font-weight: 100;
+}
+
+#Dropdown {
+    padding-left: 30px;
+    font-family: "Roboto";
+    font-weight: 100;
+
+}
+
+#nameetc {
+    padding-top: 15px;
+}
+
+.form-check {
+
 }
