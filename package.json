@@ -5,7 +5,7 @@
   "description": "Example project from an angular.io guide.",
   "scripts": {
     "prestart": "npm run build",
-    "start": "concurrently \"npm run build:watch\" \"npm run copy-build-files:watch\" \"npm run serve\"",
+    "start": "concurrently \"npm run start:database\" \"npm run start:backend\" \"npm run start:frontend\"",
     "build": "tsc -p client/src/tsconfig.json --rootDir ./ --outDir build/",
     "build:watch": "tsc -p client/src/tsconfig.json --rootDir ./ -w --outDir build/",
     "build:server": "nodemon --exec \"node_modules/.bin/ts-node\" -- \"server/src/server.ts\"",
@@ -19,6 +19,8 @@
     "test:backend": "jasmine-ts \"server/test/**/*.spec.ts\"",
     "serve": "lite-server -c=bs-config.json",
     "start:frontend": "ng serve",
+    "start:backend": "npm run build:server",
+    "start:database": "mongod --dbpath /home/dev/Dev/SEBA-Team-19/database",
     "serve:aot": "lite-server -c bs-config.aot.json",
     "serve:upgrade": "http-server",
     "copy-build-files:watch": "cpx \"client/src/**/*.{html,js,css}\" build/client/src --watch",
