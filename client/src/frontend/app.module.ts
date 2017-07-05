@@ -72,6 +72,11 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
                 component: DashBoardComponent
             },
             {
+                path: 'campaigns',
+                redirectTo: '/offers',
+                pathMatch: 'full'
+            },
+            {
                 path: 'offers',
                 component: OfferListComponent
             },
