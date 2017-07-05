@@ -2,6 +2,7 @@ import * as express from "express";
 import {Database} from "../database/database";
 import {RequestRepository} from "./request-repository";
 import {TransferObject} from "../transferobject/transfer-object";
+import {Request} from "../../../../client/src/frontend/data-objects/request";
 
 export class RequestRouter {
     private database: Database;
@@ -24,6 +25,19 @@ export class RequestRouter {
                         res.json(transferObject);
                     } else {
                         let transferObject = TransferObject.aTransferObjectFor(requests);
+                        res.json(transferObject);
+                    }
+                });
+            })
+            .post((req, res) =>{
+                let request:Request = req.body.data;
+                this.requestRepository.addRequest(request, function(request:Request, error:any){
+                    if(error){
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    }else{
+                        let transferObject = TransferObject.aTransferObjectFor(request.uuid);
                         res.json(transferObject);
                     }
                 });

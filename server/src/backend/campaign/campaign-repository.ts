@@ -91,7 +91,7 @@ export class CampaignRepository {
                         })
                     } else {
                         let errorMessage = "Cannot create campaign, because referenced company with id '"
-                            + dbCampaign.company.uuid + "' does not exists.";
+                            + dbCampaign.company.uuid + "' does not exist.";
                         func(null, errorMessage);
                     }
                 });

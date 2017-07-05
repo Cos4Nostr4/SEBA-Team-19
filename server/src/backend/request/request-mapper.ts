@@ -1,6 +1,7 @@
 import {DBRequest, RequestState} from "./db-request";
 import {Request} from "../../../../client/src/frontend/data-objects/request";
 import {CampaignMapper} from "../campaign/campaign-mapper";
+import {InfluencerMapper} from "../influencer/influencer-mapper";
 
 export class RequestMapper {
 
@@ -16,5 +17,11 @@ export class RequestMapper {
     public static map(dbRequest: DBRequest): Request {
         let campaign = CampaignMapper.map(dbRequest.campaign);
         return new Request(dbRequest.uuid, campaign, dbRequest.influencer, RequestState[dbRequest.status], dbRequest.postponed);
+    }
+
+    public static mapToDbObject(request: Request): DBRequest {
+        let dbCampaign = CampaignMapper.mapToDbObject(request.campaign);
+        let dbInfluencer = InfluencerMapper.mapToDbObject(request.influencer);
+        return new DBRequest(request.uuid, dbCampaign, dbInfluencer, RequestState[request.status], request.postponed);
     }
 }

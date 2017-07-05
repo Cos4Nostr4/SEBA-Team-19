@@ -76,7 +76,7 @@ describe("Test Campaign backend: ", function () {
                 expect(response.statusCode).toEqual(400);
                 let errorMessage = JSON.parse(body).error;
                 expect(errorMessage).toEqual("Cannot create campaign, because referenced company with id '"
-                    + notExistingCompany.uuid + "' does not exists.");
+                    + notExistingCompany.uuid + "' does not exist.");
 
                 let data = JSON.parse(body).data;
                 expect(data).toBeNull();
