@@ -26,39 +26,67 @@ export class InfluencerRepository {
         this.model.find()
             .sort('uuid')
             .exec(function (err: any, influencerList: DBInfluencer[]) {
-            let influencer: Influencer[] = InfluencerMapper.mapAll(influencerList);
-            func(influencer, null);
-        });
+                let influencer: Influencer[] = InfluencerMapper.mapAll(influencerList);
+                func(influencer, null);
+            });
     }
 
-    public getInfluencerWithId(influencerUuid:string, func: Function) {
-        this.model.findOne({'uuid':influencerUuid}, function (err: any, dbInfluencer: DBInfluencer) {
-            if(dbInfluencer) {
+    public getInfluencerWithId(influencerUuid: string, func: Function) {
+        this.model.findOne({'uuid': influencerUuid}, function (err: any, dbInfluencer: DBInfluencer) {
+            if (dbInfluencer) {
                 let influencer: Influencer = InfluencerMapper.map(dbInfluencer);
                 func(influencer, null);
-            }else{
-                let errorMessage = "Cannot find Influencer for id '"+influencerUuid+"'";
+            } else {
+                let errorMessage = "Cannot find Influencer for id '" + influencerUuid + "'";
                 func(null, errorMessage);
             }
         });
     }
 
-    public addInfluencer(influencer: Influencer, func: Function){
+    public addInfluencer(influencer: Influencer, func: Function) {
         let influencerId = influencer.uuid;
-        this.model.findOne({'uuid':influencerId}, (err: any, dbInfluencer: DBInfluencer)=> {
-            if(dbInfluencer) {
-                let errorMessage = "Influencer for id '"+influencerId+"' already exists.";
+        this.model.findOne({'uuid': influencerId}, (err: any, dbInfluencer: DBInfluencer) => {
+            if (dbInfluencer) {
+                let errorMessage = "Influencer for id '" + influencerId + "' already exists.";
                 func(null, errorMessage);
-            }else{
-                let dbInfluencer:DBInfluencer = InfluencerMapper.mapToDbObject(influencer);
+            } else {
+                let dbInfluencer: DBInfluencer = InfluencerMapper.mapToDbObject(influencer);
                 let influencerModel = new this.model(dbInfluencer);
-                influencerModel.save((err: any) =>{
-                    if(err) {
+                influencerModel.save((err: any) => {
+                    if (err) {
                         func(null, err);
-                    }else{
+                    } else {
                         func(influencerModel, null);
                     }
                 })
+            }
+        });
+    }
+
+    updateInfluencerWithId(influencerId: string, influencer: Influencer, func: (influencer: Influencer, error: String) => void) {
+        this.model.findOne({'uuid': influencerId}, (err: any, dbInfluencer: DBInfluencer) => {
+            if (!dbInfluencer) {
+                let errorMessage = "Influencer for id '" + influencerId + "' does not exist";
+                func(null, errorMessage);
+            } else {
+                if (influencerId == influencer.uuid) {
+                    let updatedDbInfluencer = new this.model({
+                        uuid: influencerId,
+                        address: influencer.address,
+                        token: influencer.token
+                    });
+                    updatedDbInfluencer.save((err: any) => {
+                        if (err) {
+                            func(null, err);
+                        } else {
+                            let updatedInfluencer = InfluencerMapper.map(updatedDbInfluencer);
+                            func(updatedInfluencer, null);
+                        }
+                    })
+                } else {
+                    let errorMessage = "Updating influencer with id '" + influencerId + "' is not allowed with data having different id";
+                    func(null, errorMessage);
+                }
             }
         });
     }
