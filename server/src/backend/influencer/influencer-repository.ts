@@ -23,7 +23,9 @@ export class InfluencerRepository {
     }
 
     public getAllInfluencers(func: Function) {
-        this.model.find(function (err: any, influencerList: DBInfluencer[]) {
+        this.model.find()
+            .sort('uuid')
+            .exec(function (err: any, influencerList: DBInfluencer[]) {
             let influencer: Influencer[] = InfluencerMapper.mapAll(influencerList);
             func(influencer, null);
         });
