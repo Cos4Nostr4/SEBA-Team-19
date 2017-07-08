@@ -35,7 +35,7 @@ export class AuthenticationService {
         let cookie = document.cookie;
         console.log("Cookie: " + cookie);
         let isLoggedIn = (cookie && cookie.includes("token="));
-        console.log("IsLoggedIn:" + isLoggedIn + " with cookie: " + cookie);
+        console.log("IsLoggedIn:" + ((isLoggedIn)?"true":"false") + " with cookie: " + cookie);
         return isLoggedIn;
     }
 

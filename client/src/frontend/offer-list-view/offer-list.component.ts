@@ -49,7 +49,7 @@ export class OfferListComponent implements OnInit {
 
         if (this.authenticationService.isLoggedIn()) {
             console.log("Logged in");
-            this.instagrammDataService.getSelfData()
+            /*this.instagrammDataService.getSelfData()
                 .subscribe(
                     selfDate => {
                         console.log("SelfData:"+JSON.stringify(selfDate));
@@ -57,7 +57,7 @@ export class OfferListComponent implements OnInit {
                     error => {
                         console.log("Error when retrieving selfData: "+error);
                     }
-                )
+                )*/
         } else {
             console.log("not logged in");
             this.disableComponent();
