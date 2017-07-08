@@ -1,11 +1,17 @@
 import {Injectable} from "@angular/core";
-import {Headers, Http, RequestOptions} from "@angular/http";
+import {Http} from "@angular/http";
+import {Config} from "../config/config";
+import JsonExtractor from "./json-extractor";
+import ServiceErrorHandler from "./service_error_handler";
+import "rxjs/add/operator/toPromise";
+import {CookieService} from "./cookie-service";
+
 declare var jquery: any;
 declare var $: any;
 
 
 const CLIENT_ID = "1083168b29cb4a1e8b0bf6a6ddb3c1c9";
-
+const INSTAGRAMM_BACKEND_BASE_URL = Config.backend_address + ":" + Config.backend_port + Config.backend_base_url + "instagram/";
 
 @Injectable()
 export class AuthenticationService {
@@ -17,7 +23,6 @@ export class AuthenticationService {
 
 
     public ensureLoggedIn() {
-        console.log("Start ensure logged in");
         if (!this.isLoggedIn()) {
             this.login();
         }
@@ -25,30 +30,13 @@ export class AuthenticationService {
 
 
     public isLoggedIn(): boolean {
-        console.log("Call is logged in");
         this.checkForAccessToken();
 
         let cookie = document.cookie;
         console.log("Cookie: " + cookie);
-
-        let accessToken = cookie.substr(6);
-        console.log("TRY to retrieve data with access token:" + accessToken);
-
-        /*let headers = new Headers();
-        headers.append('Access-Control-Allow-Origin', '*');
-        headers.append('Access-Control-Allow-Headers', 'Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With');
-        headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST');
-        let options = new RequestOptions({headers: headers});*/
-
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-
-        this.http.get('https://api.instagram.com/v1/users/self/?access_token=' + accessToken, options)
-            .subscribe((data: any) => {
-                console.log("DATA: " + data);
-            });
-
-        return (cookie && cookie.includes("token="));
+        let isLoggedIn = (cookie && cookie.includes("token="));
+        console.log("IsLoggedIn:" + isLoggedIn + " with cookie: " + cookie);
+        return isLoggedIn;
     }
 
     public login() {
@@ -65,28 +53,38 @@ export class AuthenticationService {
         }
     }
 
-    private checkForAccessToken() {
+    private async checkForAccessToken() {
         let url = document.location.href;
-        console.log("URL" + url);
 
         if (url.includes('access_token')) {
             let accessToken = this.getAccessToken();
-            document.cookie = "token=" + accessToken;
 
-            console.log("Cookie set to " + document.cookie);
+            let login_url = INSTAGRAMM_BACKEND_BASE_URL + "login";
+            await this.http.get(login_url)
+                .map(JsonExtractor.extractData)
+                .catch(ServiceErrorHandler.handleError)
+                .subscribe(
+                    selfData => {
+                        CookieService.addCookie("token",accessToken);
+                        CookieService.addCookie("username",selfData.username);
+                        document.location.href = url.split(/[?#]/)[0];
+                        console.log("Setting cookie to " + document.cookie);
+                    },
+                    error => {
+                        console.log("ERROR when retrieving cookie: " + error);
+                    }
+                );
+            console.log("Cookie updated: " + document.cookie);
         }
     }
 
     private getAccessToken(): any {
         let url = document.location.href;
-        console.log("URL" + url);
-
         if (url.includes('access_token')) {
             let token = new URL(url).hash.split('&').filter(function (el) {
                 if (el.match('access_token') !== null) return true;
             })[0].split('=')[1];
 
-            console.log("Token: " + token);
             return token;
         } else {
             throw new Error("Can't extract token from url '" + url + "'");

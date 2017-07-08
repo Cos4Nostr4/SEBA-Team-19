@@ -31,8 +31,6 @@ export class InstagramRouter {
                         res.json(transferObject)
                     }
                 });
-
-
             });
 
         router.route(BASE_PATH + 'self')
