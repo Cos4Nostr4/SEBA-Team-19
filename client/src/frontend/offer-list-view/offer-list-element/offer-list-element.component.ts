@@ -25,5 +25,13 @@ export class OfferListElementComponent implements OnInit{
         this.imageSrc= imageUrl;
     }
 
+    public toggle_visibility(id: any) {
+        var e = document.getElementById(id);
+        if(e.style.display == 'block')
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+    }
+
 
 }

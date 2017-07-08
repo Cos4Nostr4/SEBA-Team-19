@@ -58,19 +58,19 @@ export class DefaultPageComponent implements OnInit {
         let styleOverLayDiv = "width:" + windowWidth + "px; height:" + windowHeight + "px; background-color: rgba(216, 216,216, 0.7); position:fixed; top:0;left:0";
         let overlayDiv = $("<div style='" + styleOverLayDiv + "'></div>").appendTo(parent);
 
-        let styleWhiteBox = "background-color:white; width:500px; height:180px; margin:auto; position:fixed; top:30%; left:37%; border-radius:12px";
+        let styleWhiteBox = "background-color:#3D4551; width:450px; height:170px; margin:auto; position:fixed; margin: 30%; auto; border-radius:12px";
         let whiteBox = $("<div style='" + styleWhiteBox + "'></div>").appendTo(overlayDiv);
 
-        let styleTitleTop = "font-family: \"Lobster Two\", cursive;font-size:32px; font-weight:600; padding: 20px 0 0 70px";
-        $("<div style='" + styleTitleTop + "'><i>Get Stuff For Free On BeeTooBee</i></div>").appendTo(whiteBox);
+        let styleTitleTop = "font-family: \"Cherry Swash\",cursive; color: white ;font-size:32px; font-weight:400; padding: 20px 0 0 70px";
+        $("<div style='" + styleTitleTop + "'><i>Get Stuff For Free!</i></div>").appendTo(whiteBox);
 
-        let styleButtonDiv = "background-color: #534d4d; color:white; border:1px; border-radius: 5px; margin: 45px auto 0; width: 315px; height:38px; cursor: pointer";
+        let styleButtonDiv = "text-align: center; background-color: #00519A; color:white; border:1px; border-radius: 5px; margin: 45px auto 0; width: 273px; height:38px; cursor: pointer";
         let buttonDiv = $("<div style='" + styleButtonDiv + "'></div>").appendTo(whiteBox);
 
-        let styleInstagramLogo = "font-size: 35px; margin: 1px 8px 0 3px; float:left";
+        let styleInstagramLogo = "font-size: 35px; margin: 1px 8px 0 3px; padding-left: 2px;float:left";
         $("<i class='fa fa-instagram' aria-hidden='true' style='" + styleInstagramLogo + "'></i>").appendTo(buttonDiv);
 
-        let styleButtonText = "display:block;  font-size:22px; font-weight: 600";
+        let styleButtonText = " padding-top:2px ;font-family: \"Roboto\",;display:block; letter-spacing: 0.5px;font-size:22px; font-weight: 400";
         $("<span style='" + styleButtonText + "'>Login with Instagram</span>").appendTo(buttonDiv);
 
         $(buttonDiv).click(() => {

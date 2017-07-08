@@ -38,7 +38,7 @@ export class OfferListComponent implements OnInit {
         } else {
             this.offerService.getAllCampaigns().subscribe(
                 offers => {
-                    this.offerList = offers
+                    this.offerList = offers;
                 },
                 error => {
                     this.errorMessage = error;
@@ -62,7 +62,9 @@ export class OfferListComponent implements OnInit {
             console.log("not logged in");
             this.disableComponent();
         }
+
     }
+
 
     private disableComponent() {
         let parent = $('#campaign-list-container').parent();
