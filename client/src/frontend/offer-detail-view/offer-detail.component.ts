@@ -26,5 +26,19 @@ export class OfferDetailComponent implements OnInit{
         this.route.params
             .switchMap((params: Params) => this.offerService.getCampaignWithId(+params.id+""))
             .subscribe(offer => this.offer = offer);
+
+
+
+
+        function getting() {
+            var text = document.getElementById("productcontent");
+            text.innerHTML="This watch is the latest edition of our new collection. It is bla bla ";
+        }
+
+
+        function giving() {
+            var text = document.getElementById("productcontent");
+            text.innerHTML="hashtags: #watch #watch #watch #watch #watch  ";
+        }
     }
 }

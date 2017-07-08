@@ -1,8 +1,43 @@
+
 <div id="campaign-list-container" class="container-fluid offer-grid">
     <div class="row no-gutters" style="padding: 0">
         <div *ngFor="let offer of offerList">
-            <offer-list-element [offer]="offer"></offer-list-element>
+            <a href="http://localhost:4200/offer-detail">
+                <offer-list-element [offer]="offer">Test</offer-list-element>
+            </a>
         </div>
     </div>
 </div>
     <p *ngIf="errorMessage">Error:{{errorMessage}}</p>
+
+
+<!--div id="popupBoxOnePosition" onload="getting()">
+    <div class="popupBoxWrapper">
+        <div class="floatwrapper">
+            <a href="javascript:void(0)" id ="close" onclick="toggle_visibility('popupBoxOnePosition');"><i class="fa fa-times" aria-hidden="true"></i></a>
+
+            <div class="popupBoxContentPic">
+                <img class="product-picture" [attr.src]="imageSrc"/>
+            </div>
+            <div class="popupBoxContentText">
+                <div class="productName">
+                    <h3>Product name</h3>
+                </div>
+                <div class="productcontent" id="productcontent">
+                    <script>getting();</script>
+                </div>
+
+            </div>
+            <div class="buttonwrap">
+                <div class="buttonwrap2">
+                    <div class="get">
+                        <button class="button" onclick="getting()">Get </button>
+                    </div>
+                    <div class="give">
+                        <button class="button" onclick="giving()">Give</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div-->
