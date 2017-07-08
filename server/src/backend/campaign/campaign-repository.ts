@@ -36,6 +36,7 @@ export class CampaignRepository {
     public getAllCampaigns(func: Function) {
         this.campaignModel.find()
             .populate("company", "-_id -__v")
+            .sort('uuid')
             .exec(function (err: any, dbCampaigns: DBCampaign[]) {
                 let campaigns: Campaign[] = CampaignMapper.mapAll(dbCampaigns);
                 func(campaigns, null);

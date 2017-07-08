@@ -23,7 +23,9 @@ export class CompanyRepository {
     }
 
     public getAllCompanies(func: Function) {
-        this.model.find(function (err: any, dbCompanies: DBCompany[]) {
+        this.model.find()
+            .sort('uuid')
+            .exec(function (err: any, dbCompanies: DBCompany[]) {
             let companies: Company[] = CompanyMapper.mapAll(dbCompanies);
             func(companies, null);
         });

@@ -58,6 +58,20 @@ export class InfluencerRouter {
                         res.json(transferObject);
                     }
                 });
+            })
+            .put(function (req, res) {
+                let influencerUuid = req.params.id;
+                let influencer:Influencer = req.body.data;
+                influencerRepository.updateInfluencerWithId(influencerUuid, influencer, function (influencer: Influencer, error: String) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(influencer);
+                        res.json(transferObject);
+                    }
+                });
             });
 
         application.use(baseUrl, router);
