@@ -61,7 +61,7 @@ export class DefaultPageComponent implements OnInit {
         let styleWhiteBox = "background-color:#3D4551; width:450px; height:170px; margin:auto; position:fixed; margin: 30%; auto; border-radius:12px";
         let whiteBox = $("<div style='" + styleWhiteBox + "'></div>").appendTo(overlayDiv);
 
-        let styleTitleTop = "font-family: \"Cherry Swash\",; color: white ;font-size:32px; font-weight:600; padding: 20px 0 0 70px";
+        let styleTitleTop = "font-family: \"Cherry Swash\",cursive; color: white ;font-size:32px; font-weight:400; padding: 20px 0 0 70px";
         $("<div style='" + styleTitleTop + "'><i>Get Stuff For Free!</i></div>").appendTo(whiteBox);
 
         let styleButtonDiv = "text-align: center; background-color: #00519A; color:white; border:1px; border-radius: 5px; margin: 45px auto 0; width: 273px; height:38px; cursor: pointer";
