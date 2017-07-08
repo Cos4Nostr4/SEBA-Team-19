@@ -33,8 +33,9 @@ export class InstagramRouter {
                 });
             });
 
-        router.route(BASE_PATH + 'self')
+        router.route(BASE_PATH + 'self/:access_token')
             .get((req, res) => {
+                let accessToken = req.params.access_token;
                 this.instagramRepository.getSelfData(accessToken, (error: any, selfData: InsSelfData) => {
                     if (error) {
                         res.status(400);

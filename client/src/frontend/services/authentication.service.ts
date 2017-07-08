@@ -4,7 +4,7 @@ import {Config} from "../config/config";
 import JsonExtractor from "./json-extractor";
 import ServiceErrorHandler from "./service_error_handler";
 import "rxjs/add/operator/toPromise";
-import {CookieService} from "./cookie-service";
+import {CookieHandler} from "./cookie-handler";
 
 declare var jquery: any;
 declare var $: any;
@@ -65,8 +65,8 @@ export class AuthenticationService {
                 .catch(ServiceErrorHandler.handleError)
                 .subscribe(
                     selfData => {
-                        CookieService.addCookie("token",accessToken);
-                        CookieService.addCookie("username",selfData.username);
+                        CookieHandler.addCookie("token",accessToken);
+                        CookieHandler.addCookie("username",selfData.username);
                         document.location.href = url.split(/[?#]/)[0];
                         console.log("Setting cookie to " + document.cookie);
                     },

@@ -1,4 +1,4 @@
-export class CookieService{
+export class CookieHandler{
 
     public static addCookie(key:string, value:string){
         document.cookie = key+"="+value;
@@ -14,6 +14,9 @@ export class CookieService{
             .map(cookie => {
                 return decodeURIComponent(cookie.substring(keyLength));
             })[0] || null;
+            if(!value){
+                throw new Error("Cookie for "+key+" was not set.");
+            }
             return value;
     }
 }
