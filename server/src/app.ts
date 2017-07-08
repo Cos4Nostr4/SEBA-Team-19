@@ -6,6 +6,7 @@ import {RequestRouter} from "./backend/request/request-router";
 import {InfluencerRouter} from "./backend/influencer/influencer-router";
 import {CompanyRouter} from "./backend/company/company-router";
 import {CategoryRouter} from "./backend/categories/category-router";
+import {InstagramRouter} from "./backend/instagram/instagram-router";
 
 export class App {
     private _application: express.Application;
@@ -68,6 +69,9 @@ export class App {
 
         let categoryRouter = new CategoryRouter();
         categoryRouter.configureRoutes(this.baseUrl, this._application);
+
+        let instagramRouter = new InstagramRouter();
+        instagramRouter.configureRoutes(this.baseUrl, this._application);
     }
 
 

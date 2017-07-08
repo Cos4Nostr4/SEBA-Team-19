@@ -91,7 +91,7 @@ describe("Test Request backend: ", function () {
             });
         });
 
-        let notExistingInfluencer = new Influencer("12356789", "not existing", "not existing");
+        let notExistingInfluencer = new Influencer("12356789", "notExisting","not existing", "not existing");
         let requestWithNotExisitingInfluencer = new Request("222", linkedCampaign, notExistingInfluencer, "ACCEPTED", false);
         let paramsForRequestWithNotExistingInfluencer = {
             url: baseUrl + campaignsUrl,

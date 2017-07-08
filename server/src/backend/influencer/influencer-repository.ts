@@ -26,8 +26,12 @@ export class InfluencerRepository {
         this.model.find()
             .sort('uuid')
             .exec(function (err: any, influencerList: DBInfluencer[]) {
-                let influencer: Influencer[] = InfluencerMapper.mapAll(influencerList);
-                func(influencer, null);
+                if(err){
+                    func(null, err);
+                }else {
+                    let influencer: Influencer[] = InfluencerMapper.mapAll(influencerList);
+                    func(influencer, null);
+                }
             });
     }
 
@@ -43,7 +47,7 @@ export class InfluencerRepository {
         });
     }
 
-    public addInfluencer(influencer: Influencer, func: Function) {
+    public addInfluencer(influencer: Influencer, func: (influencer: Influencer, error: String) => void) {
         let influencerId = influencer.uuid;
         this.model.findOne({'uuid': influencerId}, (err: any, dbInfluencer: DBInfluencer) => {
             if (dbInfluencer) {
@@ -72,6 +76,7 @@ export class InfluencerRepository {
                 if (influencerId == influencer.uuid) {
                     let updatedDbInfluencer = new this.model({
                         uuid: influencerId,
+                        username: influencer.username,
                         address: influencer.address,
                         token: influencer.token
                     });

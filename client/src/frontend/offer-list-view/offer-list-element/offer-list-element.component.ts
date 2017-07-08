@@ -27,25 +27,9 @@ export class OfferListElementComponent implements OnInit{
         this.imageSrc= imageUrl;
     }
 
-    myFunction() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-    }
 
     selectCampaing(){
         this.router.navigate(['/campaign-detail/', this.offer.uuid]);
     }
-
-    toggle_visibility() {
-        var popup = document.getElementById("popupBoxOnePosition");
-        popup.classList.toggle("show");
-        if(popup.style.display == "block"){
-            popup.style.display = "none";
-        }
-        else{
-            popup.style.display = "block";
-        }
-    }
-
 
 }

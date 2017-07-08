@@ -21,7 +21,7 @@ describe("Test Influencer backend: ", function () {
 
     describe("POST " + baseUrl + influencerUrl, function () {
 
-        let insertedInfluencer = new Influencer("1", "dahoam", "genericToken");
+        let insertedInfluencer = new Influencer("1", "Franklyn","dahoam", "genericToken");
         let params = {
             url: baseUrl + influencerUrl,
             form: {
