@@ -15,19 +15,30 @@
                     <h1 class="text-center login-title"></h1>
                     <div class="account-wall">
                         <img class="profile-img" src="http://localhost:3010/media/images/logo.png"
-                            alt=""> hier
-                        <li *ngFor="let company of companies">{{company.uuid}}Hier</li>
-                        <form class="form-signin">
-                        <input #emailBox (keyup.enter)="checkData(emailBox.email,passwordBox.password)" type="text" class="form-control" placeholder="Email" required autofocus>
-                        <input #passwordBox (keyup.enter)="checkData(emailBox.email,passwordBox.password)" type="password" class="form-control" placeholder="Password" required>
-                        <button (click)="checkData(emailBox.email,passwordBox.password)" class="btn btn-lg btn-primary btn-block btn-sign-in" type="submit">
+                            alt="">
+                        <li *ngFor="let company of companies">{{company.email}}</li>
+
+                        <form (ngSubmit)="onSubmit(email.value,password.value)" class="form-signin" #loginForm="ngForm">
+                            <input type="email" class="form-control" id="email" placeholder="Email" required autofocus [(ngModel)]="model.email" name="email" #email="ngModel">
+                            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                                Email is required
+                            </div>
+                            <!--p> {{model.email}}</p-->
+
+                            <input type="password" class="form-control" id="password" placeholder="Password" required [(ngModel)]="model.password" name="password" #password="ngModel">
+                            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                                Password is required
+                            </div>
+                            <!--p> {{model.password}} </p-->
+
+                            <button class="btn btn-lg btn-primary btn-block btn-sign-in" type="submit" [disabled]="!loginForm.form.valid">
                             Sign in</button>
-                        <label class="checkbox pull-left">
-                            <input type="checkbox" value="remember-me">
+                            <label class="checkbox pull-left">
+                                <input type="checkbox" value="remember-me">
                             Remember me
-                        </label>
-                        <!--<a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>-->
+                            </label>
                         </form>
+
                     </div>
                     <a href="http://localhost:4200/app-company-register-page" class="text-center new-account">Create an account </a>
                 </div>

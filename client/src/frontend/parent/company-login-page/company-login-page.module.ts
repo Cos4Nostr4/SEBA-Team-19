@@ -1,10 +1,12 @@
 import {NgModule} from "@angular/core";
 import {CompanyLoginPageComponent} from "./company-login-page.component";
 import {CommonModule} from "@angular/common";
+import {FormsModule}   from '@angular/forms';
 
 @NgModule ({
     imports: [
-        CommonModule
+        CommonModule,
+        FormsModule
     ],
     declarations: [
         CompanyLoginPageComponent

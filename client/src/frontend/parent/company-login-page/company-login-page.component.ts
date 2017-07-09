@@ -19,19 +19,27 @@ errorMessage: string;
   mode = 'Observable';
   email = '';
   password = '';
+    submitted = false;
  
   constructor (private companyService: CompanyService) {}
 
-  onEnter(email: string) { this.email = email; }
-
-  onEnter2(password: string) { this.password = password; }
-
   ngOnInit() { this.getHeroes(); }
 
-  checkData(email: string, password: string) {
-  	console.log("I AM HERE !!!!")
+  onSubmit(email: string, password: string) {
     this.email = email;
     this.password = password;
+    let company = this.companies.find((company) => company.email === email);
+    if (company == null){
+    	console.log("FAIL, no email match!");
+    } else {
+    	console.log("SUCCESS!"+company.email);
+    	if(company.password == password){
+    		console.log("SUCCES! You are logging in");
+    	} else {
+    		console.log("FAIL, password is wrong");
+    	}
+    }
+    this.submitted = true;
     console.log("Email: "+this.email+"  Password: "+this.password);
   }
 
@@ -46,14 +54,8 @@ errorMessage: string;
 
 
 
-  model = new Company("18", 'Jens', "Peteee", 'Passwort',"a","b","v","fds","sdfa",false);
+  model = new Company("18", 'Jens', "Peteee", 'Passwort',"company@jens.de","a","b","v","fds","sdfa",false);
 
-  submitted = false;
-
-  onSubmit() { this.submitted = true; }
-
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
  
 
 }

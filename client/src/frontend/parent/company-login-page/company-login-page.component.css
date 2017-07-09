@@ -25,6 +25,7 @@
 .btn-sign-in{
     background-color: rgba(70, 74, 76, 0.7);
     border-color: rgba(70, 74, 76, 0.37);
+    margin-top: 20px;
 }
 
 .form-signin .form-signin-heading, .form-signin .checkbox
@@ -65,7 +66,7 @@ body { position:absolute; top:0; bottom:0; right:0; left:0;
 }
 .form-signin input[type="password"]
 {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
@@ -100,4 +101,12 @@ body { position:absolute; top:0; bottom:0; right:0; left:0;
 {
     display: block;
     margin-top: 10px;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
 }

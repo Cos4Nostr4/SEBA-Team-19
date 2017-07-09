@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./app.component";
+import {FormsModule}   from '@angular/forms';
 import {AppHeaderModule} from "./app-header/app-header.module";
 import {OfferListModule} from "./offer-list-view/offer-list.module";
 import {OfferListComponent} from "./offer-list-view/offer-list.component";
@@ -45,6 +46,7 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         AppHeaderModule,
         OfferListModule,
         OfferListElementModule,
