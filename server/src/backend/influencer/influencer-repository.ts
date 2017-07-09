@@ -26,9 +26,9 @@ export class InfluencerRepository {
         this.model.find()
             .sort('uuid')
             .exec(function (err: any, influencerList: DBInfluencer[]) {
-                if(err){
+                if (err) {
                     func(null, err);
-                }else {
+                } else {
                     let influencer: Influencer[] = InfluencerMapper.mapAll(influencerList);
                     func(influencer, null);
                 }
@@ -47,7 +47,7 @@ export class InfluencerRepository {
         });
     }
 
-    public getInfluencerByUsername(username: string, func: (error:any, influencer:Influencer)=> void) {
+    public getInfluencerByUsername(username: string, func: (error: any, influencer: Influencer) => void) {
         this.model.findOne({'username': username}, function (err: any, dbInfluencer: DBInfluencer) {
             if (dbInfluencer) {
                 let influencer: Influencer = InfluencerMapper.map(dbInfluencer);
@@ -79,30 +79,41 @@ export class InfluencerRepository {
         });
     }
 
-    updateInfluencerWithId(influencerId: string, influencer: Influencer, func: (influencer: Influencer, error: String) => void) {
-        this.model.findOne({'uuid': influencerId}, (err: any, dbInfluencer: DBInfluencer) => {
-            if (!dbInfluencer) {
-                let errorMessage = "Influencer for id '" + influencerId + "' does not exist";
-                func(null, errorMessage);
-            } else {
-                if (influencerId == influencer.uuid) {
-                    let updatedDbInfluencer = new this.model({
-                        uuid: influencerId,
-                        username: influencer.username,
-                        instagramId:influencer.instagramId,
-                        address: influencer.address,
-                        token: influencer.token
-                    });
-                    updatedDbInfluencer.save((err: any) => {
+    public updateInfluencerWithId(influencerId: string, influencer: Influencer, func: (influencer: Influencer, error: String) => void) {
+        console.log("ID:"+influencerId);
+        if(influencerId != influencer.uuid){
+            func(null, "Updating influencer with id '" + influencerId + "' is not allowed with data having different id");
+            return;
+        }
+
+        let update = {
+            uuid: influencer.uuid,
+            username: influencer.username,
+            instagramId: influencer.instagramId,
+            address: influencer.address,
+            token: influencer.token
+        };
+        this.model.findOne({'uuid': influencerId}, (err: any, dbInfluencerData: any) => {
+            if(err){
+                func(null, err);
+            }else {
+                if(dbInfluencerData) {
+                    this.model.findByIdAndUpdate(dbInfluencerData._id, {$set: update}, {new: false}, (err: any, ignored: DBInfluencer) => {
                         if (err) {
                             func(null, err);
                         } else {
-                            let updatedInfluencer = InfluencerMapper.map(updatedDbInfluencer);
-                            func(updatedInfluencer, null);
+                            this.model.findOne({'uuid': influencerId}, (err: any, updatedDbInfluencer: DBInfluencer) => {
+                                if (err) {
+                                    func(null, err);
+                                } else {
+                                    let updatedInfluencer = InfluencerMapper.map(updatedDbInfluencer);
+                                    func(updatedInfluencer, null);
+                                }
+                            });
                         }
-                    })
-                } else {
-                    let errorMessage = "Updating influencer with id '" + influencerId + "' is not allowed with data having different id";
+                    });
+                }else{
+                    let errorMessage = "Influencer for id '" + influencerId + "' does not exist";
                     func(null, errorMessage);
                 }
             }
