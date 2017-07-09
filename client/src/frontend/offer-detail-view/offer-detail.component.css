@@ -1,151 +1,91 @@
-
-
-#popupBoxOnePosition{
-    top: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    height: 120%;
-    background-color: rgba(0,0,0,0.7);
-    display: none;
-}
-
-.popupBoxWrapper{
-    width: 570px;
-    height: 245px;
-    margin: 50px
-    auto;
-    background: linear-gradient(-90deg, #0065C1, #00C3CD);
-    padding: 15px;
-    border-radius: 10px;
-    overflow: hidden;
-
-}
-
-.popupBoxContentPic {
-    float: left;
-    background-color: #FFFFFF;
-    margin: 10px;
-    width: 220px;
-    height: 220px;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 0px;
-    border-color: #000000;
-}
-
-.popupBoxContentPic img{
-    height: 220px;
-    width: 220px;
-    border-radius: 10px;
-}
-
-.popupBoxContentText {
-    float: left;
-    margin-left: 5px;
-    margin-top: 10px;
-    width: 310px;
-    height: 220px;
-    background: #FFFFFF;
-    border-radius: 10px;
-    overflow: hidden;
-
-
-}
-
-#close {
-    display: block;
-    float:right;
-    position:relative;
-    top:-10px;
-    right: -10px;
-    height: 20px;
-    color: #FFFFFF;
-}
-
-.buttonwrap {
-    background-color: #FFFFFF;
-    height:0px;
-
-}
-
-
-.get {
-    float: left;
-
-}
-
-.give {
-    float:left;
-    padding-left: 35px;
-}
-
-.productcontent{
-    height:200px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-
-.button {
-    background-color: #00519A;
-    color: white;
-    border: 2px solid #00519A;
-    border-radius: 6px;
-    font-size: 16px;
-
-}
-
-
-.button:hover {
-    background-color: #0460B4;
-    color: white;
-    border-radius: 6px;
-    font-size: 16px;
-    border: 2px solid #0460B4;
-}
-
-
-
-
-.productName {
-    padding-left: 4px;
-    text-align: center;
+html {
+    height:100%;
 }
 
 body {
-    font-family: sans-serif;
+    font-family: Roboto;
+    position:absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    background-color: #f8f8f8 ;
 }
 
-.buttonwrap2 {
-    margin-left: 17%;
-    padding-top: 2px;
-    width: 140px;
-    height:40px;
-    float: left;
+.wrapper {
+    width: 700px;
+    height:100%;
+    margin-left: auto;
+    margin-right:auto;
 }
 
-.floatwrapper {
-    float:left;
-}
-
-#wrapper {
-
-}
-
-#productcontainer {
-    margin: 10px;
-    width: 150px;
-    height: 150px;
+.contentBox {
+    margin-top: 80px;
+    width:700px;
+    height: 340px;
+    background: linear-gradient(-90deg, #0065C1, #00C3CD);
     border-radius: 10px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #000000;
 
 }
 
-#productcontainer img{
-    height: 150px;
-    width: 150px;
+.row {
+    margin:auto;
+    width:680px;
+    padding-top: 25px;
+}
+
+.boxContentPic {
+    pading:20px;
+}
+
+.boxPic {
+    width: 200px;
+    height: 200px;
+}
+
+.boxPic img {
+    width: 200px;
+    height: 200px;
+}
+
+
+.boxContentText {
+
+
+    background: #ffffff;
+    height: 285px;
+
+}
+
+.boxContentApply{
+    margin: auto;
+    background: #ffffff;
     border-radius: 10px;
+    height: 100px;
+    width: 92%;
+}
+
+.button {
+    background-color: #00519A;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: roboto;
+    font-size: 16px;
+    margin: 30px auto 0 ;
+    cursor: pointer;
+    width: 200px;
+
+}
+
+.campaignTitle {
+    text-align: center;
+}
+
+.boxContentTextWrapper {
+    text-aling: left;
+    margin-left: 10px;
 }
