@@ -35,7 +35,7 @@ export class AuthenticationService {
         let cookie = document.cookie;
         console.log("Cookie: " + cookie);
         let isLoggedIn = (cookie && cookie.includes("token="));
-        console.log("IsLoggedIn:" + ((isLoggedIn)?"true":"false") + " with cookie: " + cookie);
+        console.log("IsLoggedIn:" + ((isLoggedIn) ? "true" : "false") + " with cookie: " + cookie);
         return isLoggedIn;
     }
 
@@ -59,14 +59,14 @@ export class AuthenticationService {
         if (url.includes('access_token')) {
             let accessToken = this.getAccessToken();
 
-            let login_url = INSTAGRAMM_BACKEND_BASE_URL + "login/"+accessToken;
+            let login_url = INSTAGRAMM_BACKEND_BASE_URL + "login/" + accessToken;
             await this.http.get(login_url)
                 .map(JsonExtractor.extractData)
                 .catch(ServiceErrorHandler.handleError)
                 .subscribe(
                     selfData => {
-                        CookieHandler.addCookie("token",accessToken);
-                        CookieHandler.addCookie("username",selfData.username);
+                        CookieHandler.addCookie("token", accessToken);
+                        CookieHandler.addCookie("username", selfData.username);
                         document.location.href = url.split(/[?#]/)[0];
                         console.log("Setting cookie to " + document.cookie);
                     },
@@ -74,7 +74,6 @@ export class AuthenticationService {
                         console.log("ERROR when retrieving cookie: " + error);
                     }
                 );
-            console.log("Cookie updated: " + document.cookie);
         }
     }
 

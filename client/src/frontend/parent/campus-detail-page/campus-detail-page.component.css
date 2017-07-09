@@ -1,0 +1,77 @@
+.wrapper {
+    width: 700px;
+    height:100%;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.contentBox {
+    margin-top: 130px;
+    width:700px;
+    height: 340px;
+    background: linear-gradient(-90deg, #0065C1, #00C3CD);
+    border-radius: 10px;
+
+}
+
+.row {
+    margin:auto;
+    width:680px;
+    padding-top: 25px;
+}
+
+.boxContentPic {
+    pading:20px;
+}
+
+.boxPic {
+    width: 200px;
+    height: 200px;
+}
+
+.boxPic img {
+    width: 200px;
+    height: 200px;
+}
+
+
+.boxContentText {
+
+
+    background: #ffffff;
+    height: 285px;
+
+}
+
+.boxContentApply{
+    margin: auto;
+    background: #ffffff;
+    border-radius: 10px;
+    height: 100px;
+    width: 92%;
+}
+
+.button {
+    background-color: #00519A;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: roboto;
+    font-size: 16px;
+    margin: 30px auto 0 ;
+    cursor: pointer;
+    width: 200px;
+
+}
+
+.campaignTitle {
+    text-align: center;
+}
+
+.boxContentTextWrapper {
+    text-aling: left;
+    margin-left: 10px;
+}

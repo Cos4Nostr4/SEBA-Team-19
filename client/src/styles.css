@@ -1,1 +1,15 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+html {
+    height:100%;
+}
+
+body {
+    font-family: Roboto;
+    position:absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    background-color: #f8f8f8 ;
+}
