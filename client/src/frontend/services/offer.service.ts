@@ -25,10 +25,12 @@ export class CampaignService {
         return offers;
     }
 
+
     public getCampaignWithId(id: string): Observable<Campaign> {
         return this.getAllCampaigns().map(
             offers => offers.find(offer => offer.uuid == id));
     }
+
 
     public getCampaignForCategory(categoryId: number): Observable<Campaign[]> {
         let category: string = CategoryMapper.forId(categoryId);
@@ -41,10 +43,12 @@ export class CampaignService {
         return offers;
     }
 
+
     private extractData(res: Response) {
         let body = res.json();
         return body.data || {};
     }
+
 
     private handleError(error: Response | any) {
         //TODO: implement more sophisticated logging
