@@ -1,4 +1,4 @@
-export default class InsSelfData{
+export default class InsUserData{
     instagrammId: string;
     username: string;
     fullName: string;

@@ -4,6 +4,7 @@ export const companySchema: Schema = new Schema({
     name: String,
     username: String,
     password: String,
+    email:String,
     profilPicture: String,
     contact: String,
     address: String,

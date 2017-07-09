@@ -21,7 +21,7 @@ describe("Test Company backend: ", function () {
 
     describe("POST " + baseUrl + companiesUrl, function () {
 
-        let insertedCompany = new Company("1", "Arnulf", "Arnulf", "secret", "nope", "contct", "dahoam", "taxes", "taxes2", true);
+        let insertedCompany = new Company("1", "Arnulf", "Arnulf", "secret", "email","nope", "contct", "dahoam", "taxes", "taxes2", true);
         let params = {
             url: baseUrl + companiesUrl,
             form: {
