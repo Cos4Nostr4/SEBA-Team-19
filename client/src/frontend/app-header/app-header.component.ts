@@ -22,7 +22,6 @@ export class AppHeaderComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
         if (this.authenticationService.isLoggedIn()) {
             this.instagrammDataService.getSelfData()
                 .subscribe(
