@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./app.component";
+import {FormsModule}   from '@angular/forms';
 import {AppHeaderModule} from "./app-header/app-header.module";
 import {AppHeaderCompanyModule} from "./app-header-company/app-header-company.module";
 import {OfferListModule} from "./offer-list-view/offer-list.module";
@@ -47,6 +48,7 @@ import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-pag
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         AppHeaderModule,
         AppHeaderCompanyModule,
         OfferListModule,

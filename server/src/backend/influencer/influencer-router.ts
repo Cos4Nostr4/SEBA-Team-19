@@ -62,8 +62,6 @@ export class InfluencerRouter {
             .put(function (req, res) {
                 let influencerUuid = req.params.id;
                 let influencer:Influencer = req.body.data;
-
-                console.log("PUT:"+influencer);
                 influencerRepository.updateInfluencerWithId(influencerUuid, influencer, function (influencer: Influencer, error: String) {
                     if (error) {
                         res.status(400);

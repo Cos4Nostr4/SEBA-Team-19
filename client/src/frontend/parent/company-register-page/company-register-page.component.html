@@ -6,103 +6,92 @@
 </div>
 
 <body>
-
-
-
-
-<div class="container">
-            <form class="form-horizontal" role="form" action="http://localhost:4200/app-campany-page">
-                <h2>Registration Form</h2>
-                <div class="center">
-                <div class="form-group">
-                    <label for="firstName" class="col-sm-6 control-label">Company Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="firstName" placeholder="Full Name" class="form-control" required autofocus>
+    <div class="container container-adapt">
+                <form class="form-horizontal" role="form" action="http://localhost:4200/app-campany-page">
+                    <img class="profile-img" src="http://localhost:3010/media/images/logo.png"
+                                alt="">
+                    <div class="center">
+                    <div class="form-group">
+                        <div class="col-sm-9 set-size">
+                            <input type="text" id="firstName" placeholder="Full Name" class="form-control" required autofocus>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-6 control-label">Email Address</label>
-                    <div class="col-sm-9">
-                        <input type="email" id="email" placeholder="Email" class="form-control" required>
+                    <div class="form-group">
+                        <div class="col-sm-9 set-size">
+                            <input type="email" id="email" placeholder="Email" class="form-control" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-6 control-label">Password</label>
-                    <div class="col-sm-9">
-                        <input type="password" id="password" placeholder="Password" class="form-control" required>
+                    <div class="form-group">
+                        <div class="col-sm-9 set-size">
+                            <input type="password" id="password" placeholder="Password" class="form-control" required>
+                        </div>
                     </div>
-                </div>
-                  <div class="form-group">
-                    <label for="password" class="col-sm-6 control-label">Confirm Password</label>
-                    <div class="col-sm-9">
-                        <input type="password" id="password" placeholder="Password" class="form-control" required>
+                      <div class="form-group">
+                        <div class="col-sm-9 set-size">
+                            <input type="password" id="password" placeholder="Confim Password" class="form-control" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="country" class="col-sm-6 control-label">Country</label>
-                    <div class="col-sm-9">
-                        <select id="country" class="form-control">
-                            <option>Germany</option>
-                            <option>Austria</option>
-                            <option>France</option>
-                            <option>Denmark</option>
-                            <option>Great Britain</option>
-                            <option>USA</option>
-                            <option>Switzerland</option>
-                            <option>Netherlands</option>
-                        </select>
+                    <div class="form-group">
+                        <div class="col-sm-9 set-size">
+                            <select id="country" class="form-control">
+                                <option>Germany</option>
+                                <option>Austria</option>
+                                <option>France</option>
+                                <option>Denmark</option>
+                                <option>Great Britain</option>
+                                <option>USA</option>
+                                <option>Switzerland</option>
+                                <option>Netherlands</option>
+                            </select>
+                        </div>
+                    </div> <!-- /.form-group -->
+                    <div class="form-group">
+                        <div class="col-sm-9 set-size">
+                            <input type="" id="password" placeholder="Zip Code" class="form-control" required>
+                        </div>
                     </div>
-                </div> <!-- /.form-group -->
-                <div class="form-group">
-                    <label for="password" class="col-sm-6 control-label">Postal Code</label>
-                    <div class="col-sm-9">
-                        <input type="" id="password" placeholder="Postal Code" class="form-control" required>
+                    <div class="form-group">
+                        <div class="col-sm-9 set-size">
+                            <input type="" id="password" placeholder="Town" class="form-control" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-6 control-label">Town Name</label>
-                    <div class="col-sm-9">
-                        <input type="" id="password" placeholder="Town" class="form-control" required>
+                    <div class="form-group">
+                        <div class="col-sm-9 set-size">
+                            <input type="" id="password" placeholder="Street" class="form-control" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-6 control-label">Street</label>
-                    <div class="col-sm-9">
-                        <input type="" id="password" placeholder="Street" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-6">Account Status</label>
-                    <div class="col-sm-6">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <label class="radio-inline">
-                                    <input type="radio" id="femaleRadio" value="Female"> Trial
-                                </label>
+                    <div class="form-group">
+                        <label class="control-label col-sm-6">Account Status</label>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="femaleRadio" value="Trial"> Trial
+                                    </label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="maleRadio" value="Professional"> Professional
+                                    </label>
+                                </div>
                             </div>
-                            <div class="col-sm-12">
-                                <label class="radio-inline">
-                                    <input type="radio" id="maleRadio" value="Male"> Professional
+                        </div>
+                    </div> <!-- /.form-group -->
+                    <div class="form-group">
+                        <div class="col-sm-9 col-sm-offset-3 set-size">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" required> I accept the <a class="terms" href="#">terms and conditions</a>
                                 </label>
                             </div>
                         </div>
-                    </div>
-                </div> <!-- /.form-group -->
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" required> I accept the <a href="#">terms and conditions</a>
-                            </label>
+                    </div> <!-- /.form-group -->
+                    <div class="form-group">
+                        <div class="col-sm-9 col-sm-offset-3 set-size">
+                            <button type="submit" class="btn btn-primary btn-block btn-sign-in">Register</button>
                         </div>
                     </div>
-                </div> <!-- /.form-group -->
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
                     </div>
-                </div>
-                </div>
-            </form> <!-- /form -->
-</div> <!-- ./container -->
+                </form> <!-- /form -->
+    </div> <!-- ./container -->
 </body>

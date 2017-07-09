@@ -150,19 +150,21 @@ export class MenuSliderComponent implements OnInit {
     }
 
     private registerDropdownInteractions() {
-        $('#name').on('input', () => {
-            this.influencer.username = $('#name').text();
-            this.userDataChanged = true;
-        });
         $('#address').on('input', () => {
-            this.influencer.address = $('#address').text();
+            this.influencer.address = $('#address').val();
             this.userDataChanged = true;
         });
 
         $('#dropdown-form').submit((event: any) => {
-            console.log("PUT");
             if (this.userDataChanged) {
-                this.influencerService.updateInfluencer(this.influencer);
+                this.influencerService.updateInfluencer(this.influencer)
+                    .subscribe(
+                        influencer => {
+                          this.influencer = influencer;
+                        },
+                        error =>{
+                        throw new Error(error);
+                    });
                 this.userDataChanged = false;
             }
             event.preventDefault();
