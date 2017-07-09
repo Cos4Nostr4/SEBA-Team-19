@@ -1,0 +1,40 @@
+<app-header-company></app-header-company>
+<html>
+<body>
+<div class="wrapper">
+    <div class="contentBox">
+        <div class="row">
+            <div class=".col-12 col-sm-4 .col-md-4 .col-lg-4 .col-xl-4">
+                <div class="boxContentPic">
+                    <div class="boxPic">
+                        <img id='productPicture' src="https://cdn.shopify.com/s/files/1/0377/2037/products/ModernSport05.Front_large.jpg?v=1490307334">
+                    </div>
+                    <button class="button">Apply</button>
+                </div>
+            </div>
+            <div class=".col-12 col-sm-8 .col-md-8 .col-lg-8 .col-xl-8">
+                <div class="boxContentText">
+                    <div class="boxContentTextWrapper">
+                        <div class="campaignTitle">
+                            <h2>
+                                <p> {{campaign.title}}</p></h2>
+                        </div>
+                        <div class="campaignAmount">
+                            <p>Required Follower: {{campaign.amount}}</p>
+                        </div>
+                        <div class="campaignDescription">
+                            <p>Description: {{campaign.description}}</p>
+                        </div>
+                        <div class="campaignEnforcedHashTags">
+                            <p>Hashtags: {{campaign.enforcedHashTags}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

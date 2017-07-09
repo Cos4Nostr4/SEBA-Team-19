@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./app.component";
 import {AppHeaderModule} from "./app-header/app-header.module";
+import {AppHeaderCompanyModule} from "./app-header-company/app-header-company.module";
 import {OfferListModule} from "./offer-list-view/offer-list.module";
 import {OfferListComponent} from "./offer-list-view/offer-list.component";
 import {RouterModule} from "@angular/router";
@@ -47,6 +48,7 @@ import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-pag
     imports: [
         BrowserModule,
         AppHeaderModule,
+        AppHeaderCompanyModule,
         OfferListModule,
         OfferListElementModule,
         OfferDetailModule,
