@@ -29,9 +29,8 @@ export class InstagrammDataService{
         return selfData;
     }
 
-    public getRecentMedia():Observable<InsRecentMedia[]>{
-        let accessToken = CookieHandler.getCookie("username");
-        let url = INSTAGRAMM_BACKEND_BASE_URL + "media/"+accessToken;
+    public getRecentMedia(username:string):Observable<InsRecentMedia[]>{
+        let url = INSTAGRAMM_BACKEND_BASE_URL + "media/"+username;
         let selfData: Observable<InsRecentMedia[]> = this.http.get(url)
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);

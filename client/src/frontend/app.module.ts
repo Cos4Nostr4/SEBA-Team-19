@@ -71,6 +71,15 @@ import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-pag
         NgbModule.forRoot(),
         RouterModule.forRoot([
             {
+                path: '',
+                redirectTo: '/default-page',
+                pathMatch: 'full'
+            },
+            {
+                path: 'default-page',
+                component: DefaultPageComponent
+            },
+            {
                 path: 'dashboard',
                 component: DashBoardComponent
             },
@@ -133,10 +142,6 @@ import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-pag
                 component: CompanyRegisterPageComponent
             },
             {
-                path: 'app-default-page',
-                component: DefaultPageComponent
-            },
-            {
                 path: 'app-insta-login-page',
                 component: InstaLoginPageComponent
             },
@@ -151,12 +156,7 @@ import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-pag
             {
                 path: 'app-campany-add-page',
                 component: CampanyAddPageComponent
-            },
-            {
-                path: '',
-                redirectTo: '/app-default-page',
-                pathMatch: 'full'
-            },
+            }
         ])
     ],
     declarations: [

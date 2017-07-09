@@ -47,7 +47,7 @@ export class AuthenticationService {
             let url = document.location.href;
 
             //Go to CampssPage (ACTIVATED)
-            let url_CampusPage = "http://localhost:4200/app-campus-page"
+            let url_CampusPage = "http://localhost:4200/default-page";
 
             document.location.href = "https://api.instagram.com/oauth/authorize/?client_id=" + CLIENT_ID + "&redirect_uri=" + url_CampusPage + "&response_type=token";
         }

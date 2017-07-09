@@ -62,7 +62,24 @@ export class InfluencerRouter {
             .put(function (req, res) {
                 let influencerUuid = req.params.id;
                 let influencer:Influencer = req.body.data;
+
+                console.log("PUT:"+influencer);
                 influencerRepository.updateInfluencerWithId(influencerUuid, influencer, function (influencer: Influencer, error: String) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(influencer);
+                        res.json(transferObject);
+                    }
+                });
+            });
+
+        router.route('/influencersByName/:username')
+            .get(function (req, res) {
+                let username = req.params.username;
+                influencerRepository.getInfluencerByUsername(username, function (error:string, influencer: Influencer) {
                     if (error) {
                         res.status(400);
                         let transferObject = TransferObject.aTransferObjectForError(error);

@@ -23,12 +23,13 @@ export class CampanyPageComponent implements OnInit {
 
     ngOnInit(): void {
 
-        let companyId: string = "2";
+        let companyUuid: string = "2";
 
         this.offerService.getAllCampaigns().subscribe(
-            offers => {
-                this.offerList = offers.filter(function (of) {
-                    return (of.uuid === companyId)});
+            campaigns => {
+                this.offerList = campaigns.filter((campaign) => {
+                    return campaign.company.uuid == companyUuid;
+                });
             },
             error => {
                 this.errorMessage = error;
