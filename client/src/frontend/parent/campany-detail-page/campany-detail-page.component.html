@@ -1,115 +1,112 @@
+<app-header-company></app-header-company>
+<html>
         <div class="container-fluid" style="padding: 7%; padding-top: 10%">
             <div class="row justify-content-between">
-            <div class="col-md-6 col-lg-6 col-xl-6" style="padding: 10% 3%;padding-bottom: 3em; padding-top: 3em; border: solid lightgray 1px; border-radius: 1%">
-                <div class="row">
-                <div class="col-md-6 col-lg-6 col-xl-6">
-                    <img class="campany-detail-prod-image img-responsive" src="https://www.trendaffe.de/item/images/7674/601x601/Homer-Simpson-Mueslischale-10458-2-1.jpg">
-                    <input class="" type="file" accept="image/*">
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-6 campany-detail-campaign-data">
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6" style="padding: 10% 3%;padding-bottom: 3em; padding-top: 3em; border: solid lightgray 1px; border-radius: 1%">
+                    <img class="campany-detail-prod-image" src="https://www.trendaffe.de/item/images/7674/601x601/Homer-Simpson-Mueslischale-10458-2-1.jpg">
+
+                <div class="campany-detail-campaign-data">
                     <form>
-                        <div class="form-group">
-                            <label for="campaign-edit-title" class="form-control-label">Campaign Title</label>
-                            <input class="form-control" id="campaign-edit-title" type="text" value="">
+                        <div class="campany-detail-campaign-details">
+                            <h5>Campaign Title</h5>
+                            <p>{{ campaign.title }}</p>
                         </div>
-                        <div class="form-group">
-                            <label for="campaign-edit-number-followers">Required Number of Followers</label>
-                            <input class="form-control" id="campaign-edit-number-followers" type="text">
+
+                        <div class="campany-detail-campaign-details">
+                            <h5>Campaign Description</h5>
+                            <p> {{ campaign.description }} </p>
                         </div>
-                        <!--Min = heute Max = einen Tag vor Enddate-->
-                        <div class="campaign-edit-date">
-                            <label for="campaign-edit-startdate">Start Date of Campaign</label>
-                            <input class="form-control" id="campaign-edit-startdate" type="date" value="" min="" max="">
+
+                        <div class="campany-detail-campaign-details">
+                            <h5>Required Number of Followers</h5>
+                            <p>{{ campaign.requiredNumberOfFollowers }}</p>
                         </div>
-                        <!--Min = einen Tag nach Startdate -->
-                        <div class="campaign-edit-date">
-                            <label for="campaign-edit-enddate">End Date of Campaign</label>
-                            <input class="form-control" id="campaign-edit-enddate" type="date" value="" min="">
+
+                        <div class="campany-detail-campaign-details">
+                            <h5>Start Date of Campaign</h5>
+                            <p>{{ campaign.endDate.toString().substring(0,10) }}</p>
+                        </div>
+
+                        <div class="campany-detail-campaign-details">
+                            <h5>End Date of Campaign</h5>
+                            <p>{{ campaign.endDate.toString().substring(0,10) }}</p>
+                        </div>
+
+                        <div class="campany-detail-campaign-details">
+                            <h5>Hashtags Required For This Campaign</h5>
+                            <p>{{ campaign.enforcedHashTags }}</p>
                         </div>
                     </form>
-                </div>
-                </div>
-
-                    <form>
-                        <div class="form-group" style="padding-top: 2em">
-                            <label for="campaign-edit-hashtags">Which Hashtags to Include</label>
-                            <textarea class="form-control" id="campaign-edit-hashtags" cols="20" rows="5"></textarea>
-                        </div>
-                    </form>
-
-                <div class="row justify-content-between">
-                    <div class="col-md-3 col-lg-3 col-xl-3">
-                        <button class="btn btn-danger btn-block">Delete Campaign</button>
-                    </div>
-                    <div class="col-md-3 col-lg-3 col-xl-3">
-                        <button class="btn btn-success btn-block">Save</button>
-                    </div>
                 </div>
             </div>
 
-            <div class="col-md-5 col-lg-5 col-xl-5" style="padding: 0 0.5em 0 2%;padding-bottom: 3em; padding-top: 3em; border: solid lightgray 1px; border-radius: 1%">
+
+            <div class="col-md-5 col-lg-5 col-xl-5" style="padding: 0 0.5em 0 2%; padding-bottom: 3em; padding-top: 3em; border: solid lightgray 1px; border-radius: 1%">
                 <div class="campany-detail-requests-area">
                     <table style="width: 95%">
                         <colgroup span="4"></colgroup>
                     <tr>
                         <td><div class="campany-detail-request-element"><img class="campany-detail-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg"></div></td>
                         <td>Influencer Description</td>
-                        <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success">Accept</button></div></td>
-                        <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger" style="text-align: right">Reject</button></div></td>
+                        <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton" >Accept</button></div></td>
+                        <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger rejectButton alignRight" >Reject</button></div></td>
                     </tr>
                     <tr>
                         <td><div class="campany-detail-request-element"><img class="campany-detail-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg"></div></td>
                         <td>Influencer Description</td>
-                        <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success">Accept</button></div></td>
-                        <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger" style="text-align: right">Reject</button></div></td>
+                        <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton" >Accept</button></div></td>
+                        <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger rejectButton alignRight" >Reject</button></div></td>
                     </tr>
                     <tr>
                         <td><div class="campany-detail-request-element"><img class="campany-detail-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg"></div></td>
                         <td>Influencer Description</td>
-                        <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success">Accept</button></div></td>
-                        <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger" style="text-align: right">Reject</button></div></td>
+                        <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton" >Accept</button></div></td>
+                        <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger rejectButton alignRight" >Reject</button></div></td>
                     </tr>
                         <tr>
                             <td><div class="campany-detail-request-element"><img class="campany-detail-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg"></div></td>
                             <td>Influencer Description</td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success">Accept</button></div></td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger" style="text-align: right">Reject</button></div></td>
+                            <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton" >Accept</button></div></td>
+                            <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger rejectButton alignRight" >Reject</button></div></td>
                         </tr>
                         <tr>
                             <td><div class="campany-detail-request-element"><img class="campany-detail-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg"></div></td>
                             <td>Influencer Description</td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success">Accept</button></div></td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger" style="text-align: right">Reject</button></div></td>
+                            <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton" >Accept</button></div></td>
+                            <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger rejectButton alignRight" >Reject</button></div></td>
                         </tr>
                         <tr>
                             <td><div class="campany-detail-request-element"><img class="campany-detail-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg"></div></td>
                             <td>Influencer Description</td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success">Accept</button></div></td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger" style="text-align: right">Reject</button></div></td>
+                            <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton" >Accept</button></div></td>
+                            <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger rejectButton alignRight" >Reject</button></div></td>
 
                         <tr>
                             <td><div class="campany-detail-request-element"><img class="campany-detail-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg"></div></td>
                             <td>Influencer Description</td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success">Accept</button></div></td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger" style="text-align: right">Reject</button></div></td>
+                        <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton" >Accept</button></div></td>
+                        <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger rejectButton alignRight" >Reject</button></div></td>
                         </tr>
                         <tr>
                             <td><div class="campany-detail-request-element"><img class="campany-detail-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg"></div></td>
                             <td>Influencer Description</td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success">Accept</button></div></td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger" style="text-align: right">Reject</button></div></td>
+                            <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton" >Accept</button></div></td>
+                            <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger rejectButton alignRight" >Reject</button></div></td>
                         </tr>
                         <tr>
                             <td><div class="campany-detail-request-element"><img class="campany-detail-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg"></div></td>
                             <td>Influencer Description</td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success">Accept</button></div></td>
-                            <td><div style="text-align: right"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger" style="text-align: right">Reject</button></div></td>
+                            <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton" >Accept</button></div></td>
+                            <td><div class="alignRight"><button type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger rejectButton alignRight" >Reject</button></div></td>
 
                     </table>
 
                 </div>
             </div>
 
-            </div>
 
         </div>
+            </div>
+
+</html>

@@ -1,18 +1,24 @@
 import {NgModule} from "@angular/core";
-import {CampanyDetailPageComponent} from './campany-detail-page.component';
+import {CampanyAddPageComponent} from "./campany-add-page.component"
 import {AppHeaderCompanyModule} from "../../app-header-company/app-header-company.module";
 
-@NgModule ({
+
+
+@NgModule({
+
     imports: [
         AppHeaderCompanyModule
-
     ],
+
     declarations: [
-        CampanyDetailPageComponent
+        CampanyAddPageComponent
     ],
     exports: [
-        CampanyDetailPageComponent
-    ]
+        CampanyAddPageComponent
+        ]
+
 })
 
-export class CampanyDetailPageModule {}
+export class CampanyAddPageModule {
+
+}

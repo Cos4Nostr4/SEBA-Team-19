@@ -3,6 +3,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./app.component";
 import {FormsModule}   from '@angular/forms';
 import {AppHeaderModule} from "./app-header/app-header.module";
+import {AppHeaderCompanyModule} from "./app-header-company/app-header-company.module";
 import {OfferListModule} from "./offer-list-view/offer-list.module";
 import {OfferListComponent} from "./offer-list-view/offer-list.component";
 import {RouterModule} from "@angular/router";
@@ -39,7 +40,8 @@ import {ProfileViewDropdownModule} from './parent/profile-view-dropdown/profile-
 import {ProfileViewDropdownComponent} from './parent/profile-view-dropdown/profile-view-dropdown.component';
 import {StatusPageModule} from './parent/status-page/status-page.module';
 import {StatusPageComponent} from './parent/status-page/status-page.component';
-
+import {CampanyAddPageModule} from './parent/campany-add-page/campany-add-page.module';
+import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-page.component';
 
 
 
@@ -48,6 +50,7 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
         BrowserModule,
         FormsModule,
         AppHeaderModule,
+        AppHeaderCompanyModule,
         OfferListModule,
         OfferListElementModule,
         OfferDetailModule,
@@ -66,10 +69,20 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
         CompanyRegisterPageModule,
         DefaultPageModule,
         InstaLoginPageModule,
+        CampanyAddPageModule,
         ProfileViewDropdownModule,
         StatusPageModule,
         NgbModule.forRoot(),
         RouterModule.forRoot([
+            {
+                path: '',
+                redirectTo: '/default-page',
+                pathMatch: 'full'
+            },
+            {
+                path: 'default-page',
+                component: DefaultPageComponent
+            },
             {
                 path: 'dashboard',
                 component: DashBoardComponent
@@ -133,10 +146,6 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
                 component: CompanyRegisterPageComponent
             },
             {
-                path: 'app-default-page',
-                component: DefaultPageComponent
-            },
-            {
                 path: 'app-insta-login-page',
                 component: InstaLoginPageComponent
             },
@@ -149,10 +158,9 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
                 component: StatusPageComponent
             },
             {
-                path: '',
-                redirectTo: '/app-default-page',
-                pathMatch: 'full'
-            },
+                path: 'app-campany-add-page',
+                component: CampanyAddPageComponent
+            }
         ])
     ],
     declarations: [
