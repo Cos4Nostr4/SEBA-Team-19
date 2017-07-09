@@ -106,7 +106,7 @@ import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-pag
             },
             {
                 path: 'campaign-detail/:id',
-                component: OfferDetailComponent
+                component: CampusDetailPageComponent
             },
 
             {

@@ -30,7 +30,7 @@ export class OfferDetailComponent implements OnInit{
             .subscribe(offer => this.offer = offer);*/
 
 
-        let campaignId: string = "5";
+        let campaignId: string = "2";
         this.offerService.getCampaignWithId(campaignId).subscribe(
             campaign => {
                 this.campaign = campaign;
