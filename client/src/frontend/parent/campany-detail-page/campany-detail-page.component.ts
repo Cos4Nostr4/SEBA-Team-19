@@ -9,7 +9,7 @@ declare var $: any;
     selector: "app-campany-detail-page",
     templateUrl: "./campany-detail-page.component.html",
     styleUrls: ["./campany-detail-page.component.css"],
-    providers: [CampaignService]
+    providers: [CampaignService, RequestService]
 })
 
 
