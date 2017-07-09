@@ -5,6 +5,7 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import {Company} from "../../data-objects/company";
 import {CompanyService} from "../../services/company.service";
+import {CookieHandler} from "../../services/cookie-handler";
 
 @Component ({
     selector: "app-company-login-page",
@@ -19,7 +20,8 @@ errorMessage: string;
   mode = 'Observable';
   email = '';
   password = '';
-    submitted = false;
+  submitted = false;
+  url = document.location.href;
  
   constructor (private companyService: CompanyService) {}
 
@@ -34,6 +36,11 @@ errorMessage: string;
     } else {
     	console.log("SUCCESS!"+company.email);
     	if(company.password == password){
+    		CookieHandler.addCookie("companyname",company.username);
+            /*document.location.href = this.url.split(/[?#]/)[0];*/
+            let id = CookieHandler.getCookie("companyname")
+            document.location.href = this.url+"/"+id
+            console.log("Setting cookie to " + document.cookie);
     		console.log("SUCCES! You are logging in");
     	} else {
     		console.log("FAIL, password is wrong");
