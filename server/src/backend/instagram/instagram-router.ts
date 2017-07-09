@@ -2,6 +2,7 @@ import * as express from "express";
 import {TransferObject} from "../transferobject/transfer-object";
 import {InstagramRepository} from "./instagram-repository";
 import InsSelfData from "../../../../client/src/frontend/data-objects/ins-self-data";
+import InsRecentMedia from "../../../../client/src/frontend/data-objects/ins-recent-media";
 
 
 const BASE_PATH = "/instagram/";
@@ -43,6 +44,36 @@ export class InstagramRouter {
                         res.json(transferObject);
                     } else {
                         let transferObject = TransferObject.aTransferObjectFor(selfData);
+                        res.json(transferObject)
+                    }
+                });
+            });
+
+        router.route(BASE_PATH + 'user/:username')
+            .get((req, res) => {
+                let username = req.params.username;
+                this.instagramRepository.getUserData(username, (error: any, selfData: InsSelfData) => {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(selfData);
+                        res.json(transferObject)
+                    }
+                });
+            });
+
+        router.route(BASE_PATH + 'media/:username')
+            .get((req, res) => {
+                let username = req.params.username;
+                this.instagramRepository.getMostRecentMedia(username, (error: any, recentMedias: InsRecentMedia[]) => {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(recentMedias);
                         res.json(transferObject)
                     }
                 });

@@ -27,13 +27,14 @@ export class AppHeaderComponent implements OnInit {
             this.instagrammDataService.getSelfData()
                 .subscribe(
                     selfData => {
-                        $('#influncerProfilPicture').attr("src" ,selfData.profilePictureUrl);
+                        $('#influncerProfilPicture').attr("src", selfData.profilePictureUrl);
                     },
                     error => {
                         throw new Error(error);
                     }
                 );
-        }else{
+
+        } else {
             $('#dropdown').hide();
         }
     }

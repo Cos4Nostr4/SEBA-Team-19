@@ -47,6 +47,18 @@ export class InfluencerRepository {
         });
     }
 
+    public getInfluencerByUsername(username: string, func: (error:any, influencer:Influencer)=> void) {
+        this.model.findOne({'username': username}, function (err: any, dbInfluencer: DBInfluencer) {
+            if (dbInfluencer) {
+                let influencer: Influencer = InfluencerMapper.map(dbInfluencer);
+                func(null, influencer);
+            } else {
+                let errorMessage = "Cannot find Influencer with username '" + username + "'";
+                func(errorMessage, null);
+            }
+        });
+    }
+
     public addInfluencer(influencer: Influencer, func: (influencer: Influencer, error: String) => void) {
         let influencerId = influencer.uuid;
         this.model.findOne({'uuid': influencerId}, (err: any, dbInfluencer: DBInfluencer) => {
@@ -77,6 +89,7 @@ export class InfluencerRepository {
                     let updatedDbInfluencer = new this.model({
                         uuid: influencerId,
                         username: influencer.username,
+                        instagramId:influencer.instagramId,
                         address: influencer.address,
                         token: influencer.token
                     });
