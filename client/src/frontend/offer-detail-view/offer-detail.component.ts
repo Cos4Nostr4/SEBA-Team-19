@@ -17,7 +17,7 @@ export class OfferDetailComponent implements OnInit{
     private offer:Campaign;
 
     constructor(private offerService: CampaignService, private route: ActivatedRoute, private location: Location) {
-        let company = new Company("1", "PRada", "prada", "123", "...", "...", "...", "...", "...", true);
+        let company = new Company("1", "PRada", "prada", "123","email", "...", "...", "...", "...", "...", true);
         this.offer = new Campaign("1", "Bibis Brom", "","",company, 1, 1, [], new Date(), new Date(), true);
     }
 
