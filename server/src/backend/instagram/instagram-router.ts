@@ -7,7 +7,6 @@ import InsRecentMedia from "../../../../client/src/frontend/data-objects/ins-rec
 
 const BASE_PATH = "/instagram/";
 
-const accessToken = '2373977626.1083168.2649465661074f9797367524727b92d9';
 export class InstagramRouter {
     private instagramRepository: InstagramRepository;
 
@@ -19,9 +18,9 @@ export class InstagramRouter {
     public configureRoutes(baseUrl: string, application: express.Application) {
         let router: express.Router = express.Router();
 
-        router.route(BASE_PATH + 'login')
+        router.route(BASE_PATH + 'login/:access_token')
             .get((req, res) => {
-                //let accessToken: any = req.body.data;
+                let accessToken = req.params.access_token;
                 this.instagramRepository.login(accessToken,(error: any, selfData: InsSelfData) => {
                     if (error) {
                         res.status(400);

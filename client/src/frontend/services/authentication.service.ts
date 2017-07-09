@@ -59,7 +59,7 @@ export class AuthenticationService {
         if (url.includes('access_token')) {
             let accessToken = this.getAccessToken();
 
-            let login_url = INSTAGRAMM_BACKEND_BASE_URL + "login";
+            let login_url = INSTAGRAMM_BACKEND_BASE_URL + "login/"+accessToken;
             await this.http.get(login_url)
                 .map(JsonExtractor.extractData)
                 .catch(ServiceErrorHandler.handleError)
