@@ -1,7 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthenticationService} from "../services/authentication.service";
 import {Router} from "@angular/router";
-declare var jquery: any;
+import {CookieHandler} from "../services/cookie-handler";
+import {InfluencerService} from "../services/influencer.service";
+import {Influencer} from "../data-objects/influencer";
 declare var $: any;
 
 
@@ -12,17 +14,23 @@ const MINIMUM_WIDHT_OF_ELEMENTS: number = 200;
     selector: 'menu-slider',
     templateUrl: './menu-slider.component.html',
     styleUrls: ['./menu-slider.component.css'],
-    providers: [AuthenticationService]
+    providers: [AuthenticationService, InfluencerService]
 })
 export class MenuSliderComponent implements OnInit {
     private authenticationService: AuthenticationService;
+    private influencerService: InfluencerService;
     private waitingElements: any[];
     private router: Router;
+    private influencer: Influencer;
+    private userDataChanged: boolean;
 
-    constructor(authenticationService: AuthenticationService, router: Router) {
+    constructor(authenticationService: AuthenticationService, influencerService: InfluencerService, router: Router) {
         this.authenticationService = authenticationService;
+        this.influencerService = influencerService;
         this.waitingElements = [];
         this.router = router;
+        this.userDataChanged = false;
+        this.influencer = null;
     }
 
     ngOnInit(): void {
@@ -30,6 +38,21 @@ export class MenuSliderComponent implements OnInit {
 
         if (this.authenticationService.isLoggedIn()) {
             this.registerOnClickHandlerForMenuItems();
+            let username = CookieHandler.getCookie("username");
+            this.influencerService.getInfluencerByName(username)
+                .subscribe(
+                    influencer => {
+                        this.influencer = influencer;
+                        $('#name').val(influencer.username);
+                        $('#address').val(influencer.address);
+                        console.log("Influencer:" + JSON.stringify(influencer));
+                    },
+                    error => {
+                        throw new Error(error);
+                    }
+                );
+
+            this.registerDropdownInteractions();
         }
 
 
@@ -124,5 +147,25 @@ export class MenuSliderComponent implements OnInit {
                 this.router.navigateByUrl("categories/" + i);
             });
         }
+    }
+
+    private registerDropdownInteractions() {
+        $('#name').on('input', () => {
+            this.influencer.username = $('#name').text();
+            this.userDataChanged = true;
+        });
+        $('#address').on('input', () => {
+            this.influencer.address = $('#address').text();
+            this.userDataChanged = true;
+        });
+
+        $('#dropdown-form').submit((event: any) => {
+            console.log("PUT");
+            if (this.userDataChanged) {
+                this.influencerService.updateInfluencer(this.influencer);
+                this.userDataChanged = false;
+            }
+            event.preventDefault();
+        });
     }
 }
