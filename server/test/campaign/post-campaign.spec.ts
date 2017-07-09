@@ -61,7 +61,7 @@ describe("Test Campaign backend: ", function () {
             });
         });
 
-        let notExistingCompany = new Company("1234567", "not existing", "not existing", "secret", "...", "contact", "secret",
+        let notExistingCompany = new Company("1234567", "not existing", "not existing", "secret", "email", "...", "contact", "secret",
         "taxes", "taxes", false);
         let incompleteCampaign = new Campaign("123456789", "Aftershave", "some aftershave", "imageUrl", notExistingCompany, 1, 2000,
             ["after", "shave"], dateFor("2017-8-2"), dateFor("2018-1-1"), true);

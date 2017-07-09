@@ -6,7 +6,7 @@ import {Campaign} from "../data-objects/campaign";
 import 'rxjs/add/operator/switchMap';
 import {Company} from "../data-objects/company";
 
-declare var $: any;
+declare var $:any;
 
 @Component({
     selector: 'offer-detail',
@@ -24,14 +24,13 @@ export class OfferDetailComponent implements OnInit{
         this.offerService = offerService;
     }
 
-
     ngOnInit(): void {
         /*this.route.params
             .switchMap((params: Params) => this.offerService.getCampaignWithId(+params.id+""))
             .subscribe(offer => this.offer = offer);*/
 
 
-        let campaignId: string = "1";
+        let campaignId: string = "5";
         this.offerService.getCampaignWithId(campaignId).subscribe(
             campaign => {
                 this.campaign = campaign;
