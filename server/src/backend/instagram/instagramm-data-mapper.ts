@@ -9,7 +9,7 @@ export default class InstagrammDataMapper {
     }
 
     public static mapToMediasData(data: any) {
-        let medias:InsRecentMedia[] =  data.map((media:any) => {
+        let medias: InsRecentMedia[] = data.map((media: any) => {
             return InstagrammDataMapper.mapToSingleMedia(media);
         });
         return medias;

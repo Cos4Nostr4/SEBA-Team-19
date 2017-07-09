@@ -52,7 +52,7 @@ export class App {
                 res.end("Success!");
             });
 
-        this._application.use('/media/images/', express.static(__dirname +'/media'));
+        this._application.use(Config.backend_media_url, express.static(__dirname +'/media'));
         this._application.use(router);
 
         let campaignRouter: CampaignRouter = new CampaignRouter();
