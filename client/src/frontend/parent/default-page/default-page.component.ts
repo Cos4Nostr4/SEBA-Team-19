@@ -4,9 +4,7 @@ import {Campaign} from "../../data-objects/campaign";
 import {AuthenticationService} from "../../services/authentication.service";
 import {ActivatedRoute, Params} from "@angular/router";
 
-declare var jquery: any;
 declare var $: any;
-
 
 @Component({
     selector: "app-default-page",
@@ -15,28 +13,26 @@ declare var $: any;
     providers: [CampaignService, AuthenticationService]
 })
 export class DefaultPageComponent implements OnInit {
-    offerService: CampaignService;
-    offerList: Campaign[];
-    private errorMessage: string;
+    private campaignService: CampaignService;
+    private campaignList: Campaign[];
     private authenticationService: AuthenticationService;
 
-    constructor(offerService: CampaignService, authenticationService: AuthenticationService, private route: ActivatedRoute) {
-        this.offerService = offerService;
+    constructor(campaignService: CampaignService, authenticationService: AuthenticationService, private route: ActivatedRoute) {
+        this.campaignService = campaignService;
         this.authenticationService = authenticationService;
     }
 
     ngOnInit(): void {
         if (document.location.href.includes("categories")) {
             this.route.params
-                .switchMap((params: Params) => this.offerService.getCampaignForCategory(+params.categoryId))
-                .subscribe(offer => this.offerList = offer);
+                .switchMap((params: Params) => this.campaignService.getCampaignForCategory(+params.categoryId))
+                .subscribe(campaigns => this.campaignList = campaigns);
         } else {
-            this.offerService.getAllCampaigns().subscribe(
+            this.campaignService.getAllCampaigns().subscribe(
                 offers => {
-                    this.offerList = offers
+                    this.campaignList = offers
                 },
                 error => {
-                    this.errorMessage = error;
                     throw new Error(error)
                 }
             );

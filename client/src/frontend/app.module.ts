@@ -69,6 +69,15 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
         NgbModule.forRoot(),
         RouterModule.forRoot([
             {
+                path: '',
+                redirectTo: '/default-page',
+                pathMatch: 'full'
+            },
+            {
+                path: 'default-page',
+                component: DefaultPageComponent
+            },
+            {
                 path: 'dashboard',
                 component: DashBoardComponent
             },
@@ -119,7 +128,7 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
                 component: CampusDetailPageComponent
             },
             {
-                path: 'app-campus-page',
+                path: 'campus-page',
                 component: CampusPageComponent
             },
             {
@@ -129,10 +138,6 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
             {
                 path: 'app-company-register-page',
                 component: CompanyRegisterPageComponent
-            },
-            {
-                path: 'app-default-page',
-                component: DefaultPageComponent
             },
             {
                 path: 'app-insta-login-page',
@@ -145,11 +150,6 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
             {
                 path: 'app-status-page',
                 component: StatusPageComponent
-            },
-            {
-                path: '',
-                redirectTo: '/app-default-page',
-                pathMatch: 'full'
             },
         ])
     ],

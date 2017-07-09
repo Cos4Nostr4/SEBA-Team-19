@@ -1,12 +1,16 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {DefaultPageComponent} from './default-page.component';
-import {OfferListElementModule} from "../../offer-list-view/offer-list-element/offer-list-element.module";
+import {DefaultPageComponent} from "./default-page.component";
+import {AppHeaderModule} from "../../app-header/app-header.module";
+import {MenuSliderModule} from "../../menu-slider/menu-slider.module";
+import {CampaignListElementModule} from "../campaign-list-element/campaign-list-element.module";
 
-@NgModule ({
+@NgModule({
     imports: [
-    	CommonModule,
-        OfferListElementModule
+        CommonModule,
+        AppHeaderModule,
+        MenuSliderModule,
+        CampaignListElementModule
     ],
     declarations: [
         DefaultPageComponent
@@ -16,4 +20,5 @@ import {OfferListElementModule} from "../../offer-list-view/offer-list-element/o
     ]
 })
 
-export class DefaultPageModule {}
+export class DefaultPageModule {
+}
