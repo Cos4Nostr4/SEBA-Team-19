@@ -28,7 +28,7 @@ export class InfluencerService {
 
     public updateInfluencer(influencer: Influencer) {
         let url = URL_INFLUENCERS_UPDATE+influencer.uuid;
-        let updatedInfluencer: Observable<Influencer> = this.http.put(url, influencer)
+        let updatedInfluencer: Observable<Influencer> = this.http.put(url, {data:influencer})
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);
         return updatedInfluencer;
