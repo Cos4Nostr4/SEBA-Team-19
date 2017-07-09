@@ -38,7 +38,8 @@ import {ProfileViewDropdownModule} from './parent/profile-view-dropdown/profile-
 import {ProfileViewDropdownComponent} from './parent/profile-view-dropdown/profile-view-dropdown.component';
 import {StatusPageModule} from './parent/status-page/status-page.module';
 import {StatusPageComponent} from './parent/status-page/status-page.component';
-
+import {CampanyAddPageModule} from './parent/campany-add-page/campany-add-page.module';
+import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-page.component';
 
 
 
@@ -64,6 +65,7 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
         CompanyRegisterPageModule,
         DefaultPageModule,
         InstaLoginPageModule,
+        CampanyAddPageModule,
         ProfileViewDropdownModule,
         StatusPageModule,
         NgbModule.forRoot(),
@@ -145,6 +147,10 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
             {
                 path: 'app-status-page',
                 component: StatusPageComponent
+            },
+            {
+                path: 'app-campany-add-page',
+                component: CampanyAddPageComponent
             },
             {
                 path: '',
