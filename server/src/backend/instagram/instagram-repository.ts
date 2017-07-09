@@ -4,6 +4,8 @@ import InsSelfData from "../../../../client/src/frontend/data-objects/ins-self-d
 import InstagrammDataMapper from "./instagramm-data-mapper";
 import {InfluencerRepository} from "../influencer/influencer-repository";
 import {Influencer} from "../../../../client/src/frontend/data-objects/influencer";
+import UUID from "../uuid/uuid";
+import InsRecentMedia from "../../../../client/src/frontend/data-objects/ins-recent-media";
 
 const CLIENT_ID = '1083168b29cb4a1e8b0bf6a6ddb3c1c9';
 export class InstagramRepository {
@@ -38,7 +40,8 @@ export class InstagramRepository {
                             });
                         } else {
                             console.log("User not existed.");
-                            let createdInfluencer = new Influencer(selfData.instagrammId, selfData.username, "", accessToken);
+                            let uuid = UUID.createNew();
+                            let createdInfluencer = new Influencer(uuid.asStringValue(), selfData.username, selfData.instagrammId, "", accessToken);
                             this.influencerRepository.addInfluencer(createdInfluencer, (influencer: Influencer, err: any) => {
                                 if (err) {
                                     func(err, null);
@@ -69,7 +72,55 @@ export class InstagramRepository {
                 }
             }
         });
+    }
 
+    public getUserData(username: any, func: (error:any, insSelfData:InsSelfData)=>void) {
+        this.influencerRepository.getInfluencerByUsername(username, (errorFindingInfluncer, dbInfluencer) => {
+           if(errorFindingInfluncer){
+               func(errorFindingInfluncer, null);
+           } else{
+               const instagram = this.createInstagramObject(dbInfluencer.token);
+               instagram.get('users/'+dbInfluencer.instagramId, (err: any, selfData: any) => {
+                   if (err) {
+                       func(err, null);
+                   } else {
+                       if (selfData.meta.code == "200") {
+                           let insSelfData = InstagrammDataMapper.mapToSelfData(selfData.data);
+                           func(null, insSelfData);
+                       } else {
+                           //TODO: better error message
+                           let errorMessage = "Blocked access";
+                           func(errorMessage, null);
+                       }
+                   }
+               });
+           }
+        });
+    }
+
+    public getMostRecentMedia(username:any, func:(error: any, recentMedias: InsRecentMedia[]) => any){
+        this.influencerRepository.getInfluencerByUsername(username, (errorFindingInfluncer, dbInfluencer) => {
+            if(errorFindingInfluncer){
+                func(errorFindingInfluncer, null);
+            } else{
+                const instagram = this.createInstagramObject(dbInfluencer.token);
+                let instagramId = dbInfluencer.instagramId;
+                instagram.get('users/'+ instagramId+'/media/recent', (err: any, mediaData: any) => {
+                    if (err) {
+                        func(err, null);
+                    } else {
+                        if (mediaData) {
+                            let recentMedias = InstagrammDataMapper.mapToMediasData(mediaData.data);
+                            func(null, recentMedias);
+                        } else {
+                            //TODO: better error message
+                            let errorMessage = "Blocked access";
+                            func(errorMessage, null);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private createInstagramObject(accessToken: any) {
