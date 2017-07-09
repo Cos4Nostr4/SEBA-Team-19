@@ -41,6 +41,7 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
 
 
 
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -79,6 +80,10 @@ import {StatusPageComponent} from './parent/status-page/status-page.component';
             {
                 path: 'offers',
                 component: OfferListComponent
+            },
+            {
+                path: 'offer-detail',
+                component: OfferDetailComponent
             },
             {
                 path: 'categories/:categoryId',

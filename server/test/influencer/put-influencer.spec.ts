@@ -18,7 +18,7 @@ describe("Test Influencer backend: ", function () {
 
         const id = "1";
         it("updates influencer with id " + id, async function (done) {
-            let updatedInfluencer = new Influencer(id, "updatedValue", "updatedToken");
+            let updatedInfluencer = new Influencer(id, "notExisting","1", "updatedValue", "updatedToken");
             let params = {
                 url: baseUrl + influencerUrl + "/" + id,
                 form: {
@@ -58,7 +58,7 @@ describe("Test Influencer backend: ", function () {
 
         it(" fails for updating non existing influencer", async function (done) {
             const nonExistingId = "123456789";
-            let nonExistingInfluencer = new Influencer(nonExistingId, "notExisting", "notExisting");
+            let nonExistingInfluencer = new Influencer(nonExistingId, "notExisting"," 123", "notExisting", "notExisting");
             let params = {
                 url: baseUrl + influencerUrl + "/" + nonExistingId,
                 form: {
@@ -79,7 +79,7 @@ describe("Test Influencer backend: ", function () {
 
         it(" fails for updating influencer with date with different id", async function (done) {
             const existingId = "2";
-            let notExistingInfluencer = new Influencer("123456789", "notExisting", "notExisting");
+            let notExistingInfluencer = new Influencer("123456789", "notExisting", "123", "notExisting", "notExisting");
             let params = {
                 url: baseUrl + influencerUrl + "/" + existingId,
                 form: {

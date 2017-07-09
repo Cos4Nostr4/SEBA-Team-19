@@ -6,6 +6,10 @@ export default class UUID{
         this.value = this.createNewOne();
     }
 
+    public static createNew(): UUID{
+        return new UUID();
+    }
+
     public asStringValue():string{
         return this.value;
     }

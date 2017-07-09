@@ -3,6 +3,8 @@ import {CampaignService} from "../services/offer.service";
 import {Campaign} from "../data-objects/campaign";
 import {AuthenticationService} from "../services/authentication.service";
 import {ActivatedRoute, Params} from "@angular/router";
+import {InstagrammDataService} from "../services/instagramm-data.service";
+import {CookieHandler} from "../services/cookie-handler";
 
 declare var jquery: any;
 declare var $: any;
@@ -12,17 +14,20 @@ declare var $: any;
     selector: 'offer-list',
     templateUrl: './offer-list.component.html',
     styleUrls: ['./offer-list.component.css'],
-    providers: [CampaignService, AuthenticationService]
+    providers: [CampaignService, AuthenticationService, InstagrammDataService]
 })
 export class OfferListComponent implements OnInit {
     offerService: CampaignService;
     offerList: Campaign[];
     private errorMessage: string;
     private authenticationService: AuthenticationService;
+    private instagrammDataService: InstagrammDataService;
 
-    constructor(offerService: CampaignService, authenticationService: AuthenticationService, private route: ActivatedRoute) {
+    constructor(offerService: CampaignService, authenticationService: AuthenticationService,
+                instagrammDataService: InstagrammDataService, private route: ActivatedRoute) {
         this.offerService = offerService;
         this.authenticationService = authenticationService;
+        this.instagrammDataService = instagrammDataService;
     }
 
     ngOnInit(): void {
@@ -33,7 +38,7 @@ export class OfferListComponent implements OnInit {
         } else {
             this.offerService.getAllCampaigns().subscribe(
                 offers => {
-                    this.offerList = offers
+                    this.offerList = offers;
                 },
                 error => {
                     this.errorMessage = error;
@@ -44,11 +49,22 @@ export class OfferListComponent implements OnInit {
 
         if (this.authenticationService.isLoggedIn()) {
             console.log("Logged in");
+            /*this.instagrammDataService.getSelfData()
+                .subscribe(
+                    selfDate => {
+                        console.log("SelfData:"+JSON.stringify(selfDate));
+                    },
+                    error => {
+                        console.log("Error when retrieving selfData: "+error);
+                    }
+                )*/
         } else {
             console.log("not logged in");
             this.disableComponent();
         }
+
     }
+
 
     private disableComponent() {
         let parent = $('#campaign-list-container').parent();

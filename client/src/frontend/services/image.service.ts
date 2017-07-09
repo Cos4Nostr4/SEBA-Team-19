@@ -6,10 +6,10 @@ export class ImageService {
     private imageBaseUrl: string;
 
     constructor() {
-        this.imageBaseUrl = Config.backend_address + ":" + Config.backend_port + "/media/images/";
+        this.imageBaseUrl = Config.backend_address + ":" + Config.backend_port +Config.backend_media_url;
     }
 
-    public getOfferPreviewUrlFor(imageName: string):string{
-        return this.imageBaseUrl + imageName;
+    public getImageUrlForName(imageName: string):string{
+        return this.imageBaseUrl + "/"+imageName;
     }
 }
