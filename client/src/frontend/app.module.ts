@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./app.component";
-import {FormsModule}   from '@angular/forms';
+import {FormsModule} from "@angular/forms";
 import {AppHeaderModule} from "./app-header/app-header.module";
 import {AppHeaderCompanyModule} from "./app-header-company/app-header-company.module";
 import {OfferListModule} from "./offer-list-view/offer-list.module";
@@ -11,38 +11,36 @@ import {DashBoardComponent} from "./dashboard/dashboard.component";
 import {OfferDetailComponent} from "./offer-detail-view/offer-detail.component";
 import {HttpModule, JsonpModule} from "@angular/http";
 import {OfferListElementModule} from "./offer-list-view/offer-list-element/offer-list-element.module";
-import {OfferDetailModule} from "./offer-detail-view/offer-detail.module";
 import {DashBoardModule} from "./dashboard/dashboard.module";
 import {SamplePageModule} from "./sample-page/sample-page.module";
 import {SampleObjectComponent} from "./sample-page/sample-page.component";
 import {AuthenticationModule} from "./api-test-area/api-test-area.module";
 import {AuthenticationComponent} from "./api-test-area/api-test-area.component";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MenuSliderModule} from "./menu-slider/menu-slider.module";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {CampanyDetailPageModule} from './parent/campany-detail-page/campany-detail-page.module';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CampanyDetailPageModule} from "./parent/campany-detail-page/campany-detail-page.module";
 import {CampanyDetailPageComponent} from "./parent/campany-detail-page/campany-detail-page.component";
-import {CampanyPageModule} from './parent/campany-page/campany-page.module';
-import {CampanyPageComponent} from './parent/campany-page/campany-page.component';
-import {CampusDetailPageModule} from './parent/campus-detail-page/campus-detail-page.module';
-import {CampusDetailPageComponent} from './parent/campus-detail-page/campus-detail-page.component';
-import {CampusPageModule} from './parent/campus-page/campus-page.module';
-import {CampusPageComponent} from './parent/campus-page/campus-page.component';
-import {CompanyLoginPageModule} from './parent/company-login-page/company-login-page.module';
-import {CompanyLoginPageComponent} from './parent/company-login-page/company-login-page.component';
-import {CompanyRegisterPageModule} from './parent/company-register-page/company-register-page.module';
-import {CompanyRegisterPageComponent} from './parent/company-register-page/company-register-page.component';
-import {DefaultPageModule} from './parent/default-page/default-page.module';
-import {DefaultPageComponent} from './parent/default-page/default-page.component';
-import {InstaLoginPageModule} from './parent/insta-login-page/insta-login-page.module';
-import {InstaLoginPageComponent} from './parent/insta-login-page/insta-login-page.component';
-import {ProfileViewDropdownModule} from './parent/profile-view-dropdown/profile-view-dropdown.module';
-import {ProfileViewDropdownComponent} from './parent/profile-view-dropdown/profile-view-dropdown.component';
-import {StatusPageModule} from './parent/status-page/status-page.module';
-import {StatusPageComponent} from './parent/status-page/status-page.component';
-import {CampanyAddPageModule} from './parent/campany-add-page/campany-add-page.module';
-import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-page.component';
-
+import {CampanyPageModule} from "./parent/campany-page/campany-page.module";
+import {CampanyPageComponent} from "./parent/campany-page/campany-page.component";
+import {CampusDetailPageModule} from "./parent/campus-detail-page/campus-detail-page.module";
+import {CampusDetailPageComponent} from "./parent/campus-detail-page/campus-detail-page.component";
+import {CampusPageModule} from "./parent/campus-page/campus-page.module";
+import {CampusPageComponent} from "./parent/campus-page/campus-page.component";
+import {CompanyLoginPageModule} from "./parent/company-login-page/company-login-page.module";
+import {CompanyLoginPageComponent} from "./parent/company-login-page/company-login-page.component";
+import {CompanyRegisterPageModule} from "./parent/company-register-page/company-register-page.module";
+import {CompanyRegisterPageComponent} from "./parent/company-register-page/company-register-page.component";
+import {DefaultPageModule} from "./parent/default-page/default-page.module";
+import {DefaultPageComponent} from "./parent/default-page/default-page.component";
+import {InstaLoginPageModule} from "./parent/insta-login-page/insta-login-page.module";
+import {InstaLoginPageComponent} from "./parent/insta-login-page/insta-login-page.component";
+import {ProfileViewDropdownModule} from "./parent/profile-view-dropdown/profile-view-dropdown.module";
+import {ProfileViewDropdownComponent} from "./parent/profile-view-dropdown/profile-view-dropdown.component";
+import {StatusPageModule} from "./parent/status-page/status-page.module";
+import {StatusPageComponent} from "./parent/status-page/status-page.component";
+import {CampanyAddPageModule} from "./parent/campany-add-page/campany-add-page.module";
+import {CampanyAddPageComponent} from "./parent/campany-add-page/campany-add-page.component";
 
 
 @NgModule({
@@ -53,7 +51,6 @@ import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-pag
         AppHeaderCompanyModule,
         OfferListModule,
         OfferListElementModule,
-        OfferDetailModule,
         SamplePageModule,
         MenuSliderModule,
         AuthenticationModule,
@@ -97,10 +94,6 @@ import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-pag
                 component: OfferListComponent
             },
             {
-                path: 'offer-detail',
-                component: OfferDetailComponent
-            },
-            {
                 path: 'categories/:categoryId',
                 component: OfferListComponent
             },
@@ -114,7 +107,7 @@ import {CampanyAddPageComponent} from './parent/campany-add-page/campany-add-pag
                 component: SampleObjectComponent
             },
             {
-                path:'api-test-area',
+                path: 'api-test-area',
                 component: AuthenticationComponent
             },
             {
