@@ -2,6 +2,7 @@
   {
     "uuid": "1",
     "username": "Detlef",
+    "email": "Detlef@dahoam.de",
     "instagramId":"1",
     "address": "Detlefs dahoam",
     "token": "12344321"
@@ -9,6 +10,7 @@
   {
     "uuid": "2",
     "username": "Frank",
+    "email": "Frank@dahoam.de",
     "instagramId":"2",
     "address": "Franks dahoam",
     "token": "12344321"
@@ -16,6 +18,7 @@
   {
     "uuid": "3",
     "username": "Hans",
+    "email": "Hans@dahoam.de",
     "instagramId":"3",
     "address": "Hans dahoam",
     "token": "12344321"

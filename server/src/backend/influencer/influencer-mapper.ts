@@ -11,10 +11,10 @@ export class InfluencerMapper {
     }
 
     public static map(dbInfluencer: DBInfluencer): Influencer {
-        return new Influencer(dbInfluencer.uuid, dbInfluencer.username, dbInfluencer.instagramId, dbInfluencer.address, dbInfluencer.token);
+        return new Influencer(dbInfluencer.uuid, dbInfluencer.username, dbInfluencer.email, dbInfluencer.instagramId, dbInfluencer.address, dbInfluencer.token);
     }
 
     public static mapToDbObject(influencer: Influencer) {
-        return new DBInfluencer(influencer.uuid, influencer.username, influencer.instagramId, influencer.address, influencer.token);
+        return new DBInfluencer(influencer.uuid, influencer.username, influencer.email, influencer.instagramId, influencer.address, influencer.token);
     }
 }

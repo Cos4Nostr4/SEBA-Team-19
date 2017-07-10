@@ -89,6 +89,7 @@ export class InfluencerRepository {
         let update = {
             uuid: influencer.uuid,
             username: influencer.username,
+            email:influencer.email,
             instagramId: influencer.instagramId,
             address: influencer.address,
             token: influencer.token
