@@ -1,30 +1,31 @@
 import {Component, OnInit} from "@angular/core";
 import {CampaignService} from "../../services/offer.service";
 import {Campaign} from "../../data-objects/campaign";
-import {isBuiltInAccessor} from "@angular/forms/src/directives/shared";
-import {Element} from "@angular/compiler";
-declare var jquery: any;
+import {RequestService} from "../../services/request.service";
+import {Request} from "../../data-objects/request";
 declare var $: any;
 
 @Component ({
     selector: "app-campany-detail-page",
     templateUrl: "./campany-detail-page.component.html",
     styleUrls: ["./campany-detail-page.component.css"],
-    providers: [CampaignService]
+    providers: [CampaignService, RequestService]
 })
 
 
 export class CampanyDetailPageComponent implements OnInit {
     offerService: CampaignService;
     campaign: Campaign;
-    accepted: boolean = false;
-    isActionTaken: boolean = false;
-    // buttonClicked: any;
+
+    requestService: RequestService;
+    requests: Request[];
 
     private errorMessage: string;
 
-    constructor(offerService: CampaignService) {
+
+    constructor(offerService: CampaignService, requestService: RequestService) {
         this.offerService = offerService;
+        this.requestService = requestService;
     }
 
 
@@ -35,6 +36,18 @@ export class CampanyDetailPageComponent implements OnInit {
         this.offerService.getCampaignWithId(campaignId).subscribe(
             campaign => {
                 this.campaign = campaign;
+            },
+            error => {
+                this.errorMessage = error;
+                throw new Error(error);
+            }
+        );
+
+
+        this.requestService.getRequestsForCampaign(campaignId).subscribe(
+            requests => {
+                this.requests = requests;
+                console.log(requests);
             },
             error => {
                 this.errorMessage = error;
@@ -58,73 +71,6 @@ export class CampanyDetailPageComponent implements OnInit {
             container.style.background = "lightpink";
         });
 
-        /*$('.btn').click((event:any) => {
-            let btn = event.currentTarget;
-            let index = $(".btn").index(btn);
-            console.log("Index:"+index);
-        });*/
     }
-
-
-    public buttonClicked (event :any) {
-        /*let btn = event.currentTarget;
-        console.log("!!!!!!!!!!!!!!"+ btn);
-
-        if (btn.innerText.includes("Accept")) {
-            this.container = $(".div").get(this.index - 1);
-            this.container.style.background = "limegreen";
-        }
-        else if (btn.innerHTML.includes("Reject")) {
-            this.container = $(".div").get(this.index - 2);
-            this.container.style.background = "lightpink";
-        }*/
-    }
-
-
-    /*private actionTaken (id: string) {
-        this.buttonClicked = document.getElementById(id);
-        this.isActionTaken = true;
-
-        if (id.includes("accept")) {
-            this.accepted = true;
-        }
-        else if (id.includes("reject")) {
-            this.accepted = false;
-        }
-
-    }*/
-
-   /*
-
-
-
-   constructor(private campaignService: CampaignService) {
-    this.campaignService = campaignService;
-   }
-
-   campaign: Observable <Campaign[]>;
-
-   getInputs
-
-
-   var campaignTitleNew = document.getElementById("campaign-edit-title");
-   var numberOfFollowersNew = document.getElementById("campaign-edit-number-followers");
-   var startDateNew = document.getElementById("campaign-edit-startapp");
-   var endDateNew = document.getElementById("campaign-edit-enddate");
-   var hashtagsNew = document.getElementById("campaign-edit-hashtags");
-
-
-   //Get id from
-   getCampaignTitle() {
-        //let campaign: Campaign[] = this.campaignService.getCampaignById(id);
-        this.campaign = this.campaignService.getCampaignById(id);
-        this.campaign.subscribe;
-        let campaignTitle: string = this.campaign.title;
-        console.log(campaignTitle);
-
-        return campaignTitle
-   }
-
-    */
 
 }

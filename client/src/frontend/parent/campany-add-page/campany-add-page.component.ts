@@ -1,5 +1,7 @@
 import {Component,OnInit} from '@angular/core';
 
+
+
 @Component({
 
     selector: "app-campany-add-page",
@@ -8,6 +10,6 @@ import {Component,OnInit} from '@angular/core';
 
 })
 
-export class CampanyAddPageComponent {
+export class CampanyAddPageComponent{
 
 }
