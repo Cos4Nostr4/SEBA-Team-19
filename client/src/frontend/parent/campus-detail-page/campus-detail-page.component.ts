@@ -11,6 +11,8 @@ import {InfluencerService} from "../../services/influencer.service";
 import {CookieHandler} from "../../services/cookie-handler";
 import {RequestState} from "../../../../../server/src/backend/request/db-request";
 import {AuthenticationService} from "../../services/authentication.service";
+import {Influencer} from "../../data-objects/influencer";
+import {DropDownComponent} from "../../menu-slider/dropdown/drop-down.component";
 
 declare var $: any;
 
@@ -28,8 +30,8 @@ export class CampusDetailPageComponent implements OnInit {
     private requestService: RequestService;
     private influencerService: InfluencerService;
     private route: ActivatedRoute;
-    private alreadyApplied: boolean;
     private campaign: Campaign;
+    private alreadyApplied: boolean;
 
     constructor(authenticationService: AuthenticationService, campaignService: CampaignService, imageService: ImageService,
                 requestService: RequestService, influencerService: InfluencerService, route: ActivatedRoute) {
@@ -71,7 +73,6 @@ export class CampusDetailPageComponent implements OnInit {
                     throw new Error(error);
                 });
 
-
         this.createApplyFormHandler();
     }
 
@@ -82,22 +83,12 @@ export class CampusDetailPageComponent implements OnInit {
             this.influencerService.getInfluencerByName(username)
                 .subscribe(
                     influencer => {
-                        let uuid = UUID.createNew();
-                        let request = new Request(uuid.asStringValue(), this.campaign, influencer, RequestState[RequestState.PENDING], false);
-                        this.requestService.addRequest(request)
-                            .subscribe(
-                                requestUuid => {
-                                    console.log("Requeqst done");
-                                    if (requestUuid == request.uuid) {
-                                        this.disableAppliedButton();
-                                    } else {
-                                        throw new Error("Something went wrong while sending request")
-                                    }
-                                },
-                                error => {
-                                    throw new Error(error);
-                                }
-                            );
+                        if (this.influencerHasEmailAndAddressSet(influencer)) {
+                            this.createApplyRequest(influencer);
+                        } else {
+                            this.showDropDownMenu();
+                        }
+
                     },
                     error => {
                         throw new Error(error);
@@ -106,9 +97,38 @@ export class CampusDetailPageComponent implements OnInit {
         });
     }
 
+    private createApplyRequest(influencer:Influencer) {
+        let uuid = UUID.createNew();
+        let request = new Request(uuid.asStringValue(), this.campaign, influencer, RequestState[RequestState.PENDING], false);
+        this.requestService.addRequest(request)
+            .subscribe(
+                requestUuid => {
+                    console.log("Requeqst done");
+                    if (requestUuid == request.uuid) {
+                        this.disableAppliedButton();
+                    } else {
+                        throw new Error("Something went wrong while sending request")
+                    }
+                },
+                error => {
+                    throw new Error(error);
+                }
+            );
+    }
+
     private disableAppliedButton() {
         $('#apply-button').text("Already applied")
             .prop('disabled', true)
             .addClass("disabled");
+    }
+
+    private influencerHasEmailAndAddressSet(influencer: Influencer): boolean {
+        let emailSet = (influencer.email && influencer.email.length > 0);
+        let addressSet = (influencer.address && influencer.address.length > 0);
+        return emailSet && addressSet;
+    }
+
+    private showDropDownMenu() {
+        DropDownComponent.showMissingInfoForApplication();
     }
 }

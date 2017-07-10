@@ -48,14 +48,24 @@ export class DropDownComponent implements OnInit {
         }
     }
 
+    public static showMissingInfoForApplication() {
+        $('#dropdownLink').click();
+        if (!this.isValueSet("email")) {
+            this.markFieldAsMissing("email");
+        }
+        if (!this.isValueSet("address")) {
+            this.markFieldAsMissing("address");
+        }
+    }
+
     private registerDropdownInteractions() {
         $('#email').on('input', () => {
-            this.influencer.email = $('#email').val() + "";
+            this.influencer.email = DropDownComponent.getValueForInput('email');
             this.userDataChanged = true;
         });
 
         $('#address').on('input', () => {
-            this.influencer.address = $('#address').val() + "";
+            this.influencer.address = DropDownComponent.getValueForInput('address');
             this.userDataChanged = true;
         });
 
@@ -71,7 +81,31 @@ export class DropDownComponent implements OnInit {
                         });
                 this.userDataChanged = false;
             }
+            DropDownComponent.resetAllFieldsToNormal();
+            $('#dropdownLink').click();
             event.preventDefault();
         });
+    }
+
+    private static getValueForInput(name: string): string {
+        return $('#' + name).val() + "";
+    }
+
+    private static isValueSet(name: string): boolean {
+        let value = this.getValueForInput(name);
+        return (value && value.length > 0);
+    }
+
+    private static markFieldAsMissing(name: string) {
+        $('#' + name).addClass('missing');
+    }
+
+    private static resetField(name: string) {
+        $('#' + name).removeClass('missing');
+    }
+
+    private static resetAllFieldsToNormal() {
+        DropDownComponent.resetField("email");
+        DropDownComponent.resetField("address");
     }
 }
