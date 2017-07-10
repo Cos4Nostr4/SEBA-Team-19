@@ -29,7 +29,7 @@ export class InstagramRepository {
                         let username = selfData.username;
                         let existingInfluencer = influencers.find((influencer) => influencer.username == username);
                         if (existingInfluencer) {
-                            console.log("User exists");
+                            console.log("User exists:"+JSON.stringify(existingInfluencer));
                             existingInfluencer.token = accessToken;
                             this.influencerRepository.updateInfluencerWithId(existingInfluencer.uuid, existingInfluencer, (influencer, error) => {
                                 if (error) {
@@ -39,10 +39,10 @@ export class InstagramRepository {
                                 }
                             });
                         } else {
-                            console.log("User not existed.");
                             let uuid = UUID.createNew();
-                            let createdInfluencer = new Influencer(uuid.asStringValue(), selfData.username, selfData.instagrammId, "", accessToken);
+                            let createdInfluencer = new Influencer(uuid.asStringValue(), selfData.username, "", selfData.instagrammId, "", accessToken);
                             this.influencerRepository.addInfluencer(createdInfluencer, (influencer: Influencer, err: any) => {
+                                console.log("User not existed: "+JSON.stringify(influencer));
                                 if (err) {
                                     func(err, null);
                                 } else {

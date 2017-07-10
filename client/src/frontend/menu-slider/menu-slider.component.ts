@@ -41,21 +41,6 @@ export class MenuSliderComponent implements OnInit {
 
         if (this.authenticationService.isLoggedIn()) {
             this.registerOnClickHandlerForMenuItems();
-            let username = CookieHandler.getCookie("username");
-            this.influencerService.getInfluencerByName(username)
-                .subscribe(
-                    influencer => {
-                        this.influencer = influencer;
-                        $('#name').val(influencer.username);
-                        $('#address').val(influencer.address);
-                        console.log("Influencer:" + JSON.stringify(influencer));
-                    },
-                    error => {
-                        throw new Error(error);
-                    }
-                );
-
-            this.registerDropdownInteractions();
         }
 
 

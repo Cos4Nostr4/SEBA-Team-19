@@ -1,11 +1,13 @@
 import {NgModule} from "@angular/core";
 import {MenuSliderComponent} from './menu-slider.component'
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {DropDownModule} from "./dropdown/drop-down.module";
 
 
 @NgModule({
     imports: [
-        NgbModule
+        NgbModule,
+        DropDownModule
     ],
     declarations: [
         MenuSliderComponent
