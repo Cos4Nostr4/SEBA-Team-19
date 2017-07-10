@@ -94,7 +94,7 @@ import {CampanyAddPageComponent} from "./parent/campany-add-page/campany-add-pag
             },
             {
                 path: 'categories/:categoryId',
-                component: OfferListComponent
+                component: CampusPageComponent
             },
             {
                 path: 'campaign-detail/:id',

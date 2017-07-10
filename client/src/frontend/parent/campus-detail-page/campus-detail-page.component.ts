@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Params} from "@angular/router";
 import "rxjs/add/operator/switchMap";
-import {CampaignService} from "../../services/offer.service";
+import {CampaignService} from "../../services/campaign.service";
 import {Campaign} from "../../data-objects/campaign";
 import {Request} from "../../data-objects/request";
 import {ImageService} from "../../services/image.service";
@@ -22,11 +22,12 @@ declare var $: any;
 
 export class CampusDetailPageComponent implements OnInit {
     private campaignService: CampaignService;
-    private campaign: Campaign;
-    private route: ActivatedRoute;
     private imageService: ImageService;
     private requestService: RequestService;
     private influencerService: InfluencerService;
+    private route: ActivatedRoute;
+    private alreadyApplied: boolean;
+    private campaign: Campaign;
 
     constructor(offerService: CampaignService, imageService: ImageService, requestService: RequestService,
                 influencerService: InfluencerService, route: ActivatedRoute) {
@@ -35,19 +36,38 @@ export class CampusDetailPageComponent implements OnInit {
         this.requestService = requestService;
         this.influencerService = influencerService;
         this.route = route;
+
+        this.campaign = null;
+        this.alreadyApplied = false;
     }
 
     ngOnInit(): void {
+
+        let username = CookieHandler.getCookie("username");
+
         this.route.params
             .switchMap((params: Params) => this.campaignService.getCampaignWithId(+params.id + ""))
             .subscribe(campaign => {
                     this.campaign = campaign;
                     let imageUrl = this.imageService.getImageUrlForName(campaign.image);
                     $('#productPicture').attr('src', imageUrl);
+
+                    this.requestService.getRequestsForCampaign(campaign.uuid)
+                        .subscribe(requests => {
+                                let request = requests.find((request) => request.influencer.username == username );
+                                if(request){
+                                    this.disableAppliedButton();
+                                }
+                            },
+                            error => {
+                                throw new Error(error);
+                            });
                 },
                 error => {
                     throw new Error(error);
                 });
+
+
 
         this.createApplyFormHandler();
     }
@@ -67,7 +87,7 @@ export class CampusDetailPageComponent implements OnInit {
                                     console.log("Requeqst done");
                                     if (requestUuid == request.uuid) {
                                         this.disableAppliedButton();
-                                    }else{
+                                    } else {
                                         throw new Error("Something went wrong while sending request")
                                     }
                                 },
@@ -83,7 +103,7 @@ export class CampusDetailPageComponent implements OnInit {
         });
     }
 
-    private disableAppliedButton(){
+    private disableAppliedButton() {
         $('#apply-button').text("Already applied")
             .prop('disabled', true)
             .addClass("disabled");

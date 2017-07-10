@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {CampaignService} from "../../services/offer.service";
+import {CampaignService} from "../../services/campaign.service";
 import {Campaign} from "../../data-objects/campaign";
 import {RequestService} from "../../services/request.service";
 import {Request} from "../../data-objects/request";

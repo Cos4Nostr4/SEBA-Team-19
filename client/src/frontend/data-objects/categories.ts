@@ -16,6 +16,6 @@ export class CategoryMapper{
             case 7: return Categories[Categories.ACCESSORY];
             case 8: return Categories[Categories.OTHERS];
         }
-        return Categories[Categories.HEARTS]
+        return Categories[Categories.NEW]
     }
 }

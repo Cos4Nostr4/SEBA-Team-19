@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {CampaignService} from "../services/offer.service";
+import {CampaignService} from "../services/campaign.service";
 import {Campaign} from "../data-objects/campaign";
 import {AuthenticationService} from "../services/authentication.service";
 import {ActivatedRoute, Params} from "@angular/router";
@@ -31,9 +31,10 @@ export class OfferListComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        let username = CookieHandler.getCookie("username");
         if (document.location.href.includes("categories")) {
             this.route.params
-                .switchMap((params: Params) => this.offerService.getCampaignForCategory(+params.categoryId))
+                .switchMap((params: Params) => this.offerService.getCampaignsForCategory(+params.categoryId, username))
                 .subscribe(offer => this.offerList = offer);
         } else {
             this.offerService.getAllCampaigns().subscribe(

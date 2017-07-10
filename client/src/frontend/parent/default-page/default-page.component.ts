@@ -1,8 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {CampaignService} from "../../services/offer.service";
+import {CampaignService} from "../../services/campaign.service";
 import {Campaign} from "../../data-objects/campaign";
 import {AuthenticationService} from "../../services/authentication.service";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
+import {CookieHandler} from "../../services/cookie-handler";
 
 declare var $: any;
 
@@ -13,30 +14,27 @@ declare var $: any;
     providers: [CampaignService, AuthenticationService]
 })
 export class DefaultPageComponent implements OnInit {
-    private campaignService: CampaignService;
-    private campaignList: Campaign[];
     private authenticationService: AuthenticationService;
+    private campaignService: CampaignService;
+    private route: ActivatedRoute;
+    private campaignList: Campaign[];
 
-    constructor(campaignService: CampaignService, authenticationService: AuthenticationService, private route: ActivatedRoute) {
-        this.campaignService = campaignService;
+    constructor(campaignService: CampaignService, authenticationService: AuthenticationService, route: ActivatedRoute) {
         this.authenticationService = authenticationService;
+        this.campaignService = campaignService;
+        this.route = route;
     }
 
     ngOnInit(): void {
-        if (document.location.href.includes("categories")) {
-            this.route.params
-                .switchMap((params: Params) => this.campaignService.getCampaignForCategory(+params.categoryId))
-                .subscribe(campaigns => this.campaignList = campaigns);
-        } else {
-            this.campaignService.getAllCampaigns().subscribe(
-                offers => {
-                    this.campaignList = offers
-                },
-                error => {
-                    throw new Error(error)
-                }
-            );
-        }
+        this.campaignService.getAllCampaigns().subscribe(
+            offers => {
+                this.campaignList = offers
+            },
+            error => {
+                throw new Error(error)
+            }
+        );
+
 
         if (this.authenticationService.isLoggedIn()) {
             console.log("Logged in");

@@ -1,53 +1,39 @@
-import {Component} from "@angular/core";
-import {CampaignService} from "../../services/offer.service";
+import {Component, OnInit} from "@angular/core";
+import {CampaignService} from "../../services/campaign.service";
 import {Campaign} from "../../data-objects/campaign";
 import {AuthenticationService} from "../../services/authentication.service";
-import {InstagrammDataService} from "../../services/instagramm-data.service";
+import {ActivatedRoute, Params} from "@angular/router";
+import {CookieHandler} from "../../services/cookie-handler";
 
 
 @Component({
     selector: "app-campus-page",
     templateUrl: "./campus-page.component.html",
     styleUrls: ["./campus-page.component.css"],
-    providers: [CampaignService]
+    providers: [CampaignService, AuthenticationService]
 })
 
-export class CampusPageComponent {
-    private campaignService: CampaignService;
+export class CampusPageComponent implements OnInit {
     private authenticationService: AuthenticationService;
-    private instagrammDataService: InstagrammDataService;
-    offerList: Campaign[];
+    private campaignService: CampaignService;
+    private route: ActivatedRoute;
+    private campaignList: Campaign[];
 
-
-    constructor(campaignService: CampaignService, authenticationService: AuthenticationService,
-                instagrammDataService: InstagrammDataService) {
-        this.campaignService = campaignService;
+    constructor(campaignService: CampaignService, authenticationService: AuthenticationService, route: ActivatedRoute) {
         this.authenticationService = authenticationService;
-        this.instagrammDataService = instagrammDataService;
+        this.campaignService = campaignService;
+        this.route = route;
     }
 
 
     ngOnInit(): void {
-
-        /*if(this.authenticationService.isLoggedIn()){
-
-        }*/
-
-        /*if (document.location.href.includes("categories")) {
-            this.route.params
-                .switchMap((params: Params) => this.offerService.getCampaignForCategory(+params.categoryId))
-                .subscribe(offer => this.offerList = offer);
-        } else {
-            this.offerService.getAllCampaigns().subscribe(
-                offers => {
-                    this.offerList = offers
-                },
-                error => {
-                    this.errorMessage = error;
-                    throw new Error(error)
-                }
-            );
-        }*/
+        let username = CookieHandler.getCookie("username");
+        this.route.params
+            .switchMap((params: Params) => this.campaignService.getCampaignsForCategory(+params.categoryId, username))
+            .subscribe(campaigns => {
+                this.campaignList = campaigns
+                console.log("Updated campaignList with:"+campaigns.length);
+            });
     }
 
 
