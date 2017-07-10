@@ -42,7 +42,7 @@ export class CampusDetailPageComponent implements OnInit {
         this.influencerService = influencerService;
         this.route = route;
 
-        this.campaign = null;
+        this.campaign = new Campaign("", "", "", "", null, 0, 0, [], new Date(), new Date(), true);
         this.alreadyApplied = false;
     }
 
@@ -62,7 +62,8 @@ export class CampusDetailPageComponent implements OnInit {
                         .subscribe(requests => {
                                 let request = requests.find((request) => request.influencer.username == username);
                                 if (request) {
-                                    this.disableAppliedButton();
+                                    let requestState = RequestState[request.status];
+                                    this.updateApplyButton(requestState);
                                 }
                             },
                             error => {
@@ -97,7 +98,7 @@ export class CampusDetailPageComponent implements OnInit {
         });
     }
 
-    private createApplyRequest(influencer:Influencer) {
+    private createApplyRequest(influencer: Influencer) {
         let uuid = UUID.createNew();
         let request = new Request(uuid.asStringValue(), this.campaign, influencer, RequestState[RequestState.PENDING], false);
         this.requestService.addRequest(request)
@@ -105,7 +106,7 @@ export class CampusDetailPageComponent implements OnInit {
                 requestUuid => {
                     console.log("Requeqst done");
                     if (requestUuid == request.uuid) {
-                        this.disableAppliedButton();
+                        this.updateApplyButton(RequestState.PENDING);
                     } else {
                         throw new Error("Something went wrong while sending request")
                     }
@@ -116,10 +117,24 @@ export class CampusDetailPageComponent implements OnInit {
             );
     }
 
-    private disableAppliedButton() {
-        $('#apply-button').text("Already applied")
-            .prop('disabled', true)
-            .addClass("disabled");
+    private updateApplyButton(requestState: RequestState) {
+        let applyButton = $('#apply-button');
+        if (requestState == RequestState.ACCEPTED) {
+            applyButton.text("Accepted")
+                .addClass("btn-accepted");
+
+        }
+        if (requestState == RequestState.PENDING) {
+            applyButton.text("Already applied")
+                .addClass("btn-pending");
+
+        }
+        if (requestState == RequestState.REJECTED) {
+            applyButton.text("Rejected")
+                .addClass("btn-rejected");
+
+        }
+        applyButton.prop('disabled', true)
     }
 
     private influencerHasEmailAndAddressSet(influencer: Influencer): boolean {

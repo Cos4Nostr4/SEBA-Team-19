@@ -67,9 +67,18 @@
 
 }
 
-.disabled{
+.btn-accepted{
+    background-color: green;
+}
+
+.btn-pending{
     background-color: grey;
 }
+
+.btn-rejected{
+    background-color: red;
+}
+
 .campaignTitle {
     text-align: center;
 }
