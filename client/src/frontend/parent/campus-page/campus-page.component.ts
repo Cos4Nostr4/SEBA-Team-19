@@ -27,12 +27,13 @@ export class CampusPageComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.authenticationService.ensureLoggedIn();
+
         let username = CookieHandler.getCookie("username");
         this.route.params
             .switchMap((params: Params) => this.campaignService.getCampaignsForCategory(+params.categoryId, username))
             .subscribe(campaigns => {
-                this.campaignList = campaigns
-                console.log("Updated campaignList with:"+campaigns.length);
+                this.campaignList = campaigns;
             });
     }
 

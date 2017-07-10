@@ -17,6 +17,7 @@ const MINIMUM_WIDHT_OF_ELEMENTS: number = 200;
     providers: [AuthenticationService, InfluencerService]
 })
 export class MenuSliderComponent implements OnInit {
+    private static count:number = 0;
     private authenticationService: AuthenticationService;
     private influencerService: InfluencerService;
     private waitingElements: any[];
@@ -35,6 +36,8 @@ export class MenuSliderComponent implements OnInit {
 
     ngOnInit(): void {
         "use strict";
+
+        console.log("MenuSlider created: "+(++MenuSliderComponent.count));
 
         if (this.authenticationService.isLoggedIn()) {
             this.registerOnClickHandlerForMenuItems();

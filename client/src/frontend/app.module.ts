@@ -13,8 +13,6 @@ import {OfferListElementModule} from "./offer-list-view/offer-list-element/offer
 import {DashBoardModule} from "./dashboard/dashboard.module";
 import {SamplePageModule} from "./sample-page/sample-page.module";
 import {SampleObjectComponent} from "./sample-page/sample-page.component";
-import {AuthenticationModule} from "./api-test-area/api-test-area.module";
-import {AuthenticationComponent} from "./api-test-area/api-test-area.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MenuSliderModule} from "./menu-slider/menu-slider.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -52,7 +50,6 @@ import {CampanyAddPageComponent} from "./parent/campany-add-page/campany-add-pag
         OfferListElementModule,
         SamplePageModule,
         MenuSliderModule,
-        AuthenticationModule,
         DashBoardModule,
         HttpModule,
         JsonpModule,
@@ -84,15 +81,6 @@ import {CampanyAddPageComponent} from "./parent/campany-add-page/campany-add-pag
                 component: DashBoardComponent
             },
             {
-                path: 'campaigns',
-                redirectTo: '/offers',
-                pathMatch: 'full'
-            },
-            {
-                path: 'offers',
-                component: OfferListComponent
-            },
-            {
                 path: 'categories/:categoryId',
                 component: CampusPageComponent
             },
@@ -100,14 +88,9 @@ import {CampanyAddPageComponent} from "./parent/campany-add-page/campany-add-pag
                 path: 'campaign-detail/:id',
                 component: CampusDetailPageComponent
             },
-
             {
                 path: 'sample-page',
                 component: SampleObjectComponent
-            },
-            {
-                path: 'api-test-area',
-                component: AuthenticationComponent
             },
             {
                 path: 'menu-slider-page',
@@ -120,14 +103,6 @@ import {CampanyAddPageComponent} from "./parent/campany-add-page/campany-add-pag
             {
                 path: 'app-campany-page',
                 component: CampanyPageComponent
-            },
-            {
-                path: 'app-campus-detail-page',
-                component: CampusDetailPageComponent
-            },
-            {
-                path: 'app-campus-page',
-                component: CampusPageComponent
             },
             {
                 path: 'app-company-login-page',

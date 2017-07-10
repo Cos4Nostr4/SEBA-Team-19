@@ -10,6 +10,7 @@ import UUID from "../../../../../server/src/backend/uuid/uuid";
 import {InfluencerService} from "../../services/influencer.service";
 import {CookieHandler} from "../../services/cookie-handler";
 import {RequestState} from "../../../../../server/src/backend/request/db-request";
+import {AuthenticationService} from "../../services/authentication.service";
 
 declare var $: any;
 
@@ -21,6 +22,7 @@ declare var $: any;
 })
 
 export class CampusDetailPageComponent implements OnInit {
+    private authenticationService: AuthenticationService;
     private campaignService: CampaignService;
     private imageService: ImageService;
     private requestService: RequestService;
@@ -29,9 +31,9 @@ export class CampusDetailPageComponent implements OnInit {
     private alreadyApplied: boolean;
     private campaign: Campaign;
 
-    constructor(offerService: CampaignService, imageService: ImageService, requestService: RequestService,
-                influencerService: InfluencerService, route: ActivatedRoute) {
-        this.campaignService = offerService;
+    constructor(authenticationService: AuthenticationService, campaignService: CampaignService, imageService: ImageService,
+                requestService: RequestService, influencerService: InfluencerService, route: ActivatedRoute) {
+        this.campaignService = campaignService;
         this.imageService = imageService;
         this.requestService = requestService;
         this.influencerService = influencerService;
@@ -42,6 +44,7 @@ export class CampusDetailPageComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.authenticationService.ensureLoggedIn();
 
         let username = CookieHandler.getCookie("username");
 
@@ -54,8 +57,8 @@ export class CampusDetailPageComponent implements OnInit {
 
                     this.requestService.getRequestsForCampaign(campaign.uuid)
                         .subscribe(requests => {
-                                let request = requests.find((request) => request.influencer.username == username );
-                                if(request){
+                                let request = requests.find((request) => request.influencer.username == username);
+                                if (request) {
                                     this.disableAppliedButton();
                                 }
                             },
@@ -66,7 +69,6 @@ export class CampusDetailPageComponent implements OnInit {
                 error => {
                     throw new Error(error);
                 });
-
 
 
         this.createApplyFormHandler();

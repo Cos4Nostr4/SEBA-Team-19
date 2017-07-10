@@ -3,7 +3,6 @@ import {CampaignService} from "../../services/campaign.service";
 import {Campaign} from "../../data-objects/campaign";
 import {AuthenticationService} from "../../services/authentication.service";
 import {ActivatedRoute} from "@angular/router";
-import {CookieHandler} from "../../services/cookie-handler";
 
 declare var $: any;
 
@@ -26,14 +25,15 @@ export class DefaultPageComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.campaignService.getAllCampaigns().subscribe(
-            offers => {
-                this.campaignList = offers
-            },
-            error => {
-                throw new Error(error)
-            }
-        );
+        this.campaignService.getAllCampaigns()
+            .subscribe(
+                campaigns => {
+                    this.campaignList = campaigns
+                },
+                error => {
+                    throw new Error(error)
+                }
+            );
 
 
         if (this.authenticationService.isLoggedIn()) {
