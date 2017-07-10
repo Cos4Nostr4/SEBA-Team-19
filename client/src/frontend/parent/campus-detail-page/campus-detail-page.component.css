@@ -75,3 +75,6 @@
     text-aling: left;
     margin-left: 10px;
 }
+#apply-dropdown textarea{
+    width: 100%;
+}
