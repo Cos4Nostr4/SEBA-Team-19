@@ -50,7 +50,7 @@ export class DefaultPageComponent implements OnInit {
         let windowWidth = $(window).width();
 
         let styleOverLayDiv = "width:" + windowWidth + "px; height:" + windowHeight + "px; background-color: rgba(216, 216,216, 0.7); position:fixed; top:0;left:0";
-        let overlayDiv = $("<div style='" + styleOverLayDiv + "'></div>").appendTo(parent);
+        let overlayDiv = $("<div id='overlay-div' style='" + styleOverLayDiv + "'></div>").appendTo(parent);
 
         let styleWhiteBox = "background-color:#3D4551; width:450px; height:170px; margin:auto; position:fixed; margin: 30%; auto; border-radius:12px";
         let whiteBox = $("<div style='" + styleWhiteBox + "'></div>").appendTo(overlayDiv);
@@ -71,5 +71,12 @@ export class DefaultPageComponent implements OnInit {
             this.authenticationService.login();
         });
 
+        $(window).resize(() => {
+            let windowHeight = $(window).height();
+            let windowWidth = $(window).width();
+
+            $('#overlay-div').css("height", windowHeight);
+            $('#overlay-div').css("width", windowWidth);
+        });
     }
 }
