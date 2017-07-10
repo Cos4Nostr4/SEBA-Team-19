@@ -104,7 +104,7 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
                 component: SampleObjectComponent
             },
             {
-                path: 'campany-detail',
+                path: 'campany-detail/:id',
                 component: CampanyDetailPageComponent
             },
             {

@@ -3,9 +3,11 @@ import {CampaignService} from "../../services/campaign.service";
 import {Campaign} from "../../data-objects/campaign";
 import {RequestService} from "../../services/request.service";
 import {Request} from "../../data-objects/request";
+import {ActivatedRoute, Params} from "@angular/router";
+import {ImageService} from "../../services/image.service";
 declare var $: any;
 
-@Component ({
+@Component({
     selector: "app-campany-detail-page",
     templateUrl: "./campany-detail-page.component.html",
     styleUrls: ["./campany-detail-page.component.css"],
@@ -14,46 +16,48 @@ declare var $: any;
 
 
 export class CampanyDetailPageComponent implements OnInit {
-    offerService: CampaignService;
-    campaign: Campaign;
+    private campaignService: CampaignService;
+    private requestService: RequestService;
+    private imageService: ImageService;
 
-    requestService: RequestService;
-    requests: Request[];
+    private route: ActivatedRoute;
+    private campaign: Campaign;
+    private requests: Request[];
 
-    private errorMessage: string;
-
-
-    constructor(offerService: CampaignService, requestService: RequestService) {
-        this.offerService = offerService;
+    constructor(offerService: CampaignService, requestService: RequestService, imageService: ImageService, route: ActivatedRoute) {
+        this.campaignService = offerService;
         this.requestService = requestService;
+        this.imageService = imageService;
+        this.route = route;
     }
 
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
 
-        let campaignId: string = "2";
+        this.route.params
+            .switchMap((params: Params) => this.campaignService.getCampaignWithId(+params.id + ""))
+            .subscribe(
+                campaign => {
+                    this.campaign = campaign;
+                    let imageUrl = this.imageService.getImageUrlForName(campaign.image);
+                    $('#productPicture').attr('src', imageUrl);
+                },
+                error => {
+                    throw new Error(error);
+                }
+            );
 
-        this.offerService.getCampaignWithId(campaignId).subscribe(
-            campaign => {
-                this.campaign = campaign;
-            },
-            error => {
-                this.errorMessage = error;
-                throw new Error(error);
-            }
-        );
-
-
-        this.requestService.getRequestsForCampaign(campaignId).subscribe(
-            requests => {
-                this.requests = requests;
-                console.log(requests);
-            },
-            error => {
-                this.errorMessage = error;
-                throw new Error(error);
-            }
-        );
+        this.route.params
+            .switchMap((params: Params) => this.requestService.getRequestsForCampaign(+params.id + ""))
+            .subscribe(
+                requests => {
+                    this.requests = requests;
+                    console.log(requests);
+                },
+                error => {
+                    throw new Error(error);
+                }
+            );
 
 
         $('.acceptButton').click((event: any) => {
