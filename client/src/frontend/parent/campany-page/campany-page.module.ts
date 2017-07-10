@@ -1,14 +1,16 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {CampanyPageComponent} from './campany-page.component';
-import {OfferListElementModule} from "../../offer-list-view/offer-list-element/offer-list-element.module";
+import {CampanyPageComponent} from "./campany-page.component";
 import {AppHeaderCompanyModule} from "../../app-header-company/app-header-company.module";
+import {AddCampanyListElementModule} from "./add-campany-list-element/add-campany-list-element.module";
+import {CampanyListElementModule} from "./campany-list-element/campany-list-element.module";
 
 
-@NgModule ({
+@NgModule({
     imports: [
         CommonModule,
-        OfferListElementModule,
+        CampanyListElementModule,
+        AddCampanyListElementModule,
         AppHeaderCompanyModule
     ],
     declarations: [
@@ -19,4 +21,5 @@ import {AppHeaderCompanyModule} from "../../app-header-company/app-header-compan
     ]
 })
 
-export class CampanyPageModule {}
+export class CampanyPageModule {
+}

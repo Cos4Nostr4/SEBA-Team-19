@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Campaign} from "../../data-objects/campaign";
 import {CampaignService} from "../../services/campaign.service";
 
-@Component ({
+@Component({
     selector: "app-campany-page",
     templateUrl: "./campany-page.component.html",
     styleUrls: ["./campany-page.component.css"],
@@ -11,13 +11,13 @@ import {CampaignService} from "../../services/campaign.service";
 
 
 export class CampanyPageComponent implements OnInit {
-    offerService: CampaignService;
-    offerList: Campaign[];
+    campaignService: CampaignService;
+    campaignList: Campaign[];
 
     private errorMessage: string;
 
-    constructor (offerService: CampaignService) {
-        this.offerService = offerService;
+    constructor(offerService: CampaignService) {
+        this.campaignService = offerService;
     }
 
 
@@ -25,33 +25,17 @@ export class CampanyPageComponent implements OnInit {
 
         let companyUuid: string = "2";
 
-        this.offerService.getAllCampaigns().subscribe(
+        this.campaignService.getAllCampaigns().subscribe(
             campaigns => {
-                this.offerList = campaigns.filter((campaign) => {
+                this.campaignList = campaigns.filter((campaign) => {
                     return campaign.company.uuid == companyUuid;
                 });
             },
             error => {
                 this.errorMessage = error;
                 throw new Error(error)
-            }
-            );
+            });
 
 
     }
-
-    // Id von aktueller Company mit uuids aus offers vergleichen
-
-/*    private checkCompanyId(companyId: string) {
-        let j: number[];
-        for(let i: number = 0; i =< this.offerList.length; i++)
-        {
-            if this.offerList.uuid == companyId {
-                j[j.length] = i;
-            }
-        }
-
-        return  j;
-    }*/
-
 }

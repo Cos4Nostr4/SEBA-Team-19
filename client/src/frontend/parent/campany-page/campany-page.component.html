@@ -3,9 +3,10 @@
 <div id="campaign-list-container" class="container-fluid offer-grid">
     <a class="btn" href="http://localhost:4200/app-campany-detail-page">Go To: CampanyDetailPage </a>
     <div class="row no-gutters" style="padding: 0">
-        <div *ngFor="let offer of offerList">
-            <offer-list-element [offer]="offer"></offer-list-element>
+        <div *ngFor="let campaign of campaignList">
+            <campany-list-element [campaign]="campaign"></campany-list-element>
         </div>
+        <add-campany-list-element></add-campany-list-element>
     </div>
 </div>
 <p *ngIf="errorMessage">Error:{{errorMessage}}</p>

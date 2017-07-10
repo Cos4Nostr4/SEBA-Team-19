@@ -1,0 +1,11 @@
+.plus-container{
+    height:20em;
+    width:20em;
+    background-color: white;
+}
+.plus-container i{
+    font-size: 15em;
+    font-weight: 100;
+    margin:auto;
+    color:grey;
+}

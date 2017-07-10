@@ -92,11 +92,6 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
                 data: {title: 'B2B Campaign'}
             },
             {
-                path: '**',
-                component: PageNotFoundComponent,
-                data: {title: 'B2B'}
-            },
-            {
                 path: 'dashboard',
                 component: DashBoardComponent
             },
@@ -109,7 +104,7 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
                 component: SampleObjectComponent
             },
             {
-                path: 'app-campany-detail-page',
+                path: 'campany-detail',
                 component: CampanyDetailPageComponent
             },
             {
@@ -139,7 +134,12 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
             {
                 path: 'app-campany-add-page',
                 component: CampanyAddPageComponent
-            }
+            },
+            {
+                path: '**',
+                component: PageNotFoundComponent,
+                data: {title: 'B2B'}
+            },
         ])
     ],
     declarations: [
