@@ -5,11 +5,11 @@ import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 import {Config} from "../config/config";
 import {Request} from "../data-objects/request";
-
+import JsonExtractor from "./json-extractor";
+import ServiceErrorHandler from "./service_error_handler";
 
 
 const URL_ALL_REQUESTS = Config.backend_address + ":" + Config.backend_port + Config.backend_base_url + "requests";
-
 
 @Injectable()
 export class RequestService {
@@ -21,7 +21,6 @@ export class RequestService {
     }
 
 
-
     public getAllRequests(): Observable<Request[]> {
         let allRequests: Observable<Request[]> = this.http.get(URL_ALL_REQUESTS)
             .map(this.extractData)
@@ -30,12 +29,10 @@ export class RequestService {
     }
 
 
-
     public getRequestsForInfluencer(uuid: string): Observable<Request[]> {
         return this.getAllRequests()
             .map(requests => requests.filter(request => request.influencer.uuid == uuid))
     }
-
 
 
     public getRequestsForCampaign(uuid: string): Observable<Request[]> {
@@ -43,16 +40,22 @@ export class RequestService {
             .map(requests => requests.filter(request => request.campaign.uuid == uuid));
     }
 
+    public addRequest(request: Request): Observable<string> {
+        let url = URL_ALL_REQUESTS;
+        let requestUuidObservable = this.http.post(url, {data: request})
+            .map(JsonExtractor.extractData)
+            .catch(ServiceErrorHandler.handleError);
+        return requestUuidObservable;
+    }
 
 
-    private extractData(res: Response) {
+    private    extractData(res: Response) {
         let body = res.json();
         return body.data || {};
     }
 
 
-
-    private handleError(error: Response | any) {
+    private    handleError(error: Response | any) {
         //TODO: implement more sophisticated logging
         let errMsg: string;
         if (error instanceof Response) {
