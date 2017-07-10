@@ -18,7 +18,7 @@ declare var $: any;
     selector: 'campus-detail',
     templateUrl: './campus-detail-page.component.html',
     styleUrls: ['./campus-detail-page.component.css'],
-    providers: [CampaignService, ImageService, RequestService, InfluencerService]
+    providers: [AuthenticationService, CampaignService, ImageService, RequestService, InfluencerService]
 })
 
 export class CampusDetailPageComponent implements OnInit {
@@ -33,6 +33,7 @@ export class CampusDetailPageComponent implements OnInit {
 
     constructor(authenticationService: AuthenticationService, campaignService: CampaignService, imageService: ImageService,
                 requestService: RequestService, influencerService: InfluencerService, route: ActivatedRoute) {
+        this.authenticationService = authenticationService;
         this.campaignService = campaignService;
         this.imageService = imageService;
         this.requestService = requestService;

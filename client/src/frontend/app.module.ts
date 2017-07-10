@@ -38,6 +38,9 @@ import {StatusPageModule} from "./parent/status-page/status-page.module";
 import {StatusPageComponent} from "./parent/status-page/status-page.component";
 import {CampanyAddPageModule} from "./parent/campany-add-page/campany-add-page.module";
 import {CampanyAddPageComponent} from "./parent/campany-add-page/campany-add-page.component";
+import {APP_ROUTES} from "./routes";
+import {PageNotFoundModule} from "./parent/page-not-found/page-not-found.module";
+import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.component";
 
 
 @NgModule({
@@ -65,6 +68,7 @@ import {CampanyAddPageComponent} from "./parent/campany-add-page/campany-add-pag
         CampanyAddPageModule,
         ProfileViewDropdownModule,
         StatusPageModule,
+        PageNotFoundModule,
         NgbModule.forRoot(),
         RouterModule.forRoot([
             {
@@ -74,19 +78,27 @@ import {CampanyAddPageComponent} from "./parent/campany-add-page/campany-add-pag
             },
             {
                 path: 'default-page',
-                component: DefaultPageComponent
+                component: DefaultPageComponent,
+                data: {title: 'B2B'}
+            },
+            {
+                path: 'categories/:categoryId',
+                component: CampusPageComponent,
+                data: {title: 'B2B Category'}
+            },
+            {
+                path: 'campaign-detail/:id',
+                component: CampusDetailPageComponent,
+                data: {title: 'B2B Campaign'}
+            },
+            {
+                path: '**',
+                component: PageNotFoundComponent,
+                data: {title: 'B2B'}
             },
             {
                 path: 'dashboard',
                 component: DashBoardComponent
-            },
-            {
-                path: 'categories/:categoryId',
-                component: CampusPageComponent
-            },
-            {
-                path: 'campaign-detail/:id',
-                component: CampusDetailPageComponent
             },
             {
                 path: 'sample-page',
