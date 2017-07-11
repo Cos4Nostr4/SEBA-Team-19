@@ -79,17 +79,16 @@ export class CampusDetailPageComponent implements OnInit {
 
     private createApplyFormHandler() {
         $('#apply-button').click(() => {
-            console.log("clicked");
             let username = CookieHandler.getCookie("username");
             this.influencerService.getInfluencerByName(username)
                 .subscribe(
                     influencer => {
+                        console.log("Application of user: "+JSON.stringify(influencer));
                         if (this.influencerHasEmailAndAddressSet(influencer)) {
                             this.createApplyRequest(influencer);
                         } else {
                             this.showDropDownMenu();
                         }
-
                     },
                     error => {
                         throw new Error(error);
@@ -104,7 +103,7 @@ export class CampusDetailPageComponent implements OnInit {
         this.requestService.addRequest(request)
             .subscribe(
                 requestUuid => {
-                    console.log("Requeqst done");
+                    console.log("Request done: "+JSON.stringify(request));
                     if (requestUuid == request.uuid) {
                         this.updateApplyButton(RequestState.PENDING);
                     } else {

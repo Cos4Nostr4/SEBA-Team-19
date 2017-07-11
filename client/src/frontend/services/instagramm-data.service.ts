@@ -29,6 +29,14 @@ export class InstagrammDataService{
         return selfData;
     }
 
+    public getUserData(username: string):Observable<InsSelfData>{
+        let url = INSTAGRAMM_BACKEND_BASE_URL + "user/"+username;
+        let selfData: Observable<InsSelfData> = this.http.get(url)
+            .map(JsonExtractor.extractData)
+            .catch(ServiceErrorHandler.handleError);
+        return selfData;
+    }
+
     public getRecentMedia(username:string):Observable<InsRecentMedia[]>{
         let url = INSTAGRAMM_BACKEND_BASE_URL + "media/"+username;
         let selfData: Observable<InsRecentMedia[]> = this.http.get(url)

@@ -80,9 +80,9 @@ export class InfluencerRepository {
     }
 
     public updateInfluencerWithId(influencerId: string, influencer: Influencer, func: (influencer: Influencer, error: String) => void) {
-        console.log("ID:"+influencerId);
         if(influencerId != influencer.uuid){
-            func(null, "Updating influencer with id '" + influencerId + "' is not allowed with data having different id");
+            let errorMessage = "Updating influencer with id '" + influencerId + "' is not allowed with data having different id";
+            func(null, errorMessage);
             return;
         }
 
@@ -108,6 +108,7 @@ export class InfluencerRepository {
                                     func(null, err);
                                 } else {
                                     let updatedInfluencer = InfluencerMapper.map(updatedDbInfluencer);
+                                    console.log("Updated Influencer to "+JSON.stringify(updatedDbInfluencer));
                                     func(updatedInfluencer, null);
                                 }
                             });
