@@ -1,3 +1,6 @@
+
+
+
 <div id="campaign-list-container" class="container-fluid offer-grid">
 <a class="btn" href="http://localhost:4200/app-campany-page">Go To: CampanyPage </a>
     <div class="row no-gutters" style="padding: 0">
@@ -5,32 +8,41 @@
     </div>
 </div>
 
-<body>
+<li *ngFor="let company of companies">{{company.email}}</li>
     <div class="container container-adapt">
-                <form class="form-horizontal" role="form" action="http://localhost:4200/app-campany-page">
+                <form (ngSubmit)="onSubmit(email.value,password.value,companyName.value,address.value)" class="form-horizontal" role="form" action="http://localhost:4200/app-campany-page" #registerForm="ngForm">
                     <img class="profile-img" src="http://localhost:3010/media/images/logo.png"
                                 alt="">
                     <div class="center">
                     <div class="form-group">
                         <div class="col-sm-9 set-size">
-                            <input type="text" id="firstName" placeholder="Full Name" class="form-control" required autofocus>
+                            <input type="text" id="firstName" placeholder="Company Name" class="form-control" required autofocus [(ngModel)]="model.name" name="companyName" #companyName="ngModel">
+                            <div [hidden]="companyName.valid || companyName.pristine" class="alert alert-danger">
+                                Please enter the name of your company.
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-9 set-size">
-                            <input type="email" id="email" placeholder="Email" class="form-control" required>
+                            <input type="email" id="email" placeholder="Email" class="form-control" required [(ngModel)]="model.email" name="email" #email="ngModel">
+                            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                               Please enter your email address.
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-9 set-size">
-                            <input type="password" id="password" placeholder="Password" class="form-control" required>
+                            <input type="password" id="password" placeholder="Password" class="form-control" required [(ngModel)]="model.password" name="password" #password="ngModel">
+                            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                                Please enter a password.
+                            </div>
                         </div>
                     </div>
-                      <div class="form-group">
+                    <!--div class="form-group">
                         <div class="col-sm-9 set-size">
                             <input type="password" id="password" placeholder="Confim Password" class="form-control" required>
                         </div>
-                    </div>
+                    </div-->
                     <div class="form-group">
                         <div class="col-sm-9 set-size">
                             <select id="country" class="form-control">
@@ -47,31 +59,58 @@
                     </div> <!-- /.form-group -->
                     <div class="form-group">
                         <div class="col-sm-9 set-size">
-                            <input type="" id="password" placeholder="Zip Code" class="form-control" required>
+                            <input type="text" id="address" placeholder="Address" class="form-control" required [(ngModel)]="model.address" name="address" #address="ngModel">
+                            <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
+                                    Please enter your Address.
+                            </div>
+                        </div>
+                    </div>
+                    <!--div class="form-group">
+                        <div class="col-sm-9 set-size">
+                            <input type="text" id="zipCode" placeholder="Zip Code" class="form-control" required [(ngModel)]="model.address" name="zipCode" #zipCode="ngModel">
+                            <div [hidden]="zipCode.valid || zipCode.pristine" class="alert alert-danger">
+                                Please enter your towns zip code.
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-9 set-size">
-                            <input type="" id="password" placeholder="Town" class="form-control" required>
+                            <input type="" id="password" placeholder="Town" class="form-control" required [(ngModel)]="model.address" name="town" #town="ngModel">
+                            <div [hidden]="town.valid || town.pristine" class="alert alert-danger">
+                                Please enter you towns name.
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-9 set-size">
-                            <input type="" id="password" placeholder="Street" class="form-control" required>
+                            <input type="" id="password" placeholder="Street with Street Number " class="form-control" required [(ngModel)]="model.address" name="street" #street="ngModel">
+                            <div [hidden]="street.valid || street.pristine" class="alert alert-danger">
+                                Please enter yout street and street number.
+                            </div>
                         </div>
-                    </div>
+                    </div-->
                     <div class="form-group">
-                        <label class="control-label col-sm-6">Account Status</label>
+                        <label class="control-label col-sm-6"><b>Prefered Form of Payment</b></label>
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <label class="radio-inline">
-                                        <input type="radio" id="femaleRadio" value="Trial"> Trial
+                                        <input type="radio" id="payment" value="payment" name="payment"> Credit Card
                                     </label>
                                 </div>
                                 <div class="col-sm-12">
                                     <label class="radio-inline">
-                                        <input type="radio" id="maleRadio" value="Professional"> Professional
+                                        <input type="radio" id="payment" value="payment" name="payment"> SEPA Direct Debit Scheme
+                                    </label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="payment" value="payment" name="payment"> PayPal
+                                    </label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="payment" value="payment" name="payment"> Ask me later
                                     </label>
                                 </div>
                             </div>
@@ -81,17 +120,16 @@
                         <div class="col-sm-9 col-sm-offset-3 set-size">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" required> I accept the <a class="terms" href="#">terms and conditions</a>
+                                    <input type="checkbox" required> <b> I accept the </b> <a class="terms" href="#" required> <b>terms and conditions</b></a>
                                 </label>
                             </div>
                         </div>
                     </div> <!-- /.form-group -->
                     <div class="form-group">
                         <div class="col-sm-9 col-sm-offset-3 set-size">
-                            <button type="submit" class="btn btn-primary btn-block btn-sign-in">Register</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-sign-in" [disabled]="!registerForm.form.valid">Register</button>
                         </div>
                     </div>
                     </div>
                 </form> <!-- /form -->
     </div> <!-- ./container -->
-</body>

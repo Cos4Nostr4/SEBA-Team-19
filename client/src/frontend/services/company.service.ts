@@ -19,6 +19,15 @@ export class CompanyService {
                     .map(this.extractData)
                     .catch(this.handleError); 
   }
+
+  addCompany(company: Company){
+      console.log("NEW COMPANY WILL BE CREATED!")
+      console.log("EMAIL:  "+company.email)
+      console.log("USERNAME:  "+company.name)
+      console.log("ADDRESS:  "+company.address)
+      console.log("PASSWORD:  "+company.password)
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body.data || { };
