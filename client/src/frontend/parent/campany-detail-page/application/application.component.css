@@ -31,3 +31,11 @@
     background: lightpink;
 }
 
+.application-accepted{
+    background-color: green;
+}
+
+.application-rejected{
+    background-color: red;
+}
+
