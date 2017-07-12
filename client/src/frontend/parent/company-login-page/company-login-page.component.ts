@@ -22,6 +22,7 @@ errorMessage: string;
   password = '';
   submitted = false;
   url = document.location.href;
+  model = new Company("","","","","","","","","","",false);
  
   constructor (private companyService: CompanyService) {}
 
@@ -57,12 +58,5 @@ errorMessage: string;
                        error =>  this.errorMessage = <any>error);
   }
 
-
-
-
-
-  model = new Company("18", 'Jens', "Peteee", 'Passwort',"company@jens.de","a","b","v","fds","sdfa",false);
-
- 
 
 }
