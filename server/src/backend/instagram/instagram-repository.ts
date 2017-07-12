@@ -1,6 +1,6 @@
 import {Database} from "../database/database";
 import Instagram from "node-instagram";
-import InsSelfData from "../../../../client/src/frontend/data-objects/ins-self-data";
+import InsSelfData from "../../../../client/src/frontend/data-objects/ins-user-data";
 import InstagrammDataMapper from "./instagramm-data-mapper";
 import {InfluencerRepository} from "../influencer/influencer-repository";
 import {Influencer} from "../../../../client/src/frontend/data-objects/influencer";

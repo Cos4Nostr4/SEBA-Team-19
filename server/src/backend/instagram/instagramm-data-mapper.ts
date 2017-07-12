@@ -1,4 +1,4 @@
-import InsSelfData from "../../../../client/src/frontend/data-objects/ins-self-data";
+import InsSelfData from "../../../../client/src/frontend/data-objects/ins-user-data";
 import InsRecentMedia from "../../../../client/src/frontend/data-objects/ins-recent-media";
 export default class InstagrammDataMapper {
 

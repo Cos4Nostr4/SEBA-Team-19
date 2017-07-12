@@ -45,7 +45,6 @@ describe("Test Request backend: ", function () {
                 requestRepository.getAllRequests(function (requests: Request[], error: any) {
                     expect(requests.length).toEqual(1);
                     let request: any = requests[0];
-                    request.status = RequestState[request.status];
                     let startDate = request.campaign.startDate;
                     let endDate = request.campaign.endDate;
                     request.campaign.startDate = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + (startDate.getDate());

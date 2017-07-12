@@ -1,7 +1,6 @@
 <app-header-company></app-header-company>
 <html>
 <div id="campaign-list-container" class="container-fluid offer-grid">
-    <a class="btn" href="http://localhost:4200/app-campany-detail-page">Go To: CampanyDetailPage </a>
     <div class="row no-gutters" style="padding: 0">
         <div *ngFor="let campaign of campaignList">
             <campany-list-element [campaign]="campaign"></campany-list-element>

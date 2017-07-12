@@ -61,6 +61,7 @@ export class AuthenticationService {
                     selfData => {
                         CookieHandler.addCookie("token", accessToken);
                         CookieHandler.addCookie("username", selfData.username);
+                        console.log("Logged in. Cookies: "+document.cookie);
                         this.redirectTo(LOGGED_IN_LANDING_URL);
                     },
                     error => {

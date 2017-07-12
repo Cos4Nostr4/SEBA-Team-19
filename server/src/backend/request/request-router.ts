@@ -56,6 +56,20 @@ export class RequestRouter {
                         res.json(transferObject);
                     }
                 });
+            })
+            .put( (req, res) =>{
+                let requestUuid = req.params.id;
+                let request:Request = req.body.data;
+                this.requestRepository.updateRequestWithId(requestUuid, request, function (request: Request, error: String) {
+                    if (error) {
+                        res.status(400);
+                        let transferObject = TransferObject.aTransferObjectForError(error);
+                        res.json(transferObject);
+                    } else {
+                        let transferObject = TransferObject.aTransferObjectFor(request);
+                        res.json(transferObject);
+                    }
+                });
             });
 
         application.use(baseUrl, router);

@@ -1,6 +1,5 @@
-import {RequestState} from "../../src/backend/request/db-request";
-var request = require("request");
 import {getSampleRequests} from "../samples/sample-data";
+var request = require("request");
 
 describe("Test Request backend: ", function () {
     const baseUrl = "http://localhost:3010/api/";
@@ -18,7 +17,6 @@ describe("Test Request backend: ", function () {
             request.get(baseUrl + requestUrl, function (error, response, body) {
                 let requests = JSON.parse(body).data;
                 requests.forEach((request) => {
-                    request.status = RequestState[request.status];
                     let startDate: Date = new Date(request.campaign.startDate);
                     let endDate: Date = new Date(request.campaign.endDate);
                     request.campaign.startDate = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + (startDate.getDate());
@@ -42,7 +40,6 @@ describe("Test Request backend: ", function () {
         it("returns request with id " + requestId, function (done) {
             request.get(baseUrl + requestUrl + "/" + requestId, function (error, response, body) {
                 let request = JSON.parse(body).data;
-                request.status = RequestState[request.status];
                 let startDate: Date = new Date(request.campaign.startDate);
                 let endDate: Date = new Date(request.campaign.endDate);
                 request.campaign.startDate = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + (startDate.getDate());

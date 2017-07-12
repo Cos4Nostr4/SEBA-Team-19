@@ -108,7 +108,7 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
                 component: CampanyDetailPageComponent
             },
             {
-                path: 'app-campany-page',
+                path: 'campany-page',
                 component: CampanyPageComponent
             },
             {
@@ -128,7 +128,7 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
                 component: ProfileViewDropdownComponent
             },
             {
-                path: 'app-status-page',
+                path: 'status/:id',
                 component: StatusPageComponent
             },
             {

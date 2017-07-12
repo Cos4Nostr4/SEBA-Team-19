@@ -1,5 +1,5 @@
 import {Observable} from "rxjs/Observable";
-import InsSelfData from "../data-objects/ins-self-data";
+import InsSelfData from "../data-objects/ins-user-data";
 import {Config} from "../config/config";
 import JsonExtractor from "./json-extractor";
 import ServiceErrorHandler from "./service_error_handler";
@@ -23,6 +23,14 @@ export class InstagrammDataService{
     public getSelfData():Observable<InsSelfData>{
         let accessToken = CookieHandler.getCookie("token");
         let url = INSTAGRAMM_BACKEND_BASE_URL + "self/"+accessToken;
+        let selfData: Observable<InsSelfData> = this.http.get(url)
+            .map(JsonExtractor.extractData)
+            .catch(ServiceErrorHandler.handleError);
+        return selfData;
+    }
+
+    public getUserData(username: string):Observable<InsSelfData>{
+        let url = INSTAGRAMM_BACKEND_BASE_URL + "user/"+username;
         let selfData: Observable<InsSelfData> = this.http.get(url)
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);

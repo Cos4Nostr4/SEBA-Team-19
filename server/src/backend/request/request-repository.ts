@@ -62,6 +62,7 @@ export class RequestRepository {
             })
             .populate("influencer", '-_id -__v')
             .exec(function (err: any, dbRequest: DBRequest) {
+                console.log("Found:" +dbRequest);
                 if (dbRequest) {
                     let request: Request = RequestMapper.map(dbRequest);
                     func(request, null);
@@ -143,4 +144,56 @@ export class RequestRepository {
             }
         });
     }
+
+    public updateRequestWithId(requestId: any, request: Request, func: (request: Request, error: String) => any) {
+        if (requestId != request.uuid) {
+            let errorMessage = "Updating request with id '" + requestId + "' is not allowed with data having different id";
+            func(null, errorMessage);
+            return;
+        }
+
+        this.requestModel.findOne({'uuid': requestId})
+            .populate({
+                path: 'campaign',
+                select: '-_id -__v',
+                populate: {
+                    path: 'company',
+                    select: '-_id -__v'
+                }
+            })
+            .populate("influencer", '-_id -__v')
+            .sort('uuid')
+            .exec((err: any, dbRequest: any) => {
+                if (err) {
+                    func(null, err);
+                    return;
+                }
+                if (!dbRequest) {
+                    func(null, "Could not update request, because no request for id " + requestId + " found");
+                    return;
+                }
+                if (dbRequest.influencer.uuid != request.influencer.uuid) {
+                    func(null, "Rejected request update, because updating influencer reference is not allowed");
+                    return;
+                }
+                if (dbRequest.campaign.uuid != request.campaign.uuid) {
+                    func(null, "Rejected request update, because updating campaign reference is not allowed");
+                    return;
+                }
+                console.log("here");
+                let update = {
+                    status: request.status,
+                    postponed: request.postponed,
+                };
+
+                this.requestModel.findByIdAndUpdate(dbRequest._id, {$set: update}, {new: false}, (err: any, ignored: DBRequest) => {
+                    if (err) {
+                        func(null, err);
+                    } else {
+                        this.getRequestWithId(requestId, func);
+                    }
+                });
+            });
+    }
+
 }

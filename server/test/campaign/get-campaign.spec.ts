@@ -11,12 +11,12 @@ describe("Test Campaign backend: ", function () {
     describe("GET " + baseUrl + campaignsUrl, function () {
         it("returns 200", function (done) {
             request.get(baseUrl + campaignsUrl, function (error, response, body) {
-                expect(response.statusCode).toEqual(200);
                 done();
             });
         });
         it("returns all campaigns", function (done) {
             request.get(baseUrl + campaignsUrl, function (error, response, body) {
+                expect(response.statusCode).toEqual(200);
                 let campaigns = JSON.parse(body).data;
                 campaigns.sort((c1, c2) => (+c1.uuid) - (+c2.uuid));
                 campaigns.forEach((campaign) => {
@@ -92,7 +92,6 @@ describe("Test Campaign backend: ", function () {
                 });
 
                 requests.forEach((request) => {
-                    request.status = RequestState[request.status];
                     let startDate: Date = new Date(request.campaign.startDate);
                     let endDate: Date = new Date(request.campaign.endDate);
                     request.campaign.startDate = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + (startDate.getDate());

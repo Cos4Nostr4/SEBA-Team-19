@@ -11,7 +11,7 @@ declare var $: any;
     selector: "app-campany-detail-page",
     templateUrl: "./campany-detail-page.component.html",
     styleUrls: ["./campany-detail-page.component.css"],
-    providers: [CampaignService, RequestService]
+    providers: [CampaignService, RequestService, ImageService]
 })
 
 
@@ -29,11 +29,13 @@ export class CampanyDetailPageComponent implements OnInit {
         this.requestService = requestService;
         this.imageService = imageService;
         this.route = route;
+
+        this.campaign = new Campaign("", "", "", "", null, 0, 0, [], new Date(), new Date(), true);
+        this.requests = [];
     }
 
 
     public ngOnInit(): void {
-
         this.route.params
             .switchMap((params: Params) => this.campaignService.getCampaignWithId(+params.id + ""))
             .subscribe(

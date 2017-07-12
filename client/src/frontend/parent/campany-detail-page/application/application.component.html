@@ -1,0 +1,21 @@
+<div id="application-container" class="row">
+    <div class="col-sm campany-detail-request-element">
+        <img id="applicant-picture" class="campany-detail-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg">
+    </div>
+
+    <div class="col-sm">
+        <span>{{request.influencer.username}}</span>
+    </div>
+
+    <div class="col-sm">
+        <button id="accept-button" type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton">
+            Accept
+        </button>
+    </div>
+
+    <div class="col-sm">
+        <button id="reject-button" type="button" data-toggle="button" aria-pressed="false"
+                class="btn btn-sm btn-danger rejectButton alignRight">Reject
+        </button>
+    </div>
+</div>

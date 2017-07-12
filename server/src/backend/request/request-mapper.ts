@@ -16,7 +16,8 @@ export class RequestMapper {
 
     public static map(dbRequest: DBRequest): Request {
         let campaign = CampaignMapper.map(dbRequest.campaign);
-        return new Request(dbRequest.uuid, campaign, dbRequest.influencer, RequestState[dbRequest.status], dbRequest.postponed);
+        let requestStateAsString = RequestState[RequestState[dbRequest.status]];
+        return new Request(dbRequest.uuid, campaign, dbRequest.influencer, requestStateAsString, dbRequest.postponed);
     }
 
     public static mapToDbObject(request: Request): DBRequest {
