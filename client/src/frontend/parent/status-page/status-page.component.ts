@@ -28,6 +28,8 @@ export class StatusPageComponent implements OnInit {
         this.influencerService = influencerService;
         this.instagrammDataService = instagrammDataService;
         this.route = route;
+        this.recentMedias = [];
+        this.userData = null;
     }
 
 

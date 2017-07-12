@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from "@angular/core";
 import {Request} from "../../../data-objects/request";
 import {InstagrammDataService} from "../../../services/instagramm-data.service";
 import {RequestService} from "../../../services/request.service";
+import {Router} from "@angular/router";
 
 declare var $: any;
 
@@ -15,10 +16,12 @@ export class ApplicationComponent implements OnInit {
     @Input() request: Request;
     private instagrammDataService: InstagrammDataService;
     private requestService: RequestService;
+    private router: Router;
 
-    constructor(instagrammDataService: InstagrammDataService, requestService: RequestService) {
+    constructor(instagrammDataService: InstagrammDataService, requestService: RequestService, router:Router) {
         this.instagrammDataService = instagrammDataService;
         this.requestService = requestService;
+        this.router = router;
     }
 
     public ngOnInit(): void {
@@ -44,6 +47,10 @@ export class ApplicationComponent implements OnInit {
 
         $('#reject-button').click(() => {
             this.denyRequest();
+        });
+
+        $('#applicant-picture').click(() => {
+            this.router.navigate(['status', this.request.influencer.uuid]);
         });
     }
 

@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
 import InsRecentMedia from "../../../data-objects/ins-recent-media";
-import {directoryExists} from "ts-node/dist";
 
 declare var $:any;
 
@@ -15,6 +14,6 @@ export class RecentMediaComponent implements OnInit {
 
 
     ngOnInit(): void {
-        console.log("Recent-Media:"+JSON.stringify(this.recentMedia));
+
     }
 }

@@ -5,21 +5,17 @@
             <img id="influencerPicture" class="status-page-influencer-profile-img" src="http://localhost:3010/media/images/alex.jpg">
         </div>
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-
+            <div>Username: {{userData.username}}</div>
+            <div>Biography: {{userData.biography}}</div>
+            <div>Number of Posts: {{userData.mediaCount}}</div>
+            <div>Followers: {{userData.followerCount}}</div>
+            <div>Following: {{userData.followingCount}}</div>
+            <score [userData]="userData" [recentMedias]="recentMedias"></score>
         </div>
     </div>
 
     <div id="recentMedias" class="row" style="padding-top: 20%">
         <recent-media *ngFor="let recentMedia of recentMedias" [recentMedia]="recentMedia"></recent-media>
-    </div>
-
-    <div class="row justify-content-between" style="padding-top: 8%">
-        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
-            <button class="btn btn-danger btn-block">Decline</button>
-        </div>
-        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
-            <button class="btn btn-success btn-block">Accept</button>
-        </div>
     </div>
 </div>
 
