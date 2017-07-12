@@ -48,6 +48,14 @@ export class RequestService {
         return requestUuidObservable;
     }
 
+    public updatRequest(request: Request):Observable<string>{
+        let url = URL_ALL_REQUESTS+influencer.uuid;
+        let updatedInfluencer: Observable<Influencer> = this.http.put(url, {data:influencer})
+            .map(JsonExtractor.extractData)
+            .catch(ServiceErrorHandler.handleError);
+        return updatedInfluencer;
+    }
+
 
     private    extractData(res: Response) {
         let body = res.json();

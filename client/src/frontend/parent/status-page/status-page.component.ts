@@ -4,7 +4,7 @@ import {InstagrammDataService} from "../../services/instagramm-data.service";
 import {ActivatedRoute, Params} from "@angular/router";
 import {Influencer} from "../../data-objects/influencer";
 import InsRecentMedia from "../../data-objects/ins-recent-media";
-import InsUserData from "../../data-objects/ins-self-data";
+import InsUserData from "../../data-objects/ins-user-data";
 
 declare var $:any;
 

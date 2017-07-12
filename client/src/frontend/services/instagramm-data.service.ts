@@ -1,5 +1,5 @@
 import {Observable} from "rxjs/Observable";
-import InsSelfData from "../data-objects/ins-self-data";
+import InsSelfData from "../data-objects/ins-user-data";
 import {Config} from "../config/config";
 import JsonExtractor from "./json-extractor";
 import ServiceErrorHandler from "./service_error_handler";

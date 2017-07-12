@@ -37,13 +37,10 @@ export class CampaignService {
 
 
     public getCampaignsForCategory(categoryId: number, username: string): Observable<Campaign[]> {
-        console.log("Get Category wit id"+categoryId);
         let category: string = CategoryMapper.forId(categoryId);
         if (category == Categories[Categories.HEARTS]) {
-            console.log("Get Category: Hearts");
             return this.getCampaignsWithHearts(username);
         } else {
-            console.log("Get Category: " + category);
             return this.getCampaignsForNormalCategory(category);
         }
     }
