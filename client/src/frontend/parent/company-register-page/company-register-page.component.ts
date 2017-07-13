@@ -58,7 +58,7 @@ export class CompanyRegisterPageComponent {
   }
 
    getHeroes() {
-    this.companyService.getHeroes()
+    this.companyService.getAllCompanies()
                      .subscribe(
                        companies => this.companies = companies,
                        error =>  this.errorMessage = <any>error);

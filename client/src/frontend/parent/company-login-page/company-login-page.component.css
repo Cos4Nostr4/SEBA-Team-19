@@ -110,3 +110,7 @@ body { position:absolute; top:0; bottom:0; right:0; left:0;
 .ng-invalid:not(form)  {
   border-left: 8px solid #a94442; /* red */
 }
+.form-error{
+    color:darkred;
+    font-weight: 600;
+}

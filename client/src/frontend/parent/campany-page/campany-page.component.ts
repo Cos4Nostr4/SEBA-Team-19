@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Campaign} from "../../data-objects/campaign";
 import {CampaignService} from "../../services/campaign.service";
+import {CookieHandler} from "../../services/cookie-handler";
+import {CompanyAuthenticationService} from "../../services/company-authentication.service";
 
 @Component({
     selector: "app-campany-page",
@@ -11,19 +13,17 @@ import {CampaignService} from "../../services/campaign.service";
 
 
 export class CampanyPageComponent implements OnInit {
-    campaignService: CampaignService;
-    campaignList: Campaign[];
-
-    private errorMessage: string;
+    private campaignService: CampaignService;
+    private campaignList: Campaign[];
 
     constructor(offerService: CampaignService) {
         this.campaignService = offerService;
+        this.campaignList = [];
     }
 
 
     ngOnInit(): void {
-
-        let companyUuid: string = "2";
+        let companyUuid: string = CookieHandler.getCookie(CompanyAuthenticationService.COOKIE_ID);
 
         this.campaignService.getAllCampaigns().subscribe(
             campaigns => {
@@ -32,7 +32,6 @@ export class CampanyPageComponent implements OnInit {
                 });
             },
             error => {
-                this.errorMessage = error;
                 throw new Error(error)
             });
 

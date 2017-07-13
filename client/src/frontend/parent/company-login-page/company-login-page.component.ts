@@ -1,62 +1,53 @@
-import {Component} from "@angular/core";
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
+import {Component, OnInit} from "@angular/core";
 import {Company} from "../../data-objects/company";
 import {CompanyService} from "../../services/company.service";
 import {CookieHandler} from "../../services/cookie-handler";
+import {CompanyAuthenticationService} from "../../services/company-authentication.service";
 
-@Component ({
+@Component({
     selector: "app-company-login-page",
     templateUrl: "./company-login-page.component.html",
     styleUrls: ["./company-login-page.component.css"],
-    providers: [CompanyService]
+    providers: [CompanyService, CompanyAuthenticationService]
 })
 
-export class CompanyLoginPageComponent {
-errorMessage: string;
-  companies: Company[];
-  mode = 'Observable';
-  email = '';
-  password = '';
-  submitted = false;
-  url = document.location.href;
-  model = new Company("","","","","","","","","","",false);
- 
-  constructor (private companyService: CompanyService) {}
+export class CompanyLoginPageComponent implements OnInit {
+    private companyService: CompanyService;
+    private companyAuthenticationService: CompanyAuthenticationService;
+    private companies: Company[];
+    private loginErrorMessage: string;
+    private model:any;
 
-  ngOnInit() { this.getHeroes(); }
-
-  onSubmit(email: string, password: string) {
-    this.email = email;
-    this.password = password;
-    let company = this.companies.find((company) => company.email === email);
-    if (company == null){
-    	console.log("FAIL, no email match!");
-    } else {
-    	console.log("SUCCESS!"+company.email);
-    	if(company.password == password){
-    		CookieHandler.addCookie("companyname",company.username);
-            /*document.location.href = this.url.split(/[?#]/)[0];*/
-            let id = CookieHandler.getCookie("companyname")
-            document.location.href = this.url+"/"+id
-            console.log("Setting cookie to " + document.cookie);
-    		console.log("SUCCES! You are logging in");
-    	} else {
-    		console.log("FAIL, password is wrong");
-    	}
+    constructor(companyService: CompanyService, companyAuthenticationService: CompanyAuthenticationService) {
+        this.companyService = companyService;
+        this.companyAuthenticationService = companyAuthenticationService;
+        this.companies = [];
+        this.loginErrorMessage = null;
+        this.model = {email: "", password: ""};
     }
-    this.submitted = true;
-    console.log("Email: "+this.email+"  Password: "+this.password);
-  }
 
-   getHeroes() {
-    this.companyService.getHeroes()
-                     .subscribe(
-                       companies => this.companies = companies,
-                       error =>  this.errorMessage = <any>error);
-  }
+    public ngOnInit(): void {
+        this.companyService.getAllCompanies()
+            .subscribe(
+                companies => {
+                    this.companies = companies
+                },
+                error => {
+                    throw new Error(error);
+                }
+            )
+        ;
+    }
 
-
+    public checkForm(): boolean {
+        let email = this.model.email;
+        let password = this.model.password;
+        let company = this.companies.find((company) => company.email === email);
+        if (company != null && company.password == password) {
+            this.companyAuthenticationService.login(company);
+        } else {
+            this.loginErrorMessage = "Wrong email or password";
+        }
+        return false;
+    }
 }

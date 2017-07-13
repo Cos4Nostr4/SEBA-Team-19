@@ -1,49 +1,31 @@
-import { Injectable }              from '@angular/core';
-import { Http, Response }          from '@angular/http';
- 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
- 
-import { Company } from '../data-objects/company';
- 
+import {Injectable} from "@angular/core";
+import {Http} from "@angular/http";
+import {Observable} from "rxjs/Observable";
+import {Company} from "../data-objects/company";
+import {Config} from "../config/config";
+import JsonExtractor from "./json-extractor";
+import ServiceErrorHandler from "./service_error_handler";
+
 @Injectable()
 export class CompanyService {
-  private companyUrl = "http://localhost:3010/api/companies";  // URL to web API
- 
-  constructor (private http: Http) {}
- 
-  getHeroes(): Observable<Company[]> {
-    console.log("SERVICE: getHeroes() START")
-    return this.http.get(this.companyUrl)
-                    .map(this.extractData)
-                    .catch(this.handleError); 
-  }
+    private static COMPANY_BASE_URL = Config.backend_address + ":" + Config.backend_port + Config.backend_base_url + "companies";
+    private http: Http;
 
-  addCompany(company: Company){
-      console.log("NEW COMPANY WILL BE CREATED!")
-      console.log("EMAIL:  "+company.email)
-      console.log("USERNAME:  "+company.name)
-      console.log("ADDRESS:  "+company.address)
-      console.log("PASSWORD:  "+company.password)
-  }
-
-  private extractData(res: Response) {
-    let body = res.json();
-    return body.data || { };
-  }
- 
-  private handleError (error: Response | any) {
-    // In a real world app, you might use a remote logging infrastructure
-    let errMsg: string;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-      errMsg = error.message ? error.message : error.toString();
+    constructor(http: Http) {
+        this.http = http;
     }
-    console.error(errMsg);
-    return Observable.throw(errMsg);
-  }
+
+    public getAllCompanies(): Observable<Company[]> {
+        return this.http.get(CompanyService.COMPANY_BASE_URL)
+            .map(JsonExtractor.extractData)
+            .catch(ServiceErrorHandler.handleError);
+    }
+
+    public addCompany(company: Company):Observable<string> {
+        let companyUuidObservable = this.http.post(CompanyService.COMPANY_BASE_URL, {data: company})
+            .map(JsonExtractor.extractData)
+            .catch(ServiceErrorHandler.handleError);
+        return companyUuidObservable;
+    }
+
 }

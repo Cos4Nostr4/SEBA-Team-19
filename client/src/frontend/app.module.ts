@@ -108,15 +108,15 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
                 component: CampanyDetailPageComponent
             },
             {
-                path: 'campany-page',
+                path: 'campany',
                 component: CampanyPageComponent
             },
             {
-                path: 'app-company-login-page',
+                path: 'company-login',
                 component: CompanyLoginPageComponent
             },
             {
-                path: 'app-company-register-page',
+                path: 'company-register',
                 component: CompanyRegisterPageComponent
             },
             {
