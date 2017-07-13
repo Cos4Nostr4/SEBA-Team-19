@@ -148,3 +148,7 @@ body {
     display: block;
     margin-top: 10px;
 }
+.form-error{
+    color:darkred;
+    font-weight: 600;
+}

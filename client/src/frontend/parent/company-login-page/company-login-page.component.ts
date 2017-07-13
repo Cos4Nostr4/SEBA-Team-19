@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Company} from "../../data-objects/company";
 import {CompanyService} from "../../services/company.service";
-import {CookieHandler} from "../../services/cookie-handler";
 import {CompanyAuthenticationService} from "../../services/company-authentication.service";
 
 @Component({
@@ -16,7 +15,7 @@ export class CompanyLoginPageComponent implements OnInit {
     private companyAuthenticationService: CompanyAuthenticationService;
     private companies: Company[];
     private loginErrorMessage: string;
-    private model:any;
+    private model: any;
 
     constructor(companyService: CompanyService, companyAuthenticationService: CompanyAuthenticationService) {
         this.companyService = companyService;
