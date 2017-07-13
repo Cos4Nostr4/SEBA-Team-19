@@ -5,28 +5,32 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {Influencer} from "../../data-objects/influencer";
 import InsRecentMedia from "../../data-objects/ins-recent-media";
 import InsUserData from "../../data-objects/ins-user-data";
+import {CompanyAuthenticationService} from "../../services/company-authentication.service";
 
-declare var $:any;
+declare var $: any;
 
 @Component({
     selector: "app-status-page",
     templateUrl: "./status-page.component.html",
     styleUrls: ["./status-page.component.css"],
-    providers: [InfluencerService, InstagrammDataService]
+    providers: [InfluencerService, InstagrammDataService, CompanyAuthenticationService]
 })
 
 export class StatusPageComponent implements OnInit {
     private influencerService: InfluencerService;
     private instagrammDataService: InstagrammDataService;
+    private companyAuthenticationService: CompanyAuthenticationService;
     private route: ActivatedRoute;
     private influencer: Influencer;
     private recentMedias: InsRecentMedia[];
     private userData: InsUserData;
 
 
-    constructor(influencerService: InfluencerService, instagrammDataService: InstagrammDataService, route: ActivatedRoute) {
+    constructor(influencerService: InfluencerService, instagrammDataService: InstagrammDataService,
+                companyAuthenticationService: CompanyAuthenticationService, route: ActivatedRoute) {
         this.influencerService = influencerService;
         this.instagrammDataService = instagrammDataService;
+        this.companyAuthenticationService = companyAuthenticationService;
         this.route = route;
         this.recentMedias = [];
         this.userData = null;
@@ -34,6 +38,8 @@ export class StatusPageComponent implements OnInit {
 
 
     public ngOnInit(): void {
+        this.companyAuthenticationService.ensureIsLoggedIn();
+
         this.route.params
             .switchMap((params: Params) => this.influencerService.getInfluencerById(params.id))
             .subscribe(influencer => {
@@ -48,7 +54,7 @@ export class StatusPageComponent implements OnInit {
                     this.instagrammDataService.getUserData(influencer.username)
                         .subscribe(userData => {
                                 this.userData = userData;
-                                console.log("UserData:"+JSON.stringify(userData));
+                                console.log("UserData:" + JSON.stringify(userData));
                                 $("#influencerPicture").attr("src", userData.profilePictureUrl);
                             },
                             error => {

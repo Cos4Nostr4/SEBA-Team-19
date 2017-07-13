@@ -5,26 +5,28 @@ import {CookieHandler} from "../../services/cookie-handler";
 import {CompanyAuthenticationService} from "../../services/company-authentication.service";
 
 @Component({
-    selector: "app-campany-page",
+    selector: "campany-page",
     templateUrl: "./campany-page.component.html",
     styleUrls: ["./campany-page.component.css"],
-    providers: [CampaignService]
+    providers: [CampaignService, CompanyAuthenticationService]
 })
 
 
 export class CampanyPageComponent implements OnInit {
     private campaignService: CampaignService;
+    private companyAuthenticationService: CompanyAuthenticationService;
     private campaignList: Campaign[];
 
-    constructor(offerService: CampaignService) {
+    constructor(offerService: CampaignService, companyAuthenticationService: CompanyAuthenticationService) {
         this.campaignService = offerService;
+        this.companyAuthenticationService = companyAuthenticationService;
         this.campaignList = [];
     }
 
-
     ngOnInit(): void {
-        let companyUuid: string = CookieHandler.getCookie(CompanyAuthenticationService.COOKIE_ID);
+        this.companyAuthenticationService.ensureIsLoggedIn();
 
+        let companyUuid: string = CookieHandler.getCookie(CompanyAuthenticationService.COOKIE_ID);
         this.campaignService.getAllCampaigns().subscribe(
             campaigns => {
                 this.campaignList = campaigns.filter((campaign) => {
@@ -34,7 +36,5 @@ export class CampanyPageComponent implements OnInit {
             error => {
                 throw new Error(error)
             });
-
-
     }
 }
