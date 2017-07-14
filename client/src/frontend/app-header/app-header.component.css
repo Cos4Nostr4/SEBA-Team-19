@@ -53,14 +53,34 @@
     border-radius: 20px;
     float: right;
     padding-top: 0px;
-    padding-right: 20px;
+    padding-right: 0px;
     margin-top: -2px;
 }
 
 .user-picture img {
-    height: 35px;
-    width: 35px;
-    border: solid white thin;
+    height: 40px;
+    width: 40px;
     border-radius: 50px;
 }
 
+.btn-profile-img{
+    padding-top: 5px !important;
+}
+
+.heart-icon{
+    height: 26px !important;
+    width: 23px !important;
+    padding-top: 5px !important;
+    margin-right: 20px !important;
+    margin-top: 10px !important;
+    border-radius: 0px !important;
+}
+
+.request-icon{
+    height: 40px !important;
+    width: 35px !important;
+    padding-top: 5px !important;
+    margin-right: 20px !important;
+    margin-top: 2px !important;
+    border-radius: 0px !important;
+}
