@@ -11,23 +11,27 @@
 
                         </button>
                     </div>
-                    <button class="button">Publish</button>
+                    <button class="button" (click)="createCampaign()">Publish</button>
                 </div>
             </div>
             <div class=".col-12 col-sm-8 .col-md-8 .col-lg-8 .col-xl-8">
                 <div class="boxContentText">
                     <div class="boxContentTextWrapper">
-                        <form>
-                            Title: <br><input type="text" name="requiredFollower"><br><br>
-                            Required Follower: <br><input type="text" name="requiredFollower"><br><br>
-                            Amount: <br><input type="text" name="requiredFollower"><br><br>
-                            Short Description: <br><input type="text" name="lastname"><br><br>
-                            End Date: <br><input type="date" name="lastname"><br><br>
-                            Hashtags: <br><input type="text" name="lastname"><br><br>
-                            Categories: <br><input type="text" name="lastname"><br><br>
+                        <form (ngSubmit)="createCampaign()">
+                            Title: <br><input [(ngModel)]="formData.title" type="text" name="title"><br><br>
+                            Required Follower: <br><input [(ngModel)]="formData.followers" type="text"
+                                                          name="requiredFollower"><br><br>
+                            Amount: <br><input type="text" [(ngModel)]="formData.amount" name="amount"><br><br>
+                            Short Description: <br><input [(ngModel)]="formData.description" type="text"
+                                                          name="description"><br><br>
+                            End Date: <br><input [(ngModel)]="formData.endDate" type="date" name="endDate"><br><br>
+                            Hashtags: <br><input [(ngModel)]="formData.hashTags" type="text" name="hashTags"><br><br>
+                            Categories: <br>
+                            <select [(ngModel)]="formData.categories" name="categories" multiple>
+                                <option *ngFor="let category of selectableCategories"  value="{{category}}">{{category}}</option>
+                            </select>
                         </form>
                     </div>
-
                 </div>
             </div>
 

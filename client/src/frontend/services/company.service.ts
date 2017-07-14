@@ -21,6 +21,11 @@ export class CompanyService {
             .catch(ServiceErrorHandler.handleError);
     }
 
+    public getCompanyForId(uuid:string): Observable<Company> {
+        return this.getAllCompanies()
+            .map((companies) => companies.find((company) => company.uuid == uuid));
+    }
+
     public addCompany(company: Company):Observable<string> {
         let companyUuidObservable = this.http.post(CompanyService.COMPANY_BASE_URL, {data: company})
             .map(JsonExtractor.extractData)
