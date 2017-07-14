@@ -1,9 +1,7 @@
-
 import {Company} from "./company";
 export class Campaign {
     public uuid: string;
     public title: string;
-
     public description: string;
     public image: string;
     public company: Company;
@@ -12,12 +10,13 @@ export class Campaign {
     public enforcedHashTags: Array<string>;
     public startDate: Date;
     public endDate: Date;
+    public categories: string[];
     public stillRunning: boolean;
 
 
     constructor(uuid: string, title: string, description: string, image: string, company: Company, amount: number,
                 requiredNumberOfFollowers: number, enforcedHashTags: Array<string>, startDate: Date, endDate: Date,
-                stillRunning: boolean) {
+                categories: string[], stillRunning: boolean) {
         this.uuid = uuid;
         this.title = title;
         this.description = description;
@@ -28,7 +27,7 @@ export class Campaign {
         this.enforcedHashTags = enforcedHashTags;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.categories = categories;
         this.stillRunning = stillRunning;
     }
-
 }

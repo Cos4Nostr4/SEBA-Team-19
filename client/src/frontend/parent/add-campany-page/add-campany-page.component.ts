@@ -55,7 +55,7 @@ export class AddCampanyPageComponent implements OnInit {
         let endDate = new Date(this.formData.endDate);
         let hashTags = this.extractHashTags();
         let createdCampaign = new Campaign(UUID.createNew().asStringValue(), this.formData.title, this.formData.description, campaignPicture,
-            this.company, this.formData.amount, this.formData.followers, hashTags, new Date(), endDate, true);
+            this.company, this.formData.amount, this.formData.followers, hashTags, new Date(), endDate, [], true);
         console.log("FORM: " + JSON.stringify(createdCampaign));
         console.log("Categories:"+this.formData.categories);
     }

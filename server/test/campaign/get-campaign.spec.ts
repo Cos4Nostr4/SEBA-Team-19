@@ -48,6 +48,7 @@ describe("Test Campaign backend: ", function () {
                 campaign.startDate = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + (startDate.getDate());
                 campaign.endDate = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + (endDate.getDate());
                 expect(campaign).toEqual(expectedCampaign);
+                console.log("EXPECTED:"+JSON.stringify(expectedCampaign));
                 done();
             });
         });

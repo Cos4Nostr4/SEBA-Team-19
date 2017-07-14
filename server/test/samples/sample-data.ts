@@ -55,7 +55,6 @@ function populateCampaignData() {
         let company = companies.find((company) => company.name == companyName);
         let copiedCampaign = Object.assign({}, campaign);
         copiedCampaign.company = company;
-        delete copiedCampaign.categories;
         return copiedCampaign;
     });
 
@@ -82,7 +81,6 @@ function populateRequestData() {
         }
         copiedRequest.campaign = campaign;
 
-        delete copiedRequest.campaign.categories;
         return copiedRequest;
     });
     return mappedRequests;

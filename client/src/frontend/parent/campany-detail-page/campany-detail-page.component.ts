@@ -30,7 +30,7 @@ export class CampanyDetailPageComponent implements OnInit {
         this.imageService = imageService;
         this.route = route;
 
-        this.campaign = new Campaign("", "", "", "", null, 0, 0, [], new Date(), new Date(), true);
+        this.campaign = new Campaign("", "", "", "", null, 0, 0, [], new Date(), new Date(), [], true);
         this.requests = [];
     }
 

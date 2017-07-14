@@ -69,7 +69,7 @@ describe("Test Request backend: ", function () {
         });
 
         let notExistingCampaign = new Campaign("123456789", "not existing", "not existing", "not existing", null, 5, 200, [], dateFor("2017-8-2"),
-            dateFor("2018-1-1"), true);
+            dateFor("2018-1-1"),["fitness"], true);
         let requestWithNotExisitingCampaign = new Request("222", notExistingCampaign, linkedInfluencer, "ACCEPTED", false);
         let paramsForRequestWithNotExistingCampaign = {
             url: baseUrl + campaignsUrl,

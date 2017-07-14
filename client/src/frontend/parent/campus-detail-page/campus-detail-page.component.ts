@@ -42,7 +42,7 @@ export class CampusDetailPageComponent implements OnInit {
         this.influencerService = influencerService;
         this.route = route;
 
-        this.campaign = new Campaign("", "", "", "", null, 0, 0, [], new Date(), new Date(), true);
+        this.campaign = new Campaign("", "", "", "", null, 0, 0, [], new Date(), new Date(), [], true);
         this.alreadyApplied = false;
     }
 
