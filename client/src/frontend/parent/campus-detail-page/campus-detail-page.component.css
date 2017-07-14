@@ -1,156 +1,3 @@
-.wrapper {
-    width: 700px;
-    height:100%;
-    margin-left: auto;
-    margin-right:auto;
-}
-
-.campaign-list-container{
-    padding-top: 123px;
-}
-
-.set-product-picture-size{
-    max-height: 300px;
-    max-width: 300px;
-    min-width: 100px;
-    min-height: 100px;
-}
-
-.no-restrain{
-    max-width: 100% !important;
-}
-
-.contentBox {
-    margin-top: 130px;
-    width:700px;
-    height: 340px;
-    background: linear-gradient(-90deg, #0065C1, #00C3CD);
-    border-radius: 10px;
-
-}
-
-.row {
-    margin:auto;
-    width:680px;
-    padding-top: 25px;
-}
-
-.boxContentPic {
-    padding:20px;
-}
-
-.boxPic {
-    width: 200px;
-    height: 200px;
-}
-
-.boxPic img {
-    width: 200px;
-    height: 200px;
-}
-
-.image-size{
-    max-width: 130px;
-    height: 50px;
-}
-
-.auto-margin{
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 15px;
-}
-
-.blue{
-    color: #025aa5 !important;
-}
-
-#outer {
-  width: 100%;
-  text-align: center;
-  padding-bottom: 40px;
-}
-
-.set-brandline{
-    padding-top: 0px !important;
-}
-
-#inner {
-  display: inline-block;
-}
-
-.boxContentText {
-
-
-    background: #ffffff;
-    height: 285px;
-
-}
-
-.boxContentApply{
-    margin: auto;
-    background: #ffffff;
-    border-radius: 10px;
-    height: 100px;
-    width: 92%;
-}
-
-.row[_ngcontent-c0] {
-    margin: auto;
-    width: 100%;
-    padding-top: 25px;
-}
-
-.button {
-    background-color: #00519A;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-family: roboto;
-    font-size: 16px;
-    margin: 30px auto 0 ;
-    cursor: pointer;
-    width: 200px;
-
-}
-
-.box[_ngcontent-c0]   h5.heading[_ngcontent-c0]{
-    padding-left:10px !important;
-}
-
-.testimonials-container[_ngcontent-c0] {
-    background-color: #fff;
-    border: 3px solid #ecebeb;
-}
-
-.product-box-vertical[_ngcontent-c0] {
-    border: 2px solid #ecebeb;
-}
-
-.btn-accepted{
-    background-color: green;
-}
-
-.btn-pending{
-    background-color: grey;
-}
-
-.btn-rejected{
-    background-color: red;
-}
-
-.campaignTitle {
-    text-align: center;
-}
-
-.boxContentTextWrapper {
-    text-aling: left;
-    margin-left: 10px;
-}
-
-
 /* ----- TEMPLATE CSS ----- */
 
 @import "https://fonts.googleapis.com/css?family=Lato:400|Montserrat:400,700";
@@ -6726,3 +6573,154 @@ body.lb-disable-scrolling {
   pointer-events: none; }
 
 /*# sourceMappingURL=theme.css.map */
+
+/* ------------------------- CUSTOM CSS ADATIONS ----------------------------- */
+
+.wrapper {
+    width: 700px;
+    height:100%;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.campaign-list-container{
+    padding-top: 123px;
+}
+
+.set-product-picture-size{
+    max-height: 300px;
+    max-width: 300px;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.no-restrain{
+    max-width: 100% !important;
+}
+
+.contentBox {
+    margin-top: 130px;
+    width:700px;
+    height: 340px;
+    background: linear-gradient(-90deg, #0065C1, #00C3CD);
+    border-radius: 10px;
+
+}
+
+.row {
+    margin:auto;
+    width:680px;
+    padding-top: 25px;
+}
+
+.boxContentPic {
+    padding:20px;
+}
+
+.boxPic {
+    width: 200px;
+    height: 200px;
+}
+
+.boxPic img {
+    width: 200px;
+    height: 200px;
+}
+
+.image-size{
+    max-width: 130px;
+    height: 50px;
+}
+
+.auto-margin{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+}
+
+.blue{
+    color: #025aa5 !important;
+}
+
+#outer {
+  width: 100% !important;
+  text-align: center !important;
+  padding-bottom: 40px !important;
+}
+
+.set-brandline{
+    padding-top: 0px !important;
+}
+
+#inner {
+  display: inline-block !important;
+}
+
+.boxContentText {
+    background: #ffffff;
+    height: 285px;
+}
+
+.boxContentApply{
+    margin: auto;
+    background: #ffffff;
+    border-radius: 10px;
+    height: 100px;
+    width: 92%;
+}
+
+.row[_ngcontent-c0] {
+    margin: auto;
+    width: 100%;
+    padding-top: 25px;
+}
+
+.button {
+    background-color: #00519A;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: roboto;
+    font-size: 16px;
+    margin: 30px auto 0 ;
+    cursor: pointer;
+    width: 200px;
+
+}
+
+.box[_ngcontent-c0]   h5.heading[_ngcontent-c0]{
+    padding-left:10px !important;
+}
+
+.testimonials-container[_ngcontent-c0] {
+    background-color: #fff;
+    border: 3px solid #ecebeb;
+}
+
+.product-box-vertical[_ngcontent-c0] {
+    border: 2px solid #ecebeb;
+}
+
+.btn-accepted{
+    background-color: green;
+}
+
+.btn-pending{
+    background-color: grey;
+}
+
+.btn-rejected{
+    background-color: red;
+}
+
+.campaignTitle {
+    text-align: center;
+}
+
+.boxContentTextWrapper {
+    text-aling: left;
+    margin-left: 10px;
+}
