@@ -1,6 +1,6 @@
 <app-header></app-header>
 <menu-slider></menu-slider>
-<div class="wrapper">
+<!--div class="wrapper">
     <div class="contentBox">
         <div class="row">
             <div class=".col-12 col-sm-4 .col-md-4 .col-lg-4 .col-xl-4">
@@ -34,4 +34,93 @@
             </div>
         </div>
     </div>
-</div>
+</div -->
+                <!-- TESTIMONIALS -->
+            <div class="campaign-list-container">
+                <div class="box testimonials pt-0">
+                    <h5 class="heading mt-0 mr-0 mb-30"><span>//</span> {{campaign.title}}
+                    </h5>
+                     
+                    <div class="testimonials-slider text-center">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="testimonials-container shadow">
+                                    <div class="col-md-4 no-padding">
+                                        <div class="product-box product-box-vertical no-margin wow fadeIn">
+                                            <div class="product-box-wrapper light-bg">
+
+                                                <div class="product-box-image">
+                                                    <a href="#">
+                                                        <img id='productPicture' class="img-responsive set-product-picture-size" src="https://cdn.shopify.com/s/files/1/0377/2037/products/ModernSport05.Front_large.jpg?v=1490307334" max-width="300" max-height="300" alt="product image">
+                                                    </a>
+                                                </div>
+
+                                                <div class="product-box-details">
+                                                    <span class="product-box-new">new!</span>
+                                                    <h5>{{campaign.title}}</h5>
+                                                    <div class="product-box-rating">
+                                                        <ul>
+                                                            <li><span class="glyphicon glyphicon-star"></span></li>
+                                                            <li><span class="glyphicon glyphicon-star"></span></li>
+                                                            <li><span class="glyphicon glyphicon-star"></span></li>
+                                                            <li><span class="glyphicon glyphicon-star"></span></li>
+                                                            <li><span class="glyphicon glyphicon-star-empty unactive"></span></li>
+                                                        </ul>
+                                                        
+                                                    </div>
+                                                    <span class="product-box-price h6">Required Followers: {{campaign.amount}}</span>
+                                                    <button id="apply-button" class="btn btn-primary">Apply</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-md-push-1 no-restrain">
+
+                                    <h3>{{campaign.title}}
+                                    <span>Fastcompany ltd.</span>
+                                    </h3>
+
+                                    <p>{{campaign.description}}
+                                    </p>
+                                    <p class="blue">Hashtags: #{{campaign.enforcedHashTags}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonials-pagination"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- / TESTIMONIALS-->
+            <!-- HOME BRANDS-->
+                <div class="box testimonials pt-0">
+                    <h5 class="heading mt-0 mr-0 mb-30"><span>//</span> OUR BRANDS
+                    </h5>
+                </div>
+
+                <div class="row set-brandline">
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-sm-2 col-lg-2" id="outer">
+                                <img src="http://localhost:3010/media/images/brands/acer.jpg" id="inner" class="image-size" alt="brand logo" />
+                            </div>
+
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-sm-2 col-lg-2" id="outer">
+                                <img src="http://localhost:3010/media/images/brands/adidas.jpg" id="inner" class="image-size" alt="brand logo" />
+                            </div>
+
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-sm-2 col-lg-2" id="outer">
+                                <img src="http://localhost:3010/media/images/brands/BEL_Brand_Logo.jpg" id="inner" class="image-size" alt="brand logo" />
+                            </div>
+
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-sm-2 col-lg-2" id="outer">
+                                <img src="http://localhost:3010/media/images/brands/Converse.jpg" id="inner" class="image-size" alt="brand logo" />
+                            </div>
+
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-sm-2 col-lg-2" id="outer">
+                                <img src="http://localhost:3010/media/images/brands/gap-logo.jpg" id="inner" class="image-size" alt="brand logo" />
+                            </div>
+
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-sm-2 col-lg-2" id="outer">
+                                <img src="http://localhost:3010/media/images/brands/samsung_logo_5_.jpg.jpeg" id="inner" class="image-size" alt="brand logo" />
+                            </div>
+                </div>
+                <!-- / HOME BRANDS -->
