@@ -35,4 +35,5 @@ export class CompanyAuthenticationService {
             document.location.href = CompanyAuthenticationService.LOGIN_PAGE;
         }
     }
+
 }

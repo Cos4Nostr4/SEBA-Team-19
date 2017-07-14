@@ -45,6 +45,13 @@ export class CampaignService {
         }
     }
 
+    public addCampaign(campaign:Campaign): Observable<string> {
+        let campaignUuidObservable = this.http.post(URL_ALL_OFFERS, {data: campaign})
+            .map(JsonExtractor.extractData)
+            .catch(ServiceErrorHandler.handleError);
+        return campaignUuidObservable;
+    }
+
     private getCampaignsForNormalCategory(category: string): Observable<Campaign[]> {
         let campaigns: Observable<Campaign[]> = this.http.get(URL_BASE_CATEGORY + category)
             .map(JsonExtractor.extractData)
@@ -62,5 +69,4 @@ export class CampaignService {
 
         return campaignsWithHearts;
     }
-
 }

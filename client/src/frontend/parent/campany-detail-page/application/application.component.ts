@@ -25,7 +25,7 @@ export class ApplicationComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.instagrammDataService.getSelfData()
+        this.instagrammDataService.getUserData(this.request.influencer.username)
             .subscribe(
                 selfData => {
                     $('#applicant-picture').attr('src', selfData.profilePictureUrl);

@@ -37,7 +37,7 @@ export class CampanyDetailPageComponent implements OnInit {
 
     public ngOnInit(): void {
         this.route.params
-            .switchMap((params: Params) => this.campaignService.getCampaignWithId(+params.id + ""))
+            .switchMap((params: Params) => this.campaignService.getCampaignWithId(params.id))
             .subscribe(
                 campaign => {
                     this.campaign = campaign;
@@ -50,7 +50,7 @@ export class CampanyDetailPageComponent implements OnInit {
             );
 
         this.route.params
-            .switchMap((params: Params) => this.requestService.getRequestsForCampaign(+params.id + ""))
+            .switchMap((params: Params) => this.requestService.getRequestsForCampaign(params.id ))
             .subscribe(
                 requests => {
                     this.requests = requests;

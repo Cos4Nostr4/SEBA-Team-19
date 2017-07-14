@@ -16,7 +16,7 @@ export default class UUID{
 
     private createNewOne():string{
         let r4 = this.generateRandom4CharLongPart;
-        return r4()+r4()+"-"+r4()+"-"+r4()+"-"+r4()+"-"+r4()+r4()+r4();
+        return r4()+r4()+r4()+r4()+r4()+r4()+r4()+r4();
     }
 
     private generateRandom4CharLongPart(): string{
