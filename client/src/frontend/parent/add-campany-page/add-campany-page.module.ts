@@ -1,8 +1,6 @@
 import {NgModule} from "@angular/core";
-import {Component, OnInit} from "@angular/core";
-import {CampanyAddPageComponent} from "./campany-add-page.component"
+import {AddCampanyPageComponent} from "./add-campany-page.component";
 import {AppHeaderCompanyModule} from "../../app-header-company/app-header-company.module";
-
 
 
 @NgModule({
@@ -12,15 +10,12 @@ import {AppHeaderCompanyModule} from "../../app-header-company/app-header-compan
     ],
 
     declarations: [
-        CampanyAddPageComponent
+        AddCampanyPageComponent
     ],
     exports: [
-        CampanyAddPageComponent
-        ]
+        AddCampanyPageComponent
+    ]
 
 })
 
-export class CampanyAddPageModule {
-
-
-}
+export class AddCampanyPageModule {}

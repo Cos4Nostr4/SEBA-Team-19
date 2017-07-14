@@ -1,7 +1,6 @@
 
 import {Company} from "./company";
 export class Campaign {
-    //TODO: make private
     public uuid: string;
     public title: string;
 

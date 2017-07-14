@@ -2,6 +2,10 @@ export enum Categories{
     NEW, HEARTS, AREA, JEWELRY, FITNESS, MAKE_UP, CLOTHES, ACCESSORY, OTHERS
 }
 
+export enum UseSelectableCategories{
+    JEWELRY, FITNESS, MAKE_UP, CLOTHES, ACCESSORY, OTHERS
+}
+
 export class CategoryMapper{
 
     public static forId(id:number): string{

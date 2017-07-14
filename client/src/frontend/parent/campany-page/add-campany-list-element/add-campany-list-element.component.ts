@@ -17,7 +17,7 @@ export class AddCampanyListElementComponent {
     }
 
     addCampaign() {
-        this.router.navigate(['/add-campany-detail/']);
+        this.router.navigate(['/add-campany/']);
     }
 
 }
