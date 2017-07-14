@@ -2,7 +2,7 @@
   {
     "uuid": "1",
     "title": "Clearasil",
-    "description": "Clearasil",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "Clearasil.jpg",
     "company": "Clearasil",
     "amount": 1,
@@ -16,7 +16,7 @@
   {
     "uuid": "2",
     "title": "Earring Blue",
-    "description": "Earring Blue",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "earring_blue.jpg",
     "company": "Juvena",
     "amount": 1,
@@ -30,7 +30,7 @@
   {
     "uuid": "3",
     "title": "Dior Homme",
-    "description": "Dior Homme",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "dior_homme.jpg",
     "company": "Dior Homme",
     "amount": 1,
@@ -44,7 +44,7 @@
   {
     "uuid": "4",
     "title": "Douglas",
-    "description": "Douglas",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "Douglas.jpg",
     "company": "Douglas",
     "amount": 1,
@@ -58,7 +58,7 @@
   {
     "uuid": "5",
     "title": "Douglas",
-    "description": "Douglas",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "duft1.jpg",
     "company": "Douglas",
     "amount": 1,
@@ -72,7 +72,7 @@
   {
     "uuid": "6",
     "title": "Haarschaum",
-    "description": "Haarschaum",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "Haarschaum.jpg",
     "company": "Schwarzkopf",
     "amount": 1,
@@ -86,7 +86,7 @@
   {
     "uuid": "7",
     "title": "Ilia",
-    "description": "Ilia",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "ilia.png",
     "company": "Ilia",
     "amount": 1,
@@ -100,7 +100,7 @@
   {
     "uuid": "8",
     "title": "Joop",
-    "description": "Joop",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "joop.jpg",
     "company": "Joop",
     "amount": 1,
@@ -114,7 +114,7 @@
   {
     "uuid": "9",
     "title": "Juvena",
-    "description": "Juvena",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "juvena.jpg",
     "company": "Juvena",
     "amount": 1,
@@ -128,7 +128,7 @@
   {
     "uuid": "10",
     "title": "Whey",
-    "description": "Whey",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "whey.jpg",
     "company": "Juvena",
     "amount": 1,
@@ -142,7 +142,7 @@
   {
     "uuid": "11",
     "title": "Creatin",
-    "description": "Creatin",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "creatin.jpg",
     "company": "Juvena",
     "amount": 1,
@@ -156,7 +156,7 @@
   {
     "uuid": "12",
     "title": "Earring Copper",
-    "description": "Earring Copper",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "earring_copper.jpg",
     "company": "Juvena",
     "amount": 1,
@@ -170,7 +170,7 @@
   {
     "uuid": "13",
     "title": "Diamond Ring",
-    "description": "Diamond Ring",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "diamond_ring.jpg",
     "company": "Juvena",
     "amount": 1,
@@ -184,7 +184,7 @@
   {
     "uuid": "14",
     "title": "Chanel",
-    "description": "Chanel",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "chanel.jpg",
     "company": "Chanel",
     "amount": 1,
@@ -198,7 +198,7 @@
   {
     "uuid": "15",
     "title": "Css is awesome t-shirt",
-    "description": "Css is awesome t-shirt",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "image": "css_t-shirt.jpg",
     "company": "Juvena",
     "amount": 1,
