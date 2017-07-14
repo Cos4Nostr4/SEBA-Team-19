@@ -49,10 +49,10 @@ export class DefaultPageComponent implements OnInit {
         let windowHeight = $(window).height();
         let windowWidth = $(window).width();
 
-        let styleOverLayDiv = "width:" + windowWidth + "px; height:" + windowHeight + "px; background-color: rgba(216, 216,216, 0.7); position:fixed; top:0;left:0";
+        let styleOverLayDiv = "width:" + windowWidth + "px; height:" + windowHeight + "px; background-color: rgba(216, 216,216, 0.7); z-index: 99; position:fixed; top:0;left:0";
         let overlayDiv = $("<div id='overlay-div' style='" + styleOverLayDiv + "'></div>").appendTo(parent);
 
-        let styleWhiteBox = "background-color:#3D4551; width:450px; height:170px; margin:auto; position:fixed; margin: 30%; auto; border-radius:12px";
+        let styleWhiteBox = "background-color:#3D4551; width:450px; height:170px; margin:auto; position:fixed; display: inline-block; z-index: 100; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; auto; border-radius:12px";
         let whiteBox = $("<div style='" + styleWhiteBox + "'></div>").appendTo(overlayDiv);
 
         let styleTitleTop = "font-family: \"Cherry Swash\",cursive; color: white ;font-size:32px; font-weight:400; padding: 20px 0 0 70px";
