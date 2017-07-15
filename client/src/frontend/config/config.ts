@@ -8,4 +8,5 @@ export class Config {
     static database_port:number = 27017;
     static database_url:string = "localhost";
     static database_name:string = "beetoobee";
+
 }

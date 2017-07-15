@@ -26,7 +26,6 @@ export class ImageRouter {
 
         router.post('/upload', upload.single('file'), async (req, res) => {
             let file = req.file;
-            console.log("UPLOAD:" + JSON.stringify(file));
             let imageVerification: { isValid: boolean, error: string } = this.verifyImage(file);
             if (imageVerification.isValid) {
                 let transferObject = TransferObject.aTransferObjectFor(file.filename);

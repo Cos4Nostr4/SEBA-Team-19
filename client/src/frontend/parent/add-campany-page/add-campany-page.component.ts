@@ -75,7 +75,7 @@ export class AddCampanyComponent implements OnInit {
             this.company, this.formData.amount, this.formData.followers, hashTags, new Date(), endDate, categories, true);
         console.log("FORM: " + JSON.stringify(createdCampaign));
 
-        /*this.campaignService.addCampaign(createdCampaign)
+        this.campaignService.addCampaign(createdCampaign)
             .subscribe(
                 uuid => {
                     this.router.navigate(['/campany/']);
@@ -83,7 +83,7 @@ export class AddCampanyComponent implements OnInit {
                 error => {
                     throw new Error(error)
                 }
-            );*/
+            );
         this.uploadImage(campaignPictureName);
     }
 
