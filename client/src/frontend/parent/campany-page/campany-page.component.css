@@ -7,9 +7,12 @@
     padding-left: 5%;
     padding-right: 5%;
 }
+.centered{
+	margin:auto;
+	max-width:1700px;
+}
 
 .center-div{
-	margin: auto !important;
 }
 
 .auto-margin{

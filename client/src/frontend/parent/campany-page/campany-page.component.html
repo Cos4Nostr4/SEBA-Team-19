@@ -1,9 +1,15 @@
 <app-header-company></app-header-company>
 <div id="campaign-list-container" class="container-fluid offer-grid">
-    <div class="row no-gutters product-container center-div" style="padding: 0">
-    <add-campany-list-element></add-campany-list-element>
-        <div class="auto-margin" *ngFor="let campaign of campaignList">
-            <campany-list-element [campaign]="campaign"></campany-list-element>
-        </div>       
+    <div class="centered">
+        <div class="row justify-content-around product-container center-div" style="padding: 0; margin:auto">
+            <campany-list-element *ngFor="let campaign of campaignList" [campaign]="campaign"></campany-list-element>
+            <add-campany-list-element></add-campany-list-element>
+            <div style="width:300px;height:300px;"></div>
+            <div style="width:300px;height:300px;"></div>
+            <div style="width:300px;height:300px;"></div>
+            <div style="width:300px;height:300px;"></div>
+            <div style="width:300px;height:300px;"></div>
+            <div style="width:300px;height:300px;"></div>
+        </div>
     </div>
 </div>
