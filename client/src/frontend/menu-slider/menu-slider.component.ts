@@ -34,8 +34,6 @@ export class MenuSliderComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        "use strict";
-
         console.log("MenuSlider created: " + (++MenuSliderComponent.count));
 
         if (this.authenticationService.isLoggedIn()) {
@@ -74,13 +72,11 @@ export class MenuSliderComponent implements OnInit {
 
     private registerOnLickHandlerForSliderButtons() {
         $('#next').click(() => {
-            $('.menu-item').eq(1).trigger("click");
+            this.slideRight();
         });
 
         $('#last').click(() => {
-            $('.active-menu').removeClass('active-menu');
-            this.slideRight();
-            $('.menu-item').eq(0).trigger('click');
+            this.slideLeft();
         });
     }
 
@@ -100,7 +96,7 @@ export class MenuSliderComponent implements OnInit {
     }
 
     private slideRight() {
-        let lastElement = $('.menu-item').last()
+        let lastElement = $('.menu-item').last();
         lastElement.detach();
         this.waitingElements.push(lastElement);
 
@@ -108,14 +104,8 @@ export class MenuSliderComponent implements OnInit {
         $('#slider').prepend(elementToAddInFront);
     }
 
-    private slideLeftTimes(times: number) {
-        for (let i = 0; i < times; i++) {
-            this.slideLeft();
-        }
-    }
-
     private slideLeft() {
-        let firstElement = $('.menu-item').eq(0)
+        let firstElement = $('.menu-item').eq(0);
         firstElement.detach();
         this.waitingElements.unshift(firstElement);
         let elementToAddBehind = this.waitingElements.pop();
@@ -128,14 +118,10 @@ export class MenuSliderComponent implements OnInit {
             clickedElement.click(() => {
                 let index = $('.menu-item').index(clickedElement);
                 console.log("CLICK: index:"+index);
+                let $activeElem = $('.active-menu').parent();
+                this.removeActive($activeElem);
 
-                let $firstElem = $('.menu-item').eq(0);
-                this.removeActive($firstElem);
-
-                this.slideLeftTimes(index);
                 this.setActive(clickedElement);
-
-
                 this.router.navigateByUrl("categories/" + i);
             });
         }
