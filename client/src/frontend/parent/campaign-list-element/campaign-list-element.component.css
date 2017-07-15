@@ -15,8 +15,21 @@
   width: 25%;
 }
 
+
+.product-item-thumbnail-label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #0091c7;
+  padding: 1px 6px;
+  border-radius: 20px;
+  z-index: 3; }
+
 .productImg {
-  object-fit: cover;
+    object-fit: cover;
+    background-color: #fff;
+    border: 1px solid rgba(128, 128, 128, 0.32);
+    padding: 5px;
 }
 
 .product-fitter {
@@ -5233,14 +5246,6 @@ body.lb-disable-scrolling {
       bottom: 0;
       left: 0;
       z-index: 5; }
-    .product-item-thumbnail-label {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: #f8f8f8;
-      padding: 7.5px 15px;
-      border-radius: 20px;
-      z-index: 3; }
     .product-item-thumbnail-overlay {
       position: absolute;
       top: -100%;

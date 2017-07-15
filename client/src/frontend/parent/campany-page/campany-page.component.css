@@ -1,9 +1,48 @@
 #campaign-list-container{
-    padding-top: 104px;
+    padding-top: 140px;
 }
 
 .offer-grid {
     background-color: #f8f8f8;
     padding-left: 5%;
     padding-right: 5%;
+}
+
+.center-div{
+	margin: auto !important;
+}
+
+.auto-margin{
+	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 700px, min-width: 300px){
+.product-container{
+	width: 300px;
+}
+}
+
+@media (max-width: 1000px, min-width: 701px){
+.product-container{
+	width: 600px;
+}
+}
+
+@media (max-width: 1300px, min-width: 1001px){
+.product-container{
+	width: 900px;
+}
+}
+
+@media (max-width: 1600px, min-width: 1301px){
+.product-container{
+	width: 1200px;
+}
+}
+@media (max-width: 1900px, min-width: 1601px){
+.product-container{
+	width: 1500px;
+}
 }

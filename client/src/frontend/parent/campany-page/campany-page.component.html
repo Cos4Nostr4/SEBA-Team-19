@@ -1,9 +1,9 @@
 <app-header-company></app-header-company>
 <div id="campaign-list-container" class="container-fluid offer-grid">
-    <div class="row no-gutters" style="padding: 0">
-        <div *ngFor="let campaign of campaignList">
+    <div class="row no-gutters product-container center-div" style="padding: 0">
+    <add-campany-list-element></add-campany-list-element>
+        <div class="auto-margin" *ngFor="let campaign of campaignList">
             <campany-list-element [campaign]="campaign"></campany-list-element>
-        </div>
-        <add-campany-list-element></add-campany-list-element>
+        </div>       
     </div>
 </div>

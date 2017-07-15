@@ -50,6 +50,7 @@ export class DropDownComponent implements OnInit {
             this.instagramDataService.getUserData(username)
                 .subscribe(
                     userData => {
+                        console.log("Load userdata");
                         $('#influncerProfilPictureDropDown').attr("src", userData.profilePictureUrl);
                     },
                     error => {
