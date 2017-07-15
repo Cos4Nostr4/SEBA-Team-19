@@ -41,7 +41,7 @@ export class CampanyDetailPageComponent implements OnInit {
             .subscribe(
                 campaign => {
                     this.campaign = campaign;
-                    let imageUrl = this.imageService.getImageUrlForName(campaign.image);
+                    let imageUrl = this.imageService.getImageUrlForProductName(campaign.image);
                     $('#productPicture').attr('src', imageUrl);
                 },
                 error => {

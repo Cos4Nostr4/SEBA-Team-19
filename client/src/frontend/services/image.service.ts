@@ -10,6 +10,9 @@ export class ImageService {
     }
 
     public getImageUrlForName(imageName: string):string{
+        return this.imageBaseUrl + "/"+imageName;
+    }
+    public getImageUrlForProductName(imageName: string):string{
         return this.imageBaseUrl + "/products/"+imageName;
     }
 }

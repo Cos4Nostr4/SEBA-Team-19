@@ -37,7 +37,6 @@ export class DropDownComponent implements OnInit {
                         $('#name').val(influencer.username);
                         $('#email').val(influencer.email);
                         $('#address').val(influencer.address);
-                        console.log("Influencer:" + JSON.stringify(influencer));
                     },
                     error => {
                         throw new Error(error);

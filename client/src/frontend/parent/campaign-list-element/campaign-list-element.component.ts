@@ -23,7 +23,7 @@ export class CampaignListElementComponent implements OnInit{
 
     ngOnInit(): void {
         let imageName = this.campaign.image;
-        let imageUrl = this.imageService.getImageUrlForName(imageName);
+        let imageUrl = this.imageService.getImageUrlForProductName(imageName);
         this.imageSrc= imageUrl;
     }
 
