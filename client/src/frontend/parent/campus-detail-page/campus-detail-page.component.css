@@ -6657,15 +6657,15 @@ body.lb-disable-scrolling {
 }
 
 .boxContentText {
-    background: #ffffff;
+    background: #ffffff !important;
     height: 285px;
 }
 
 .boxContentApply{
     margin: auto;
-    background: #ffffff;
-    border-radius: 10px;
-    height: 100px;
+    background: #ffffff !important;
+    border-radius: 10px !important;
+    height: 100px !important;
     width: 92%;
 }
 
@@ -6696,12 +6696,12 @@ body.lb-disable-scrolling {
 }
 
 .testimonials-container[_ngcontent-c0] {
-    background-color: #fff;
-    border: 3px solid #ecebeb;
+    background-color: #fff !important;
+    border: 3px solid #ecebeb !important;
 }
 
 .product-box-vertical[_ngcontent-c0] {
-    border: 2px solid #ecebeb;
+    border: 2px solid #ecebeb !important;
 }
 
 .btn-accepted{

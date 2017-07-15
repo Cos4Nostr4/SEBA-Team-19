@@ -5252,7 +5252,7 @@ body.lb-disable-scrolling {
       z-index: 2;
       opacity: 0; }
       .product-item-thumbnail-overlay-with-bg {
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(61, 69, 81, 0.79);
         bottom: 0;
         height: auto;
         top: 0 !important;
@@ -6326,5 +6326,9 @@ img.zoom-img {
 
 .zoom-overlay-open, .zoom-overlay-transitioning {
   cursor: default; }
+
+.follower-coloring{
+  color: #bcc9e6;
+}
 
 /*# sourceMappingURL=theme.css.map */
