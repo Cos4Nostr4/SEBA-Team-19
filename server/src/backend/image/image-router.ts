@@ -24,8 +24,9 @@ export class ImageRouter {
 
         const upload = multer({storage: storage});
 
-        router.post('/upload', upload.single('picture'), async (req, res) => {
+        router.post('/upload', upload.single('file'), async (req, res) => {
             let file = req.file;
+            console.log("UPLOAD:" + JSON.stringify(file));
             let imageVerification: { isValid: boolean, error: string } = this.verifyImage(file);
             if (imageVerification.isValid) {
                 let transferObject = TransferObject.aTransferObjectFor(file.filename);
@@ -39,16 +40,16 @@ export class ImageRouter {
         application.use(baseUrl, router);
     }
 
-    public verifyImage( file: any): { isValid: boolean, error: string } {
+    public verifyImage(file: any): { isValid: boolean, error: string } {
         if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
-            return {isValid:false, error: "Only image files are allowed!"}
+            return {isValid: false, error: "Only image files are allowed!"}
         }
 
         let fileSize = +file.size;
-        if (fileSize > MAX_IMAGE_SIZE_IN_MB*1024*1024) {
-            return {isValid:false, error: "Image should be smaller than "+MAX_IMAGE_SIZE_IN_MB+"mb"};
+        if (fileSize > MAX_IMAGE_SIZE_IN_MB * 1024 * 1024) {
+            return {isValid: false, error: "Image should be smaller than " + MAX_IMAGE_SIZE_IN_MB + "mb"};
         }
 
-        return {isValid:true, error:null};
+        return {isValid: true, error: null};
     }
 }

@@ -8,7 +8,8 @@ import {getUserSelectableCategories} from "../../data-objects/categories";
 import {CampaignService} from "../../services/campaign.service";
 import {Router} from "@angular/router";
 import {CookieHandler} from "../../services/cookie-handler";
-
+import {FileSelectDirective, FileDropDirective, FileUploader, FileItem} from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 
 @Component({
 
@@ -23,6 +24,7 @@ export class AddCampanyComponent implements OnInit {
     private campaignService: CampaignService;
     private companyAuthenticationService: CompanyAuthenticationService;
     private router: Router;
+    private upload:FileUploader= new FileUploader({url:"http://localhost:3010/api/upload"});
     private company: Company;
     private selectableCategories: string[];
     private formData: any;
@@ -33,6 +35,9 @@ export class AddCampanyComponent implements OnInit {
         this.companyService = companyService;
         this.campaignService = campaignService;
         this.companyAuthenticationService = companyAuthenticationService;
+        this.upload.onBeforeUploadItem = (item) => {
+            item.withCredentials = false;
+        };
         this.router = router;
         this.selectableCategories = getUserSelectableCategories();
     }
@@ -58,18 +63,19 @@ export class AddCampanyComponent implements OnInit {
                 error => {
                     throw new Error(error);
                 });
+
     }
 
     public createCampaign(): void {
-        let campaignPicture = "creatin.jpg";
+        let campaignPictureName = this.determinePictureName();
         let endDate = new Date(this.formData.endDate);
         let hashTags = this.extractHashTags();
         let categories = this.extractCategories();
-        let createdCampaign = new Campaign(UUID.createNew().asStringValue(), this.formData.title, this.formData.description, campaignPicture,
+        let createdCampaign = new Campaign(UUID.createNew().asStringValue(), this.formData.title, this.formData.description, campaignPictureName,
             this.company, this.formData.amount, this.formData.followers, hashTags, new Date(), endDate, categories, true);
         console.log("FORM: " + JSON.stringify(createdCampaign));
 
-        this.campaignService.addCampaign(createdCampaign)
+        /*this.campaignService.addCampaign(createdCampaign)
             .subscribe(
                 uuid => {
                     this.router.navigate(['/campany/']);
@@ -77,7 +83,35 @@ export class AddCampanyComponent implements OnInit {
                 error => {
                     throw new Error(error)
                 }
-            )
+            );*/
+        this.uploadImage(campaignPictureName);
+    }
+
+    private ensureOnlySingleUpload(){
+        let queue = this.upload.queue;
+        if (queue.length > 1) {
+            throw new Error("Too many pictures to upload selected");
+        }
+        if (queue.length <= 0) {
+            throw new Error("No picture for upload selected");
+        }
+    }
+
+    private determinePictureName():string {
+        this.ensureOnlySingleUpload();
+        let item = this.upload.queue[0];
+        let fileName = item.file.name;
+        let startFileEnding = fileName.lastIndexOf(".");
+        let fileEnding = fileName.substr(startFileEnding);
+        let newFileName = UUID.createNew().asStringValue();
+        return newFileName+fileEnding;
+    }
+
+    private uploadImage(fileName: string) {
+        this.ensureOnlySingleUpload();
+        let item: FileItem = this.upload.queue[0];
+        item.file.name = fileName;
+        this.upload.uploadItem(item);
     }
 
     private extractHashTags(): string[] {
