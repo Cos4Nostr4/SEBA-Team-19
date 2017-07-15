@@ -5,6 +5,7 @@ import JsonExtractor from "./json-extractor";
 import ServiceErrorHandler from "./service_error_handler";
 import "rxjs/add/operator/toPromise";
 import {CookieHandler} from "./cookie-handler";
+import {Router} from "@angular/router";
 
 declare var jquery: any;
 declare var $: any;
@@ -13,17 +14,19 @@ declare var $: any;
 const CLIENT_ID = "1083168b29cb4a1e8b0bf6a6ddb3c1c9";
 const INSTAGRAMM_BACKEND_BASE_URL = Config.backend_address + ":" + Config.backend_port + Config.backend_base_url + "instagram/";
 const REDIRECT_URL = "http://localhost:4200/default-page";
-const DEFAULT_LANDING_PAGE = "http://localhost:4200/default-page";
-const LOGGED_IN_LANDING_URL = "http://localhost:4200/categories/0";
+const DEFAULT_LANDING_PAGE = "/default-page/";
+const LOGGED_IN_LANDING_URL = "/categories/0";
 
 @Injectable()
 export class AuthenticationService {
     private http: Http;
+    private router:Router;
 
-    constructor(http: Http) {
+
+    constructor(http: Http, router: Router) {
         this.http = http;
+        this.router = router;
     }
-
 
     public ensureLoggedIn() {
         if (!this.isLoggedIn()) {
@@ -85,6 +88,6 @@ export class AuthenticationService {
     }
 
     private redirectTo(url: string):void{
-        document.location.href = url;
+        this.router.navigate([url]);
     }
 }

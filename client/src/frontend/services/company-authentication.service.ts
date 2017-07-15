@@ -2,18 +2,21 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {CookieHandler} from "./cookie-handler";
 import {Company} from "../data-objects/company";
+import {Router} from "@angular/router";
 
 
 @Injectable()
 export class CompanyAuthenticationService {
     public static COOKIE_USERNAME = "company-name";
     public static COOKIE_ID = "company-id";
-    private static LOGGED_IN_LANDING_PAGE = "http://localhost:4200/campany/";
-    private static LOGIN_PAGE = "http://localhost:4200/company-login/";
+    private static LOGGED_IN_LANDING_PAGE = "/campany/";
+    private static LOGIN_PAGE = "/company-login/";
     private http: Http;
+    private router:Router;
 
-    constructor(http: Http) {
+    constructor(http: Http, router:Router) {
         this.http = http;
+        this.router = router;
     }
 
 
@@ -22,6 +25,7 @@ export class CompanyAuthenticationService {
         CookieHandler.addCookie(CompanyAuthenticationService.COOKIE_USERNAME, company.username);
         CookieHandler.addCookie(CompanyAuthenticationService.COOKIE_ID, companyId);
         document.location.href = CompanyAuthenticationService.LOGGED_IN_LANDING_PAGE;
+        this.router.navigate([CompanyAuthenticationService.LOGGED_IN_LANDING_PAGE]);
     }
 
     public isLoggedIn() : boolean{
@@ -32,7 +36,7 @@ export class CompanyAuthenticationService {
 
     public ensureIsLoggedIn(): void {
         if(!this.isLoggedIn()){
-            document.location.href = CompanyAuthenticationService.LOGIN_PAGE;
+            this.router.navigate([CompanyAuthenticationService.LOGIN_PAGE]);
         }
     }
 

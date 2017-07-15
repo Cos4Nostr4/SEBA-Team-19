@@ -53,10 +53,10 @@ export class MenuSliderComponent implements OnInit {
         if (this.authenticationService.isLoggedIn()) {
             this.registerOnLickHandlerForSliderButtons();
         }
-        this.setMenuActiveBasedOnUrlCategoryId();
+        this.setMenuActiveBasedOnUrl();
     }
 
-    private setMenuActiveBasedOnUrlCategoryId() {
+    private setMenuActiveBasedOnUrl() {
         let url = document.location.href;
         if (url.match("http://localhost:4200/categories/[\\d]")) {
             let categoryIndex = url.substr(url.lastIndexOf("/") + 1);
