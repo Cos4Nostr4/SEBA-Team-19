@@ -38,6 +38,7 @@ export class MenuSliderComponent implements OnInit {
 
         if (this.authenticationService.isLoggedIn()) {
             this.registerOnClickHandlerForMenuItems();
+
         }
 
 
@@ -51,6 +52,15 @@ export class MenuSliderComponent implements OnInit {
 
         if (this.authenticationService.isLoggedIn()) {
             this.registerOnLickHandlerForSliderButtons();
+        }
+        this.setMenuActiveBasedOnUrlCategoryId();
+    }
+
+    private setMenuActiveBasedOnUrlCategoryId() {
+        let url = document.location.href;
+        if (url.match("http://localhost:4200/categories/[\\d]")) {
+            let categoryIndex = url.substr(url.lastIndexOf("/") + 1);
+            $('.menu-item').eq(categoryIndex).click();
         }
     }
 
