@@ -1,28 +1,28 @@
 [
   {
     "uuid": "1",
-    "campaign":"Clearasil",
+    "campaign":"Bragi Wireless Headphones",
     "influencer": "1",
     "status": "ACCEPTED",
     "postponed": false
   },
   {
     "uuid":"2",
-    "campaign":"Chanel",
+    "campaign":"Brocks Backpack",
     "influencer": "2",
     "status": "REJECTED",
     "postponed": false
   },
   {
     "uuid": "3",
-    "campaign":"Joop",
+    "campaign":"Laptop Sleeve - Made in Kyrgyztan",
     "influencer": "1",
     "status": "PENDING",
     "postponed": false
   },
   {
     "uuid": "4",
-    "campaign":"Clearasil",
+    "campaign":"Decorative Bowl Ballerina",
     "influencer": "2",
     "status": "ACCEPTED",
     "postponed": false
