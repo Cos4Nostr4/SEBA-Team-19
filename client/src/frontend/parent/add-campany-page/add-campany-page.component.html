@@ -7,9 +7,10 @@
             <div class=".col-12 col-sm-4 .col-md-4 .col-lg-4 .col-xl-4">
                 <div class="boxContentPic">
                     <div class="boxPic">
-                        <button class="addButton"><i class="fa fa-plus" aria-hidden="true"></i>
+                        <!--<button class="addButton"><i class="fa fa-plus" aria-hidden="true"></i>
 
-                        </button>
+                        </button>-->
+                        <input type="file" ng2FileSelect [uploader]="upload" name="single" id="picture"/>
                     </div>
                     <button class="button" (click)="createCampaign()">Publish</button>
                 </div>

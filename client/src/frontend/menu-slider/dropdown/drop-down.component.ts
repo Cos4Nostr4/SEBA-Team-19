@@ -3,6 +3,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {InfluencerService} from "../../services/influencer.service";
 import {Influencer} from "../../data-objects/influencer";
 import {CookieHandler} from "../../services/cookie-handler";
+import {InstagrammDataService} from "../../services/instagramm-data.service";
 
 declare var $: any;
 
@@ -10,18 +11,22 @@ declare var $: any;
     selector: 'drop-down',
     templateUrl: './drop-down.component.html',
     styleUrls: ['./drop-down.component.css'],
-    providers: [AuthenticationService, InfluencerService]
+    providers: [AuthenticationService, InfluencerService, InstagrammDataService]
 })
 
 export class DropDownComponent implements OnInit {
     private authenticationService: AuthenticationService;
     private influencerService: InfluencerService;
+    private instagramDataService: InstagrammDataService;
     private influencer: Influencer;
     private userDataChanged: boolean;
 
-    constructor(authenticationService: AuthenticationService, influencerService: InfluencerService) {
+
+    constructor(authenticationService: AuthenticationService, influencerService: InfluencerService,
+                instagramDataService: InstagrammDataService) {
         this.authenticationService = authenticationService;
         this.influencerService = influencerService;
+        this.instagramDataService = instagramDataService;
         this.influencer = null;
         this.userDataChanged = false;
     }
@@ -37,12 +42,22 @@ export class DropDownComponent implements OnInit {
                         $('#name').val(influencer.username);
                         $('#email').val(influencer.email);
                         $('#address').val(influencer.address);
-                        console.log("Influencer:" + JSON.stringify(influencer));
                     },
                     error => {
                         throw new Error(error);
                     }
                 );
+            this.instagramDataService.getUserData(username)
+                .subscribe(
+                    userData => {
+                        console.log("Load userdata");
+                        $('#influncerProfilPictureDropDown').attr("src", userData.profilePictureUrl);
+                    },
+                    error => {
+                        throw new Error(error);
+                    }
+                )
+            ;
 
             this.registerDropdownInteractions();
         }

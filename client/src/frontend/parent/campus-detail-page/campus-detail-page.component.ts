@@ -52,10 +52,10 @@ export class CampusDetailPageComponent implements OnInit {
         let username = CookieHandler.getCookie("username");
 
         this.route.params
-            .switchMap((params: Params) => this.campaignService.getCampaignWithId(+params.id + ""))
+            .switchMap((params: Params) => this.campaignService.getCampaignWithId(params.id))
             .subscribe(campaign => {
                     this.campaign = campaign;
-                    let imageUrl = this.imageService.getImageUrlForName(campaign.image);
+                    let imageUrl = this.imageService.getImageUrlForProductName(campaign.image);
                     $('#productPicture').attr('src', imageUrl);
 
                     this.requestService.getRequestsForCampaign(campaign.uuid)

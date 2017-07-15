@@ -7,6 +7,10 @@ import {InfluencerRouter} from "./backend/influencer/influencer-router";
 import {CompanyRouter} from "./backend/company/company-router";
 import {CategoryRouter} from "./backend/categories/category-router";
 import {InstagramRouter} from "./backend/instagram/instagram-router";
+import {ImageRouter} from "./backend/image/image-router";
+
+const MEDIA_BASE = __dirname +'/media';
+const FILE_UPLOAD_PATH = __dirname + "/media/products/";
 
 export class App {
     private _application: express.Application;
@@ -52,7 +56,7 @@ export class App {
                 res.end("Success!");
             });
 
-        this._application.use(Config.backend_media_url, express.static(__dirname +'/media'));
+        this._application.use(Config.backend_media_url, express.static(MEDIA_BASE));
         this._application.use(router);
 
         let campaignRouter: CampaignRouter = new CampaignRouter();
@@ -72,6 +76,9 @@ export class App {
 
         let instagramRouter = new InstagramRouter();
         instagramRouter.configureRoutes(this.baseUrl, this._application);
+
+        let imageRouter = new ImageRouter();
+        imageRouter.configureRoutes(this.baseUrl, this._application, FILE_UPLOAD_PATH);
     }
 
 
