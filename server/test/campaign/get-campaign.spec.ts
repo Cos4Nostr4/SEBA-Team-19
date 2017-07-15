@@ -1,4 +1,3 @@
-import {RequestState} from "../../src/backend/request/db-request";
 import {getSampleCampaigns, getSampleRequests} from "../samples/sample-data";
 var request = require("request");
 
@@ -9,11 +8,6 @@ describe("Test Campaign backend: ", function () {
     const expectedRequests = getSampleRequests();
 
     describe("GET " + baseUrl + campaignsUrl, function () {
-        it("returns 200", function (done) {
-            request.get(baseUrl + campaignsUrl, function (error, response, body) {
-                done();
-            });
-        });
         it("returns all campaigns", function (done) {
             request.get(baseUrl + campaignsUrl, function (error, response, body) {
                 expect(response.statusCode).toEqual(200);
@@ -31,16 +25,11 @@ describe("Test Campaign backend: ", function () {
         });
     });
 
-    describe("GET " + baseUrl + campaignsUrl + "/:id", function () {
-        const campaignId = 1;
-        it("returns 200 ", function (done) {
-            request.get(baseUrl + campaignsUrl + "/" + campaignId, function (error, response, body) {
-                expect(response.statusCode).toEqual(200);
-                done();
-            });
-        });
+    const campaignId = 1;
+    describe("GET " + baseUrl + campaignsUrl + "/"+campaignId, function () {
         it("returns campaign for existing id " + campaignId, function (done) {
             request.get(baseUrl + campaignsUrl + "/" + campaignId, function (error, response, body) {
+                expect(response.statusCode).toEqual(200);
                 let campaign = JSON.parse(body).data;
                 let expectedCampaign = expectedCampaigns.find((campaign) => +campaign.uuid == campaignId);
                 let startDate: Date = new Date(campaign.startDate);
@@ -48,7 +37,6 @@ describe("Test Campaign backend: ", function () {
                 campaign.startDate = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + (startDate.getDate());
                 campaign.endDate = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + (endDate.getDate());
                 expect(campaign).toEqual(expectedCampaign);
-                console.log("EXPECTED:"+JSON.stringify(expectedCampaign));
                 done();
             });
         });

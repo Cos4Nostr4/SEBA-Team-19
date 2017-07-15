@@ -10,14 +10,7 @@ export async function resetMedia(printLog?: any) {
     let sampleProducts = path.join(__dirname, SAMPLE_PRODUCTS_PATH);
 
     await clearUploads(mediaPath, printLog);
-    if (printLog) {
-        console.log("Cleared all uploads");
-    }
-
     await copySampleProducts(sampleProducts, mediaPath, printLog);
-    if (true) {
-        console.log("Copied all sample products");
-    }
 }
 
 function clearUploads(pathToClear: any, printLog?: any): Promise<boolean> {
@@ -41,10 +34,10 @@ function clearUploads(pathToClear: any, printLog?: any): Promise<boolean> {
                         if (err) {
                             console.log(err.toString());
                         } else {
-                            if (printLog) {
-                                console.log("Deleted file: " + filePath);
-                            }
                             if (++filesDeleted == numberOfFiles) {
+                                if (printLog) {
+                                    console.log("Deleted "+filesDeleted+"file");
+                                }
                                 resolve(true);
                             }
                         }
@@ -84,10 +77,10 @@ function copySampleProducts(inputDir: any, outputDir: any, printLog?: any) {
                         console.log(err);
                     });
                     wr.on("close", function (ex:any) {
-                        if(printLog){
-                            console.log("Copied file "+source+" to "+target);
-                        }
                         if(++filesCopied == numberOfFiles){
+                            if(printLog){
+                                console.log("Copied "+filesCopied+" files");
+                            }
                             resolve(true);
                         }
                     });

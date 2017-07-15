@@ -10,7 +10,7 @@ import {Request} from "../data-objects/request";
 import JsonExtractor from "./json-extractor";
 import ServiceErrorHandler from "./service_error_handler";
 
-const URL_ALL_OFFERS = Config.backend_address + ":" + Config.backend_port + Config.backend_base_url + 'campaigns';
+const URL_ALL_CAMPAIGNS = Config.backend_address + ":" + Config.backend_port + Config.backend_base_url + 'campaigns';
 const URL_BASE_CATEGORY = Config.backend_address + ":" + Config.backend_port + Config.backend_base_url + 'categories/';
 const URL_ALL_REQUESTS = Config.backend_address + ":" + Config.backend_port + Config.backend_base_url + "requests";
 
@@ -23,7 +23,7 @@ export class CampaignService {
     }
 
     public getAllCampaigns(): Observable<Campaign[]> {
-        let offers: Observable<Campaign[]> = this.http.get(URL_ALL_OFFERS)
+        let offers: Observable<Campaign[]> = this.http.get(URL_ALL_CAMPAIGNS)
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);
         return offers;
@@ -46,7 +46,7 @@ export class CampaignService {
     }
 
     public addCampaign(campaign:Campaign): Observable<string> {
-        let campaignUuidObservable = this.http.post(URL_ALL_OFFERS, {data: campaign})
+        let campaignUuidObservable = this.http.post(URL_ALL_CAMPAIGNS, {data: campaign})
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);
         return campaignUuidObservable;
@@ -68,5 +68,13 @@ export class CampaignService {
             .catch(ServiceErrorHandler.handleError);
 
         return campaignsWithHearts;
+    }
+
+    public deleteCampaign(campaign:Campaign): Observable<string> {
+        let url = URL_ALL_CAMPAIGNS+"/"+campaign.uuid;
+        let campaignUuidObservable = this.http.delete(url)
+            .map(JsonExtractor.extractData)
+            .catch(ServiceErrorHandler.handleError);
+        return campaignUuidObservable;
     }
 }

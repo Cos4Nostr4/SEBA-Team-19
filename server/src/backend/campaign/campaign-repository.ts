@@ -57,6 +57,23 @@ export class CampaignRepository {
             });
     }
 
+    public deleteCampaign(campaignUuid: string, func: (campaignUuid: string, error: any) => void) {
+        this.campaignModel.findOne({'uuid': campaignUuid})
+            .exec((err: any, dbCampaign: any)=> {
+                if (dbCampaign) {
+                    this.campaignModel.remove({'uuid': campaignUuid}, (err:any) =>{
+                        if(err){
+                            func(null, err);
+                        }else {
+                            func(campaignUuid, null);
+                        }
+                    });
+                } else {
+                    func(campaignUuid, null);
+                }
+            });
+    }
+
     public addCampaign(campaign: Campaign, func: Function) {
         let campaignId = campaign.uuid;
         this.campaignModel.findOne({'uuid': campaignId}, (err: any, dbCampaign: DBCampaign) => {
