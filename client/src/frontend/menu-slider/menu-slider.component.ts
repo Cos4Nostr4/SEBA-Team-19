@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthenticationService} from "../services/authentication.service";
 import {Router} from "@angular/router";
-import {CookieHandler} from "../services/cookie-handler";
 import {InfluencerService} from "../services/influencer.service";
 import {Influencer} from "../data-objects/influencer";
 declare var $: any;
@@ -17,7 +16,7 @@ const MINIMUM_WIDHT_OF_ELEMENTS: number = 200;
     providers: [AuthenticationService, InfluencerService]
 })
 export class MenuSliderComponent implements OnInit {
-    private static count:number = 0;
+    private static count: number = 0;
     private authenticationService: AuthenticationService;
     private influencerService: InfluencerService;
     private waitingElements: any[];
@@ -37,7 +36,7 @@ export class MenuSliderComponent implements OnInit {
     ngOnInit(): void {
         "use strict";
 
-        console.log("MenuSlider created: "+(++MenuSliderComponent.count));
+        console.log("MenuSlider created: " + (++MenuSliderComponent.count));
 
         if (this.authenticationService.isLoggedIn()) {
             this.registerOnClickHandlerForMenuItems();
@@ -128,34 +127,36 @@ export class MenuSliderComponent implements OnInit {
             let clickedElement = $('.menu-item').eq(i);
             clickedElement.click(() => {
                 let index = $('.menu-item').index(clickedElement);
-                $('.active-menu').removeClass('active-menu');
+                console.log("CLICK: index:"+index);
+
+                let $firstElem = $('.menu-item').eq(0);
+                this.removeActive($firstElem);
+
                 this.slideLeftTimes(index);
-                $('.contentwrapper').eq(0).addClass('active-menu');
+                this.setActive(clickedElement);
+
 
                 this.router.navigateByUrl("categories/" + i);
             });
         }
     }
 
-    private registerDropdownInteractions() {
-        $('#address').on('input', () => {
-            this.influencer.address = $('#address').val();
-            this.userDataChanged = true;
-        });
+    private setActive(elem:any){
+        let $contentWrapper = $(elem).find('.contentwrapper');
+        $contentWrapper.addClass('active-menu');
+        let $image = $contentWrapper.find('img');
+        let imageUrl = $image.attr("src");
+        let activeImageUrl = imageUrl.replace(new RegExp('\\.'), '_active.');
+        console.log("Activated img:"+activeImageUrl);
+        $image.attr("src", activeImageUrl);
+    }
 
-        $('#dropdown-form').submit((event: any) => {
-            if (this.userDataChanged) {
-                this.influencerService.updateInfluencer(this.influencer)
-                    .subscribe(
-                        influencer => {
-                          this.influencer = influencer;
-                        },
-                        error =>{
-                        throw new Error(error);
-                    });
-                this.userDataChanged = false;
-            }
-            event.preventDefault();
-        });
+    private removeActive(elem:any){
+        let $contentWrapper = $(elem).find('.contentwrapper');
+        $contentWrapper.removeClass('active-menu');
+        let $image = $contentWrapper.find('img');
+        let imageUrl = $image.attr("src");
+        let activeImageUrl = imageUrl.replace(new RegExp('_active'), '');
+        $image.attr("src", activeImageUrl);
     }
 }
