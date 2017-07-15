@@ -57,8 +57,6 @@ export class CampusDetailPageComponent implements OnInit {
                     this.campaign = campaign;
                     let imageUrl = this.imageService.getImageUrlForProductName(campaign.image);
                     $('#productPicture').attr('src', imageUrl);
-                    console.log("LOADED:"+JSON.stringify(this.campaign));
-                    console.log("IMAGE:"+JSON.stringify(imageUrl));
 
                     this.requestService.getRequestsForCampaign(campaign.uuid)
                         .subscribe(requests => {

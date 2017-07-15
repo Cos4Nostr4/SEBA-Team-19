@@ -35,6 +35,7 @@ export class AppHeaderComponent implements OnInit {
 
         } else {
             $('#dropdownLink').hide();
+            $('#heartplus').hide();
         }
     }
 }
