@@ -1,43 +1,74 @@
 <app-header-company></app-header-company>
-<html>
-<body>
-<div class="wrapper">
-    <div class="contentBox">
-        <div class="row">
-            <div class=".col-12 col-sm-4 .col-md-4 .col-lg-4 .col-xl-4">
-                <div class="boxContentPic">
-                    <div class="boxPic">
-                        <!--<button class="addButton"><i class="fa fa-plus" aria-hidden="true"></i>
 
-                        </button>-->
-                        <input type="file" ng2FileSelect [uploader]="upload" name="single" id="picture"/>
-                    </div>
-                    <button class="button" (click)="createCampaign()">Publish</button>
-                </div>
-            </div>
-            <div class=".col-12 col-sm-8 .col-md-8 .col-lg-8 .col-xl-8">
-                <div class="boxContentText">
-                    <div class="boxContentTextWrapper">
-                        <form (ngSubmit)="createCampaign()">
-                            Title: <br><input [(ngModel)]="formData.title" type="text" name="title"><br><br>
-                            Required Follower: <br><input [(ngModel)]="formData.followers" type="text"
-                                                          name="requiredFollower"><br><br>
-                            Amount: <br><input type="text" [(ngModel)]="formData.amount" name="amount"><br><br>
-                            Short Description: <br><input [(ngModel)]="formData.description" type="text"
-                                                          name="description"><br><br>
-                            End Date: <br><input [(ngModel)]="formData.endDate" type="date" name="endDate"><br><br>
-                            Hashtags: <br><input [(ngModel)]="formData.hashTags" type="text" name="hashTags"><br><br>
-                            Categories: <br>
-                            <select [(ngModel)]="formData.categories" name="categories" multiple>
-                                <option *ngFor="let category of selectableCategories"  value="{{category}}">{{category}}</option>
-                            </select>
-                        </form>
+
+<div class="container container-adapt">
+    <form (ngSubmit)="createCampaign()" class="form-horizontal" role="form" #registerForm="ngForm">
+        <h5 class="text-center header-style">Add a new Campaign</h5>
+        <div class="center">
+            <div class="form-group">
+                <div class="col-sm-9 set-size">
+                    <input [(ngModel)]="formData.title" class="form-control" id="title" placeholder="Campaign Title" type="text" name="title" #title="ngModel" required>
+                    <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+                        Please enter a title for your campaign.
                     </div>
                 </div>
             </div>
-
+            <div class="form-group">
+                <div class="col-sm-9 set-size">
+                    <input type="text" id="requiredFollower" placeholder="Required number of Follower" class="form-control" required
+                           [(ngModel)]="formData.requiredNumberOfFollowers" name="requiredFollower" #requiredFollower="ngModel">
+                    <div [hidden]="requiredFollower.valid || requiredFollower.pristine" class="alert alert-danger">
+                        Please enter your email address.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 set-size">
+                    <input type="number" id="amount" placeholder="Quantity" class="form-control" required
+                           [(ngModel)]="formData.amount" name="amount" #amount="ngModel">
+                    <div [hidden]="amount.valid || amount.pristine" class="alert alert-danger">
+                        Please enter the the amount of products you are offering.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 set-size">
+                    <input type="text" id="description" placeholder="Campaign description" class="form-control" required
+                           [(ngModel)]="formData.description" name="description" #description="ngModel">
+                    <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+                        Please enter the the amount of products you are offering.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 set-size">
+                    <input type="text" id="hashTags" placeholder="Required Hashtags" class="form-control" required
+                           [(ngModel)]="formData.hashTags" name="hashTags" #hashTags="ngModel">
+                    <div [hidden]="hashTags.valid || hashTags.pristine" class="alert alert-danger">
+                        Please enter the the amount of products you are offering.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 set-size">
+                    <select [(ngModel)]="formData.categories" name="categories" class="form-control" multiple required>
+                        <option *ngFor="let category of selectableCategories"  value="{{category}}">{{category}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 set-size">
+                    <input class="center-format" type="file" ng2FileSelect [uploader]="upload" name="single" id="picture"/>
+                </div>
+            </div>
+            <div class="form-error" *ngIf="registerErrorMessage">{{registerErrorMessage}}</div>
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3 set-size">
+                    <button type="submit" class="btn btn-primary btn-block btn-sign-in"
+                            [disabled]="!registerForm.form.valid">Create new Product
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</body>
-</html>
+    </form> <!-- /form -->
+</div> <!-- ./container -->
