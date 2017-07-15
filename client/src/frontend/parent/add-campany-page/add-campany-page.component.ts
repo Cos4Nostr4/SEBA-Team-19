@@ -18,7 +18,7 @@ import {CookieHandler} from "../../services/cookie-handler";
     providers: [CompanyService, CampaignService, CompanyAuthenticationService]
 
 })
-export class AddCampanyPageComponent implements OnInit {
+export class AddCampanyComponent implements OnInit {
     private companyService: CompanyService;
     private campaignService: CampaignService;
     private companyAuthenticationService: CompanyAuthenticationService;

@@ -37,7 +37,7 @@ import {ProfileViewDropdownComponent} from "./parent/profile-view-dropdown/profi
 import {StatusPageModule} from "./parent/status-page/status-page.module";
 import {StatusPageComponent} from "./parent/status-page/status-page.component";
 import {AddCampanyPageModule} from "./parent/add-campany-page/add-campany-page.module";
-import {AddCampanyPageComponent} from "./parent/add-campany-page/add-campany-page.component";
+import {AddCampanyComponent} from "./parent/add-campany-page/add-campany-page.component";
 import {APP_ROUTES} from "./routes";
 import {PageNotFoundModule} from "./parent/page-not-found/page-not-found.module";
 import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.component";
@@ -133,7 +133,7 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
             },
             {
                 path: 'add-campany',
-                component: AddCampanyPageComponent
+                component: AddCampanyComponent
             },
             {
                 path: '**',
