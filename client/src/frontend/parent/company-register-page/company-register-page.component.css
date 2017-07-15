@@ -143,11 +143,13 @@ body {
 {
     margin-top: 10px;
 }
-.new-account
-{
+
+.new-account {
     display: block;
     margin-top: 10px;
+    margin-bottom: 30px;
 }
+
 .form-error{
     color:darkred;
     font-weight: 600;
