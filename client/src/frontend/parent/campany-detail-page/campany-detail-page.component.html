@@ -2,8 +2,7 @@
 <div class="container-fluid" style="padding: 7%; padding-top: 10%">
     <div class="row justify-content-between">
 
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6"
-             style="padding: 10% 3%;padding-bottom: 3em; padding-top: 3em; border: solid lightgray 1px; border-radius: 1%">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6" id="detailsDiv">
             <img id="productPicture" class="campany-detail-prod-image"
                  [src]="productPicture">
 
@@ -25,27 +24,21 @@
                     </div>
 
                     <div class="campany-detail-campaign-details">
-                        <h5>Start Date of Campaign</h5>
-                        <p>{{ campaign.endDate.toString().substring(0,10) }}</p>
-                    </div>
-
-                    <div class="campany-detail-campaign-details">
-                        <h5>End Date of Campaign</h5>
-                        <p>{{ campaign.endDate.toString().substring(0,10) }}</p>
-                    </div>
-
-                    <div class="campany-detail-campaign-details">
                         <h5>Hashtags Required For This Campaign</h5>
                         <p>{{ campaign.enforcedHashTags }}</p>
                     </div>
+
+                    <div class="campany-detail-campaign-details">
+                        <h5>Categories</h5>
+                        <p>{{ campaign.categories }}</p>
+                    </div>
                 </form>
             </div>
-            <button (click)="deleteCampaign()">Delete</button>
+            <button class="btn btn-primary" (click)="deleteCampaign()">Delete</button>
         </div>
 
 
-        <div class="col-md-5 col-lg-5 col-xl-5"
-             style="padding: 0 0.5em 0 2%; padding-bottom: 3em; padding-top: 3em; border: solid lightgray 1px; border-radius: 1%">
+        <div class="col-md-5 col-lg-5 col-xl-5" id="influencerDiv">
             <div class="campany-detail-requests-area" >
                 <application *ngFor="let request of requests" [request]="request"></application>
             </div>

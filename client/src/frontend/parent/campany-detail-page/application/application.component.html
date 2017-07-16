@@ -1,21 +1,21 @@
-<div  id="application-container" class="row">
-    <div (click)="selectInfluencer()" class="col-sm campany-detail-request-element">
+<div id="application-container" class="row" style="width: 100%; border-bottom: 1px lightgray solid">
+    <div (click)="selectInfluencer()" class="col-sm-2 col-md-2 col-lg-2 col-xl-2 acceptBackground">
         <img id="applicant-picture" class="campany-detail-influencer-profile-img" [src]="influencerImage">
     </div>
 
-    <div class="col-sm">
+    <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
         <span>{{request.influencer.username}}</span>
     </div>
 
-    <div class="col-sm">
-        <button *ngIf="showAcceptBtn" (click)="checkAccept()" type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success acceptButton">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
+        <button *ngIf="showAcceptBtn" (click)="checkAccept()" type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-success">
             Accept
         </button>
     </div>
 
-    <div class="col-sm">
-        <button *ngIf="showRejectBtn" (click)="denyRequest()" type="button" data-toggle="button" aria-pressed="false"
-                class="btn btn-sm btn-danger rejectButton alignRight">Reject
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
+        <button *ngIf="showRejectBtn" (click)="denyRequest()" type="button" data-toggle="button" aria-pressed="false" class="btn btn-sm btn-danger">
+            Reject
         </button>
     </div>
 </div>
