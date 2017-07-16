@@ -36,6 +36,4 @@ export class CampusPageComponent implements OnInit {
                 this.campaignList = campaigns;
             });
     }
-
-
 }

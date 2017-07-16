@@ -4,7 +4,6 @@
 
 <div class="product-picture-container no-padding product-fitter" align="center">
     <a (click)="selectCampaign()">
-        <!-- PRODUCT SINGLE -->
         <div class="" align="center">
             <div class="product-item mb-0">
                 <div class="product-item-thumbnail text-center mb-0 no-radius">
@@ -17,17 +16,17 @@
                                 <a class="h5">{{ campaign.title }}</a>
                             </div>
                         </div>
-                        <a (click)="selectCampaign()" class="btn btn-default follower-coloring">Minimum Followers {{
-                            campaign.requiredNumberOfFollowers }} <span class="glyphicon glyphicon-heart"></span></a>
+                        <a (click)="selectCampaign()" class="btn btn-default follower-coloring">
+                            Minimum Followers {{campaign.requiredNumberOfFollowers }}
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </a>
                         <a (click)="selectCampaign()" class="btn btn-primary">Edit Campaign</a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- / PRODUCT SINGLE-->
     </a>
 </div>
-<!--/div-->
 <div class="heart-container">
     <img class="product-picture" src="http://localhost:3010/media/images/heart.png">
 </div>

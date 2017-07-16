@@ -24,7 +24,7 @@ export class AuthenticationService {
     public static COOKIE_USERNAME = "username";
     public static COOKIE_INSTAGRAMM_ID = "instagramId";
     private http: Http;
-    private router:Router;
+    private router: Router;
 
 
     constructor(http: Http, router: Router) {
@@ -91,7 +91,7 @@ export class AuthenticationService {
         }
     }
 
-    private redirectTo(url: string):void{
+    private redirectTo(url: string): void {
         this.router.navigate([url]);
     }
 }

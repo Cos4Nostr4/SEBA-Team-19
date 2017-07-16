@@ -1,20 +1,18 @@
-
-
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import InsUserData from "../../../data-objects/ins-user-data";
 import InsRecentMedia from "../../../data-objects/ins-recent-media";
-declare var $:any;
+declare var $: any;
 
 @Component({
     selector: "score",
     templateUrl: "./score.component.html",
     styleUrls: ["./score.component.css"]
 })
-export class ScoreComponent implements OnInit, OnChanges{
+export class ScoreComponent implements OnInit, OnChanges {
     @Input()
     userData: InsUserData;
     @Input()
-    recentMedias:InsRecentMedia[];
+    recentMedias: InsRecentMedia[];
     private score: number;
 
 
@@ -28,16 +26,17 @@ export class ScoreComponent implements OnInit, OnChanges{
     }
 
     private calculateInfluence(userData: InsUserData, recentMedias: InsRecentMedia[]) {
-        if(userData && recentMedias) {
+        if (userData && recentMedias) {
             let followerCount = +userData.followerCount;
             let postEfficiency = this.calculatePostEfficiency(followerCount, recentMedias);
             return Math.floor(postEfficiency * followerCount);
-        }else{
+        } else {
             return 0;
         }
     }
-    private calculatePostEfficiency(numberOfFollowers: number, recentMedias: InsRecentMedia[]):number {
-        if(recentMedias.length == 0 || numberOfFollowers == 0){
+
+    private calculatePostEfficiency(numberOfFollowers: number, recentMedias: InsRecentMedia[]): number {
+        if (recentMedias.length == 0 || numberOfFollowers == 0) {
             return 0;
         }
 

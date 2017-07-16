@@ -2,13 +2,14 @@ import {NgModule} from "@angular/core";
 import {PageNotFoundComponent} from "./page-not-found.component";
 
 @NgModule({
-    imports:[],
-    declarations:[
+    imports: [],
+    declarations: [
         PageNotFoundComponent
     ],
-    exports:[
+    exports: [
         PageNotFoundComponent
     ]
 })
 
-export class PageNotFoundModule{}
+export class PageNotFoundModule {
+}

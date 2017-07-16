@@ -2,9 +2,9 @@ import {NgModule} from "@angular/core";
 import {CompanyLoginPageComponent} from "./company-login-page.component";
 import {AppHeaderModule} from "../../app-header/app-header.module";
 import {CommonModule} from "@angular/common";
-import {FormsModule}   from '@angular/forms';
+import {FormsModule} from "@angular/forms";
 
-@NgModule ({
+@NgModule({
     imports: [
         CommonModule,
         AppHeaderModule,
@@ -18,4 +18,5 @@ import {FormsModule}   from '@angular/forms';
     ]
 })
 
-export class CompanyLoginPageModule {}
+export class CompanyLoginPageModule {
+}

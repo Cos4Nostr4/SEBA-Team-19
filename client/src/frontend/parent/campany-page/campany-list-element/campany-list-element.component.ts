@@ -13,7 +13,6 @@ import {Router} from "@angular/router";
 export class CampanyListElementComponent implements OnInit {
     @Input()
     campaign: Campaign;
-
     private imageSrc: string;
     private imageService: ImageService;
     private router: Router;
@@ -30,7 +29,7 @@ export class CampanyListElementComponent implements OnInit {
     }
 
 
-    selectCampaign() {
+    public selectCampaign() {
         this.router.navigate(['/campany-detail/', this.campaign.uuid]);
     }
 

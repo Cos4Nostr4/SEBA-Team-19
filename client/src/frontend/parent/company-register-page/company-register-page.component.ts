@@ -14,7 +14,7 @@ import {CompanyAuthenticationService} from "../../services/company-authenticatio
 export class CompanyRegisterPageComponent implements OnInit {
     private companyService: CompanyService;
     private companyAuthenticationService: CompanyAuthenticationService;
-    private formData = {name: "", email: "", password: "", address: "", terms:""};
+    private formData = {name: "", email: "", password: "", address: "", terms: ""};
     private companies: Company[];
     private registerErrorMessage: string;
 
@@ -37,7 +37,7 @@ export class CompanyRegisterPageComponent implements OnInit {
                 });
     }
 
-    performRegistration(): boolean {
+    public performRegistration(): boolean {
         this.registerErrorMessage = null;
 
         if (this.usernameAlreadyExisting()) {
