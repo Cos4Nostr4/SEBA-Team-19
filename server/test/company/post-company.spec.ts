@@ -21,7 +21,7 @@ describe("Test Company backend: ", function () {
 
     describe("POST " + baseUrl + companiesUrl, function () {
 
-        let insertedCompany = new Company("1", "Arnulf", "Arnulf", "secret", "email","nope", "contct", "dahoam", "taxes", "taxes2", true);
+        let insertedCompany = new Company("1", "Arnulf", "Arnulf", "secret", "email", "nope", "contct", "dahoam", "taxes", "taxes2", true);
         let params = {
             url: baseUrl + companiesUrl,
             form: {
@@ -49,7 +49,7 @@ describe("Test Company backend: ", function () {
             request.post(params, function (error, response, body) {
                 expect(response.statusCode).toEqual(400);
                 let errorMessage = JSON.parse(body).error;
-                expect(errorMessage).toBe("Company for id '"+insertedCompany.uuid+"' already exists.");
+                expect(errorMessage).toBe("Company for id '" + insertedCompany.uuid + "' already exists.");
                 expect(JSON.parse(body).data).toBeNull();
                 done();
             });

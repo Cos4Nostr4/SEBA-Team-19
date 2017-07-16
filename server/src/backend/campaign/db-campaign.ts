@@ -11,7 +11,7 @@ export class DBCampaign {
     enforcedHashTags: Array<string>;
     startDate: Date;
     endDate: Date;
-    categories:DBCategory[];
+    categories: DBCategory[];
     stillRunning: boolean;
 
 

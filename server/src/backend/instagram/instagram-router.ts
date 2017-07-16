@@ -14,7 +14,6 @@ export class InstagramRouter {
         this.instagramRepository = new InstagramRepository();
     }
 
-
     public configureRoutes(baseUrl: string, application: express.Application) {
         let router: express.Router = express.Router();
 

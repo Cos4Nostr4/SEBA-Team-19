@@ -32,13 +32,13 @@ export class CompanyRouter {
                 });
             })
             .post(function (req, res) {
-                let company:Company = req.body.data;
-                companyRepository.addCompany(company, function(company:Company, error:any){
-                    if(error){
+                let company: Company = req.body.data;
+                companyRepository.addCompany(company, function (company: Company, error: any) {
+                    if (error) {
                         res.status(400);
                         let transferObject = TransferObject.aTransferObjectForError(error);
                         res.json(transferObject);
-                    }else{
+                    } else {
                         let transferObject = TransferObject.aTransferObjectFor(company.uuid);
                         res.json(transferObject);
                     }

@@ -26,7 +26,7 @@ describe("Test Campaign backend: ", function () {
     });
 
     const campaignId = 1;
-    describe("GET " + baseUrl + campaignsUrl + "/"+campaignId, function () {
+    describe("GET " + baseUrl + campaignsUrl + "/" + campaignId, function () {
         it("returns campaign for existing id " + campaignId, function (done) {
             request.get(baseUrl + campaignsUrl + "/" + campaignId, function (error, response, body) {
                 expect(response.statusCode).toEqual(200);

@@ -7,7 +7,6 @@ describe("Test Influencer backend: ", function () {
     const sampleInfluencers = getSampleInfluencers();
 
 
-
     describe("GET " + baseUrl + influencerUrl, function () {
         it("returns 200", function (done) {
             request.get(baseUrl + influencerUrl, function (error, response, body) {

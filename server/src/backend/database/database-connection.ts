@@ -9,10 +9,10 @@ export class DatabaseConnection {
 
 
     private constructor() {
-        this.value = DatabaseConnection.MONGO_DB_PREFIX + Config.database_url+":"+Config.database_port+"/"+Config.database_name;
+        this.value = DatabaseConnection.MONGO_DB_PREFIX + Config.database_url + ":" + Config.database_port + "/" + Config.database_name;
     }
 
-    public static defaultConnection(): string{
+    public static defaultConnection(): string {
         return new DatabaseConnection().value;
     }
 }

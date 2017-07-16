@@ -17,7 +17,7 @@ export class InfluencerRouter {
     public configureRoutes(baseUrl: string, application: express.Application) {
         let router: express.Router = express.Router();
         router.route('/influencers')
-            .get((req, res) =>{
+            .get((req, res) => {
                 this.influencerRepository.getAllInfluencers(function (influencers: Influencer[], error: String) {
                     if (error) {
                         res.status(400);
@@ -29,14 +29,14 @@ export class InfluencerRouter {
                     }
                 });
             })
-            .post((req, res)=> {
-                let influencer:Influencer = req.body.data;
-                this.influencerRepository.addInfluencer(influencer, function(influencer:Influencer, error:any){
-                    if(error){
+            .post((req, res) => {
+                let influencer: Influencer = req.body.data;
+                this.influencerRepository.addInfluencer(influencer, function (influencer: Influencer, error: any) {
+                    if (error) {
                         res.status(400);
                         let transferObject = TransferObject.aTransferObjectForError(error);
                         res.json(transferObject);
-                    }else{
+                    } else {
                         let transferObject = TransferObject.aTransferObjectFor(influencer.uuid);
                         res.json(transferObject);
                     }
@@ -44,7 +44,7 @@ export class InfluencerRouter {
             });
 
         router.route('/influencers/:id')
-            .get ((req, res) =>{
+            .get((req, res) => {
                 let influencerUuid = req.params.id;
                 this.influencerRepository.getInfluencerWithId(influencerUuid, function (influencer: Influencer, error: String) {
                     if (error) {
@@ -57,9 +57,9 @@ export class InfluencerRouter {
                     }
                 });
             })
-            .put((req, res) =>{
+            .put((req, res) => {
                 let influencerUuid = req.params.id;
-                let influencer:Influencer = req.body.data;
+                let influencer: Influencer = req.body.data;
                 this.influencerRepository.updateInfluencerWithId(influencerUuid, influencer, function (influencer: Influencer, error: String) {
                     if (error) {
                         res.status(400);
@@ -73,9 +73,9 @@ export class InfluencerRouter {
             });
 
         router.route('/influencersByName/:username')
-            .get ((req, res) =>{
+            .get((req, res) => {
                 let username = req.params.username;
-                this.influencerRepository.getInfluencerByUsername(username, function (error:string, influencer: Influencer) {
+                this.influencerRepository.getInfluencerByUsername(username, function (error: string, influencer: Influencer) {
                     if (error) {
                         res.status(400);
                         let transferObject = TransferObject.aTransferObjectForError(error);

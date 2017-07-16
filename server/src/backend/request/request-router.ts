@@ -29,14 +29,14 @@ export class RequestRouter {
                     }
                 });
             })
-            .post((req, res) =>{
-                let request:Request = req.body.data;
-                this.requestRepository.addRequest(request, function(request:Request, error:any){
-                    if(error){
+            .post((req, res) => {
+                let request: Request = req.body.data;
+                this.requestRepository.addRequest(request, function (request: Request, error: any) {
+                    if (error) {
                         res.status(400);
                         let transferObject = TransferObject.aTransferObjectForError(error);
                         res.json(transferObject);
-                    }else{
+                    } else {
                         let transferObject = TransferObject.aTransferObjectFor(request.uuid);
                         res.json(transferObject);
                     }
@@ -57,9 +57,9 @@ export class RequestRouter {
                     }
                 });
             })
-            .put( (req, res) =>{
+            .put((req, res) => {
                 let requestUuid = req.params.id;
-                let request:Request = req.body.data;
+                let request: Request = req.body.data;
                 this.requestRepository.updateRequestWithId(requestUuid, request, function (request: Request, error: String) {
                     if (error) {
                         res.status(400);

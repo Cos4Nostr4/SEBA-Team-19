@@ -9,7 +9,7 @@ import {CategoryRouter} from "./backend/categories/category-router";
 import {InstagramRouter} from "./backend/instagram/instagram-router";
 import {ImageRouter} from "./backend/image/image-router";
 
-const MEDIA_BASE = __dirname +'/media';
+const MEDIA_BASE = __dirname + '/media';
 const FILE_UPLOAD_PATH = __dirname + "/media/products/";
 
 export class App {

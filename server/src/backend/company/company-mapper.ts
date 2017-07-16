@@ -15,8 +15,8 @@ export class CompanyMapper {
             dbCompany.contact, dbCompany.address, dbCompany.paymentInformation, dbCompany.taxInformation, dbCompany.verified);
     }
 
-    static mapToDbObject(company: Company):DBCompany {
+    static mapToDbObject(company: Company): DBCompany {
         return new DBCompany(company.uuid, company.name, company.username, company.password, company.email, company.profilPicture, company.contact,
-        company.address, company.paymentInformation, company.taxInformation, company.verified);
+            company.address, company.paymentInformation, company.taxInformation, company.verified);
     }
 }

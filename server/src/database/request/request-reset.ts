@@ -56,7 +56,7 @@ function findCampaignIdForName(campaignIds: NameToIdStorage[], campaignName: str
         throw new Error("Cannot find the id for campaign '" + campaignName + "'. Check if you have written it correctly.");
     }
     let campaignId = matchingCampaign.id;
-    return  campaignId;
+    return campaignId;
 }
 
 function findInfluencerIdForName(influencerIds: NameToIdStorage[], influencerName: string) {
@@ -65,12 +65,12 @@ function findInfluencerIdForName(influencerIds: NameToIdStorage[], influencerNam
         throw new Error("Cannot find the id for influencer with id '" + influencerName + "'. Check if you have written it correctly.");
     }
     let influencerId = matchingInfluencer.id;
-    return  influencerId;
+    return influencerId;
 }
 
-function mapToRequest(sampleData:any, campaignId:any, influencerId: any) {
+function mapToRequest(sampleData: any, campaignId: any, influencerId: any) {
     let request = new Request({
-    uuid: sampleData.uuid,
+        uuid: sampleData.uuid,
         campaign: campaignId,
         influencer: influencerId,
         status: sampleData.status,

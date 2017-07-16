@@ -1,7 +1,7 @@
-import {Config} from '../../client/src/frontend/config/config'
-import {App} from './app';
-import * as http from 'http';
-import * as debug from 'debug';
+import {Config} from "../../client/src/frontend/config/config";
+import {App} from "./app";
+import * as http from "http";
+import * as debug from "debug";
 
 
 debug('ts-express:server');
@@ -16,9 +16,7 @@ server.on('listening', onListening);
 console.log("Server is listening on port %s", Config.backend_port);
 
 
-
-
-function normalizePort(val: number|string): number|string|boolean {
+function normalizePort(val: number | string): number | string | boolean {
     let port: number = (typeof val === 'string') ? parseInt(val, 10) : val;
     if (isNaN(port)) {
         return val;
@@ -31,7 +29,7 @@ function normalizePort(val: number|string): number|string|boolean {
 function onError(error: NodeJS.ErrnoException): void {
     if (error.syscall !== 'listen') throw error;
     let bind = (typeof port === 'string') ? 'Pipe ' + port : 'Port ' + port;
-    switch(error.code) {
+    switch (error.code) {
         case 'EACCES':
             console.error(`${bind} requires elevated privileges`);
             process.exit(1);

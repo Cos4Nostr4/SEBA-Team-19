@@ -49,7 +49,7 @@ describe("Test Influencer backend: ", function () {
             request.post(params, function (error, response, body) {
                 expect(response.statusCode).toEqual(400);
                 let errorMessage = JSON.parse(body).error;
-                expect(errorMessage).toBe("Influencer for id '"+insertedInfluencer.uuid+"' already exists.");
+                expect(errorMessage).toBe("Influencer for id '" + insertedInfluencer.uuid + "' already exists.");
                 expect(JSON.parse(body).data).toBeNull();
                 done();
             });

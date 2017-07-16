@@ -1,4 +1,3 @@
-
 import * as mongoose from "mongoose";
 import {Model} from "mongoose";
 import {ICampaignRepository} from "../campaign/campaign-repository";

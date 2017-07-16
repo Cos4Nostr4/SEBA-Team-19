@@ -1,5 +1,0 @@
-- merge tsconfig.json into on top-level file: with outDir:build
-- refactor package.json scripts
-- frontend: cascading routers
-- frontend: law of demeter for modules
-- frontend: top level DI of services

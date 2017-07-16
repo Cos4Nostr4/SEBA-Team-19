@@ -59,12 +59,12 @@ export class CampaignRepository {
 
     public deleteCampaign(campaignUuid: string, func: (campaignUuid: string, error: any) => void) {
         this.campaignModel.findOne({'uuid': campaignUuid})
-            .exec((err: any, dbCampaign: any)=> {
+            .exec((err: any, dbCampaign: any) => {
                 if (dbCampaign) {
-                    this.campaignModel.remove({'uuid': campaignUuid}, (err:any) =>{
-                        if(err){
+                    this.campaignModel.remove({'uuid': campaignUuid}, (err: any) => {
+                        if (err) {
                             func(null, err);
-                        }else {
+                        } else {
                             func(campaignUuid, null);
                         }
                     });

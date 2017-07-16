@@ -118,7 +118,7 @@ describe("Test Request backend: ", function () {
 
         it(" fails for updating request with a different campaign", async function (done) {
             const existingId = "2";
-            let differentCampaign = new Campaign("123456789", "", "", "", null, 0, 0, [], new Date, new Date,["make_up"], false);
+            let differentCampaign = new Campaign("123456789", "", "", "", null, 0, 0, [], new Date, new Date, ["make_up"], false);
             let updatedRequest = sampleRequests.find((request) => request.uuid == existingId);
             updatedRequest.campaign = differentCampaign;
             let params = {

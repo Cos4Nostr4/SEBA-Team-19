@@ -23,9 +23,9 @@ describe("Test Campaign backend: ", function () {
     });
 
     describe("POST " + baseUrl + campaignsUrl, function () {
-        let linkedCompany = getCompanyForName("Burberry");
+        let linkedCompany = getCompanyForName("Bragi");
         let insertedCampaign = new Campaign("1", "Aftershave", "some aftershave", "imageUrl", linkedCompany, 1, 2000,
-            ["after", "shave"], dateFor("2017-8-2"), dateFor("2018-1-1"),["JEWELRY", "OTHERS"], true);
+            ["after", "shave"], dateFor("2017-8-2"), dateFor("2018-1-1"), ["JEWELRY", "OTHERS"], true);
         let params = {
             url: baseUrl + campaignsUrl,
             form: {
@@ -62,9 +62,9 @@ describe("Test Campaign backend: ", function () {
         });
 
         let notExistingCompany = new Company("1234567", "not existing", "not existing", "secret", "email", "...", "contact", "secret",
-        "taxes", "taxes", false);
+            "taxes", "taxes", false);
         let incompleteCampaign = new Campaign("123456789", "Aftershave", "some aftershave", "imageUrl", notExistingCompany, 1, 2000,
-            ["after", "shave"], dateFor("2017-8-2"), dateFor("2018-1-1"),[], true);
+            ["after", "shave"], dateFor("2017-8-2"), dateFor("2018-1-1"), [], true);
         let invalidParams = {
             url: baseUrl + campaignsUrl,
             form: {

@@ -71,37 +71,37 @@ export class InstagramRepository {
         });
     }
 
-    public getUserData(username: any, func: (error:any, insSelfData:InsSelfData)=>void) {
+    public getUserData(username: any, func: (error: any, insSelfData: InsSelfData) => void) {
         this.influencerRepository.getInfluencerByUsername(username, (errorFindingInfluncer, dbInfluencer) => {
-           if(errorFindingInfluncer){
-               func(errorFindingInfluncer, null);
-           } else{
-               const instagram = this.createInstagramObject(dbInfluencer.token);
-               instagram.get('users/'+dbInfluencer.instagramId, (err: any, userData: any) => {
-                   if (err) {
-                       func(err, null);
-                   } else {
-                       if (userData.meta.code == "200") {
-                           let insUserData = InstagrammDataMapper.mapToUserData(userData.data);
-                           func(null, insUserData);
-                       } else {
-                           let errorMessage = "Failed to load userdata from instagram";
-                           func(errorMessage, null);
-                       }
-                   }
-               });
-           }
+            if (errorFindingInfluncer) {
+                func(errorFindingInfluncer, null);
+            } else {
+                const instagram = this.createInstagramObject(dbInfluencer.token);
+                instagram.get('users/' + dbInfluencer.instagramId, (err: any, userData: any) => {
+                    if (err) {
+                        func(err, null);
+                    } else {
+                        if (userData.meta.code == "200") {
+                            let insUserData = InstagrammDataMapper.mapToUserData(userData.data);
+                            func(null, insUserData);
+                        } else {
+                            let errorMessage = "Failed to load userdata from instagram";
+                            func(errorMessage, null);
+                        }
+                    }
+                });
+            }
         });
     }
 
-    public getMostRecentMedia(username:any, func:(error: any, recentMedias: InsRecentMedia[]) => any){
+    public getMostRecentMedia(username: any, func: (error: any, recentMedias: InsRecentMedia[]) => any) {
         this.influencerRepository.getInfluencerByUsername(username, (errorFindingInfluncer, dbInfluencer) => {
-            if(errorFindingInfluncer){
+            if (errorFindingInfluncer) {
                 func(errorFindingInfluncer, null);
-            } else{
+            } else {
                 const instagram = this.createInstagramObject(dbInfluencer.token);
                 let instagramId = dbInfluencer.instagramId;
-                instagram.get('users/'+ instagramId+'/media/recent', (err: any, mediaData: any) => {
+                instagram.get('users/' + instagramId + '/media/recent', (err: any, mediaData: any) => {
                     if (err) {
                         func(err, null);
                     } else {

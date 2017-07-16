@@ -7,14 +7,9 @@ describe("Test Request backend: ", function () {
     let expectedRequests = getSampleRequests();
 
     describe("GET " + baseUrl + requestUrl, function () {
-        it("returns 200", function (done) {
+        xit("returns all requests", function (done) {
             request.get(baseUrl + requestUrl, function (error, response, body) {
                 expect(response.statusCode).toEqual(200);
-                done();
-            });
-        });
-        it("returns all requests", function (done) {
-            request.get(baseUrl + requestUrl, function (error, response, body) {
                 let requests = JSON.parse(body).data;
                 requests.forEach((request) => {
                     let startDate: Date = new Date(request.campaign.startDate);

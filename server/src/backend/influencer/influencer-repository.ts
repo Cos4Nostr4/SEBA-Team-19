@@ -80,7 +80,7 @@ export class InfluencerRepository {
     }
 
     public updateInfluencerWithId(influencerId: string, influencer: Influencer, func: (influencer: Influencer, error: String) => void) {
-        if(influencerId != influencer.uuid){
+        if (influencerId != influencer.uuid) {
             let errorMessage = "Updating influencer with id '" + influencerId + "' is not allowed with data having different id";
             func(null, errorMessage);
             return;
@@ -89,16 +89,16 @@ export class InfluencerRepository {
         let update = {
             uuid: influencer.uuid,
             username: influencer.username,
-            email:influencer.email,
+            email: influencer.email,
             instagramId: influencer.instagramId,
             address: influencer.address,
             token: influencer.token
         };
         this.model.findOne({'uuid': influencerId}, (err: any, dbInfluencerData: any) => {
-            if(err){
+            if (err) {
                 func(null, err);
-            }else {
-                if(dbInfluencerData) {
+            } else {
+                if (dbInfluencerData) {
                     this.model.findByIdAndUpdate(dbInfluencerData._id, {$set: update}, {new: false}, (err: any, ignored: DBInfluencer) => {
                         if (err) {
                             func(null, err);
@@ -113,7 +113,7 @@ export class InfluencerRepository {
                             });
                         }
                     });
-                }else{
+                } else {
                     let errorMessage = "Influencer for id '" + influencerId + "' does not exist";
                     func(null, errorMessage);
                 }

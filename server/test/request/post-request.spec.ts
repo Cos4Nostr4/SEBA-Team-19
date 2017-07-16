@@ -5,7 +5,6 @@ import {expectEqualityOf} from "../equals-tester";
 import {deleteRequestData} from "../../src/database/request/request-reset";
 import {getSampleCampaigns, getSampleInfluencers} from "../samples/sample-data";
 import {Influencer} from "../../../client/src/frontend/data-objects/influencer";
-import {RequestState} from "../../src/backend/request/db-request";
 import {resetDatabase} from "../../src/database/database-reset";
 var request = require("request");
 
@@ -26,7 +25,7 @@ describe("Test Request backend: ", function () {
     });
 
     describe("POST " + baseUrl + campaignsUrl, function () {
-        let linkedCampaign = getCampaignByTitle("Joop");
+        let linkedCampaign = getCampaignByTitle("HappyBrush");
         let linkedInfluencer = getInfluencerById("2");
         let insertedRequest = new Request("1", linkedCampaign, linkedInfluencer, "ACCEPTED", false);
         let params = {
@@ -69,7 +68,7 @@ describe("Test Request backend: ", function () {
         });
 
         let notExistingCampaign = new Campaign("123456789", "not existing", "not existing", "not existing", null, 5, 200, [], dateFor("2017-8-2"),
-            dateFor("2018-1-1"),["fitness"], true);
+            dateFor("2018-1-1"), ["fitness"], true);
         let requestWithNotExisitingCampaign = new Request("222", notExistingCampaign, linkedInfluencer, "ACCEPTED", false);
         let paramsForRequestWithNotExistingCampaign = {
             url: baseUrl + campaignsUrl,
@@ -90,7 +89,7 @@ describe("Test Request backend: ", function () {
             });
         });
 
-        let notExistingInfluencer = new Influencer("12356789", "notExisting","not.existing@mail.de", "123", "not existing", "not existing");
+        let notExistingInfluencer = new Influencer("12356789", "notExisting", "not.existing@mail.de", "123", "not existing", "not existing");
         let requestWithNotExisitingInfluencer = new Request("222", linkedCampaign, notExistingInfluencer, "ACCEPTED", false);
         let paramsForRequestWithNotExistingInfluencer = {
             url: baseUrl + campaignsUrl,

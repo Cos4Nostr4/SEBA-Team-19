@@ -85,6 +85,7 @@ export class RequestRepository {
                         }
                     })
                     .populate("influencer", '-_id -__v')
+                    .sort('uuid')
                     .exec(function (err: any, requestList: DBRequest[]) {
                         let requests: Request[] = RequestMapper.mapAll(requestList);
                         func(requests, null);
