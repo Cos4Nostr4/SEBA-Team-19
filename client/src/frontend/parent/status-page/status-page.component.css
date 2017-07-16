@@ -13,11 +13,40 @@
     padding: 10% 25% 0 25%;
 }
 
+.cover {
+  width: 100%;
+  object-fit: cover;
+  padding-left: 20px;
+  padding-right: 30px;
+}
 
+.profile-img{
+	padding-top: 25px !important;
+}
 
+.bottom-fit{
+	bottom: 0px;
+	position: absolute;
+	padding-right: 60px;
+}
 
+.side-fit{
+	padding-left: 0px;
+}
 
+.right-fit{
+	padding-right: 0px;
+}
 
+.container-height{
+	margin-top: 100px !important;
+	border: 1px solid #d4d4d4;
+	background-color: white;
+}
+
+.bottom-margin{
+	margin-bottom: 0px;
+}
 
 
 

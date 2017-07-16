@@ -1,3 +1,5 @@
+<app-header-company></app-header-company>
+
 <!--div class="container-fluid main-styling">
 
     <div class="row">
@@ -18,90 +20,64 @@
         <recent-media *ngFor="let recentMedia of recentMedias" [recentMedia]="recentMedia"></recent-media>
     </div>
 </div-->
-        <div class="container">
+
+        <div class="container container-height">
             <div class="row">
-                <div class="product-image-wrapper col-md-8">
-                    <div class="carousel  slide product-slide carousel-fade" id="product-carousel">
-                        <ol class="carousel-indicators">
-                            <li class="active" data-slide-to="0" data-target="#product-carousel"> <img alt="" src="assets/img/products/product-01.jpg" class="img-thumbnail"> </li>
-                            <li class="" data-slide-to="1" data-target="#product-carousel"> <img alt="" src="assets/img/products/product-02.jpg" class="img-thumbnail"> </li>
-                            <li class="" data-slide-to="2" data-target="#product-carousel"> <img alt="" src="assets/img/products/product-03.jpg" class="img-thumbnail"> </li>
-                            <li class="" data-slide-to="3" data-target="#product-carousel"> <img alt="" src="assets/img/products/product-04.jpg" class="img-thumbnail"> </li>
-                        </ol>
-          
-                        <div class="carousel-inner no-padding">
-                            <div class="item active">  <a class="" href="assets/img/products/product-01.jpg" data-lightbox="example-set" data-title="Product name or description."><img alt="carousel image" src="assets/img/products/product-01.jpg" title=""></a> </div>
-                            <div class="item">  <a class="" data-lightbox="example-set" data-title="Product name or description." href="assets/img/products/product-02.jpg"><img alt="carousel image" src="assets/img/products/product-02.jpg" title=""></a> </div>
-                            <div class="item">  <a class="" data-lightbox="example-set" data-title="Product name or description." href="assets/img/products/product-03.jpg"><img alt="carousel image" src="assets/img/products/product-03.jpg" title=""></a> </div>
-                            <div class="item">  <a class="" data-lightbox="example-set" data-title="Product name or description." href="assets/img/products/product-04.jpg"><img alt="carousel image" src="assets/img/products/product-04.jpg" title=""></a> </div>
+                <div class="product-image-wrapper col-md-7">
+                    <div class="slide product-slide">
+                        <div class="width-100">
+                              <a class="" data-lightbox="example-set" data-title="Product name or description."><img class="img-responsive cover profile-img" alt="carousel image" src="http://localhost:3010/media/images/alex.jpg" title=""></a>
+                            <div class="row">
+                                <a class="col-sm-8 mt-30" data-lightbox="example-set" data-title="Product name or description."><img class="img-responsive cover right-fit" alt="carousel image" src="http://localhost:3010/media/images/alex.jpg" title=""></a>
+
+                                <a class="col-sm-4 mt-30 bottom-margin" data-lightbox="example-set" data-title="Product name or description."><img class="img-responsive cover side-fit bottom-margin" alt="carousel image" src="http://localhost:3010/media/images/alex.jpg" title=""> <img class="img-responsive cover bottom-fit side-fit" alt="carousel image" src="http://localhost:3010/media/images/alex.jpg" title=""></a> 
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-description-box col-md-4">            
+                <div class="product-description-box col-md-5">            
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="product-description-box-name pull-left">Product name</h3>
+                            <h3 class="product-description-box-name pull-left">{{userData.username}}</h3>
                         </div>
 
                     <div class="col-sm-12">
                         <div class="product-button-section box">
-                            <span class="product-description-box-price">$299.00</span>
+                            <span class="product-description-box-price">$2.00</span>
 
                                 <ul class="product-detail-list mb-30">
                                     <li>
-                                        <span class="product-detail-list-label">Rating</span>
-                                        <ul class="pull-right product-review-value">
-                                            <li><span class="glyphicon glyphicon-star"></span></li>
-                                            <li><span class="glyphicon glyphicon-star"></span></li>
-                                            <li><span class="glyphicon glyphicon-star"></span></li>
-                                            <li><span class="glyphicon glyphicon-star"></span></li>
-                                            <li><span class="glyphicon glyphicon-star-empty unactive"></span></li>
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <span class="product-detail-list-label">Manufacturer</span>
+                                        <span class="product-detail-list-label">BeeTooBee Score</span>
                                         <span class="product-detail-value pull-right">Laurent</span>
                                     </li>
 
                                     <li>
-                                        <span class="product-detail-list-label">reference</span>
+                                        <span class="product-detail-list-label">Number of Posts</span>
                                         <span class="product-detail-value pull-right">22355-05</span>
                                     </li>
 
                                     <li>
-                                        <span class="product-detail-list-label">In stock</span>
+                                        <span class="product-detail-list-label">Followers</span>
                                         <span class="product-detail-value pull-right">1400 items</span>
                                     </li>
 
                                     <li>
-                                        <span class="product-detail-list-label">Delivery</span>
+                                        <span class="product-detail-list-label">Address</span>
                                         <span class="product-detail-value pull-right">24h | From $6.00</span>
                                     </li>
                                 </ul>
-
-                                <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown <span class="caret"></span> </button>
-
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                            <li><a href="#">Action</a> </li>
-                                            <li><a href="#">Another action</a> </li>
-                                            <li><a href="#">Something else here</a> </li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="#">Separated link</a> </li>
-                                        </ul>
-                                </div>
                                 
-                                <a href="#" class="btn btn-primary add-item" data-image="img/product/01.png" data-name="Almond heaven" data-cost="299.00" data-id="6" >
-                                <span class="ti-shopping-cart"></span> add to cart
+                                <a href="#" class="btn btn-primary">
+                                    Accept Influencer
                                 </a>
                             </div>
              
                             <div class="box">
                              <hr>
                                  <div class="box text-left">
-                                    <h3 class="">Ut enim ad minim veniam</h3>
+                                    <h3 class="">Biography</h3>
                                     <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
                                     <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p><br><br>
 
@@ -109,283 +85,11 @@
                                     <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                                  </div>
                             </div>
-                          
-                            <div class="width-100 pull-left">
-                                <ul class="social-network social-circle">
-                                    <li><a href="#" class="icoRss" title="Rss"><i class="ti-rss-alt"></i></a></li>
-                                    <li><a href="#" class="icoFacebook" title="Facebook"><i class="ti-facebook"></i></a></li>
-                                    <li><a href="#" class="icoTwitter" title="Twitter"><i class="ti-twitter"></i></a></li>
-                                    <li><a href="#" class="icoGoogle" title="Google +"><i class="ti-google"></i></a></li>
-                                    <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="ti-linkedin"></i></a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <section>
-            <div class="container">
-            <!-- PRDODUCT CAROUSEL -->
-            <div class="row mt-60">
-                <div class="col-md-12 box">
-                    <h5 class="heading mr-0 mb-30"><span>//</span> PRODUCT CAROUSEL
-                        <span class="carousel-controls pull-right">
-                            <span class="ti-angle-left swiper-button-prev2"></span>
-                            <span class="ti-angle-right swiper-button-next2"></span>
-                        </span>
-                    </h5>
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                        <!-- SINGLE SLIDE -->
-                            <div class="swiper-slide">
-                            <!-- SINGLE PRODUCT BOX -->
-                                <div class="product-box product-box-vertical pb-30 ">
-                                    <div class="product-box-wrapper product-box-wrapper-bg no-padding">
-                                        
-                                        
-                                        <div class="product-box-image">
-                                            <a href="#">
-                                                <img class="img-responsive product-box-image-primary" src="assets/img/products/product-01.jpg" alt="product image">
-
-                                                <img class="img-responsive product-box-image-secondary" src="assets/img/products/product-02.jpg" alt="product image">
-                                            </a>
-                                        </div>
-
-                                        <div class="product-box-details">
-                                            <span class="product-box-new">new!</span>
-                                            <h5>Laurent handbag</h5>
-                                            <div class="product-box-rating">
-                                                <ul>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star-empty unactive"></span></li>
-                                                </ul>
-                                            </div>
-
-                                            <span class="product-box-old-price">$ 122.33</span>
-                                            <span class="product-box-price h5">$ 22.33</span>
-                                            <a class="btn btn-link btn-sm no-padding add-item" data-image="assets/img/products/product-01.jpg" data-name="Laurent handbag" data-cost="22.33"  data-id="1">
-                                                add to cart
-                                            </a>  
-                                        </div>
-                                    </div>
-                                </div>
-                            <!-- / SINGLE PRODUCT BOX-->
-                            </div>
-                        <!-- SINGLE SLIDE -->
-
-                        <!-- SINGLE SLIDE -->
-                            <div class="swiper-slide">
-                            <!-- SINGLE PRODUCT BOX -->
-                                <div class="product-box product-box-vertical pb-30 ">
-                                    <div class="product-box-wrapper product-box-wrapper-bg no-padding">
-                                        
-                                        
-                                        <div class="product-box-image">
-                                            <a href="#">
-                                                <img class="img-responsive product-box-image-primary" src="assets/img/products/product-01.jpg" alt="product image">
-
-                                                <img class="img-responsive product-box-image-secondary" src="assets/img/products/product-02.jpg" alt="product image">
-                                            </a>
-                                        </div>
-
-                                        <div class="product-box-details">
-                                            <span class="product-box-new">new!</span>
-                                            <h5>Laurent handbag</h5>
-                                            <div class="product-box-rating">
-                                                <ul>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star-empty unactive"></span></li>
-                                                </ul>
-                                            </div>
-
-                                            <span class="product-box-old-price">$ 122.33</span>
-                                            <span class="product-box-price h5">$ 22.33</span>
-                                            <a class="btn btn-link btn-sm no-padding add-item" data-image="assets/img/products/product-01.jpg" data-name="Laurent handbag" data-cost="22.33"  data-id="1">
-                                                add to cart
-                                            </a>  
-                                        </div>
-                                    </div>
-                                </div>
-                            <!-- / SINGLE PRODUCT BOX-->
-                            </div>
-                        <!-- SINGLE SLIDE -->
-
-                        <!-- SINGLE SLIDE -->
-                            <div class="swiper-slide">
-                            <!-- SINGLE PRODUCT BOX -->
-                                <div class="product-box product-box-vertical pb-30 ">
-                                    <div class="product-box-wrapper product-box-wrapper-bg no-padding">
-                                        
-                                        
-                                        <div class="product-box-image">
-                                            <a href="#">
-                                                <img class="img-responsive product-box-image-primary" src="assets/img/products/product-01.jpg" alt="product image">
-
-                                                <img class="img-responsive product-box-image-secondary" src="assets/img/products/product-02.jpg" alt="product image">
-                                            </a>
-                                        </div>
-
-                                        <div class="product-box-details">
-                                            <span class="product-box-new">new!</span>
-                                            <h5>Laurent handbag</h5>
-                                            <div class="product-box-rating">
-                                                <ul>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star-empty unactive"></span></li>
-                                                </ul>
-                                            </div>
-
-                                            <span class="product-box-old-price">$ 122.33</span>
-                                            <span class="product-box-price h5">$ 22.33</span>
-                                            <a class="btn btn-link btn-sm no-padding add-item" data-image="assets/img/products/product-01.jpg" data-name="Laurent handbag" data-cost="22.33"  data-id="1">
-                                                add to cart
-                                            </a>  
-                                        </div>
-                                    </div>
-                                </div>
-                            <!-- / SINGLE PRODUCT BOX-->
-                            </div>
-                        <!-- SINGLE SLIDE -->
-
-                        <!-- SINGLE SLIDE -->
-                            <div class="swiper-slide">
-                            <!-- SINGLE PRODUCT BOX -->
-                                <div class="product-box product-box-vertical pb-30 ">
-                                    <div class="product-box-wrapper product-box-wrapper-bg no-padding">
-                                        
-                                        
-                                        <div class="product-box-image">
-                                            <a href="#">
-                                                <img class="img-responsive product-box-image-primary" src="assets/img/products/product-01.jpg" alt="product image">
-
-                                                <img class="img-responsive product-box-image-secondary" src="assets/img/products/product-02.jpg" alt="product image">
-                                            </a>
-                                        </div>
-
-                                        <div class="product-box-details">
-                                            <span class="product-box-new">new!</span>
-                                            <h5>Laurent handbag</h5>
-                                            <div class="product-box-rating">
-                                                <ul>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star-empty unactive"></span></li>
-                                                </ul>
-                                            </div>
-
-                                            <span class="product-box-old-price">$ 122.33</span>
-                                            <span class="product-box-price h5">$ 22.33</span>
-                                            <a class="btn btn-link btn-sm no-padding add-item" data-image="assets/img/products/product-01.jpg" data-name="Laurent handbag" data-cost="22.33"  data-id="1">
-                                                add to cart
-                                            </a>  
-                                        </div>
-                                    </div>
-                                </div>
-                            <!-- / SINGLE PRODUCT BOX-->
-                            </div>
-                        <!-- SINGLE SLIDE -->
-
-                        <!-- SINGLE SLIDE -->
-                            <div class="swiper-slide">
-                            <!-- SINGLE PRODUCT BOX -->
-                                <div class="product-box product-box-vertical pb-30 ">
-                                    <div class="product-box-wrapper product-box-wrapper-bg no-padding">
-                                        
-                                        
-                                        <div class="product-box-image">
-                                            <a href="#">
-                                                <img class="img-responsive product-box-image-primary" src="assets/img/products/product-01.jpg" alt="product image">
-
-                                                <img class="img-responsive product-box-image-secondary" src="assets/img/products/product-02.jpg" alt="product image">
-                                            </a>
-                                        </div>
-
-                                        <div class="product-box-details">
-                                            <span class="product-box-new">new!</span>
-                                            <h5>Laurent handbag</h5>
-                                            <div class="product-box-rating">
-                                                <ul>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star-empty unactive"></span></li>
-                                                </ul>
-                                            </div>
-
-                                            <span class="product-box-old-price">$ 122.33</span>
-                                            <span class="product-box-price h5">$ 22.33</span>
-                                            <a class="btn btn-link btn-sm no-padding add-item" data-image="assets/img/products/product-01.jpg" data-name="Laurent handbag" data-cost="22.33"  data-id="1">
-                                                add to cart
-                                            </a>  
-                                        </div>
-                                    </div>
-                                </div>
-                            <!-- / SINGLE PRODUCT BOX-->
-                            </div>
-                        <!-- SINGLE SLIDE -->
-
-                        <!-- SINGLE SLIDE -->
-                            <div class="swiper-slide">
-                            <!-- SINGLE PRODUCT BOX -->
-                                <div class="product-box product-box-vertical pb-30 ">
-                                    <div class="product-box-wrapper product-box-wrapper-bg no-padding">
-                                        
-                                        
-                                        <div class="product-box-image">
-                                            <a href="#">
-                                                <img class="img-responsive product-box-image-primary" src="assets/img/products/product-01.jpg" alt="product image">
-
-                                                <img class="img-responsive product-box-image-secondary" src="assets/img/products/product-02.jpg" alt="product image">
-                                            </a>
-                                        </div>
-
-                                        <div class="product-box-details">
-                                            <span class="product-box-new">new!</span>
-                                            <h5>Laurent handbag</h5>
-                                            <div class="product-box-rating">
-                                                <ul>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star"></span></li>
-                                                    <li><span class="glyphicon glyphicon-star-empty unactive"></span></li>
-                                                </ul>
-                                            </div>
-
-                                            <span class="product-box-old-price">$ 122.33</span>
-                                            <span class="product-box-price h5">$ 22.33</span>
-                                            <a class="btn btn-link btn-sm no-padding add-item" data-image="assets/img/products/product-01.jpg" data-name="Laurent handbag" data-cost="22.33"  data-id="1">
-                                                add to cart
-                                            </a>  
-                                        </div>
-                                    </div>
-                                </div>
-                            <!-- / SINGLE PRODUCT BOX-->
-                            </div>
-                        <!-- SINGLE SLIDE -->
-                        </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    </div>
-                </div>
-                <!-- / PRDODUCT CAROUSEL ROW -->
-            </div>
-        </section>
 
         <footer class="light-bg ">
             <div class="footer pt-60 pb-60" id="footer">
@@ -474,5 +178,3 @@ window.jQuery || document.write('<script src="assets/js/jquery-1.11.2.min.js"><\
 <script src="assets/js/jquery.inview.js"></script>
 <script src="assets/js/jquery.countdown.js"></script>
 <script src="assets/js/main.js"></script>
-
-
