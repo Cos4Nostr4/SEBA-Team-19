@@ -9045,21 +9045,21 @@ body.lb-disable-scrolling {
 /* ------------------------- CUSTOM CSS ADATIONS ----------------------------- */
 
 .wrapper {
-    width: 700px;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 700px !important;
+    height: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .campaign-list-container {
-    padding-top: 123px;
+    padding-top: 123px !important;
 }
 
 .set-product-picture-size {
-    max-height: 300px;
-    max-width: 300px;
-    min-width: 100px;
-    min-height: 100px;
+    max-height: 300px !important;
+    max-width: 300px !important;
+    min-width: 100px !important;
+    min-height: 100px !important;
 }
 
 .no-restrain {
@@ -9067,11 +9067,11 @@ body.lb-disable-scrolling {
 }
 
 .contentBox {
-    margin-top: 130px;
-    width: 700px;
-    height: 340px;
-    background: linear-gradient(-90deg, #0065C1, #00C3CD);
-    border-radius: 10px;
+    margin-top: 130px !important;
+    width: 700px !important;
+    height: 340px !important;
+    background: linear-gradient(-90deg, #0065C1, #00C3CD) !important;
+    border-radius: 10px !important;
 
 }
 
@@ -9082,28 +9082,28 @@ body.lb-disable-scrolling {
 }
 
 .boxContentPic {
-    padding: 20px;
+    padding: 20px !important;
 }
 
 .boxPic {
-    width: 200px;
-    height: 200px;
+    width: 200px !important;
+    height: 200px !important;
 }
 
 .boxPic img {
-    width: 200px;
-    height: 200px;
+    width: 200px !important;
+    height: 200px !important;
 }
 
 .image-size {
-    max-width: 130px;
-    height: 50px;
+    max-width: 130px !important;
+    height: 50px !important;
 }
 
 .auto-margin {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 15px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 15px !important;
 }
 
 .blue {
@@ -9138,24 +9138,24 @@ body.lb-disable-scrolling {
 }
 
 .row[_ngcontent-c0] {
-    margin: auto;
-    width: 100%;
-    padding-top: 25px;
+    margin: auto !important;
+    width: 100% !important;
+    padding-top: 25px !important;
 }
 
 .button {
-    background-color: #00519A;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-family: roboto;
-    font-size: 16px;
-    margin: 30px auto 0;
-    cursor: pointer;
-    width: 200px;
+    background-color: #00519A !important;
+    border: none !important;
+    color: white !important;
+    padding: 15px 32px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-family: roboto !important;
+    font-size: 16px !important;
+    margin: 30px auto 0 !important;
+    cursor: pointer !important;
+    width: 200px !important;
 
 }
 
@@ -9173,30 +9173,30 @@ body.lb-disable-scrolling {
 }
 
 .btn-accepted {
-    background-color: green;
-    border-color: green;
+    background-color: green !important;
+    border-color: green !important;
 }
 
 .btn-just-applied {
-    background-color: grey;
-    border-color: grey;
+    background-color: grey !important;
+    border-color: grey !important;
 }
 
 .btn-pending {
-    background-color: #e3b578;
-    border-color: #e3b578;
+    background-color: #e3b578 !important;
+    border-color: #e3b578 !important;
 }
 
 .btn-rejected {
-    background-color: red;
-    border-color: red;
+    background-color: red !important;
+    border-color: red !important;
 }
 
 .campaignTitle {
-    text-align: center;
+    text-align: center !important;
 }
 
 .boxContentTextWrapper {
-    text-aling: left;
-    margin-left: 10px;
+    text-aling: left !important;
+    margin-left: 10px !important;
 }
