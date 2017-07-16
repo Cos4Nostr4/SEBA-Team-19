@@ -1,29 +1,26 @@
+.request-accepted {
+    background: limegreen;
+
+}
+
+.request-rejected
+
 .campany-detail-prod-image {
     width: 300px;
     height: 300px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 8%;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
+
 
 .campany-detail-campaign-data {
     padding: 0%;
     align-content: center;
 }
 
-.campany-detail-requests-area {
-    overflow-x: auto;
-    height: auto;
-    width: 95%;
-}
-
-.campany-detail-request-element {
-    margin-top: 8%;
-    margin-bottom: 8%;
-    vertical-align: text-top;
-    text-align: center;
-}
 
 .campany-detail-influencer-profile-img {
     width: 50px;
@@ -37,19 +34,23 @@
     margin-bottom: 5%;
 }
 
+
 .alignRight {
     text-align: right;
 }
+
 
 h5 {
     font-weight: 700;
     text-transform: uppercase;
 }
 
+
 p {
     color: dimgrey;
     font-weight: 500;
 }
+
 
 #detailsDiv {
     padding: 10% 3%;
@@ -64,5 +65,8 @@ p {
     padding-bottom: 3em;
     padding-top: 3em;
     border: solid lightgray 1px;
-    border-radius: 1%
+    border-radius: 1%;
+    overflow-x: auto;
+    height: auto;
+    width: 95%;
 }
