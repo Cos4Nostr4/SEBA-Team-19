@@ -6,7 +6,6 @@
             <div class="account-wall">
                 <img class="profile-img" src="http://localhost:3010/media/images/logo.png"
                      alt="">
-                <li *ngFor="let company of companies">{{company.email}}</li>
 
                 <form (ngSubmit)="checkForm()" class="form-signin" #loginForm="ngForm">
                     <input type="email" class="form-control" id="email" placeholder="Email" required autofocus
@@ -40,5 +39,5 @@
     </div>
 </div>
 
-
+<app-footer></app-footer>
     
