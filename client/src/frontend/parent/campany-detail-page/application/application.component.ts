@@ -21,6 +21,10 @@ export class ApplicationComponent implements OnInit {
     private influencerImage:string;
     private showAcceptBtn:boolean;
     private showRejectBtn:boolean;
+    private isAccepted:boolean;
+    private isRejected:boolean;
+    private isPending:boolean;
+
 
     constructor(instagrammDataService: InstagrammDataService, requestService: RequestService, router:Router) {
         this.instagrammDataService = instagrammDataService;
@@ -97,5 +101,8 @@ export class ApplicationComponent implements OnInit {
     private updateUi() {
         this.showAcceptBtn = this.request.status != RequestState[RequestState.ACCEPTED];
         this.showRejectBtn = this.request.status != RequestState[RequestState.REJECTED];
+        this.isAccepted = this.request.status == RequestState[RequestState.ACCEPTED];
+        this.isRejected = this.request.status == RequestState[RequestState.REJECTED];
+        this.isPending = this.request.status == RequestState[RequestState.PENDING]
     }
 }
