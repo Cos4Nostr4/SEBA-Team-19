@@ -12,33 +12,33 @@ import InsRecentMedia from "../data-objects/ins-recent-media";
 const INSTAGRAMM_BACKEND_BASE_URL = Config.backend_address + ":" + Config.backend_port + Config.backend_base_url + "instagram/";
 
 @Injectable()
-export class InstagrammDataService{
-    private http:Http;
+export class InstagrammDataService {
+    private http: Http;
 
 
     constructor(http: Http) {
         this.http = http;
     }
 
-    public getSelfData():Observable<InsSelfData>{
+    public getSelfData(): Observable<InsSelfData> {
         let accessToken = CookieHandler.getCookie("token");
-        let url = INSTAGRAMM_BACKEND_BASE_URL + "self/"+accessToken;
+        let url = INSTAGRAMM_BACKEND_BASE_URL + "self/" + accessToken;
         let selfData: Observable<InsSelfData> = this.http.get(url)
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);
         return selfData;
     }
 
-    public getUserData(username: string):Observable<InsSelfData>{
-        let url = INSTAGRAMM_BACKEND_BASE_URL + "user/"+username;
+    public getUserData(username: string): Observable<InsSelfData> {
+        let url = INSTAGRAMM_BACKEND_BASE_URL + "user/" + username;
         let selfData: Observable<InsSelfData> = this.http.get(url)
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);
         return selfData;
     }
 
-    public getRecentMedia(username:string):Observable<InsRecentMedia[]>{
-        let url = INSTAGRAMM_BACKEND_BASE_URL + "media/"+username;
+    public getRecentMedia(username: string): Observable<InsRecentMedia[]> {
+        let url = INSTAGRAMM_BACKEND_BASE_URL + "media/" + username;
         let selfData: Observable<InsRecentMedia[]> = this.http.get(url)
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);

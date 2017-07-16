@@ -1,4 +1,3 @@
-
 import {Injectable} from "@angular/core";
 import {Config} from "../config/config";
 import {Http} from "@angular/http";
@@ -18,16 +17,16 @@ export class InfluencerService {
         this.http = http;
     }
 
-    public getInfluencerById(influencerId:string): Observable<Influencer> {
-        let url = URL_INFLUENCERS_BASE_URL+influencerId;
+    public getInfluencerById(influencerId: string): Observable<Influencer> {
+        let url = URL_INFLUENCERS_BASE_URL + influencerId;
         let influencer: Observable<Influencer> = this.http.get(url)
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);
         return influencer;
     }
 
-    public getInfluencerByName(username:string): Observable<Influencer> {
-        let url = URL_INFLUENCERS_BY_NAME+username;
+    public getInfluencerByName(username: string): Observable<Influencer> {
+        let url = URL_INFLUENCERS_BY_NAME + username;
         let influencer: Observable<Influencer> = this.http.get(url)
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);
@@ -35,8 +34,8 @@ export class InfluencerService {
     }
 
     public updateInfluencer(influencer: Influencer) {
-        let url = URL_INFLUENCERS_BASE_URL+influencer.uuid;
-        let updatedInfluencer: Observable<Influencer> = this.http.put(url, {data:influencer})
+        let url = URL_INFLUENCERS_BASE_URL + influencer.uuid;
+        let updatedInfluencer: Observable<Influencer> = this.http.put(url, {data: influencer})
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);
         return updatedInfluencer;

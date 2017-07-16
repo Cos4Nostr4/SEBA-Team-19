@@ -79,5 +79,5 @@ export class StatusPageComponent implements OnInit {
             urls.unshift("http://localhost:3010/media/images/empty_picture.png");
         }
         return urls;
-}
+    }
 }

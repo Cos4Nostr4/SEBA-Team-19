@@ -15,14 +15,14 @@ export class CompanyLoginPageComponent implements OnInit {
     private companyAuthenticationService: CompanyAuthenticationService;
     private companies: Company[];
     private loginErrorMessage: string;
-    private model: any;
+    private formData: any;
 
     constructor(companyService: CompanyService, companyAuthenticationService: CompanyAuthenticationService) {
         this.companyService = companyService;
         this.companyAuthenticationService = companyAuthenticationService;
         this.companies = [];
         this.loginErrorMessage = null;
-        this.model = {email: "", password: ""};
+        this.formData = {email: "", password: ""};
     }
 
     public ngOnInit(): void {
@@ -39,8 +39,8 @@ export class CompanyLoginPageComponent implements OnInit {
     }
 
     public checkForm(): boolean {
-        let email = this.model.email;
-        let password = this.model.password;
+        let email = this.formData.email;
+        let password = this.formData.password;
         let company = this.companies.find((company) => company.email === email);
         if (company != null && company.password == password) {
             this.companyAuthenticationService.login(company);

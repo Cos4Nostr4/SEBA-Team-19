@@ -48,9 +48,9 @@ export class RequestService {
         return requestUuidObservable;
     }
 
-    public updatRequest(request: Request):Observable<Request>{
-        let url = URL_ALL_REQUESTS+"/"+request.uuid;
-        let updatedRequest: Observable<Request> = this.http.put(url, {data:request})
+    public updatRequest(request: Request): Observable<Request> {
+        let url = URL_ALL_REQUESTS + "/" + request.uuid;
+        let updatedRequest: Observable<Request> = this.http.put(url, {data: request})
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);
         return updatedRequest;

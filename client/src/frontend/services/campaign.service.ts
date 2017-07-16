@@ -45,7 +45,7 @@ export class CampaignService {
         }
     }
 
-    public addCampaign(campaign:Campaign): Observable<string> {
+    public addCampaign(campaign: Campaign): Observable<string> {
         let campaignUuidObservable = this.http.post(URL_ALL_CAMPAIGNS, {data: campaign})
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);
@@ -70,8 +70,8 @@ export class CampaignService {
         return campaignsWithHearts;
     }
 
-    public deleteCampaign(campaign:Campaign): Observable<string> {
-        let url = URL_ALL_CAMPAIGNS+"/"+campaign.uuid;
+    public deleteCampaign(campaign: Campaign): Observable<string> {
+        let url = URL_ALL_CAMPAIGNS + "/" + campaign.uuid;
         let campaignUuidObservable = this.http.delete(url)
             .map(JsonExtractor.extractData)
             .catch(ServiceErrorHandler.handleError);

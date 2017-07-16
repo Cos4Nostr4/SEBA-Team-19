@@ -12,9 +12,9 @@ export class CompanyAuthenticationService {
     private static LOGGED_IN_LANDING_PAGE = "/campany/";
     private static LOGIN_PAGE = "/company-login/";
     private http: Http;
-    private router:Router;
+    private router: Router;
 
-    constructor(http: Http, router:Router) {
+    constructor(http: Http, router: Router) {
         this.http = http;
         this.router = router;
     }
@@ -28,14 +28,14 @@ export class CompanyAuthenticationService {
         this.router.navigate([CompanyAuthenticationService.LOGGED_IN_LANDING_PAGE]);
     }
 
-    public isLoggedIn() : boolean{
+    public isLoggedIn(): boolean {
         let usernameCookieSet = CookieHandler.isCookiePresent(CompanyAuthenticationService.COOKIE_USERNAME);
         let isCookieSet = CookieHandler.isCookiePresent(CompanyAuthenticationService.COOKIE_ID);
         return usernameCookieSet && isCookieSet;
     }
 
     public ensureIsLoggedIn(): void {
-        if(!this.isLoggedIn()){
+        if (!this.isLoggedIn()) {
             this.router.navigate([CompanyAuthenticationService.LOGIN_PAGE]);
         }
     }

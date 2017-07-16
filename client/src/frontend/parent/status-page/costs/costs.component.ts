@@ -29,14 +29,14 @@ export class CostsComponent implements OnInit, OnChanges {
         if (userData && recentMedias) {
             let postEfficiency = this.calculatePostEfficiency(+userData.followerCount, recentMedias);
             let costs = Math.floor(postEfficiency * (+userData.followerCount) / 1000);
-            return "$" +costs + ".00";
+            return "$" + costs + ".00";
         } else {
             return "Calculating...";
         }
     }
 
-    private calculatePostEfficiency(numberOfFollowers: number, recentMedias: InsRecentMedia[]):number {
-        if(recentMedias.length == 0 || numberOfFollowers == 0){
+    private calculatePostEfficiency(numberOfFollowers: number, recentMedias: InsRecentMedia[]): number {
+        if (recentMedias.length == 0 || numberOfFollowers == 0) {
             return 0;
         }
 

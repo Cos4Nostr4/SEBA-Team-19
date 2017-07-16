@@ -10,13 +10,13 @@
 
                 <form (ngSubmit)="checkForm()" class="form-signin" #loginForm="ngForm">
                     <input type="email" class="form-control" id="email" placeholder="Email" required autofocus
-                           [(ngModel)]="model.email" name="email" #email="ngModel">
+                           [(ngModel)]="formData.email" name="email" #email="ngModel">
                     <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
                         Email is required
                     </div>
 
                     <input type="password" class="form-control" id="password" placeholder="Password" required
-                           [(ngModel)]="model.password" name="password" #password="ngModel">
+                           [(ngModel)]="formData.password" name="password" #password="ngModel">
                     <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
                         Password is required
                     </div>

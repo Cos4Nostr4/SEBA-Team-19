@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
     providers: [ImageService]
 })
 
-export class CampaignListElementComponent implements OnInit{
+export class CampaignListElementComponent implements OnInit {
     @Input() campaign: Campaign;
     private imageSrc: string;
     private imageService: ImageService;
@@ -24,11 +24,11 @@ export class CampaignListElementComponent implements OnInit{
     ngOnInit(): void {
         let imageName = this.campaign.image;
         let imageUrl = this.imageService.getImageUrlForProductName(imageName);
-        this.imageSrc= imageUrl;
+        this.imageSrc = imageUrl;
     }
 
 
-    selectCampaign(){
+    selectCampaign() {
         this.router.navigate(['/campaign-detail/', this.campaign.uuid]);
     }
 

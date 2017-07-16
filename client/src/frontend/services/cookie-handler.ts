@@ -13,7 +13,7 @@ export class CookieHandler {
         }
     }
 
-    public static isCookiePresent(key: string):boolean {
+    public static isCookiePresent(key: string): boolean {
         let value = CookieHandler.readCookie(key);
         return (value && value.length > 0);
     }
