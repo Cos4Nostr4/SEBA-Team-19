@@ -6,10 +6,22 @@
 
 
 .acceptBackground {
-    background: limegreen;
     border-radius: 50%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding: 3%;
+    width: 68px;
+    transform: translateX(50%);
+}
+
+.green {
+	background: rgba(56, 197, 56, 0.68);
+}
+
+.red{
+	background: rgba(197, 82, 56, 0.68);
+}
+
+.transparent{
+	background: transparent;
 }
 
 
@@ -18,4 +30,17 @@
     border-radius: 50%;
 }
 
+.set-padding{
+    padding-right: 0px;
+    padding: 10px;
+}
+
+.center {
+  position: relative;
+  transform: translateY(75%);
+}
+
+.center-button{
+	transform: translateY(35%);
+}
 
