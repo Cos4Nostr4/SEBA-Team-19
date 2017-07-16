@@ -34,9 +34,6 @@ export class ApplicationComponent implements OnInit {
             .subscribe(
                 selfData => {
                     this.influencerImage = selfData.profilePictureUrl;
-                    console.log("APPLICATION:");
-                    console.log("     request:"+JSON.stringify(this.request));
-                    console.log("     userData:"+JSON.stringify(selfData));
                 }
             );
 
@@ -58,7 +55,6 @@ export class ApplicationComponent implements OnInit {
                 updatedRequest => {
                     this.request = updatedRequest;
                     this.updateUi();
-                    console.log("Request rejected: " + JSON.stringify(this.request));
                 },
                 error => {
                     throw new Error(error);
@@ -91,7 +87,6 @@ export class ApplicationComponent implements OnInit {
                 updatedRequest => {
                     this.request = updatedRequest;
                     this.updateUi();
-                    console.log("Request accepted: " + JSON.stringify(this.request));
                 },
                 error => {
                     throw new Error(error);

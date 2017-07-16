@@ -53,11 +53,10 @@ export class CampanyDetailPageComponent implements OnInit {
             );
 
         this.route.params
-            .switchMap((params: Params) => this.requestService.getRequestsForCampaign(params.id ))
+            .switchMap((params: Params) => this.requestService.getRequestsForCampaign(params.id))
             .subscribe(
                 requests => {
                     this.requests = requests;
-                    console.log("REQUESTS:"+requests);
                 },
                 error => {
                     throw new Error(error);

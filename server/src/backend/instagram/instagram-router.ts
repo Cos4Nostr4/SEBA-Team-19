@@ -51,7 +51,6 @@ export class InstagramRouter {
         router.route(BASE_PATH + 'user/:username')
             .get((req, res) => {
                 let username = req.params.username;
-                console.log("Load Data for '"+username+"'");
                 this.instagramRepository.getUserData(username, (error: any, selfData: InsUserData) => {
                     if (error) {
                         res.status(400);
