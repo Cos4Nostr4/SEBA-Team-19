@@ -10,14 +10,14 @@
     "uuid": "2",
     "campaign": "Bragi Wireless Headphones",
     "influencer": "2",
-    "status": "ACCEPTED",
+    "status": "PENDING",
     "postponed": false
   },
   {
     "uuid": "3",
     "campaign": "Bragi Wireless Headphones",
     "influencer": "3",
-    "status": "PENDING",
+    "status": "ACCEPTED",
     "postponed": false
   },
   {

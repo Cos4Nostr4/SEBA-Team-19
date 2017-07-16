@@ -18,10 +18,10 @@
                 <div class="col-sm-9 set-size">
                     <input type="number" id="requiredFollower" placeholder="Required number of Follower"
                            class="form-control" required
-                           [(ngModel)]="formData.requiredNumberOfFollowers" name="requiredFollower"
+                           [(ngModel)]="formData.followers" name="requiredFollower"
                            #requiredFollower="ngModel">
                     <div [hidden]="requiredFollower.valid || requiredFollower.pristine" class="alert alert-danger">
-                        Please enter your email address.
+                        Please enter how many followers the Influencer should have.
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <input type="text" id="description" placeholder="Campaign description" class="form-control" required
                            [(ngModel)]="formData.description" name="description" #description="ngModel">
                     <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
-                        Please enter the the amount of products you are offering.
+                        Please add a description.
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <input type="text" id="hashTags" placeholder="Required Hashtags" class="form-control" required
                            [(ngModel)]="formData.hashTags" name="hashTags" #hashTags="ngModel">
                     <div [hidden]="hashTags.valid || hashTags.pristine" class="alert alert-danger">
-                        Please enter the the amount of products you are offering.
+                        Please enter at least one hashtag, that the influencer has to include in the promotion.
                     </div>
                 </div>
             </div>

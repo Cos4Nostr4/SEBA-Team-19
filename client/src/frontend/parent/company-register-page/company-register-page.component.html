@@ -1,5 +1,5 @@
 <app-header></app-header>
-
+<li *ngFor="let company of companies">{{company.email}}</li>
 <div class="container container-adapt">
     <form (ngSubmit)="performRegistration()" class="form-horizontal"
           role="form" action="http://localhost:4200/app-campany-page" #registerForm="ngForm">
