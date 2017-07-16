@@ -4,6 +4,7 @@ import {AppHeaderCompanyModule} from "../../app-header-company/app-header-compan
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {FileDropDirective, FileSelectDirective, FileUploadModule} from "ng2-file-upload";
+import {AppFooterModule} from "../../app-footer/app-footer.module";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import {FileDropDirective, FileSelectDirective, FileUploadModule} from "ng2-file
         AppHeaderCompanyModule,
         CommonModule,
         FormsModule,
-        FileUploadModule
+        FileUploadModule,
+        AppFooterModule
     ],
 
     declarations: [
