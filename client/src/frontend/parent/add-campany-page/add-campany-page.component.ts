@@ -27,6 +27,7 @@ export class AddCampanyComponent implements OnInit {
     private company: Company;
     private selectableCategories: string[];
     private formData: any;
+    private errorMessage: string;
 
 
     constructor(companyService: CompanyService, campaignService: CampaignService,
@@ -39,9 +40,7 @@ export class AddCampanyComponent implements OnInit {
         };
         this.router = router;
         this.selectableCategories = getUserSelectableCategories();
-    }
-
-    ngOnInit(): void {
+        this.errorMessage = null;
         this.formData = {
             title: "",
             followers: "",
@@ -51,7 +50,9 @@ export class AddCampanyComponent implements OnInit {
             hashTags: [],
             categories: []
         };
+    }
 
+    ngOnInit(): void {
         let companyUuid = CookieHandler.getCookie(CompanyAuthenticationService.COOKIE_ID);
         this.companyService.getCompanyForId(companyUuid)
             .subscribe(company => {
@@ -64,24 +65,28 @@ export class AddCampanyComponent implements OnInit {
     }
 
     public createCampaign(): void {
-        let campaignPicture = this.determinePictureName();
-        let endDate = new Date();
-        let hashTags = this.extractHashTags();
-        let categories = this.extractCategories();
-        let createdCampaign = new Campaign(UUID.createNew().asStringValue(), this.formData.title, this.formData.description, campaignPicture,
-            this.company, this.formData.amount, this.formData.followers, hashTags, new Date(), endDate, categories, true);
-        console.log("FORM: " + JSON.stringify(createdCampaign));
+        if(this.allDataInserted()) {
+            let campaignPicture = this.determinePictureName();
+            let endDate = new Date();
+            let hashTags = this.extractHashTags();
+            let categories = this.extractCategories();
+            let createdCampaign = new Campaign(UUID.createNew().asStringValue(), this.formData.title, this.formData.description, campaignPicture,
+                this.company, this.formData.amount, this.formData.followers, hashTags, new Date(), endDate, categories, true);
+            console.log("FORM: " + JSON.stringify(createdCampaign));
 
-        this.campaignService.addCampaign(createdCampaign)
-            .subscribe(
-                uuid => {
-                    this.router.navigate(['/campany/']);
-                },
-                error => {
-                    throw new Error(error)
-                }
-            );
-        this.uploadImage(campaignPicture);
+
+                this.campaignService.addCampaign(createdCampaign)
+                    .subscribe(
+                        uuid => {
+                            this.router.navigate(['/campany/']);
+                        },
+                        error => {
+                            throw new Error(error)
+                        }
+                    );
+                this.uploadImage(campaignPicture);
+
+        }
     }
 
     private ensureOnlySingleUpload() {
@@ -96,9 +101,6 @@ export class AddCampanyComponent implements OnInit {
         if (queueLength <= 0) {
             throw new Error("No picture for upload selected");
         }
-        queue.forEach((item) => {
-            console.log("NEW Item: " + item.file.name);
-        });
     }
 
     private determinePictureName(): string {
@@ -141,5 +143,15 @@ export class AddCampanyComponent implements OnInit {
         } else {
             return ["OTHERS"];
         }
+    }
+
+    private allDataInserted() {
+        let queueLength = this.upload.queue.length;
+        if(queueLength < 1){
+            this.errorMessage = "Please provide a picture for the campaign";
+            return false;
+        }
+
+        return true;
     }
 }

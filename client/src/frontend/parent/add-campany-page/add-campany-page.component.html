@@ -7,7 +7,8 @@
         <div class="center">
             <div class="form-group">
                 <div class="col-sm-9 set-size">
-                    <input [(ngModel)]="formData.title" class="form-control" id="title" placeholder="Campaign Title" type="text" name="title" #title="ngModel" required>
+                    <input [(ngModel)]="formData.title" class="form-control" id="title" placeholder="Campaign Title"
+                           type="text" name="title" #title="ngModel" required>
                     <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
                         Please enter a title for your campaign.
                     </div>
@@ -15,8 +16,10 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-9 set-size">
-                    <input type="number" id="requiredFollower" placeholder="Required number of Follower" class="form-control" required
-                           [(ngModel)]="formData.requiredNumberOfFollowers" name="requiredFollower" #requiredFollower="ngModel">
+                    <input type="number" id="requiredFollower" placeholder="Required number of Follower"
+                           class="form-control" required
+                           [(ngModel)]="formData.requiredNumberOfFollowers" name="requiredFollower"
+                           #requiredFollower="ngModel">
                     <div [hidden]="requiredFollower.valid || requiredFollower.pristine" class="alert alert-danger">
                         Please enter your email address.
                     </div>
@@ -52,16 +55,21 @@
             <div class="form-group">
                 <div class="col-sm-9 set-size">
                     <select [(ngModel)]="formData.categories" name="categories" class="form-control" multiple required>
-                        <option *ngFor="let category of selectableCategories"  value="{{category}}">{{category}}</option>
+                        <option *ngFor="let category of selectableCategories" value="{{category}}">{{category}}</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-9 set-size">
-                    <input class="center-format" type="file" ng2FileSelect [uploader]="upload" name="single" id="picture"/>
+                    <input class="center-format" type="file" ng2FileSelect [uploader]="upload" name="single"
+                           id="picture"/>
                 </div>
             </div>
-            <div class="form-error" *ngIf="registerErrorMessage">{{registerErrorMessage}}</div>
+            <div class="form-error" *ngIf="errorMessage">
+                <div class="col-sm-9 set-size">
+                    {{errorMessage}}
+                </div>
+            </div>
             <div class="form-group">
                 <div class="col-sm-9 col-sm-offset-3 set-size">
                     <button type="submit" class="btn btn-primary btn-block btn-sign-in"
