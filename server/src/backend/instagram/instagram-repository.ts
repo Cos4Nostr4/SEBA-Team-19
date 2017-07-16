@@ -63,11 +63,10 @@ export class InstagramRepository {
                 func(err, null);
             } else {
                 if (selfData.meta.code == "200") {
-                    let insSelfData = InstagrammDataMapper.mapToSelfData(selfData.data);
+                    let insSelfData = InstagrammDataMapper.mapToUserData(selfData.data);
                     func(null, insSelfData);
                 } else {
-                    //TODO: better error message
-                    let errorMessage = "Blocked access";
+                    let errorMessage = "Failed to load userdata from instagram";
                     func(errorMessage, null);
                 }
             }
@@ -80,16 +79,15 @@ export class InstagramRepository {
                func(errorFindingInfluncer, null);
            } else{
                const instagram = this.createInstagramObject(dbInfluencer.token);
-               instagram.get('users/'+dbInfluencer.instagramId, (err: any, selfData: any) => {
+               instagram.get('users/'+dbInfluencer.instagramId, (err: any, userData: any) => {
                    if (err) {
                        func(err, null);
                    } else {
-                       if (selfData.meta.code == "200") {
-                           let insSelfData = InstagrammDataMapper.mapToSelfData(selfData.data);
-                           func(null, insSelfData);
+                       if (userData.meta.code == "200") {
+                           let insUserData = InstagrammDataMapper.mapToUserData(userData.data);
+                           func(null, insUserData);
                        } else {
-                           //TODO: better error message
-                           let errorMessage = "Blocked access";
+                           let errorMessage = "Failed to load userdata from instagram";
                            func(errorMessage, null);
                        }
                    }
@@ -113,8 +111,7 @@ export class InstagramRepository {
                             let recentMedias = InstagrammDataMapper.mapToMediasData(mediaData.data);
                             func(null, recentMedias);
                         } else {
-                            //TODO: better error message
-                            let errorMessage = "Blocked access";
+                            let errorMessage = "Failed to load recent media data from instagram";
                             func(errorMessage, null);
                         }
                     }

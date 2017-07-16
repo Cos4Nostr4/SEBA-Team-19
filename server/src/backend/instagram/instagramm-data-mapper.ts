@@ -2,10 +2,10 @@ import InsSelfData from "../../../../client/src/frontend/data-objects/ins-user-d
 import InsRecentMedia from "../../../../client/src/frontend/data-objects/ins-recent-media";
 export default class InstagrammDataMapper {
 
-    public static mapToSelfData(data: any): InsSelfData {
+    public static mapToUserData(data: any): InsSelfData {
 
         return new InsSelfData(data.id, data.username, data.fullName, data.profile_picture, data.bio, data.website,
-            data.counts.media, data.counts.follows, data.counts.followed_by);
+            data.counts.media, data.counts.followed_by, data.counts.follows);
     }
 
     public static mapToMediasData(data: any) {

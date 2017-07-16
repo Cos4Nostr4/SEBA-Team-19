@@ -1,15 +1,15 @@
 import {NgModule} from "@angular/core";
-import {StatusPageComponent} from './status-page.component';
+import {StatusPageComponent} from "./status-page.component";
 import {CommonModule} from "@angular/common";
-import {RecentMediaModule} from "./recent-media/recent-media.module";
 import {AppHeaderCompanyModule} from "../../app-header-company/app-header-company.module";
 import {ScoreModule} from "./score/score.module";
+import {CostsModule} from "./costs/costs.module";
 
-@NgModule ({
+@NgModule({
     imports: [
         CommonModule,
-        RecentMediaModule,
         AppHeaderCompanyModule,
+        CostsModule,
         ScoreModule
     ],
     declarations: [
@@ -20,4 +20,5 @@ import {ScoreModule} from "./score/score.module";
     ]
 })
 
-export class StatusPageModule {}
+export class StatusPageModule {
+}
