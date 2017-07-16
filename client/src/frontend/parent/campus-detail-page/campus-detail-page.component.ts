@@ -156,7 +156,8 @@ export class CampusDetailPageComponent implements OnInit {
 
     private prepareHashTags(campaign: Campaign): string {
         let enforcedHashTags = campaign.enforcedHashTags;
-        return enforcedHashTags.map((hashtag) => "#" + hashtag)
+        let preparedHashTags = enforcedHashTags.map((hashtag) => "#" + hashtag)
             .join(' ');
+        return preparedHashTags;
     }
 }

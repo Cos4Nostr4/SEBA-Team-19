@@ -4190,7 +4190,7 @@ legend:after {
 }
 
 .box h5.heading span {
-    color: #47d993;
+    color: #292B2C;
     display: inline-block;
 }
 
@@ -9175,20 +9175,22 @@ body.lb-disable-scrolling {
 
 .btn-accepted {
     background-color: green;
+    border-color: green;
 }
 
 .btn-just-applied {
     background-color: grey;
+    border-color: grey;
 }
 
 .btn-pending {
-    background-color: #fdca86;
-    color: black;
-    border-color: #fdca86;
+    background-color: #e3b578;
+    border-color: #e3b578;
 }
 
 .btn-rejected {
     background-color: red;
+    border-color: red;
 }
 
 .campaignTitle {
