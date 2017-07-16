@@ -24,6 +24,7 @@ export class StatusPageComponent implements OnInit {
     private influencer: Influencer;
     private recentMedias: InsRecentMedia[];
     private userData: InsUserData;
+    private recentMediaUrls: string[];
 
 
     constructor(influencerService: InfluencerService, instagrammDataService: InstagrammDataService,
@@ -33,7 +34,9 @@ export class StatusPageComponent implements OnInit {
         this.companyAuthenticationService = companyAuthenticationService;
         this.route = route;
         this.recentMedias = [];
-        this.userData = null;
+        this.influencer = new Influencer("", "", "", "", "", "");
+        this.userData = new InsUserData("", "", "", "", "", "", "0", "0", "0");
+        this.recentMediaUrls = ["", "", "", ""];
     }
 
 
@@ -47,6 +50,8 @@ export class StatusPageComponent implements OnInit {
                     this.instagrammDataService.getRecentMedia(influencer.username)
                         .subscribe(recentMedias => {
                                 this.recentMedias = recentMedias;
+                                this.recentMediaUrls = this.extractMediaUrls(recentMedias);
+                                console.log("Urls:" + this.recentMediaUrls);
                             },
                             error => {
                                 throw new Error(error);
@@ -54,7 +59,6 @@ export class StatusPageComponent implements OnInit {
                     this.instagrammDataService.getUserData(influencer.username)
                         .subscribe(userData => {
                                 this.userData = userData;
-                                console.log("UserData:" + JSON.stringify(userData));
                                 $("#influencerPicture").attr("src", userData.profilePictureUrl);
                             },
                             error => {
@@ -65,4 +69,16 @@ export class StatusPageComponent implements OnInit {
                     throw new Error(error);
                 });
     }
+
+    private extractMediaUrls(recentMedias: InsRecentMedia[]): string[] {
+        let urls: string[] = [];
+        if (recentMedias) {
+            recentMedias.map((recentMedia) => recentMedia.url)
+                .forEach((url) => urls.push(url));
+        }
+        for (let i = urls.length; i < 4; i++) {
+            urls.unshift("http://localhost:3010/media/images/empty_picture.png");
+        }
+        return urls;
+}
 }
