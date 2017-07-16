@@ -9200,3 +9200,8 @@ body.lb-disable-scrolling {
     text-aling: left !important;
     margin-left: 10px !important;
 }
+
+.box[_ngcontent-c0] {
+    margin-bottom: 0px !important;
+    margin-top: 50px;
+}
