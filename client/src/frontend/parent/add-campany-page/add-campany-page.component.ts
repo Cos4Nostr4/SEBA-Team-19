@@ -65,7 +65,7 @@ export class AddCampanyComponent implements OnInit {
     }
 
     public createCampaign(): void {
-        if (this.allDataInserted()) {
+        if (this.allDataInsertedCorrectly()) {
             let campaignPicture = this.determinePictureName();
             let endDate = new Date();
             let hashTags = this.extractHashTags();
@@ -142,7 +142,17 @@ export class AddCampanyComponent implements OnInit {
         }
     }
 
-    private allDataInserted() {
+    private allDataInsertedCorrectly() {
+        this.errorMessage = null;
+        if(this.formData.followers <0){
+            this.errorMessage = "Please provide a positive number for amount of followers";
+            return false;
+        }
+        if(this.formData.amount <=0){
+            this.errorMessage = "Please provide a number greater zero for quantity";
+            return false;
+        }
+
         let queueLength = this.upload.queue.length;
         if (queueLength < 1) {
             this.errorMessage = "Please provide a picture for the campaign";
