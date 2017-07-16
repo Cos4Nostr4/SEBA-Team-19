@@ -5,9 +5,9 @@
 <div class="product-picture-container no-padding product-fitter" align="center">
     <a (click)="selectCampaign()">
         <!-- PRODUCT SINGLE -->
-        <div class="" width="300" height="300" align="center">
+        <div class="" align="center">
             <div class="product-item mb-0">
-                <div class="product-item-thumbnail text-center mb-0 no-radius" width="300" height="300">
+                <div class="product-item-thumbnail text-center mb-0 no-radius">
                     <img class="product-list-primary-img productImg" alt="product image" width="300" height="300"
                          [attr.src]="imageSrc"/>
                     <div class="product-item-thumbnail-overlay product-item-thumbnail-overlay-with-bg product-item-thumbnail-overlay-medium">
@@ -20,9 +20,9 @@
                                 <a class="h5">{{ campaign.title }}</a>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-default follower-coloring">Minimum Followers {{
+                        <a (click)="selectCampaign()" class="btn btn-default follower-coloring">Minimum Followers {{
                             campaign.requiredNumberOfFollowers }} <span class="glyphicon glyphicon-heart"></span></a>
-                        <a href="#" class="btn btn-primary">Edit Campaign</a>
+                        <a (click)="selectCampaign()" class="btn btn-primary">Edit Campaign</a>
                     </div>
                 </div>
             </div>

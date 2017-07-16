@@ -32,6 +32,7 @@ export class CampusDetailPageComponent implements OnInit {
     private route: ActivatedRoute;
     private campaign: Campaign;
     private alreadyApplied: boolean;
+    private preparedHashTags: string;
 
     constructor(authenticationService: AuthenticationService, campaignService: CampaignService, imageService: ImageService,
                 requestService: RequestService, influencerService: InfluencerService, route: ActivatedRoute) {
@@ -44,6 +45,7 @@ export class CampusDetailPageComponent implements OnInit {
 
         this.campaign = new Campaign("", "", "", "", null, 0, 0, [], new Date(), new Date(), [], true);
         this.alreadyApplied = false;
+        this.preparedHashTags = "";
     }
 
     ngOnInit(): void {
@@ -57,6 +59,7 @@ export class CampusDetailPageComponent implements OnInit {
                     this.campaign = campaign;
                     let imageUrl = this.imageService.getImageUrlForProductName(campaign.image);
                     $('#productPicture').attr('src', imageUrl);
+                    this.preparedHashTags = this.prepareHashTags(campaign);
 
                     this.requestService.getRequestsForCampaign(campaign.uuid)
                         .subscribe(requests => {
@@ -83,7 +86,7 @@ export class CampusDetailPageComponent implements OnInit {
             this.influencerService.getInfluencerByName(username)
                 .subscribe(
                     influencer => {
-                        console.log("Application of user: "+JSON.stringify(influencer));
+                        console.log("Application of user: " + JSON.stringify(influencer));
                         if (this.influencerHasEmailAndAddressSet(influencer)) {
                             this.createApplyRequest(influencer);
                         } else {
@@ -103,7 +106,7 @@ export class CampusDetailPageComponent implements OnInit {
         this.requestService.addRequest(request)
             .subscribe(
                 requestUuid => {
-                    console.log("Request done: "+JSON.stringify(request));
+                    console.log("Request done: " + JSON.stringify(request));
                     if (requestUuid == request.uuid) {
                         this.updateApplyButton(RequestState.PENDING);
                     } else {
@@ -144,5 +147,11 @@ export class CampusDetailPageComponent implements OnInit {
 
     private showDropDownMenu() {
         DropDownComponent.showMissingInfoForApplication();
+    }
+
+    private prepareHashTags(campaign: Campaign): string {
+        let enforcedHashTags = campaign.enforcedHashTags;
+        return enforcedHashTags.map((hashtag) => "#" + hashtag)
+            .join(' ');
     }
 }

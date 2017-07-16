@@ -43,8 +43,6 @@ export class AddCampanyComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.companyAuthenticationService.ensureIsLoggedIn();
-
         this.formData = {
             title: "",
             followers: "",
