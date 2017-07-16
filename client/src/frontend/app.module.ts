@@ -4,6 +4,7 @@ import {AppComponent} from "./app.component";
 import {FormsModule} from "@angular/forms";
 import {AppHeaderModule} from "./app-header/app-header.module";
 import {AppHeaderCompanyModule} from "./app-header-company/app-header-company.module";
+import {AppFooterModule} from "./app-footer/app-footer.module";
 import {OfferListModule} from "./offer-list-view/offer-list.module";
 import {OfferListComponent} from "./offer-list-view/offer-list.component";
 import {RouterModule} from "@angular/router";
@@ -49,6 +50,7 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
         FormsModule,
         AppHeaderModule,
         AppHeaderCompanyModule,
+        AppFooterModule,
         OfferListModule,
         OfferListElementModule,
         SamplePageModule,

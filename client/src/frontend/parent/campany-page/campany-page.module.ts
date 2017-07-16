@@ -4,6 +4,7 @@ import {CampanyPageComponent} from "./campany-page.component";
 import {AppHeaderCompanyModule} from "../../app-header-company/app-header-company.module";
 import {AddCampanyListElementModule} from "./add-campany-list-element/add-campany-list-element.module";
 import {CampanyListElementModule} from "./campany-list-element/campany-list-element.module";
+import {AppFooterModule} from "../../app-footer/app-footer.module";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import {CampanyListElementModule} from "./campany-list-element/campany-list-elem
         CommonModule,
         CampanyListElementModule,
         AddCampanyListElementModule,
-        AppHeaderCompanyModule
+        AppHeaderCompanyModule,
+        AppFooterModule
     ],
     declarations: [
         CampanyPageComponent
