@@ -1,5 +1,5 @@
 <app-header-company></app-header-company>
-<div class="container-fluid" style="padding: 7%; padding-top: 10%">
+<!--div class="container-fluid" style="padding: 7%; padding-top: 10%">
     <div class="row justify-content-between">
 
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6" id="detailsDiv">
@@ -46,4 +46,78 @@
 
 
     </div>
-</div>
+</div-->
+
+        <div class="container container-height">
+            <div class="row">
+                <div class="product-image-wrapper col-md-6">
+                    <div class="slide product-slide">
+                        <div class="width-100">
+                              <a data-lightbox="example-set" data-title="Product name or description."><img class="img-responsive cover profile-img" id="productPicture" alt="carousel image"[src]="productPicture"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-description-box col-md-6">            
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="product-description-box-name pull-left">{{ campaign.title }}</h3>
+                        </div>
+
+                    <div class="col-sm-12">
+                        <div class="product-button-section box">
+
+                                <ul class="product-detail-list mb-30">
+                                    <li>
+                                        <span class="product-detail-list-label">Required Number of Followers</span>
+                                        <span class="product-detail-value pull-right">{{ campaign.requiredNumberOfFollowers }}</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="product-detail-list-label">Required Hashtags</span>
+                                        <span class="product-detail-value pull-right">{{ campaign.enforcedHashTags }}</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="product-detail-list-label">Assigned Categories</span>
+                                        <span class="product-detail-value pull-right">{{ campaign.categories }}</span>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+             
+                            <div class="box">
+                             <hr>
+                                <div class="box text-left">
+                                    <h5 class="">Description</h5>
+                                    <p> {{ campaign.description }} </p>
+                                </div>
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-primary adapt-btn" (click)="deleteCampaign()">Delete Campaign</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="influencerDiv">
+                    <div class="campany-detail-requests-area">
+                        <application *ngFor="let request of requests" [request]="request"></application>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script src="assets/js/wow.js"></script>
+<script>
+window.jQuery || document.write('<script src="assets/js/jquery-1.11.2.min.js"><\/script>')
+</script>
+<script src="assets/js/swiper.min.js"></script>
+<script src="assets/js/lightbox-plus-jquery.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.countTo.js"></script>
+<script src="assets/js/jquery.inview.js"></script>
+<script src="assets/js/jquery.countdown.js"></script>
+<script src="assets/js/main.js"></script>
+
