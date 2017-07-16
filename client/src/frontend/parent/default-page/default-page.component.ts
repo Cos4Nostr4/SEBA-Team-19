@@ -53,7 +53,7 @@ export class DefaultPageComponent implements OnInit {
         let styleOverLayDiv = "width:" + windowWidth + "px; height:" + windowHeight + "px; background-color: rgba(216, 216,216, 0.7); z-index: 99; position:fixed; top:0;left:0";
         let overlayDiv = $("<div id='overlay-div' style='" + styleOverLayDiv + "'></div>").appendTo(parent);
 
-        let styleWhiteBox = "background-color:#3D4551; width:450px; height:170px; margin:auto; position:fixed; display: inline-block; z-index: 100; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; auto; border-radius:12px";
+        let styleWhiteBox = "background-color:#3D4551; width:450px; height:180px; margin:auto; position:fixed; display: inline-block; z-index: 100; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; auto; border-radius:12px";
         let whiteBox = $("<div class='text-center' style='" + styleWhiteBox + "'></div>").appendTo(overlayDiv);
 
         let styleTitleTop = "font-family: \"Roboto\",cursive; color: white ;font-size:32px; font-weight:700; padding:15px 0px 0px;";
@@ -62,13 +62,13 @@ export class DefaultPageComponent implements OnInit {
         let styleButtonDiv = "text-align: center; background-color: #00519A; color:white; border:1px; border-radius: 5px; margin: 29px auto 0; margin-bottom: 16px; width: 273px; height:38px; cursor: pointer";
         let buttonDiv = $("<div style='" + styleButtonDiv + "'></div>").appendTo(whiteBox);
 
-        let styleInstagramLogo = "font-size: 35px; margin: 1px 8px 0 3px; padding-left: 2px;float:left";
+        let styleInstagramLogo = "font-size: 35px; margin: 1px 8px 0 3px; padding: 1px 0 0 2px;float:left";
         $("<i class='fa fa-instagram' aria-hidden='true' style='" + styleInstagramLogo + "'></i>").appendTo(buttonDiv);
 
         let styleButtonText = " padding-top:2px ;font-family: \"Roboto\",;display:block; letter-spacing: 0.5px;font-size:22px; font-weight: 400";
         $("<span style='" + styleButtonText + "'>Login with Instagram</span>").appendTo(buttonDiv);
 
-        let styleCompany = "font-family: \"Roboto\"; color: #8196a9; font-size:14px; font-weight:400; padding: 0px;";
+        let styleCompany = "font-family: \"Roboto\"; color: #8196a9; font-size:14px; font-weight:400; padding: 0px 0px 5px;";
         $("<a href='/company-login' style='" + styleCompany + "'>Go to Company Login</a>").appendTo(whiteBox);
 
         $(buttonDiv).click(() => {

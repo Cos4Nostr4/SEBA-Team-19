@@ -3,6 +3,7 @@ import {Request} from "../../../data-objects/request";
 import {InstagrammDataService} from "../../../services/instagramm-data.service";
 import {RequestService} from "../../../services/request.service";
 import {Router} from "@angular/router";
+import {RequestState} from "../../../../../../server/src/backend/request/db-request";
 
 declare var $: any;
 
@@ -17,41 +18,52 @@ export class ApplicationComponent implements OnInit {
     private instagrammDataService: InstagrammDataService;
     private requestService: RequestService;
     private router: Router;
+    private influencerImage:string;
+    private showAcceptBtn:boolean;
+    private showRejectBtn:boolean;
 
     constructor(instagrammDataService: InstagrammDataService, requestService: RequestService, router:Router) {
         this.instagrammDataService = instagrammDataService;
         this.requestService = requestService;
         this.router = router;
+        this.influencerImage="";
     }
 
     public ngOnInit(): void {
         this.instagrammDataService.getUserData(this.request.influencer.username)
             .subscribe(
                 selfData => {
-                    $('#applicant-picture').attr('src', selfData.profilePictureUrl);
+                    this.influencerImage = selfData.profilePictureUrl;
                 }
             );
 
-        this.registerApplicationButtonHandler();
         this.updateUi();
     }
 
-    private registerApplicationButtonHandler() {
-        $('#accept-button').click(() => {
-            if (this.productIsInStock()) {
-                this.acceptRequest();
-            } else {
-                alert("Product not in stock anymore");
-            }
-        });
+    private checkAccept() {
+        if (this.productIsInStock()) {
+            this.acceptRequest();
+        } else {
+            alert("Product not in stock anymore");
+        }
+    }
 
-        $('#reject-button').click(() => {
-            this.denyRequest();
-        });
+    private denyRequest() {
+        this.request.status = RequestState[RequestState.REJECTED];
+        this.requestService.updatRequest(this.request)
+            .subscribe(
+                updatedRequest => {
+                    this.request = updatedRequest;
+                    this.updateUi();
+                },
+                error => {
+                    throw new Error(error);
+                }
+            );
+    }
 
-        $('#applicant-picture').click(() => {
-            this.router.navigate(['status', this.request.influencer.uuid]);
-        });
+    private selectInfluencer() {
+        this.router.navigate(['status', this.request.influencer.uuid]);
     }
 
     private async productIsInStock() {
@@ -69,13 +81,12 @@ export class ApplicationComponent implements OnInit {
     }
 
     private acceptRequest() {
-        this.request.status = "ACCEPTED";
+        this.request.status = RequestState[RequestState.ACCEPTED];
         this.requestService.updatRequest(this.request)
             .subscribe(
                 updatedRequest => {
                     this.request = updatedRequest;
                     this.updateUi();
-                    console.log("Request accepted: " + JSON.stringify(this.request));
                 },
                 error => {
                     throw new Error(error);
@@ -84,36 +95,7 @@ export class ApplicationComponent implements OnInit {
     }
 
     private updateUi() {
-        $('#accept-button').show();
-        $('#reject-button').show();
-        $('#application-container').removeClass("application-accepted")
-            .removeClass("application-rejected");
-
-
-        if (this.request.status == "ACCEPTED") {
-            $('#application-container').addClass("application-accepted");
-            $('#accept-button').hide();
-            $('#reject-button').show();
-        } else if (this.request.status == "REJECTED") {
-            $('#application-container').addClass("application-rejected");
-            $('#accept-button').show();
-            $('#reject-button').hide();
-        }
-
-    }
-
-    private denyRequest() {
-        this.request.status = "REJECTED";
-        this.requestService.updatRequest(this.request)
-            .subscribe(
-                updatedRequest => {
-                    this.request = updatedRequest;
-                    this.updateUi();
-                    console.log("Request accepted: " + JSON.stringify(this.request));
-                },
-                error => {
-                    throw new Error(error);
-                }
-            );
+        this.showAcceptBtn = this.request.status != RequestState[RequestState.ACCEPTED];
+        this.showRejectBtn = this.request.status != RequestState[RequestState.REJECTED];
     }
 }

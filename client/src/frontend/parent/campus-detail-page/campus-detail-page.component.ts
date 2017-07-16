@@ -108,7 +108,7 @@ export class CampusDetailPageComponent implements OnInit {
                 requestUuid => {
                     console.log("Request done: " + JSON.stringify(request));
                     if (requestUuid == request.uuid) {
-                        this.updateApplyButton(RequestState.PENDING);
+                        this.updateApplyButton(RequestState.PENDING, true);
                     } else {
                         throw new Error("Something went wrong while sending request")
                     }
@@ -119,7 +119,7 @@ export class CampusDetailPageComponent implements OnInit {
             );
     }
 
-    private updateApplyButton(requestState: RequestState) {
+    private updateApplyButton(requestState: RequestState, justCreated?: boolean) {
         let applyButton = $('#apply-button');
         if (requestState == RequestState.ACCEPTED) {
             applyButton.text("Accepted")
@@ -127,8 +127,13 @@ export class CampusDetailPageComponent implements OnInit {
 
         }
         if (requestState == RequestState.PENDING) {
-            applyButton.text("Already applied")
-                .addClass("btn-pending");
+            if (justCreated) {
+                applyButton.text("Already applied")
+                    .addClass("btn-just-applied");
+            } else {
+                applyButton.text("Pending")
+                    .addClass("btn-pending");
+            }
 
         }
         if (requestState == RequestState.REJECTED) {
@@ -151,7 +156,8 @@ export class CampusDetailPageComponent implements OnInit {
 
     private prepareHashTags(campaign: Campaign): string {
         let enforcedHashTags = campaign.enforcedHashTags;
-        return enforcedHashTags.map((hashtag) => "#" + hashtag)
+        let preparedHashTags = enforcedHashTags.map((hashtag) => "#" + hashtag)
             .join(' ');
+        return preparedHashTags;
     }
 }

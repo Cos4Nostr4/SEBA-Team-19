@@ -1,30 +1,100 @@
 [
   {
     "uuid": "1",
-    "campaign":"Bragi Wireless Headphones",
+    "campaign": "Bragi Wireless Headphones",
     "influencer": "1",
     "status": "ACCEPTED",
     "postponed": false
   },
   {
-    "uuid":"2",
-    "campaign":"Brocks Backpack",
+    "uuid": "2",
+    "campaign": "Bragi Wireless Headphones",
     "influencer": "2",
-    "status": "REJECTED",
+    "status": "ACCEPTED",
     "postponed": false
   },
   {
     "uuid": "3",
-    "campaign":"Laptop Sleeve - Made in Kyrgyztan",
-    "influencer": "1",
+    "campaign": "Bragi Wireless Headphones",
+    "influencer": "3",
     "status": "PENDING",
     "postponed": false
   },
   {
     "uuid": "4",
-    "campaign":"Decorative Bowl Ballerina",
+    "campaign": "Bragi Wireless Headphones",
+    "influencer": "4",
+    "status": "REJECTED",
+    "postponed": false
+  },
+  {
+    "uuid": "5",
+    "campaign": "Decorative Bowl Ballerina",
+    "influencer": "4",
+    "status": "ACCEPTED",
+    "postponed": false
+  },
+  {
+    "uuid": "6",
+    "campaign": "HappyBrush",
+    "influencer": "3",
+    "status": "ACCEPTED",
+    "postponed": false
+  },
+  {
+    "uuid": "7",
+    "campaign": "HappyBrush",
+    "influencer": "4",
+    "status": "PENDING",
+    "postponed": false
+  },
+  {
+    "uuid": "8",
+    "campaign": "MyProtein - The Whey",
     "influencer": "2",
     "status": "ACCEPTED",
+    "postponed": false
+  },
+  {
+    "uuid": "9",
+    "campaign": "MyProtein - The Whey",
+    "influencer": "4",
+    "status": "PENDING",
+    "postponed": false
+  },
+  {
+    "uuid": "10",
+    "campaign": "Brocks Backpack",
+    "influencer": "2",
+    "status": "PENDING",
+    "postponed": false
+  },
+  {
+    "uuid": "11",
+    "campaign": "Brocks Backpack",
+    "influencer": "1",
+    "status": "REJECTED",
+    "postponed": false
+  },
+  {
+    "uuid": "12",
+    "campaign": "The First Inflatable Surfboard",
+    "influencer": "2",
+    "status": "REJECTED",
+    "postponed": false
+  },
+  {
+    "uuid": "13",
+    "campaign": "Laptop Sleeve - Made in Kyrgyztan",
+    "influencer": "1",
+    "status": "PENDING",
+    "postponed": false
+  },
+  {
+    "uuid": "14",
+    "campaign": "Mouth-Blown Vase Julie",
+    "influencer": "3",
+    "status": "REJECTED",
     "postponed": false
   }
 ]

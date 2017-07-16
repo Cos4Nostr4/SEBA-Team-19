@@ -8,8 +8,7 @@ import {getUserSelectableCategories} from "../../data-objects/categories";
 import {CampaignService} from "../../services/campaign.service";
 import {Router} from "@angular/router";
 import {CookieHandler} from "../../services/cookie-handler";
-import {FileSelectDirective, FileDropDirective, FileUploader, FileItem} from 'ng2-file-upload';
-import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
+import {FileItem, FileUploader} from "ng2-file-upload";
 
 @Component({
 
@@ -24,7 +23,7 @@ export class AddCampanyComponent implements OnInit {
     private campaignService: CampaignService;
     private companyAuthenticationService: CompanyAuthenticationService;
     private router: Router;
-    private upload:FileUploader= new FileUploader({url:"http://localhost:3010/api/upload"});
+    private upload: FileUploader = new FileUploader({url: "http://localhost:3010/api/upload"});
     private company: Company;
     private selectableCategories: string[];
     private formData: any;
@@ -65,11 +64,11 @@ export class AddCampanyComponent implements OnInit {
     }
 
     public createCampaign(): void {
-        let campaignPictureName = this.determinePictureName();
-        let endDate = new Date(this.formData.endDate);
+        let campaignPicture = this.determinePictureName();
+        let endDate = new Date();
         let hashTags = this.extractHashTags();
         let categories = this.extractCategories();
-        let createdCampaign = new Campaign(UUID.createNew().asStringValue(), this.formData.title, this.formData.description, campaignPictureName,
+        let createdCampaign = new Campaign(UUID.createNew().asStringValue(), this.formData.title, this.formData.description, campaignPicture,
             this.company, this.formData.amount, this.formData.followers, hashTags, new Date(), endDate, categories, true);
         console.log("FORM: " + JSON.stringify(createdCampaign));
 
@@ -82,27 +81,34 @@ export class AddCampanyComponent implements OnInit {
                     throw new Error(error)
                 }
             );
-        this.uploadImage(campaignPictureName);
+        this.uploadImage(campaignPicture);
     }
 
-    private ensureOnlySingleUpload(){
+    private ensureOnlySingleUpload() {
         let queue = this.upload.queue;
-        if (queue.length > 1) {
-            throw new Error("Too many pictures to upload selected");
+        let queueLength = queue.length;
+        if (queueLength > 1) {
+            for (let i = 0; i < queueLength - 1; i++) {
+                queue[0].remove();
+            }
         }
-        if (queue.length <= 0) {
+
+        if (queueLength <= 0) {
             throw new Error("No picture for upload selected");
         }
+        queue.forEach((item) => {
+            console.log("NEW Item: " + item.file.name);
+        });
     }
 
-    private determinePictureName():string {
+    private determinePictureName(): string {
         this.ensureOnlySingleUpload();
         let item = this.upload.queue[0];
         let fileName = item.file.name;
         let startFileEnding = fileName.lastIndexOf(".");
         let fileEnding = fileName.substr(startFileEnding);
         let newFileName = UUID.createNew().asStringValue();
-        return newFileName+fileEnding;
+        return newFileName + fileEnding;
     }
 
     private uploadImage(fileName: string) {

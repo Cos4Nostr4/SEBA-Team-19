@@ -23,6 +23,7 @@ export class CampanyDetailPageComponent implements OnInit {
     private route: ActivatedRoute;
     private campaign: Campaign;
     private requests: Request[];
+    private productPicture:string;
 
     constructor(offerService: CampaignService, requestService: RequestService, imageService: ImageService,
                 router:Router, route: ActivatedRoute) {
@@ -33,6 +34,7 @@ export class CampanyDetailPageComponent implements OnInit {
         this.route = route;
         this.campaign = new Campaign("", "", "", "", null, 0, 0, [], new Date(), new Date(), [], true);
         this.requests = [];
+        this.productPicture = "";
     }
 
 
@@ -43,7 +45,7 @@ export class CampanyDetailPageComponent implements OnInit {
                 campaign => {
                     this.campaign = campaign;
                     let imageUrl = this.imageService.getImageUrlForProductName(campaign.image);
-                    $('#productPicture').attr('src', imageUrl);
+                    this.productPicture = imageUrl;
                 },
                 error => {
                     throw new Error(error);
@@ -51,32 +53,16 @@ export class CampanyDetailPageComponent implements OnInit {
             );
 
         this.route.params
-            .switchMap((params: Params) => this.requestService.getRequestsForCampaign(params.id ))
+            .switchMap((params: Params) => this.requestService.getRequestsForCampaign(params.id))
             .subscribe(
                 requests => {
                     this.requests = requests;
-                    console.log(requests);
                 },
                 error => {
                     throw new Error(error);
                 }
             );
 
-
-        $('.acceptButton').click((event: any) => {
-            let acceptBtn = event.currentTarget;
-            let index = $(".acceptButton").index(acceptBtn);
-            let container = $("tr").get(index);
-            container.style.background = "palegreen";
-        });
-
-
-        $('.rejectButton').click((event: any) => {
-            let rejectBtn = event.currentTarget;
-            let index = $(".rejectButton").index(rejectBtn);
-            let container = $("tr").get(index);
-            container.style.background = "lightpink";
-        });
 
     }
 

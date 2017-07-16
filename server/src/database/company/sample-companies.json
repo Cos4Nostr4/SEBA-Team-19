@@ -102,5 +102,57 @@
     "paymentInformation": "12345 geld",
     "taxInformation": "12344321",
     "verified": false
+  },
+  {
+    "uuid": "9",
+    "name": "Chanel",
+    "username": "Chanel",
+    "password": "secret",
+    "email":"chanel@gmail.com",
+    "profilPicture": "somePicture",
+    "contact": "call me ;)",
+    "address": "russian mafia hoam",
+    "paymentInformation": "12345 geld",
+    "taxInformation": "12344321",
+    "verified": false
+  },
+  {
+    "uuid": "10",
+    "name": "Daniel Wellington",
+    "username": "Daniel Wellington",
+    "password": "secret",
+    "email":"wellington@gmail.com",
+    "profilPicture": "somePicture",
+    "contact": "call me ;)",
+    "address": "russian mafia hoam",
+    "paymentInformation": "12345 geld",
+    "taxInformation": "12344321",
+    "verified": false
+  },
+  {
+    "uuid": "11",
+    "name": "Swarovski",
+    "username": "russian mafia",
+    "password": "secret",
+    "email":"swarovski@gmail.com",
+    "profilPicture": "somePicture",
+    "contact": "call me ;)",
+    "address": "russian mafia hoam",
+    "paymentInformation": "12345 geld",
+    "taxInformation": "12344321",
+    "verified": false
+  },
+  {
+    "uuid": "12",
+    "name": "HUNDM",
+    "username": "russian mafia",
+    "password": "secret",
+    "email":"hundm@gmail.com",
+    "profilPicture": "somePicture",
+    "contact": "call me ;)",
+    "address": "russian mafia hoam",
+    "paymentInformation": "12345 geld",
+    "taxInformation": "12344321",
+    "verified": false
   }
 ]

@@ -13,12 +13,16 @@ declare var $: any;
 
 const CLIENT_ID = "1083168b29cb4a1e8b0bf6a6ddb3c1c9";
 const INSTAGRAMM_BACKEND_BASE_URL = Config.backend_address + ":" + Config.backend_port + Config.backend_base_url + "instagram/";
+
 const REDIRECT_URL = "http://localhost:4200/default-page";
 const DEFAULT_LANDING_PAGE = "/default-page/";
 const LOGGED_IN_LANDING_URL = "/categories/0";
 
 @Injectable()
 export class AuthenticationService {
+    public static COOKIE_TOKEN = "token";
+    public static COOKIE_USERNAME = "username";
+    public static COOKIE_INSTAGRAMM_ID = "instagramId";
     private http: Http;
     private router:Router;
 
@@ -38,7 +42,7 @@ export class AuthenticationService {
     public isLoggedIn(): boolean {
         this.checkForAccessToken();
 
-        let isLoggedIn = CookieHandler.isCookiePresent("token");
+        let isLoggedIn = CookieHandler.isCookiePresent(AuthenticationService.COOKIE_TOKEN);
         return isLoggedIn;
     }
 
@@ -61,14 +65,14 @@ export class AuthenticationService {
                 .map(JsonExtractor.extractData)
                 .catch(ServiceErrorHandler.handleError)
                 .subscribe(
-                    selfData => {
-                        CookieHandler.addCookie("token", accessToken);
-                        CookieHandler.addCookie("username", selfData.username);
-                        console.log("Logged in. Cookies: "+document.cookie);
+                    userData => {
+                        CookieHandler.addCookie(AuthenticationService.COOKIE_TOKEN, accessToken);
+                        CookieHandler.addCookie(AuthenticationService.COOKIE_USERNAME, userData.username);
+                        CookieHandler.addCookie(AuthenticationService.COOKIE_INSTAGRAMM_ID, userData.instagrammId);
                         this.redirectTo(LOGGED_IN_LANDING_URL);
                     },
                     error => {
-                        console.log("ERROR when retrieving cookie: " + error);
+                        throw new Error(error);
                     }
                 );
         }

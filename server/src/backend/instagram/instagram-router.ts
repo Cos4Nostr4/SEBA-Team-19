@@ -1,7 +1,6 @@
 import * as express from "express";
 import {TransferObject} from "../transferobject/transfer-object";
 import {InstagramRepository} from "./instagram-repository";
-import InsSelfData from "../../../../client/src/frontend/data-objects/ins-user-data";
 import InsUserData from "../../../../client/src/frontend/data-objects/ins-user-data";
 import InsRecentMedia from "../../../../client/src/frontend/data-objects/ins-recent-media";
 
@@ -37,7 +36,7 @@ export class InstagramRouter {
         router.route(BASE_PATH + 'self/:access_token')
             .get((req, res) => {
                 let accessToken = req.params.access_token;
-                this.instagramRepository.getSelfData(accessToken, (error: any, selfData: InsSelfData) => {
+                this.instagramRepository.getSelfData(accessToken, (error: any, selfData: InsUserData) => {
                     if (error) {
                         res.status(400);
                         let transferObject = TransferObject.aTransferObjectForError(error);
@@ -52,7 +51,7 @@ export class InstagramRouter {
         router.route(BASE_PATH + 'user/:username')
             .get((req, res) => {
                 let username = req.params.username;
-                this.instagramRepository.getUserData(username, (error: any, selfData: InsSelfData) => {
+                this.instagramRepository.getUserData(username, (error: any, selfData: InsUserData) => {
                     if (error) {
                         res.status(400);
                         let transferObject = TransferObject.aTransferObjectForError(error);
