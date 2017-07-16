@@ -53,7 +53,7 @@ export class DefaultPageComponent implements OnInit {
         let styleWhiteBox = "background-color:#3D4551; width:450px; height:180px; margin:auto; position:fixed; display: inline-block; z-index: 100; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; auto; border-radius:12px";
         let whiteBox = $("<div class='text-center' style='" + styleWhiteBox + "'></div>").appendTo(overlayDiv);
 
-        let styleTitleTop = "font-family: \"Roboto\",cursive; color: white ;font-size:32px; font-weight:700; padding:15px 0px 0px;";
+        let styleTitleTop = "font-family: \"Roboto\",cursive; color: white ;font-size:32px; font-weight:900; padding:15px 0px 0px;";
         $("<div style='" + styleTitleTop + "'><i>Get Stuff For Free!</i></div>").appendTo(whiteBox);
 
         let styleButtonDiv = "text-align: center; background-color: #00519A; color:white; border:1px; border-radius: 5px; margin: 29px auto 0; margin-bottom: 16px; width: 273px; height:38px; cursor: pointer";
