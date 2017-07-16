@@ -27,4 +27,5 @@ import {FileDropDirective, FileSelectDirective, FileUploadModule} from "ng2-file
 
 })
 
-export class AddCampanyPageModule {}
+export class AddCampanyPageModule {
+}

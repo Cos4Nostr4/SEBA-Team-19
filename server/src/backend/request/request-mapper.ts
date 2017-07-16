@@ -8,14 +8,16 @@ export class RequestMapper {
     public static mapAll(dbRequests: DBRequest[]): Request[] {
         let requests = [];
         for (let dbRequest of dbRequests) {
-            let request = this.map(dbRequest);
-            requests.push(request)
+            if (dbRequest.campaign && dbRequest.campaign.company) {
+                let request = this.map(dbRequest);
+                requests.push(request)
+            }
         }
         return requests;
     }
 
     public static map(dbRequest: DBRequest): Request {
-        let campaign = CampaignMapper.map(dbRequest.campaign);
+        let campaign = (dbRequest.campaign) ? CampaignMapper.map(dbRequest.campaign) : null;
         let requestStateAsString = RequestState[RequestState[dbRequest.status]];
         return new Request(dbRequest.uuid, campaign, dbRequest.influencer, requestStateAsString, dbRequest.postponed);
     }

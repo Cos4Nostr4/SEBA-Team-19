@@ -40,11 +40,6 @@
                     </div>
                 </div>
             </div>
-            <!--div class="form-group">
-                <div class="col-sm-9 set-size">
-                    <input type="password" id="password" placeholder="Confim Password" class="form-control" required>
-                </div>
-            </div-->
             <div class="form-group">
                 <div class="col-sm-9 set-size">
                     <select id="country" class="form-control">
@@ -68,53 +63,29 @@
                     </div>
                 </div>
             </div>
-            <!--div class="form-group">
-                <div class="col-sm-9 set-size">
-                    <input type="text" id="zipCode" placeholder="Zip Code" class="form-control" required [(ngModel)]="model.address" name="zipCode" #zipCode="ngModel">
-                    <div [hidden]="zipCode.valid || zipCode.pristine" class="alert alert-danger">
-                        Please enter your towns zip code.
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-9 set-size">
-                    <input type="" id="password" placeholder="Town" class="form-control" required [(ngModel)]="model.address" name="town" #town="ngModel">
-                    <div [hidden]="town.valid || town.pristine" class="alert alert-danger">
-                        Please enter you towns name.
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-9 set-size">
-                    <input type="" id="password" placeholder="Street with Street Number " class="form-control" required [(ngModel)]="model.address" name="street" #street="ngModel">
-                    <div [hidden]="street.valid || street.pristine" class="alert alert-danger">
-                        Please enter yout street and street number.
-                    </div>
-                </div>
-            </div-->
             <div class="form-group">
                 <label class="control-label col-sm-6"><b>Prefered Form of Payment</b></label>
                 <div class="col-sm-6">
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="radio-inline">
-                                <input type="radio" id="payment" value="payment" name="payment"> Credit Card
+                                <input type="radio" value="payment" name="payment"> Credit Card
                             </label>
                         </div>
                         <div class="col-sm-12">
                             <label class="radio-inline">
-                                <input type="radio" id="payment" value="payment" name="payment"> SEPA Direct Debit
+                                <input type="radio" value="payment" name="payment"> SEPA Direct Debit
                                 Scheme
                             </label>
                         </div>
                         <div class="col-sm-12">
                             <label class="radio-inline">
-                                <input type="radio" id="payment" value="payment" name="payment"> PayPal
+                                <input type="radio" value="payment" name="payment"> PayPal
                             </label>
                         </div>
                         <div class="col-sm-12">
                             <label class="radio-inline">
-                                <input type="radio" id="payment" value="payment" name="payment"> Ask me later
+                                <input type="radio" value="payment" name="payment" checked> Ask me later
                             </label>
                         </div>
                     </div>
@@ -124,9 +95,13 @@
                 <div class="col-sm-9 col-sm-offset-3 set-size">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" required> <b> I accept the </b> <a class="terms" href="#" required>
+                            <input [(ngModel)]="formData.terms" name="terms" type="checkbox" #terms="ngModel" required>
+                            <b> I accept the </b> <a class="terms" href="#" onclick="return false" required>
                             <b>terms and conditions</b></a>
                         </label>
+                    </div>
+                    <div [hidden]="terms.valid || terms.pristine" class="alert alert-danger">
+                        Please accept the terms and conditions
                     </div>
                 </div>
             </div> <!-- /.form-group -->

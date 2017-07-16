@@ -10,13 +10,15 @@ export class CampaignMapper {
     public static mapAll(dbCampaigns: DBCampaign[]): Campaign[] {
         let campaigns = [];
         for (let dbCampaign of dbCampaigns) {
-            campaigns.push(this.map(dbCampaign))
+            if (dbCampaign.company) {
+                campaigns.push(this.map(dbCampaign))
+            }
         }
         return campaigns;
     }
 
     public static map(dbCampaign: DBCampaign): Campaign {
-        let company: Company = CompanyMapper.map(dbCampaign.company);
+        let company: Company = (dbCampaign.company) ? CompanyMapper.map(dbCampaign.company) : null;
         let categories: string[] = this.mapCategories(dbCampaign);
         return new Campaign(dbCampaign.uuid, dbCampaign.title, dbCampaign.description, dbCampaign.image, company,
             dbCampaign.amount, dbCampaign.requiredNumberOfFollowers, dbCampaign.enforcedHashTags, dbCampaign.startDate,

@@ -51,7 +51,6 @@ export class StatusPageComponent implements OnInit {
                         .subscribe(recentMedias => {
                                 this.recentMedias = recentMedias;
                                 this.recentMediaUrls = this.extractMediaUrls(recentMedias);
-                                console.log("Urls:" + this.recentMediaUrls);
                             },
                             error => {
                                 throw new Error(error);

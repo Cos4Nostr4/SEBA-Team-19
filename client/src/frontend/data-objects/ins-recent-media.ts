@@ -1,10 +1,10 @@
-export default class InsRecentMedia{
-    public instagrammId:string;
+export default class InsRecentMedia {
+    public instagrammId: string;
     public url: string;
     public type: string;
-    public numberOfComments:number;
-    public numberOfLikes:number;
-    public description:string;
+    public numberOfComments: number;
+    public numberOfLikes: number;
+    public description: string;
     public tags: string[];
     public originUrl: string;
 

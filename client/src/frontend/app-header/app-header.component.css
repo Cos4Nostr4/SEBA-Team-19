@@ -77,11 +77,11 @@
     border-radius: 50px;
 }
 
-.btn-profile-img{
+.btn-profile-img {
     padding-top: 5px !important;
 }
 
-.heart-icon{
+.heart-icon {
     height: 26px !important;
     width: 23px !important;
     padding-top: 5px !important;
@@ -90,7 +90,7 @@
     border-radius: 0px !important;
 }
 
-.request-icon{
+.request-icon {
     height: 40px !important;
     width: 35px !important;
     padding-top: 5px !important;
@@ -98,7 +98,6 @@
     margin-top: 2px !important;
     border-radius: 0px !important;
 }
-
 
 .right-sided-container {
     margin-right: 40px;

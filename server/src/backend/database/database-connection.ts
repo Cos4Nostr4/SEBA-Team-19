@@ -10,7 +10,6 @@ export class DatabaseConnection {
 
     private constructor() {
         this.value = DatabaseConnection.MONGO_DB_PREFIX + Config.database_url+":"+Config.database_port+"/"+Config.database_name;
-        console.log(this.value);
     }
 
     public static defaultConnection(): string{

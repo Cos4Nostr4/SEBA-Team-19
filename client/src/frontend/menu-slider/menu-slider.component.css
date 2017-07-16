@@ -3,13 +3,13 @@
     right: 0;
     left: 0;
     z-index: 1030;
-    widht:100%;
-    margin-top:50px;
+    widht: 100%;
+    margin-top: 50px;
     background-color: white;
     box-shadow: 0 0 5px 0 #ededed;
 }
 
-.contentwrapper{
+.contentwrapper {
 
 }
 
@@ -35,7 +35,7 @@
 
 .slide-left {
     transition: 1s;
-    transform: translate3d(-50%,0px,0px)
+    transform: translate3d(-50%, 0px, 0px)
 }
 
 .menu-item-picture-container {
@@ -53,14 +53,13 @@
     padding-top: 15px;
 }
 
-
 .menu-item-container {
     height: 55px;
     width: 100px;
     margin: 0 auto;
 }
 
-.menu-item-container span{
+.menu-item-container span {
     font-family: "Roboto", "Open Sans";
     font-weight: 600;
     font-size: 0.6em;
@@ -70,6 +69,7 @@
     border-radius: 8px;
     background-color: #EDEDED;
 }
+
 .row {
     font-family: "Roboto";
     font-weight: 100;

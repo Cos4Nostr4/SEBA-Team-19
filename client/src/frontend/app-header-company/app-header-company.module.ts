@@ -1,10 +1,9 @@
 import {NgModule} from "@angular/core";
-import {AppHeaderCompanyComponent} from './app-header-company.component';
+import {AppHeaderCompanyComponent} from "./app-header-company.component";
 
 
 @NgModule({
-    imports: [
-    ],
+    imports: [],
     declarations: [
         AppHeaderCompanyComponent
     ],

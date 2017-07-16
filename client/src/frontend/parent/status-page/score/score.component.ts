@@ -20,7 +20,6 @@ export class ScoreComponent implements OnInit, OnChanges{
 
     ngOnInit(): void {
         this.score = this.calculateInfluence(this.userData, this.recentMedias);
-        console.log("calculatedScore: "+this.score);
     }
 
 

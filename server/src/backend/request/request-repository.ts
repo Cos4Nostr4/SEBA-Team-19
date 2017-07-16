@@ -62,7 +62,6 @@ export class RequestRepository {
             })
             .populate("influencer", '-_id -__v')
             .exec(function (err: any, dbRequest: DBRequest) {
-                console.log("Found:" +dbRequest);
                 if (dbRequest) {
                     let request: Request = RequestMapper.map(dbRequest);
                     func(request, null);
@@ -180,7 +179,6 @@ export class RequestRepository {
                     func(null, "Rejected request update, because updating campaign reference is not allowed");
                     return;
                 }
-                console.log("here");
                 let update = {
                     status: request.status,
                     postponed: request.postponed,

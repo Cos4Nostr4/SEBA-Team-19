@@ -2,8 +2,7 @@ import {NgModule} from "@angular/core";
 import {DropDownComponent} from "./drop-down.component";
 
 @NgModule({
-    imports: [
-    ],
+    imports: [],
     declarations: [
         DropDownComponent
     ],
@@ -12,7 +11,7 @@ import {DropDownComponent} from "./drop-down.component";
     ]
 })
 
-export class DropDownModule{
+export class DropDownModule {
 
 }
 

@@ -108,7 +108,6 @@ export class InfluencerRepository {
                                     func(null, err);
                                 } else {
                                     let updatedInfluencer = InfluencerMapper.map(updatedDbInfluencer);
-                                    console.log("Updated Influencer to "+JSON.stringify(updatedDbInfluencer));
                                     func(updatedInfluencer, null);
                                 }
                             });

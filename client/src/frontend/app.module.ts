@@ -4,15 +4,8 @@ import {AppComponent} from "./app.component";
 import {FormsModule} from "@angular/forms";
 import {AppHeaderModule} from "./app-header/app-header.module";
 import {AppHeaderCompanyModule} from "./app-header-company/app-header-company.module";
-import {OfferListModule} from "./offer-list-view/offer-list.module";
-import {OfferListComponent} from "./offer-list-view/offer-list.component";
 import {RouterModule} from "@angular/router";
-import {DashBoardComponent} from "./dashboard/dashboard.component";
 import {HttpModule, JsonpModule} from "@angular/http";
-import {OfferListElementModule} from "./offer-list-view/offer-list-element/offer-list-element.module";
-import {DashBoardModule} from "./dashboard/dashboard.module";
-import {SamplePageModule} from "./sample-page/sample-page.module";
-import {SampleObjectComponent} from "./sample-page/sample-page.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MenuSliderModule} from "./menu-slider/menu-slider.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -30,15 +23,10 @@ import {CompanyRegisterPageModule} from "./parent/company-register-page/company-
 import {CompanyRegisterPageComponent} from "./parent/company-register-page/company-register-page.component";
 import {DefaultPageModule} from "./parent/default-page/default-page.module";
 import {DefaultPageComponent} from "./parent/default-page/default-page.component";
-import {InstaLoginPageModule} from "./parent/insta-login-page/insta-login-page.module";
-import {InstaLoginPageComponent} from "./parent/insta-login-page/insta-login-page.component";
-import {ProfileViewDropdownModule} from "./parent/profile-view-dropdown/profile-view-dropdown.module";
-import {ProfileViewDropdownComponent} from "./parent/profile-view-dropdown/profile-view-dropdown.component";
 import {StatusPageModule} from "./parent/status-page/status-page.module";
 import {StatusPageComponent} from "./parent/status-page/status-page.component";
 import {AddCampanyPageModule} from "./parent/add-campany-page/add-campany-page.module";
 import {AddCampanyComponent} from "./parent/add-campany-page/add-campany-page.component";
-import {APP_ROUTES} from "./routes";
 import {PageNotFoundModule} from "./parent/page-not-found/page-not-found.module";
 import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.component";
 
@@ -49,11 +37,7 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
         FormsModule,
         AppHeaderModule,
         AppHeaderCompanyModule,
-        OfferListModule,
-        OfferListElementModule,
-        SamplePageModule,
         MenuSliderModule,
-        DashBoardModule,
         HttpModule,
         JsonpModule,
         BrowserAnimationsModule,
@@ -64,9 +48,7 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
         CompanyLoginPageModule,
         CompanyRegisterPageModule,
         DefaultPageModule,
-        InstaLoginPageModule,
         AddCampanyPageModule,
-        ProfileViewDropdownModule,
         StatusPageModule,
         PageNotFoundModule,
         NgbModule.forRoot(),
@@ -92,18 +74,6 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
                 data: {title: 'B2B Campaign'}
             },
             {
-                path: 'dashboard',
-                component: DashBoardComponent
-            },
-            {
-                path: 'sample-page',
-                component: SampleObjectComponent
-            },
-            {
-                path: 'menu-slider-page',
-                component: SampleObjectComponent
-            },
-            {
                 path: 'campany-detail/:id',
                 component: CampanyDetailPageComponent
             },
@@ -118,14 +88,6 @@ import {PageNotFoundComponent} from "./parent/page-not-found/page-not-found.comp
             {
                 path: 'company-register',
                 component: CompanyRegisterPageComponent
-            },
-            {
-                path: 'app-insta-login-page',
-                component: InstaLoginPageComponent
-            },
-            {
-                path: 'app-profile-view-dropdrown',
-                component: ProfileViewDropdownComponent
             },
             {
                 path: 'status/:id',

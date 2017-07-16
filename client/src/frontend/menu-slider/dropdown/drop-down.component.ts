@@ -20,6 +20,7 @@ export class DropDownComponent implements OnInit {
     private instagramDataService: InstagrammDataService;
     private influencer: Influencer;
     private userDataChanged: boolean;
+    private influencerProfilPicture: string;
 
 
     constructor(authenticationService: AuthenticationService, influencerService: InfluencerService,
@@ -50,8 +51,7 @@ export class DropDownComponent implements OnInit {
             this.instagramDataService.getUserData(username)
                 .subscribe(
                     userData => {
-                        console.log("Load userdata");
-                        $('#influncerProfilPictureDropDown').attr("src", userData.profilePictureUrl);
+                        this.influencerProfilPicture = userData.profilePictureUrl;
                     },
                     error => {
                         throw new Error(error);

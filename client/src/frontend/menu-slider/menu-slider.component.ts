@@ -126,8 +126,6 @@ export class MenuSliderComponent implements OnInit {
         for (let i = 0; i < $('.menu-item').length; i++) {
             let clickedElement = $('.menu-item').eq(i);
             clickedElement.click(() => {
-                let index = $('.menu-item').index(clickedElement);
-                console.log("CLICK: index:"+index);
                 let $activeElem = $('.active-menu').parent();
                 this.removeActive($activeElem);
 
@@ -137,17 +135,16 @@ export class MenuSliderComponent implements OnInit {
         }
     }
 
-    private setActive(elem:any){
+    private setActive(elem: any) {
         let $contentWrapper = $(elem).find('.contentwrapper');
         $contentWrapper.addClass('active-menu');
         let $image = $contentWrapper.find('img');
         let imageUrl = $image.attr("src");
         let activeImageUrl = imageUrl.replace(new RegExp('\\.'), '_active.');
-        console.log("Activated img:"+activeImageUrl);
         $image.attr("src", activeImageUrl);
     }
 
-    private removeActive(elem:any){
+    private removeActive(elem: any) {
         let $contentWrapper = $(elem).find('.contentwrapper');
         $contentWrapper.removeClass('active-menu');
         let $image = $contentWrapper.find('img');

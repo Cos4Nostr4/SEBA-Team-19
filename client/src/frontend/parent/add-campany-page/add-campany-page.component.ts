@@ -65,27 +65,24 @@ export class AddCampanyComponent implements OnInit {
     }
 
     public createCampaign(): void {
-        if(this.allDataInserted()) {
+        if (this.allDataInserted()) {
             let campaignPicture = this.determinePictureName();
             let endDate = new Date();
             let hashTags = this.extractHashTags();
             let categories = this.extractCategories();
             let createdCampaign = new Campaign(UUID.createNew().asStringValue(), this.formData.title, this.formData.description, campaignPicture,
                 this.company, this.formData.amount, this.formData.followers, hashTags, new Date(), endDate, categories, true);
-            console.log("FORM: " + JSON.stringify(createdCampaign));
 
-
-                this.campaignService.addCampaign(createdCampaign)
-                    .subscribe(
-                        uuid => {
-                            this.router.navigate(['/campany/']);
-                        },
-                        error => {
-                            throw new Error(error)
-                        }
-                    );
-                this.uploadImage(campaignPicture);
-
+            this.campaignService.addCampaign(createdCampaign)
+                .subscribe(
+                    uuid => {
+                        this.router.navigate(['/campany/']);
+                    },
+                    error => {
+                        throw new Error(error)
+                    }
+                );
+            this.uploadImage(campaignPicture);
         }
     }
 
@@ -147,7 +144,7 @@ export class AddCampanyComponent implements OnInit {
 
     private allDataInserted() {
         let queueLength = this.upload.queue.length;
-        if(queueLength < 1){
+        if (queueLength < 1) {
             this.errorMessage = "Please provide a picture for the campaign";
             return false;
         }

@@ -1,18 +1,18 @@
-export class Company{
-    uuid:string;
-    name:string;
-    username:string;
-    password:string;
-    email:string;
-    profilPicture:string;
-    contact:string;
+export class Company {
+    uuid: string;
+    name: string;
+    username: string;
+    password: string;
+    email: string;
+    profilPicture: string;
+    contact: string;
     address: string;
-    paymentInformation:string;
-    taxInformation:string;
-    verified:boolean;
+    paymentInformation: string;
+    taxInformation: string;
+    verified: boolean;
 
 
-    constructor(uuid: string, name: string, username: string, password: string, email:string, profilPicture: string, contact: string, address: string, paymentInformation: string, taxInformation: string, verified: boolean) {
+    constructor(uuid: string, name: string, username: string, password: string, email: string, profilPicture: string, contact: string, address: string, paymentInformation: string, taxInformation: string, verified: boolean) {
         this.uuid = uuid;
         this.name = name;
         this.username = username;

@@ -1,12 +1,11 @@
-
 import {Campaign} from "./campaign";
 import {Influencer} from "./influencer";
-export class Request{
+export class Request {
     public uuid: string;
     public campaign: Campaign;
     public influencer: Influencer;
     public status: string;
-    public postponed:boolean;
+    public postponed: boolean;
 
 
     constructor(uuid: string, campaign: Campaign, influencer: Influencer, status: string, postponed: boolean) {

@@ -36,10 +36,7 @@ export class DefaultPageComponent implements OnInit {
             );
 
 
-        if (this.authenticationService.isLoggedIn()) {
-            console.log("Logged in");
-        } else {
-            console.log("not logged in");
+        if (!this.authenticationService.isLoggedIn()) {
             this.disableComponent();
         }
     }
