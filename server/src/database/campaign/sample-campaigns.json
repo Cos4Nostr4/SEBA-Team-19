@@ -10,7 +10,7 @@
     "enforcedHashTags": ["Bragi", "BragiHeadphones", "BeeTooBee"],
     "startDate": "2017-2-1",
     "endDate": "2017-5-1",
-    "categories": ["NEW", "MAKE_UP", "OTHERS"],
+    "categories": ["NEW", "ACCESSORY", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -24,7 +24,7 @@
     "enforcedHashTags": ["Westwing", "BeeTooBee"],
     "startDate": "2017-2-1",
     "endDate": "2017-5-1",
-    "categories": ["NEW", "MAKE_UP", "OTHERS"],
+    "categories": ["NEW", "ACCESSORY", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -38,7 +38,7 @@
     "enforcedHashTags": ["gethappybrush", "happytoothbrushing", "BeeTooBee"],
     "startDate": "2017-5-5",
     "endDate": "2017-6-6",
-    "categories": ["NEW", "AREA", "JEWELRY"],
+    "categories": ["NEW", "AREA", "MAKE_UP"],
     "stillRunning": true
   },
   {
@@ -66,7 +66,7 @@
     "enforcedHashTags": ["MyProtein", "wheyislife", "BeeTooBee"],
     "startDate": "2017-2-1",
     "endDate": "2017-5-1",
-    "categories": ["NEW", "MAKE_UP", "OTHERS"],
+    "categories": ["NEW", "FITNESS"],
     "stillRunning": true
   },
   {
@@ -80,7 +80,7 @@
     "enforcedHashTags": ["AdoreJune", "BeeTooBee"],
     "startDate": "2017-2-1",
     "endDate": "2017-5-1",
-    "categories": ["NEW", "MAKE_UP", "OTHERS"],
+    "categories": ["NEW", "CLOTHES", "ACCESSORY", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -94,7 +94,7 @@
     "enforcedHashTags": ["Tripstix", "SurfOnAir", "BeeTooBee"],
     "startDate": "2017-2-1",
     "endDate": "2017-5-1",
-    "categories": ["NEW", "MAKE_UP", "OTHERS"],
+    "categories": ["NEW", "AREA", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -108,7 +108,7 @@
     "enforcedHashTags": ["Kancha.de", "HandmadeLaptopSleeve", "BeeTooBee"],
     "startDate": "2017-2-1",
     "endDate": "2017-5-1",
-    "categories": ["NEW", "MAKE_UP", "OTHERS"],
+    "categories": ["NEW", "ACCESSORY", "OTHERS"],
     "stillRunning": true
   },
   {
@@ -122,7 +122,7 @@
     "enforcedHashTags": ["Westwing", "BeeTooBee"],
     "startDate": "2017-2-1",
     "endDate": "2017-5-1",
-    "categories": ["NEW", "MAKE_UP", "OTHERS"],
+    "categories": ["NEW",  "OTHERS"],
     "stillRunning": true
   }
 ]
