@@ -1,4 +1,6 @@
-<div class="container-fluid main-styling">
+<app-header-company></app-header-company>
+
+<!--div class="container-fluid main-styling">
 
     <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
@@ -17,5 +19,162 @@
     <div id="recentMedias" class="row" style="padding-top: 20%">
         <recent-media *ngFor="let recentMedia of recentMedias" [recentMedia]="recentMedia"></recent-media>
     </div>
-</div>
+</div-->
 
+        <div class="container container-height">
+            <div class="row">
+                <div class="product-image-wrapper col-md-7">
+                    <div class="slide product-slide">
+                        <div class="width-100">
+                              <a class="" data-lightbox="example-set" data-title="Product name or description."><img class="img-responsive cover profile-img" alt="carousel image" src="http://localhost:3010/media/images/alex.jpg" title=""></a>
+                            <div class="row">
+                                <a class="col-sm-8 mt-30" data-lightbox="example-set" data-title="Product name or description."><img class="img-responsive cover right-fit" alt="carousel image" src="http://localhost:3010/media/images/alex.jpg" title=""></a>
+
+                                <a class="col-sm-4 mt-30 bottom-margin" data-lightbox="example-set" data-title="Product name or description."><img class="img-responsive cover side-fit bottom-margin" alt="carousel image" src="http://localhost:3010/media/images/alex.jpg" title=""> <img class="img-responsive cover bottom-fit side-fit" alt="carousel image" src="http://localhost:3010/media/images/alex.jpg" title=""></a> 
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-description-box col-md-5">            
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="product-description-box-name pull-left">{{userData.username}}</h3>
+                        </div>
+
+                    <div class="col-sm-12">
+                        <div class="product-button-section box">
+                            <span class="product-description-box-price">$2.00</span>
+
+                                <ul class="product-detail-list mb-30">
+                                    <li>
+                                        <span class="product-detail-list-label">BeeTooBee Score</span>
+                                        <span class="product-detail-value pull-right">Laurent</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="product-detail-list-label">Number of Posts</span>
+                                        <span class="product-detail-value pull-right">22355-05</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="product-detail-list-label">Followers</span>
+                                        <span class="product-detail-value pull-right">1400 items</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="product-detail-list-label">Address</span>
+                                        <span class="product-detail-value pull-right">24h | From $6.00</span>
+                                    </li>
+                                </ul>
+                                
+                                <a href="#" class="btn btn-primary">
+                                    Accept Influencer
+                                </a>
+                            </div>
+             
+                            <div class="box">
+                             <hr>
+                                 <div class="box text-left">
+                                    <h3 class="">Biography</h3>
+                                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
+                                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p><br><br>
+
+                                    <h4 class="">Ut enim ad minim veniam</h4>
+                                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="light-bg ">
+            <div class="footer pt-60 pb-60" id="footer">
+                <div class="container">
+                    <div class="row">
+                         <div class="smartphone-fw col-sm-3">
+                         <h6 class="heading mt-0"><span>//</span> CONTACT DATA</h6>
+                                <address>
+                                    <strong>Laurent store</strong><br>
+                                    1355 Market Street, Suite 900<br>
+                                    San Francisco, CA 94103<br>
+                                    (123) 456-7890
+                                </address>
+
+
+                            </div>
+                        <div class="smartphone-fw col-xs-6 col-sm-4 col-md-2">
+                            <h6 class="heading mt-0"><span>//</span> INFORMATION</h6>
+                            <ul>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                            </ul>
+                        </div>
+
+                        <div class="smartphone-fw col-xs-6 col-sm-4 col-md-2">
+                            <h6 class="heading mt-0"><span>//</span> TOP CATEGORIES</h6>
+                            <ul>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                            </ul>
+                        </div>
+
+                        <div class="smartphone-fw col-xs-6 col-sm-4 col-md-2">
+                            <h6 class="heading mt-0"><span>//</span> ACCOUNT</h6>
+                            <ul>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                                <li> <a href="#"> Lorem Ipsum </a> </li>
+                            </ul>
+                        </div>
+         
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <h6 class="heading mt-0"><span>//</span> STAY IN TOUCH</h6>
+
+                            <form>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div class="footer-newsletter">
+                                            <input class="form-control" id="firstName" placeholder="First name" type="text">
+                                            <button class="btn btn-link" type="button"><span class="ti-plus"></span></button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                            <ul class="footer-social" data-wow-delay="0.6s">
+                                <li><a href="#" class="pull-left"><span class="ti-facebook"></span></a></li>
+                                <li><a href="#" class="pull-left"><span class="ti-twitter"></span></a></li>
+                                <li><a href="#" class="pull-left"><span class="ti-instagram"></span></a></li>
+                                <li><a href="#" class="pull-left"><span class="ti-youtube"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="container">
+                    <p class="pull-left"> Copyright © Laurent 2017. All right reserved. </p>
+                </div>
+            </div>
+        </footer>
+<script src="assets/js/wow.js"></script>
+<script>
+window.jQuery || document.write('<script src="assets/js/jquery-1.11.2.min.js"><\/script>')
+</script>
+<script src="assets/js/swiper.min.js"></script>
+<script src="assets/js/lightbox-plus-jquery.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.countTo.js"></script>
+<script src="assets/js/jquery.inview.js"></script>
+<script src="assets/js/jquery.countdown.js"></script>
+<script src="assets/js/main.js"></script>

@@ -14,11 +14,13 @@ declare var $: any;
 export class AppHeaderComponent implements OnInit {
     private authenticationService: AuthenticationService;
     private instagrammDataService: InstagrammDataService;
+    private influencerPicture:string;
 
 
     constructor(authenticationService: AuthenticationService, instagrammDataService: InstagrammDataService) {
         this.authenticationService = authenticationService;
         this.instagrammDataService = instagrammDataService;
+        this.influencerPicture = null;
     }
 
     ngOnInit(): void {
@@ -26,7 +28,7 @@ export class AppHeaderComponent implements OnInit {
             this.instagrammDataService.getSelfData()
                 .subscribe(
                     selfData => {
-                        $('#influncerProfilPicture').attr("src", selfData.profilePictureUrl);
+                        this.influencerPicture = selfData.profilePictureUrl;
                     },
                     error => {
                         throw new Error(error);
