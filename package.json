@@ -11,7 +11,7 @@
     "start:backend": "npm run build:server",
     "start:database": "/tmp/database && mongod --dbpath /tmp/database",
     "reset-db": "ts-node server/src/database/reset-all.ts",
-    "package": "rm -f SEBA-App.tar && tar -cf SEBA-App.tar ."
+    "package": "rm -f SEBA-App.zip && zip SEBA-App.zip client package.json server typings tsconfig.json typings.json "
   },
   "keywords": [],
   "author": "BeeTooBee Team",
