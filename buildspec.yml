@@ -1,0 +1,11 @@
+version 0.0.1
+
+phases:
+  build:
+    commands:
+      - npm install
+      - npm run package
+
+artifacts:
+  files:
+    - SEBA-App.tar

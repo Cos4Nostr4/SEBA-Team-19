@@ -9,8 +9,9 @@
     "test:backend": "jasmine-ts \"server/test/**/*.spec.ts\"",
     "start:frontend": "ng serve",
     "start:backend": "npm run build:server",
-    "start:database": "mongod --dbpath /home/dev/Dev/SEBA-Team-19/database",
-    "reset-db": "ts-node server/src/database/reset-all.ts"
+    "start:database": "/tmp/database && mongod --dbpath /tmp/database",
+    "reset-db": "ts-node server/src/database/reset-all.ts",
+    "package": "rm -f SEBA-App.tar && tar -cf SEBA-App.tar ."
   },
   "keywords": [],
   "author": "BeeTooBee Team",
